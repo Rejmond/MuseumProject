@@ -1,0 +1,6 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h3>{{ book.data.name }}</h3>
+{{ book.content|raw }}
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<table class="table">
+    <thead>
+        <tr>
+            <th>Книга</th>
+            <th>Редактировать</th>
+            <th>Удалить</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for book in books %}
+        <tr>
+            <td>{{ book.data.name }}</td>
+            <td><a href="{{ book.edit_link }}">Редактировать</a></td>
+            <td><a href="{{ book.delete_link }}">Удалить</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<a href="/admin/add_book.php">Добавить книгу</a>
+{% endblock %}

@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>
+			{% block title %}
+				{{ title }}
+			{% endblock %}
+		</title>
+		<link rel="stylesheet" href="/css/bootstrap.css">
+		<link rel="stylesheet" href="/css/museum.css">
+	</head>
+	<body>
+		<div class="museum-header">
+			<div class="container">
+				<div class="nav">
+					<a class="nav-link active" href="/index.php">Страницы контента</a>
+					<a class="nav-link active" href="/admin/index.php">Администрирование</a>
+					<a class="nav-link active" href="/auth.php">Авторизация</a>
+				</div>
+			</div>
+		</div>
+		<div class="museum-content">
+			<div class="container">
+				<div class="row">
+					<div class="col-12">
+						{% block content %}
+							Center content
+						{% endblock %}
+					</div>
+				</div>
+			</div>
+		</div>
+		<footer class="museum-footer">
+			<div class="container">
+				{% block footer %}
+					<span class="text-muted">
+						&copy; Copyright 2017
+					</span>
+				{% endblock %}
+			</div>
+		</footer>
+	</body>
+</html>

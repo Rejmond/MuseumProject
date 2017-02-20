@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<form method="post">
+	<div class="form-group row">
+	  <label for="password" class="col-sm-2 col-form-label">Пароль:</label>
+	  <div class="col-sm-10 {% if error|length > 0 %}has-danger{% endif %}">
+		<input type="password" class="form-control" id="password" name="password" placeholder="Пароль">
+		{% if error|length > 0 %}
+			<div class="form-control-feedback">{{ error }}</div>
+		{% endif %}
+	  </div>
+	</div>
+    <div class="form-group row">
+      <div class="offset-sm-2 col-sm-10">
+        <button type="submit" class="btn btn-primary" name="auth">Войти</button>
+      </div>
+    </div>
+  </form>
+{% endblock %}

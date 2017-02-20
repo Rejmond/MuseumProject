@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+
+{% block content %}
+{% for book in books %}
+<div>
+    <h3><a href="{{ book.link }}">{{ book.data.name }}</a></h3>
+    <h4>Аннотация</h4>
+    {{ book.data.abstract }}
+    <h4>Краткая информация</h4>
+    {{ book.data.info }}
+</div>
+{% endfor %}
+{% endblock %}
