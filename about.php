@@ -2,10 +2,10 @@
 
 require_once('config.php');
 
-$content = ContentManager::GetPostContent('about');
+$post = ContentManager::get_entity_by_context('about');
 
 $model = array(
-    'content' => $content['content']
+    'post' => $post
 );
 
 echo $Twig->render('about.html', $model);

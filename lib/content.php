@@ -2,71 +2,78 @@
 
 class ContentManager {
 
-    public static function GetPostContent($context, $itemid = null) {
+    public static function get_entity_by_id($entity_id) {
         global $DB;
-        $sql = "SELECT * FROM posts WHERE context = ? ";
-        if (!empty($itemid)) {
-            $sql .= "AND itemid = ?";
-            $record = $DB->get_record_sql($sql, array($context, $itemid));
+        $record = $DB->get_record('entities', array('id' => $entity_id));
+        if (!empty($record['params'])) {
             $jsonData = $record['params'];
-            $record['data'] = (array)json_decode($jsonData);
-            return $record;
-        } else {
-            return $DB->get_record_sql($sql, array($context));
+            $data = json_decode($jsonData);
+            $record['params'] = (array)$data;
         }
+        return $record;
     }
 
-    public static function GetPostsInfo($context) {
+    public static function get_entity_by_context($context) {
         global $DB;
-        $sql = "SELECT * FROM posts WHERE context = ? ";
-        $records = $DB->get_records_sql($sql, array($context));
+        $record = $DB->get_record('entities', array('context' => $context));
+        if (!empty($record['params'])) {
+            $jsonData = $record['params'];
+            $data = json_decode($jsonData);
+            $record['params'] = (array)$data;
+        }
+        return $record;
+    }
+
+    public static function get_entities($context) {
+        global $DB;
+        $records = $DB->get_records('entities', array('context' => $context));
         for ($i = 0; $i < count($records); $i++) {
             $jsonData = $records[$i]['params'];
-            $records[$i]['data'] = (array)json_decode($jsonData);
+            $data = json_decode($jsonData);
+            $records[$i]['params'] = (array)$data;
         }
         return $records;
     }
 
-    public static function UpdatePostContent($context, $content, $itemid = null, array $params = array()) {
-        global $DB;
-        if ($itemid != null && count($params) > 0) {
-            $sql = "UPDATE posts SET content = ? , params = ? WHERE context = ? AND itemid = ?";
-            $paramJson = json_encode((object)$params);
-            $DB->execute($sql, array($content, $paramJson, $context, $itemid));
-        } else {
-            $sql = "UPDATE posts SET content = ? WHERE context = ?";
-            $DB->execute($sql, array($content, $context));
-        }
-    }
-
-    public static function AddPostContent($context, $content, array $params = array()) {
+    public static function update_entity($entity_id, $content, array $params = array()) {
         global $DB;
         if (count($params) > 0) {
-            $sql = 'SELECT max(itemid) AS maxitemid FROM posts WHERE context = ?';
-            $maxitemid = $DB->get_record_sql($sql, array($context));
-            $sql = 'INSERT INTO posts (context, content, itemid, params, date) VALUES (? , ? , ? , ?, ?)';
             $args = array(
-                $context,
-                $content,
-                $maxitemid['maxitemid'] + 1,
-                json_encode((object)$params),
-                '2017-02-19'
+                'content' => $content,
+                'params' => json_encode((object)$params),
             );
-            $DB->execute($sql, $args);
+            $DB->update_record('entities', $entity_id, $args);
         } else {
-            $sql = 'INSERT INTO posts (context, content) VALUES (?, ?)';
             $args = array(
-                'context' => $context,
-                'content' => $content
+                'content' => $content,
             );
-            $DB->execute($sql, $args);
+            $DB->update_record('entities', $entity_id, $args);
         }
     }
 
-    public static function DeletePost($context, $itemid) {
+    public static function add_entity($context, $content, array $params = array()) {
         global $DB;
-        $sql = "DELETE FROM posts WHERE context = ? AND itemid = ?";
-        $DB->execute($sql, array($context, $itemid));
+        if (count($params) > 0) {
+            $args = array(
+                'context' => $context,
+                'content' => $content,
+                'params' => json_encode((object)$params),
+                'date' => '2017-02-19'
+            );
+            return $DB->insert_record('entities', $args);
+        } else {
+            $args = array(
+                'context' => $context,
+                'content' => $content,
+                'date' => '2017-02-19'
+            );
+            return $DB->insert_record('entities', $args);
+        }
+    }
+
+    public static function delete_entity($entity_id) {
+        global $DB;
+        $DB->delete_record('entities', $entity_id);
     }
 
 }
