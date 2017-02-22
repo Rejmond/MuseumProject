@@ -2,15 +2,20 @@
 
 require_once('config.php');
 
-$entity_id = required_param('id');
+$context = optional_param('context', false);
 
-$entity = ContentManager::get_entity_by_id($entity_id);
+if ($context) {
+    $entity = ContentManager::get_entity_by_context($context);
+} else {
+    $entity_id = required_param('id');
+    $entity = ContentManager::get_entity_by_id($entity_id);
+}
 
 $model = array (
-    'id' => $entity_id,
+    'id' => $entity['id'],
     'content' => $entity['content'],
-    'edit_link' => "{$CONFIG->wwwroot}/admin/edit.php?id={$entity_id}",
-    'delete_link' => "{$CONFIG->wwwroot}/admin/delete.php?id={$entity_id}",
+    'edit_link' => "{$CONFIG->wwwroot}/admin/edit.php?id={$entity['id']}",
+    'delete_link' => "{$CONFIG->wwwroot}/admin/delete.php?id={$entity['id']}",
     'admin' => $USER->is_admin() ? 1 : 0
 );
 
