@@ -1,5 +1,12 @@
 {% extends "layout.html" %}
 
 {% block content %}
-{{ content|raw }}
+    {% if admin == 1 %}
+        <div class="post">
+            <a href="{{ edit_link }}">Редактировать</a>
+        </div>
+    {% endif %}
+        <div class="post">
+            {{ content|raw }}
+        </div>
 {% endblock %}
