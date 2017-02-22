@@ -6,13 +6,12 @@ $entity_id = required_param('id');
 
 $entity = ContentManager::get_entity_by_id($entity_id);
 
-$model = array (
-    'id' => $entity_id,
-    'content' => $entity['content'],
-    'edit_link' => "{$CONFIG->wwwroot}/admin/edit.php?id={$entity_id}",
-    'delete_link' => "{$CONFIG->wwwroot}/admin/delete.php?id={$entity_id}",
-    'admin' => $USER->is_admin() ? 1 : 0
-);
+$model = get_base_model();
+$model['id'] = $entity_id;
+$model['content'] = $entity['content'];
+$model['edit_link'] = "{$CONFIG->wwwroot}/admin/edit.php?id={$entity_id}";
+$model['delete_link'] = "{$CONFIG->wwwroot}/admin/delete.php?id={$entity_id}";
+$model['admin'] = $USER->is_admin() ? 1 : 0;
 
 switch ($entity['context']) {
     case 'books':

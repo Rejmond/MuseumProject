@@ -8,29 +8,29 @@ $entity_id = required_param('id');
 
 if (post_data_submitted()) {
     $context = required_param('context');
-    $params = array();
+    $content = required_param('content');
+    $params = [];
     switch ($context) {
         case 'books':
             $params = array(
-                'name' => required_param('name'),
+                'name'     => required_param('name'),
                 'abstract' => required_param('abstract'),
-                'info' => required_param('info')
+                'info'     => required_param('info')
             );
             break;
     }
-    ContentManager::update_entity($entity_id, required_param('content'), $params);
-    header("Location: {$CONFIG->wwwroot}/entity.php?id={$entity_id}");
+    ContentManager::update_entity($entity_id, $content, $params);
+    redirect("{$CONFIG->wwwroot}/entity.php?id={$entity_id}");
 }
 
 $entity = ContentManager::get_entity_by_id($entity_id);
 
+$model = get_base_model();
 switch ($entity['context']) {
     case 'books':
-        $model = array (
-            'name' => $entity['params']['name'],
-            'abstract' => $entity['params']['abstract'],
-            'info' => $entity['params']['info']
-        );
+        $model['name'] = $entity['params']['name'];
+        $model['abstract'] = $entity['params']['abstract'];
+        $model['info'] = $entity['params']['info'];
         break;
 }
 

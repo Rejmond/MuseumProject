@@ -2,11 +2,11 @@
 
 class DBConnection {
 
-	private $pdo;
-	
-	public function __construct($dbpath) {
-		$this->pdo = new PDO("sqlite:$dbpath");  
-	}
+    private $pdo;
+    
+    public function __construct($dbpath) {
+        $this->pdo = new PDO("sqlite:$dbpath");  
+    }
 
     public function get_record($table, array $conditions = array()) {
         $keys = array_keys($conditions);
@@ -26,17 +26,17 @@ class DBConnection {
         return $sth->fetchAll(PDO::FETCH_ASSOC);
     }
 
-	public function get_records_sql($sql, array $params = array()) {
-		$sth = $this->pdo->prepare($sql);
-		$sth->execute($params);
-		return $sth->fetchAll(PDO::FETCH_ASSOC);
-	}
-	
-	public function get_record_sql($sql, array $params = array()) {
-		$sth = $this->pdo->prepare($sql);
-		$sth->execute($params);
-		return $sth->fetch(PDO::FETCH_ASSOC);
-	}
+    public function get_records_sql($sql, array $params = array()) {
+        $sth = $this->pdo->prepare($sql);
+        $sth->execute($params);
+        return $sth->fetchAll(PDO::FETCH_ASSOC);
+    }
+    
+    public function get_record_sql($sql, array $params = array()) {
+        $sth = $this->pdo->prepare($sql);
+        $sth->execute($params);
+        return $sth->fetch(PDO::FETCH_ASSOC);
+    }
 
     public function insert_record($table, array $params = array()) {
         $keys = array_keys($params);
@@ -64,9 +64,9 @@ class DBConnection {
         return $sth->rowCount() > 0;
     }
 
-	public function execute($sql, $params) {
-		$sth = $this->pdo->prepare($sql);
-		return $sth->execute($params);		
-	}
+    public function execute($sql, $params) {
+        $sth = $this->pdo->prepare($sql);
+        return $sth->execute($params);		
+    }
 
 }

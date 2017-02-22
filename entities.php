@@ -12,10 +12,9 @@ for ($i = 0; $i < count($entities); $i++) {
     $entities[$i]['link'] = "{$CONFIG->wwwroot}/entity.php?id={$entities[$i]['id']}";
 }
 
-$model = array (
-    'admin' => $USER->is_admin() ? 1 : 0,
-    'entities' => $entities,
-    'add_link' => "{$CONFIG->wwwroot}/admin/add.php?context=$context"
-);
+$model = get_base_model();
+$model['admin'] = $USER->is_admin() ? 1 : 0;
+$model['entities'] = $entities;
+$model['add_link'] = "{$CONFIG->wwwroot}/admin/add.php?context=$context";
 
 echo $Twig->render(get_entities_template($context), $model);
