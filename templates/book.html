@@ -1,6 +1,18 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<h3>{{ book.data.name }}</h3>
-{{ book.content|raw }}
+    {% if admin == 1 %}
+        <div class="post">
+            <a href="{{ edit_link }}">Редактировать</a><br>
+            <a href="{{ delete_link }}">Удалить</a><br>
+        </div>
+    {% endif %}
+    <div class="post">
+        {% if error == 1 %}
+            <h2>Книга не найдена</h2>
+        {% else %}
+            <h3>{{ name }}</h3>
+            {{ content|raw }}
+        {% endif %}
+    </div>
 {% endblock %}

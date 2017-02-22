@@ -14,7 +14,6 @@
 			<div class="container">
 				<div class="nav">
 					<a class="nav-link active" href="/index.php">Страницы контента</a>
-					<a class="nav-link active" href="/admin/index.php">Администрирование</a>
 					<a class="nav-link active" href="/auth.php">Авторизация</a>
 				</div>
 			</div>
@@ -23,6 +22,27 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-12">
+						{% block breadcrumb %}
+							<ol class="breadcrumb">
+								{% set breadcrumb_index = 0 %}
+								{% for bread in breadcrumb %}
+									{% if breadcrumb_index < breadcrumb|length %}
+										<li class="breadcrumb-item active">
+											<a href="{{ bread.link }}">{{ bread.title }}</a>
+										</li>
+									{% else %}
+										<li class="breadcrumb-item">
+											{{ bread.title }}
+										</li>
+									{% endif %}
+
+									{% set breadcrumb_index = breadcrumb_index + 1 %}
+								{% endfor %}
+								<li class="breadcrumb-item"><a href="#">Пример</a></li>
+								<li class="breadcrumb-item"><a href="#">Пример</a></li>
+								<li class="breadcrumb-item active">Пример</li>
+							</ol>
+						{% endblock %}
 						{% block content %}
 							Center content
 						{% endblock %}

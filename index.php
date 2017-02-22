@@ -1,4 +1,7 @@
 <?php
+
 require_once('config.php');
 
-echo $Twig->render('main.html', array());
+$model = get_navigation();
+
+echo $Twig->render('main.html', $model);

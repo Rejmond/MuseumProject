@@ -1,6 +1,7 @@
 <?php
 
 class User {
+
 	private $admin;
 		
 	public function __construct() {
@@ -10,9 +11,7 @@ class User {
 	}
 	
 	public function authorise($password) {
-		global $DB, $CONFIG;
-		//$record = $DB->get_record_sql('SELECT value FROM config WHERE name = ?', array('password'));
-		//$result = password_verify($password, $record->value);
+		global $CONFIG;
 		if ($password == $CONFIG->password) {
 			$this->admin = true;
 			$_SESSION['admin'] = true;

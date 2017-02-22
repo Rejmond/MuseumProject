@@ -1,13 +1,18 @@
 {% extends "layout.html" %}
 
 {% block content %}
-{% for book in books %}
-<div>
-    <h3><a href="{{ book.link }}">{{ book.data.name }}</a></h3>
+{% for entity in entities %}
+<div class="post">
+    <h3><a href="{{ entity.link }}">{{ entity.params.name }}</a></h3>
     <h4>Аннотация</h4>
-    {{ book.data.abstract }}
+    {{ entity.params.abstract }}
     <h4>Краткая информация</h4>
-    {{ book.data.info }}
+    {{ entity.params.info }}
 </div>
 {% endfor %}
+{% if admin == 1 %}
+    <div class="post">
+        <a href="{{ add_link }}">Добавить книгу</a>
+    </div>
+{% endif %}
 {% endblock %}
