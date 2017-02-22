@@ -33,7 +33,7 @@ function get_entities_template($context) {
 function get_navigation() {
     global $CONFIG, $DB;
     return array(
-        'about_link' => "{$CONFIG->wwwroot}/entity.php?id=1",
+        'about_link' => "{$CONFIG->wwwroot}/entity.php?context=about",
         'books_link' => "{$CONFIG->wwwroot}/entities.php?context=books"
     );
 }
