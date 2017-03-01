@@ -52,7 +52,6 @@ class DBConnection {
         $values = array_values($params);
         $values[] = $id;
         $sql = "UPDATE $table SET " . implode(',', $keys) . " WHERE id = ?";
-        echo $sql;
         $sth =  $this->pdo->prepare($sql);
         return $sth->execute($values);
     }

@@ -71,4 +71,5 @@ function post_data_submitted() {
 
 function redirect($url) {
     header("Location: $url");
+    exit();
 }
