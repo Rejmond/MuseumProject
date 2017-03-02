@@ -6,6 +6,7 @@
                 {{ title }}
             {% endblock %}
         </title>
+        <script src="{{ wwwroot }}/tinymce/js/tinymce/tinymce.min.js"></script>
         <link rel="stylesheet" href="{{ wwwroot }}/css/bootstrap.css">
         <link rel="stylesheet" href="{{ wwwroot }}/css/museum.css">
     </head>
@@ -49,6 +50,34 @@
                     </div>
                 </div>
             </div>
+            <script type="application/javascript">
+                tinymce.init({ selector: 'textarea', plugins: 'link image',
+                    file_browser_callback: RoxyFileBrowser });
+                function RoxyFileBrowser(field_name, url, type, win) {
+                    var roxyFileman = '{{ wwwroot }}/fileman/index.html';
+                    if (roxyFileman.indexOf("?") < 0) {
+                        roxyFileman += "?type=" + type;
+                    }
+                    else {
+                        roxyFileman += "&type=" + type;
+                    }
+                    roxyFileman += '&input=' + field_name + '&value=' + win.document.getElementById(field_name).value;
+                    if(tinymce.activeEditor.settings.language){
+                        roxyFileman += '&langCode=' + tinymce.activeEditor.settings.language;
+                    }
+                    tinymce.activeEditor.windowManager.open({
+                        file: roxyFileman,
+                        title: 'Roxy Fileman',
+                        width: 850,
+                        height: 650,
+                        resizable: "yes",
+                        plugins: "media",
+                        inline: "yes",
+                        close_previous: "no"
+                    }, { window: win, input: field_name });
+                    return false;
+                }
+            </script>
         </div>
         <footer class="museum-footer">
             <div class="container">
