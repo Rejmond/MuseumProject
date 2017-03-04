@@ -10,7 +10,7 @@
     {{ entity.params.info|raw }}
 </div>
 {% endfor %}
-{% if admin == 1 %}
+{% if admin %}
     <div class="post">
         <a href="{{ add_link }}">Добавить книгу</a>
     </div>

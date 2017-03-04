@@ -40,15 +40,14 @@ class ContentManager {
         if (count($params) > 0) {
             $args = array(
                 'content' => $content,
-                'params' => json_encode((object)$params),
+                'params'  => json_encode((object)$params),
             );
-            $DB->update_record('entities', $entity_id, $args);
         } else {
             $args = array(
                 'content' => $content,
             );
-            $DB->update_record('entities', $entity_id, $args);
         }
+        $DB->update_record('entities', $entity_id, $args);
     }
 
     public static function add_entity($context, $content, array $params = array()) {
@@ -57,18 +56,17 @@ class ContentManager {
             $args = array(
                 'context' => $context,
                 'content' => $content,
-                'params' => json_encode((object)$params),
-                'date' => '2017-02-19'
+                'params'  => json_encode((object)$params),
+                'date'    => time()
             );
-            return $DB->insert_record('entities', $args);
         } else {
             $args = array(
                 'context' => $context,
                 'content' => $content,
-                'date' => '2017-02-19'
+                'date'    => time()
             );
-            return $DB->insert_record('entities', $args);
         }
+        return $DB->insert_record('entities', $args);
     }
 
     public static function delete_entity($entity_id) {

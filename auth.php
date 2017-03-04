@@ -5,8 +5,7 @@ require_once('config.php');
 $auth_error = '';
 if (isset($_POST['auth'])) {
     $password = $_POST['password'];
-    $result = $USER->authorise($password);
-    if (!$result) {
+    if (!$USER->authorise($password)) {
         $auth_error = "Неверный пароль";
     }
 }
