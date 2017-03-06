@@ -12,6 +12,7 @@
             <h2>Книга не найдена</h2>
         {% else %}
             <h3>{{ name }}</h3>
+            <div>Автор: {{ author|raw }}</div>
             {{ content|raw }}
         {% endif %}
     </div>

@@ -74,3 +74,18 @@ function redirect($url) {
     header("Location: $url");
     exit();
 }
+
+function param_is_correct($context, $param_name) {
+    $correct_params = array(
+        'about' => array(),
+        'books' => array(
+            'author',
+            'abstract',
+            'name'
+        )
+    );
+    if (!in_array($context, array_keys($correct_params))) {
+        die("Context \"$context\" is incorrect");
+    }
+    return in_array($param_name, $correct_params[$context]);
+}
