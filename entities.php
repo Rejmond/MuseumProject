@@ -3,7 +3,16 @@
 require_once('config.php');
 
 $context = required_param('context');
-$entities = ContentManager::get_entities($context);
+
+$args = array();
+switch ($context) {
+    case 'books':
+        if ($author = optional_param('author', null)) {
+            $args['author'] = $author;
+        }
+}
+
+$entities = ContentManager::get_entities($context, $args);
 
 for ($i = 0; $i < count($entities); $i++) {
     $entities[$i]['edit_link'] = "{$CONFIG->wwwroot}/admin/edit.php?id={$entities[$i]['id']}";
@@ -14,5 +23,9 @@ for ($i = 0; $i < count($entities); $i++) {
 $model = get_base_model();
 $model['entities'] = $entities;
 $model['add_link'] = "{$CONFIG->wwwroot}/admin/add.php?context=$context";
+switch ($context) {
+    case 'books':
+        $model['author'] = $author;
+}
 
 echo $Twig->render(get_entities_template($context), $model);

@@ -20,7 +20,7 @@ switch ($entity['context']) {
     case 'books':
         $model['name']     = $entity['params']['name'];
         $model['abstract'] = $entity['params']['abstract'];
-        $model['info']     = $entity['params']['info'];
+        $model['author']   = $entity['params']['author'];
         break;
 }
 

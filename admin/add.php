@@ -14,7 +14,7 @@ if (post_data_submitted()) {
             $params = array(
                 'name'     => required_param('name'),
                 'abstract' => required_param('abstract'),
-                'info'     => required_param('info')
+                'author' => required_param('author')
             );
             break;
     }
