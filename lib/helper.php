@@ -3,7 +3,7 @@
 function require_login() {
     global $USER, $CONFIG;
     if (!$USER->is_admin()) {
-        header("Location: {$CONFIG->wwwroot}/auth.php");
+        redirect("{$CONFIG->wwwroot}/auth.php");
     }
 }
 
@@ -32,16 +32,17 @@ function get_entities_template($context) {
 
 function get_navigation() {
     global $CONFIG;
-    $result = get_base_model();
-    $result['about_link'] = "{$CONFIG->wwwroot}/entity.php?id=1";
-    $result['books_link'] = "{$CONFIG->wwwroot}/entities.php?context=books";
-    return $result;
+    return array(
+        'about_link' => "{$CONFIG->wwwroot}/entity.php?context=about",
+        'books_link' => "{$CONFIG->wwwroot}/entities.php?context=books"
+    );
 }
 
 function get_base_model() {
-    global $CONFIG;
+    global $CONFIG, $USER;
     return array(
-        'wwwroot' => $CONFIG->wwwroot
+        'wwwroot' => $CONFIG->wwwroot,
+        'admin'   => $USER->is_admin()
     );
 }
 

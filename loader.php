@@ -2,7 +2,7 @@
 
 session_start();
 
-require_once('Twig/Autoloader.php');
+require_once($CONFIG->dirroot . '/Twig/Autoloader.php');
 require_once($CONFIG->dirroot . '/lib/db.php');
 require_once($CONFIG->dirroot . '/lib/auth.php');
 require_once($CONFIG->dirroot . '/lib/helper.php');

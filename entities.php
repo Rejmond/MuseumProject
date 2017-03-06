@@ -3,7 +3,6 @@
 require_once('config.php');
 
 $context = required_param('context');
-
 $entities = ContentManager::get_entities($context);
 
 for ($i = 0; $i < count($entities); $i++) {
@@ -13,7 +12,6 @@ for ($i = 0; $i < count($entities); $i++) {
 }
 
 $model = get_base_model();
-$model['admin'] = $USER->is_admin() ? 1 : 0;
 $model['entities'] = $entities;
 $model['add_link'] = "{$CONFIG->wwwroot}/admin/add.php?context=$context";
 

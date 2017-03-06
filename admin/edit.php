@@ -5,12 +5,12 @@ require_once('../config.php');
 require_login();
 
 $entity_id = required_param('id');
+$entity = ContentManager::get_entity_by_id($entity_id);
 
 if (post_data_submitted()) {
-    $context = required_param('context');
     $content = required_param('content');
     $params = [];
-    switch ($context) {
+    switch ($entity['context']) {
         case 'books':
             $params = array(
                 'name'     => required_param('name'),
@@ -23,17 +23,14 @@ if (post_data_submitted()) {
     redirect("{$CONFIG->wwwroot}/entity.php?id={$entity_id}");
 }
 
-$entity = ContentManager::get_entity_by_id($entity_id);
-
 $model = get_base_model();
 switch ($entity['context']) {
     case 'books':
-        $model['name'] = $entity['params']['name'];
+        $model['name']     = $entity['params']['name'];
         $model['abstract'] = $entity['params']['abstract'];
-        $model['info'] = $entity['params']['info'];
+        $model['info']     = $entity['params']['info'];
         break;
 }
-
 $model['id'] = $entity_id;
 $model['content'] = $entity['content'];
 
