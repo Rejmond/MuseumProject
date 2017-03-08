@@ -15,7 +15,7 @@ if (post_data_submitted()) {
             $params = array(
                 'name'     => required_param('name'),
                 'abstract' => required_param('abstract'),
-                'info'     => required_param('info')
+                'author'   => required_param('author')
             );
             break;
     }
@@ -28,7 +28,7 @@ switch ($entity['context']) {
     case 'books':
         $model['name']     = $entity['params']['name'];
         $model['abstract'] = $entity['params']['abstract'];
-        $model['info']     = $entity['params']['info'];
+        $model['author']   = $entity['params']['author'];
         break;
 }
 $model['id'] = $entity_id;
