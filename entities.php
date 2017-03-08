@@ -9,6 +9,7 @@ switch ($context) {
     case 'books':
         if ($author = optional_param('author', null)) {
             $args['author'] = $author;
+            //$args['abstract'] = 'Книга 1';
         }
 }
 
