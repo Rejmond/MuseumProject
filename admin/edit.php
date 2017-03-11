@@ -17,9 +17,18 @@ if (post_data_submitted()) {
                 'abstract' => required_param('abstract'),
                 'author'   => required_param('author')
             );
+            ContentManager::update_entity($entity_id, $content, $params);
+            if ($image = get_file('image', true))
+            {
+                resize($image['tmp_name'], 150, 300);
+                FileManager::delete_filearea($entity_id, 'image');
+                FileManager::add_file($entity_id, 'image', $image);
+            }
+            break;
+        case 'about':
+            ContentManager::update_entity($entity_id, $content);
             break;
     }
-    ContentManager::update_entity($entity_id, $content, $params);
     redirect("{$CONFIG->wwwroot}/entity.php?id={$entity_id}");
 }
 

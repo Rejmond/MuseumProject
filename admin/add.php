@@ -8,7 +8,6 @@ $context = required_param('context');
 
 if (post_data_submitted()) {
     $content = required_param('content');
-    $params = [];
     switch ($context) {
         case 'books':
             $params = array(
@@ -16,9 +15,12 @@ if (post_data_submitted()) {
                 'abstract' => required_param('abstract'),
                 'author'   => required_param('author')
             );
+            $image = get_file('image');
+            resize($image['tmp_name'], 150, 300);
+            $entity_id = ContentManager::add_entity($context, $content, $params);
+            FileManager::add_file($entity_id, 'image', $image);
             break;
     }
-    $entity_id = ContentManager::add_entity($context, $content, $params);
     redirect("{$CONFIG->wwwroot}/entity.php?id={$entity_id}");
 }
 

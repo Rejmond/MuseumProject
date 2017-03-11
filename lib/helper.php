@@ -53,7 +53,7 @@ function required_param($name) {
     if (isset($_GET[$name])) {
         return $_GET[$name];
     }
-    die("Argument with name \"$name\" is required.");
+    die("The argument with name \"$name\" is required.");
 }
 
 function optional_param($name, $default = null) {
@@ -70,7 +70,43 @@ function post_data_submitted() {
     return !empty($_POST);
 }
 
+function get_file($name, $optional = false) {
+    if (isset($_FILES[$name])) {
+        if ($_FILES[$name]['size'] == 0) {
+            if ($optional) {
+                return false;
+            } else {
+                die("The file with name \"$name\" is required.");
+            }
+        } else {
+            return $_FILES[$name];
+        }
+    } else {
+        if ($optional) {
+            return false;
+        } else {
+            die("The file with name \"$name\" is required.");
+        }
+    }
+}
+
 function redirect($url) {
     header("Location: $url");
     exit();
+}
+
+function resize($filepath, $width, $height)
+{
+    AcImage::setRewrite(true);
+    $img = AcImage::createImage($filepath);
+    $width_origin = $img->getWidth();
+    $height_origin = $img->getHeight();
+    if ($width_origin > $width && $height_origin > $height) {
+        $img->cropCenter("{$width}pr", "{$height}pr");
+        $img->resizeByHeight($height);
+        $img->resizeByWidth($width);;
+    } else {
+        $img->cropCenter($width, $height);
+    }
+    $img->save($filepath);
 }

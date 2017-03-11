@@ -18,6 +18,11 @@
 {% for entity in entities %}
 <div class="post">
     <h3><a href="{{ entity.link }}">{{ entity.params.name }}</a></h3>
+    {% if entity.image is defined %}
+        <div>
+            <img src="{{ entity.image }}">
+        </div>
+    {% endif %}
     <div>Автор: {{ entity.params.author|raw }}</div>
     <h4>Аннотация</h4>
     <div>{{ entity.params.abstract|raw }}</div>

@@ -21,6 +21,9 @@ switch ($entity['context']) {
         $model['name']     = $entity['params']['name'];
         $model['abstract'] = $entity['params']['abstract'];
         $model['author']   = $entity['params']['author'];
+        if ($image = FileManager::get_file_by_filearea($entity['id'], 'image')) {
+            $model['image'] = $CONFIG->wwwroot . '/file.php?id=' . $image['id'];
+        }
         break;
 }
 
