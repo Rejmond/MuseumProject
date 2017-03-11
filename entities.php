@@ -22,11 +22,17 @@ for ($i = 0; $i < count($entities); $i++) {
 }
 
 $model = get_base_model();
-$model['entities'] = $entities;
 $model['add_link'] = "{$CONFIG->wwwroot}/admin/add.php?context=$context";
 switch ($context) {
     case 'books':
         $model['author'] = $author;
+        for ($i = 0; $i < count($entities); $i++) {
+            if ($image = FileManager::get_file_by_filearea($entities[$i]['id'], 'image')) {
+                $entities[$i]['image'] = $CONFIG->wwwroot . '/file.php?id=' . $image['id'];
+            }
+        }
+        break;
 }
+$model['entities'] = $entities;
 
 echo $Twig->render(get_entities_template($context), $model);

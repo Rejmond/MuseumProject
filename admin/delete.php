@@ -10,6 +10,7 @@ if (post_data_submitted()) {
     $entity = ContentManager::get_entity_by_id($entity_id);
     if (!empty(optional_param('delete'))) {
         ContentManager::delete_entity($entity_id);
+        FileManager::delete_entity_files($entity_id);
     }
     redirect("{$CONFIG->wwwroot}/entities.php?context={$entity['context']}");
 } else {
