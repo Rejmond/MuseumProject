@@ -11,7 +11,7 @@ class DBConnection {
     public function get_record($table, array $conditions = array()) {
         $keys = array_keys($conditions);
         $args = array_map(function($e) { return "$e = :$e"; }, $keys);
-        $sql = "SELECT * FROM $table WHERE " . implode(' AND ', $args) . "";
+        $sql = "SELECT * FROM $table WHERE " . implode(' AND ', $args);
         $sth = $this->pdo->prepare($sql);
         $sth->execute($conditions);
         return $sth->fetch(PDO::FETCH_ASSOC);
@@ -20,7 +20,7 @@ class DBConnection {
     public function get_records($table, array $conditions = array()) {
         $keys = array_keys($conditions);
         $args = array_map(function($e) { return "$e = :$e"; }, $keys);
-        $sql = "SELECT * FROM $table WHERE " . implode(' AND ', $args) . "";
+        $sql = "SELECT * FROM $table WHERE " . implode(' AND ', $args);
         $sth = $this->pdo->prepare($sql);
         $sth->execute($conditions);
         return $sth->fetchAll(PDO::FETCH_ASSOC);
@@ -66,6 +66,10 @@ class DBConnection {
     public function execute($sql, $params) {
         $sth = $this->pdo->prepare($sql);
         return $sth->execute($params);		
+    }
+
+    public function quote($string) {
+        return $this->pdo->quote($string);
     }
 
 }

@@ -7,7 +7,7 @@ function require_login() {
     }
 }
 
-function get_context_name($context) {
+function get_context_name($context) { // Предполагается расширение
     $array = array (
         'about' => 'О музее',
         'books' => 'Книги'
@@ -15,7 +15,7 @@ function get_context_name($context) {
     return $array[$context];
 }
 
-function get_entity_template($context) {
+function get_entity_template($context) { // Предполагается расширение
     $array = array (
         'about' => 'about.html',
         'books' => 'book.html'
@@ -23,14 +23,14 @@ function get_entity_template($context) {
     return $array[$context];
 }
 
-function get_entities_template($context) {
+function get_entities_template($context) { // Предполагается расширение
     $array = array (
         'books' => 'books.html'
     );
     return $array[$context];
 }
 
-function get_navigation() {
+function get_navigation() { // Предполагается расширение
     global $CONFIG;
     return array(
         'about_link' => "{$CONFIG->wwwroot}/entity.php?context=about",
@@ -73,19 +73,4 @@ function post_data_submitted() {
 function redirect($url) {
     header("Location: $url");
     exit();
-}
-
-function param_is_correct($context, $param_name) {
-    $correct_params = array(
-        'about' => array(),
-        'books' => array(
-            'author',
-            'abstract',
-            'name'
-        )
-    );
-    if (!in_array($context, array_keys($correct_params))) {
-        die("Context \"$context\" is incorrect");
-    }
-    return in_array($param_name, $correct_params[$context]);
 }
