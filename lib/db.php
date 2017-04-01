@@ -11,31 +11,39 @@ class DBConnection {
     public function get_record($table, array $conditions = array()) {
         $keys = array_keys($conditions);
         $args = array_map(function($e) { return "$e = :$e"; }, $keys);
-        $sql = "SELECT * FROM $table WHERE " . implode(' AND ', $args);
+        $sql = "SELECT * FROM $table " . (count($args) > 0 ? 'WHERE ' . implode(' AND ', $args) : '');
         $sth = $this->pdo->prepare($sql);
         $sth->execute($conditions);
-        return $sth->fetch(PDO::FETCH_ASSOC);
+        $records = $sth->fetchAll(PDO::FETCH_ASSOC);
+        if (count($records) > 1) {
+            die("Too many records");
+        }
+        return !empty($records) ? $records[0] : false;
     }
 
     public function get_records($table, array $conditions = array()) {
         $keys = array_keys($conditions);
         $args = array_map(function($e) { return "$e = :$e"; }, $keys);
-        $sql = "SELECT * FROM $table WHERE " . implode(' AND ', $args);
+        $sql = "SELECT * FROM $table " . (count($args) > 0 ? 'WHERE ' . implode(' AND ', $args) : '');
         $sth = $this->pdo->prepare($sql);
         $sth->execute($conditions);
         return $sth->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function get_record_sql($sql, array $params = array()) {
+        $sth = $this->pdo->prepare($sql);
+        $sth->execute($params);
+        $records = $sth->fetchAll(PDO::FETCH_ASSOC);
+        if (count($records) > 1) {
+            die("Too many records");
+        }
+        return !empty($records) ? $records[0] : false;
     }
 
     public function get_records_sql($sql, array $params = array()) {
         $sth = $this->pdo->prepare($sql);
         $sth->execute($params);
         return $sth->fetchAll(PDO::FETCH_ASSOC);
-    }
-    
-    public function get_record_sql($sql, array $params = array()) {
-        $sth = $this->pdo->prepare($sql);
-        $sth->execute($params);
-        return $sth->fetch(PDO::FETCH_ASSOC);
     }
 
     public function insert_record($table, array $params = array()) {

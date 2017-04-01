@@ -4,24 +4,15 @@ require_once('config.php');
 
 $context = optional_param('context', false);
 if ($context) {
-    $entity = ContentManager::get_entity_by_context($context);
+    validate_context($context);
+    $entity_id = ContentManager::get_entity_by_context($context)['id'];
 } else {
     $entity_id = required_param('id');
-    $entity = ContentManager::get_entity_by_id($entity_id);
 }
 
 $model = get_base_model();
-$model['id'] = $entity['id'];
-$model['content'] = $entity['content'];
-$model['edit_link'] = "{$CONFIG->wwwroot}/admin/edit.php?id={$entity['id']}";
-$model['delete_link'] = "{$CONFIG->wwwroot}/admin/delete.php?id={$entity['id']}";
+$model['entity'] = EntityManager::get_object($entity_id);
+$model['edit_link'] = "{$CONFIG->wwwroot}/admin/edit.php?id={$entity_id}";
+$model['delete_link'] = "{$CONFIG->wwwroot}/admin/delete.php?id={$entity_id}";
 
-switch ($entity['context']) {
-    case 'books':
-        $model['name']     = $entity['params']['name'];
-        $model['abstract'] = $entity['params']['abstract'];
-        $model['author']   = $entity['params']['author'];
-        break;
-}
-
-echo $Twig->render(get_entity_template($entity['context']), $model);
+echo $Twig->render(get_entity_template($model['entity']['context']), $model);

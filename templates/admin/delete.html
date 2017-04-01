@@ -3,14 +3,8 @@
 {% block content %}
 <form method="post">
     <input type="hidden" value="{{ id }}" name="id">
-    <div class="form-group row">
-        <div class="offset-sm-2 col-sm-10">
-            <span>Удалить объект с ID "{{ id }}"?</span>
-        </div>
-        <div class="offset-sm-2 col-sm-10">
-            <button type="submit" class="btn btn-primary" name="delete" value="delete">Удалить</button>
-            <button type="submit" class="btn btn-primary" name="cancel" value="cancel">Отмена</button>
-        </div>
-    </div>
+    <span>Удалить объект с ID "{{ id }}"?</span>
+    <button type="submit" name="delete" value="delete">Удалить</button>
+    <button type="submit" name="cancel" value="cancel">Отмена</button>
 </form>
 {% endblock %}

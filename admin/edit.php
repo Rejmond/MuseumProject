@@ -4,34 +4,32 @@ require_once('../config.php');
 
 require_login();
 
-$entity_id = required_param('id');
-$entity = ContentManager::get_entity_by_id($entity_id);
-
-if (post_data_submitted()) {
-    $content = required_param('content');
-    $params = [];
-    switch ($entity['context']) {
-        case 'books':
-            $params = array(
-                'name'     => required_param('name'),
-                'abstract' => required_param('abstract'),
-                'author'   => required_param('author')
-            );
-            break;
-    }
-    ContentManager::update_entity($entity_id, $content, $params);
-    redirect("{$CONFIG->wwwroot}/entity.php?id={$entity_id}");
+$context = optional_param('context', false);
+if ($context) {
+    validate_context($context);
+    $entity_id = ContentManager::get_entity_by_context($context)['id'];
+} else {
+    $entity_id = required_param('id');
 }
+
+$object = EntityManager::get_object($entity_id);
+if (!$object) die(); // Записи не существует
 
 $model = get_base_model();
-switch ($entity['context']) {
-    case 'books':
-        $model['name']     = $entity['params']['name'];
-        $model['abstract'] = $entity['params']['abstract'];
-        $model['author']   = $entity['params']['author'];
-        break;
-}
-$model['id'] = $entity_id;
-$model['content'] = $entity['content'];
+$model['title'] = 'Редактирование элемента';
+$model = array_merge($model, $object);
 
-echo $Twig->render('admin/' . get_entity_template($entity['context']), $model);
+if (post_data_submitted()) {
+    $result = EntityManager::update_object_from_submit();
+    if ($result === true) {
+        $return_url = optional_param('return_url', "{$CONFIG->wwwroot}/entity.php?id={$entity_id}");
+        redirect($return_url);
+    } else if (is_array($result)) {
+        $model['errors'] = $result['errors'];
+        $model['content'] = $result['values']['content'];
+        unset($result['values']['content']);
+        $model['params'] = $result['values'];
+    }
+}
+
+echo $Twig->render('admin/' . get_entity_template($object['context']), $model);

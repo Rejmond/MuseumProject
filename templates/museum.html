@@ -1,0 +1,111 @@
+{% extends "layout.html" %}
+
+{% block styles %}
+{{ parent() }}
+{% endblock %}
+
+{% block content %}
+
+<div id="main" class="museum" style="background-image: url(../images/museum_img.png); background-repeat: no-repeat;background-position: 790px 55px;">
+    <h1 class="caption w3-container">МУЗЕЙ<span class="lightGrey-2"> / MUSEUM</span></h1>
+    <p class="about w3-container">
+        {{ about|striptags }}
+    </p>
+    <div class="allpubs w3-container"><a href="{{ wwwroot }}/admin/edit.php?context=about#_2">ПОДБРОНЕЕ</a></div>
+    <h2 class="bold w3-container">Новости музея</h2>
+    <div class="w3-row">
+        <div class="quarter-to-2">
+            <div class="w3-quarter w3-container quarttohalf">
+                <div class="imgBox2"><img src="images/2-1.jpg"></div>
+                <a href="new.html#main"><p class="bold w3-large">В предверии дня защитника Отечества прошло традиционное заседание gggggggggggggg g ggggggg ggggggggg ggggggggg fffff ffff</p></a>
+                <p class="lightGrey text2">22.02.2017</p>
+                <p>Традиционное торжественное заседание, посвященное празднованию Дня защитника Отечества, состоялось в  этом году 20 февраля в восьмой поточной аудитории.</p>
+            </div>
+            <div class="w3-quarter w3-container quarttohalf">
+                <div class="imgBox2"><img src="images/2-2.jpg"></div>
+                <a href="new.html#main"><p class="bold w3-large">Итоги конкурса рисунков среди старшеклассников "Мой город золотой"</p></a>
+                <p class="lightGrey text2">22.02.2017</p>
+                <p>В ФГБОУ ВО «Сибирский государственный индустриальный университет» (СибГИУ) подведены итоги конкурса рисунков «МОЙ ГОРОД ЗОЛОТОЙ…», который проводился для старшеклассников общеобразовательных организаций...</p>
+            </div>
+        </div>
+        <div class="quarter-to-2">
+            <div class="w3-quarter w3-container quarttohalf">
+                <div class="imgBox2"><img src="images/2-3.jpg"></div>
+                <a href="new.html#main"><p class="bold w3-large">Губернаторский приём в честь Дня Российской науки</p></a>
+                <p class="lightGrey text2">13.02.2017</p>
+                <p>В Кемерово состоялся традиционный  торжественный Губернаторский прием  в честь  Дня российской науки, на который были приглашены учёные со всех уголков региона. В мероприятии приняли участие руководитель федерального ...</p>
+            </div>
+            <div class="w3-quarter w3-container quarttohalf">
+                <div class="imgBox2"><img src="images/2-4.jpg"></div>
+                <a href="new.html#main"><p class="bold w3-large">Профсоюз СИбГИУ: эффективное партнерство и защита прав</p></a>
+                <p class="lightGrey text2">11.02.2017</p>
+                <p>Состоялась  конференция Первичной организации СибГИУ Профсоюза работников образования и науки РФ. С докладом выступила председатель профсоюзной организации вуза Л.А.Ганзер. В 2016 году показатели ППО значительно улучшились.</p>
+            </div>
+        </div>
+    </div>
+    <div class="allpubs w3-container"><a href="news.html#main">ВСЕ НОВОСТИ</a></div>
+    <h2 class="bold w3-container">Экспозиция</h2>
+    <div class="w3-row">
+    <div class="w3-container w3-half histoInsts">
+            <a><p class="bold w3-large">- От СИЧМ к СибГИУ: 80 лет в истории</p></a>
+            <a><p class="bold w3-large">- История и развитие факультетов СибГИУ </p></a>
+            <a><p class="bold w3-large">- СМИ в годы Великой Отечественной войны</p></a>
+    </div>
+    <div class="w3-container w3-half histoInsts w3-margin-bottom">
+            <a><p class="bold w3-large">- Студенческие строительные отряды СМИ </p></a>
+            <a><p class="bold w3-large">- Ученые, профессора, члены академий вуза  </p></a>
+            <a><p class="bold w3-large">- Знаменитые выпускники вуза</p></a>
+    </div>
+    </div>
+    <div class="allpubs w3-container"><a>ВСЕ ТЕМАТИКИ</a></div>
+    <h2 class="bold w3-container">Тематические выставки</h2>
+    <div class="w3-row">
+        <div class="quarter-to-2">
+            <div class="w3-quarter w3-container quarttohalf">
+                <div class="imgBox2"><img src="images/4-1.jpg"></div>
+                <a href="new.html#main"><p class="bold w3-large">Выставка фотографий в блоке поточных аудиторий</p></a>
+                <p class="lightGrey text2">22.02.2017-16.05.17</p>
+                <p>С такого-то по такое-то будет проведена выставка фотографий в блоке поточных аудиторий. Иначе говоря, в блоке поточных аудиторий пройдёт выставка с фотографиями.</p>
+            </div>
+            <div class="w3-quarter w3-container quarttohalf">
+                <div class="imgBox2"><img src="images/4-2.jpg"></div>
+                <a href="new.html#main"><p class="bold w3-large">Выставка к юбилею университета</p></a>
+                <p class="lightGrey text2">16.04.2015-18.06.2015</p>
+                <p>В конце апреля состоялось торжественное открытие выставки, посвященной предстоящему юбилею нашего вуза. Выставка расположилась в рекреации второго этажа.</p>
+            </div>
+        </div>
+        <div class="quarter-to-2">
+            <div class="w3-quarter w3-container quarttohalf">
+                <div class="imgBox2"><img src="images/4-3.jpg"></div>
+                <a href="new.html#main"><p class="bold w3-large">В СибГИУ открыта творческая выставка</p></a>
+                <p class="lightGrey text2">06.05.2017-15.15.2016</p>
+                <p>Творческая выставка художественных репродукций картин художников-классиков: А.М. Васнецова, М.Н. Нестерова, А.Д. Кившенко. Есть работы Николая Рериха. Его перевёрнутую картину, можно наблюдать на месте изображения.</p>
+            </div>
+            <div class="w3-quarter w3-container quarttohalf">
+                <div class="imgBox2"><img src="images/4-4.jpg"></div>
+                <a href="new.html#main"><p class="bold w3-large">Выставка оружия в СибГИУ</p></a>
+                <p class="lightGrey text2">19.02.2016-27.02.2016</p>
+                <p>Все экспонаты принадлежат центру «Без Имени». Автоматы Калашникова, пулеметы и винтовки деактивированы, то есть не представляют опасности. Все желающие могли даже принять участие в сборке-разборке оружия на время.</p>
+            </div>
+        </div>
+    </div>
+    <div class="allpubs w3-container"><a>ВСЕ ВЫСТАВКИ</a></div>
+    <h2 class="bold w3-container">Календарь знаменательных дат</h2>
+    <h2 class="bold w3-container">День дарителя</h2>
+    <h2 class="bold w3-container">Геологический музей</h2>
+    <div class="w3-row">
+        <div class="w3-container w3-half quarttohalf w3-margin-bottom">
+            <div><img  style='display:inline-block;  float:left; margin: 0 auto; width: 100%; ' src="images/geology.jpg"></div>
+        </div>
+        <div class="w3-container w3-half quarttohalf  w3-margin-bottom">
+            <div><img  style='display:inline-block;  float:left; margin: 0 auto; width: 100%;' src="images/geology-2.jpg"></div>
+        </div>
+        <p class="w3-container">Геологический музей СибГИУ открыт в 1998 году. Идея его создания существовала с 70-х годов. В 1998 году, в канун 50-летнего юбилея Горного факультета, она была претворена в жизнь. Музей создавался по проекту и под руководством заведующего Кафедрой геологии и геодезии СибГИУ профессора Олега Георгиевича Епифанцева. Основой музея стала каменная коллекция кафедры геологии, насчитывающая порядка 10000 штуфов минералов и горных пород. Музей обладает рядом уникальных экспонатов.
+        В основе фондов музея лежит каменный материал, накопившийся на Кафедре геологии и геодезии за более чем пятидесятилетнюю работу. Материал собирался студентами в процессе проведения геологических практик на рудниках, главным образом, Западной Сибири. Значительная часть коллекции получена централизованным путем из существовавшего в прошлые годы Центра при объединении «Уралкварцсамоцветы».
+        Коллектив музея постоянно работает над совершенствованием экспозиций.
+        Экспозиционный материал в геологическом музее СибГИУ представлен каменными коллекциями и отдельными уникальными штуфами, планшетами графической геологической информации. По большинству информационно-смысловых блоков информация представлена в комплексной форме. Специально подобранный каменный материал территориально объединяется с соответствующей графической и текстовой информацией.</p>
+    </div>
+    <div class="allpubs w3-container"><a>ПОДРОБНЕЕ</a></div>
+</div>
+
+{% endblock %}

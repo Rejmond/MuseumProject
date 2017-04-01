@@ -15,7 +15,7 @@ class ContentManager
         return $record;
     }
 
-    public static function get_entity_by_context($context) // Осторожно! Только для одноэлементных сущностей
+    public static function get_entity_by_context($context)
     {
         global $DB;
         $record = $DB->get_record('entities', array('context' => $context));
@@ -60,7 +60,7 @@ class ContentManager
     public static function add_entity($context, $content, array $params = array())
     {
         global $DB;
-        self::validate_context($context);
+        validate_context($context);
         $args = array(
             'context' => $context,
             'content' => $content,
@@ -91,9 +91,9 @@ class ContentManager
 
     private static function add_params($entity_id, $params)
     {
-        global $DB;
+        global $DB, $CONFIG;
         $entity = $DB->get_record('entities', array('id' => $entity_id));
-        foreach (self::get_params()[$entity['context']] as $paramname) {
+        foreach($CONFIG->entities[$entity['context']]['params'] as $paramname => $options) {
             $param_args = array(
                 'entity' => $entity_id,
                 'name'   => $paramname,
@@ -108,24 +108,6 @@ class ContentManager
         global $DB;
         $sql = 'DELETE FROM params WHERE entity = ?';
         $DB->execute($sql, array($entity_id));
-    }
-
-    private static function validate_context($context) {
-        $correct_params = self::get_params();
-        if (!in_array($context, array_keys($correct_params))) {
-            die("Context \"$context\" is incorrect");
-        }
-    }
-
-    private static function get_params() { // Предполагается расширение
-        return array(
-            'about' => array(),
-            'books' => array(
-                'author',
-                'abstract',
-                'name'
-            )
-        );
     }
     
 }

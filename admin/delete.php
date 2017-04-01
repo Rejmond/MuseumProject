@@ -7,11 +7,12 @@ require_login();
 $entity_id = required_param('id');
 
 if (post_data_submitted()) {
-    $entity = ContentManager::get_entity_by_id($entity_id);
     if (!empty(optional_param('delete'))) {
-        ContentManager::delete_entity($entity_id);
+        $result = EntityManager::delete_object_from_submit();
+        if ($result) {
+            redirect("{$CONFIG->wwwroot}/entities.php?context={$result['context']}");
+        }
     }
-    redirect("{$CONFIG->wwwroot}/entities.php?context={$entity['context']}");
 } else {
     $model = get_base_model();
     $model['id'] = $entity_id;

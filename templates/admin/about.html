@@ -1,18 +1,26 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<form method="post">
-    <input type="hidden" name="context" value="about">
-    <div class="form-group row">
-        <label for="content" class="col-sm-2 col-form-label">О музее:</label>
-        <div class="col-sm-10">
-            <textarea class="form-control" name="content" id="content">{{ content|raw }}</textarea>
-        </div>
-    </div>
-    <div class="form-group row">
-        <div class="offset-sm-2 col-sm-10">
-            <button type="submit" class="btn btn-primary" name="auth">Подтвердить</button>
-        </div>
-    </div>
-</form>
+<div id="main" class="about edit-forms"  style="background-image: url({{ wwwroot }}/images/museum_img.png); background-repeat: no-repeat;background-position: 790px 55px;">
+	<h1 class="caption w3-container w3-xxlarge">События в музее</span></h1>
+	<div class="w3-row textrow1 w3-container ">
+	    <form method="post">
+	        <input type="hidden" name="context" value="about">
+	        <input type="hidden" name="id" value="{{ id }}">
+	        <input type="hidden" name="return_url" value="{{ wwwroot }}/index.php#_2">
+	        <p class="bold w3-large"><label for="content">О музее:</label></p>
+	        {% if errors.content %}
+	            <div id="loginsnackbar">Вы не указали контент новости
+	            </div>
+	        {% endif %}
+	        <div class="edit-textarea">
+	        <textarea name="content" id="content" required="required">{{ content|raw }}</textarea>
+	        </div>
+	        <div class="button-container-logout w3-container">
+		       	<button type="submit" name="auth">Отмена</button>
+		        <button type="submit" name="auth">Подтвердить</button>
+	    	</div>
+		</form>
+	</div>
+</div>
 {% endblock %}
