@@ -12,6 +12,14 @@ if ($context) {
     $entity_id = required_param('id');
 }
 
+$accept = optional_param('accept', false);
+$cancel = optional_param('cancel', false);
+$returnurl = optional_param('returnurl', "{$CONFIG->wwwroot}/entity.php?id={$entity_id}#main");
+
+if ($cancel !== false) {
+    redirect($returnurl);
+}
+
 $object = EntityManager::get_object($entity_id);
 if (!$object) die(); // Записи не существует
 
@@ -19,11 +27,10 @@ $model = get_base_model();
 $model['title'] = 'Редактирование элемента';
 $model = array_merge($model, $object);
 
-if (post_data_submitted()) {
+if (post_data_submitted() && $accept !== false) {
     $result = EntityManager::update_object_from_submit();
     if ($result === true) {
-        $return_url = optional_param('return_url', "{$CONFIG->wwwroot}/entity.php?id={$entity_id}");
-        redirect($return_url);
+        redirect($returnurl);
     } else if (is_array($result)) {
         $model['errors'] = $result['errors'];
         $model['content'] = $result['values']['content'];

@@ -7,11 +7,6 @@ function require_login() {
     }
 }
 
-function get_context_name($context) {
-    global $CONFIG;
-    return $CONFIG->entities[$context]['name'];
-}
-
 function get_entity_template($context) {
     global $CONFIG;
     return $CONFIG->entities[$context]['entity_template'];
@@ -30,8 +25,9 @@ function is_singleton_context($context) {
 function get_base_model() {
     global $CONFIG, $USER;
     return array(
-        'wwwroot' => $CONFIG->wwwroot,
-        'admin'   => $USER->is_admin()
+        'wwwroot'     => $CONFIG->wwwroot,
+        'admin'       => $USER->is_admin(),
+        'current_url' => $CONFIG->wwwroot . $_SERVER['REQUEST_URI']
     );
 }
 
@@ -101,9 +97,52 @@ function resize_image($filepath, $width, $height)
     if ($width_origin > $width && $height_origin > $height) {
         $img->cropCenter("{$width}pr", "{$height}pr");
         $img->resizeByHeight($height);
-        $img->resizeByWidth($width);;
+        $img->resizeByWidth($width);
     } else {
         $img->cropCenter($width, $height);
     }
     $img->save($filepath);
+}
+
+function pagination($totalcount, $page, $perpage)
+{
+    $maxdisplay = 9;
+    $result = array();
+    $result['current'] = $page;
+    $result['first'] = false; // если установлено, требуется первое "многоточие"
+    $result['previous'] = false;
+    $result['pages'] = array();
+    $result['next'] = false;
+    $result['last'] = false; // если установлено, требуется второе "многоточие"
+    if ($totalcount > $perpage) {
+        if ($page > 0) {
+            $result['previous'] = $page - 1;
+        }
+
+        $lastpage = ceil($totalcount / $perpage);
+
+        if ($page > round($maxdisplay / 3 * 2)) {
+            $currpage = $page - round($maxdisplay / 3);
+            $result['first'] = 0;
+        } else {
+            $currpage = 0;
+        }
+
+        $displaycount = 0;
+        while ($displaycount < $maxdisplay and $currpage < $lastpage) {
+            $result['pages'][] = $currpage;
+            $displaycount++;
+            $currpage++;
+        }
+
+        if ($currpage < $lastpage) {
+            $result['last'] = $lastpage - 1;
+        }
+
+        if ($page + 1 != $lastpage) {
+            $result['next'] = $page + 1;
+        }
+    }
+
+    return $result;
 }

@@ -2,6 +2,19 @@
 
 session_start();
 
+$CONFIG->entities = array(
+    'about' => array(
+        'entity_template' => 'about.html',
+        'entities_template' => false,
+        'params' => array(
+            'fulltext' => array(
+                'required' => true,
+            ),
+        ),
+        'attachments' => array(),
+    ),
+);
+
 require_once($CONFIG->dirroot . '/Twig/Autoloader.php');
 require_once($CONFIG->dirroot . '/lib/db.php');
 require_once($CONFIG->dirroot . '/lib/auth.php');

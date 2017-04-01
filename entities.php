@@ -4,6 +4,9 @@ require_once('config.php');
 
 $context = required_param('context');
 validate_context($context);
+if (is_singleton_context($context)) {
+    die();
+}
 
 $args = array();
 switch ($context) {

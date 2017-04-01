@@ -1,19 +1,10 @@
 <?php
 
 $CONFIG = new stdClass();
-$CONFIG->dirroot = 'C:/OpenServer/domains/museum.sibsiu';
-$CONFIG->wwwroot = 'http://museum.sibsiu';
-$CONFIG->dbpath = 'C:/OpenServer/domains/museum.siu2/database.db';
-$CONFIG->dataroot = 'C:/OpenServer/domains/museum.sibsiu/files';
+$CONFIG->dirroot = 'C:/inetpub/wwwroot/museum';
+$CONFIG->wwwroot = 'http://localhost:89';
+$CONFIG->dbpath = 'C:/inetpub/wwwroot/museum/database.db';
+$CONFIG->dataroot = 'C:/inetpub/wwwroot/museum/files';
 $CONFIG->password = '000000';
-
-$CONFIG->entities = array(
-    'about' => array(
-        'entity_template' => 'about.html',
-        'entities_template' => false,
-        'params' => array(),
-        'attachments' => array(),
-    ),
-);
 
 require_once('loader.php');

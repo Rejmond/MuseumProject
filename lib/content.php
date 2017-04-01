@@ -7,6 +7,9 @@ class ContentManager
     {
         global $DB;
         $record = $DB->get_record('entities', array('id' => $entity_id));
+        if (!$record) {
+            return false;
+        }
         $params = $DB->get_records('params', array('entity' => $entity_id));
         $record['params'] = array();
         foreach ($params as $param) {
@@ -19,6 +22,9 @@ class ContentManager
     {
         global $DB;
         $record = $DB->get_record('entities', array('context' => $context));
+        if (!$record) {
+            return false;
+        }
         $params = $DB->get_records('params', array('entity' => $record['id']));
         $record['params'] = array();
         foreach ($params as $param) {

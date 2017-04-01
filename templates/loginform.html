@@ -1,7 +1,8 @@
 {% extends "layout.html" %}
-{% block breadcrumb %}{% endblock %}
+
 {% block header%}
 {% endblock %}
+
 {% block styles %}
 {{ parent() }}
 <style type="text/css">
@@ -11,32 +12,20 @@
     }
 </style>
 {% endblock %}
+
 {% block content %}
-
-<!--
-
-<form method="post">
-    <label for="password" >Пароль:</label>
-    <input type="password" id="password" name="password" placeholder="Пароль">
-    {% if error|length > 0 %}
-    <div>{{ error }}</div>
-    {% endif %}
-    <button type="submit" name="auth">Войти</button>
-</form>
--->
-
-
 <div class="log-outer">
     <div class="log-inner">
         <form method="post">
             {% if error|length > 0 %}
-            <div id="loginsnackbar">{{ error }}
+            <div id="loginsnackbar">
+                {{ error }}
             </div>
             {% endif %}
             <div class="input-container">
-            <input type="password" id="password" name="password" autocomplete="off" required="required"/>
-            <label>Введите пароль</label>
-            <div class="bar"></div>
+                <input type="password" id="password" name="password" autocomplete="off" required="required" />
+                <label>Введите пароль</label>
+                <div class="bar"></div>
             </div>
             <div class="button-container">
                 <button type="submit" name="auth"><span>Вход</span></button>
@@ -48,20 +37,20 @@
 
 <script type="text/javascript">
 
-snackbarFunction();
+    snackbarFunction();
 
-function snackbarFunction() {
-    // Get the snackbar DIV
-    var x = document.getElementById("loginsnackbar");
-    // Add the "show" class to DIV
-    x.className = "show";
+    function snackbarFunction() {
+        // Get the snackbar DIV
+        var x = document.getElementById("loginsnackbar");
+        // Add the "show" class to DIV
+        x.className = "show";
 
-    // After 3 seconds, remove the show class from DIV
-    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
-}
+        // After 3 seconds, remove the show class from DIV
+        setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
+    }
 
 </script>
-
 {% endblock %}
+
 {% block footer%}
 {% endblock %}

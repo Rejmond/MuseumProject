@@ -1,26 +1,34 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<div id="main" class="about edit-forms"  style="background-image: url({{ wwwroot }}/images/museum_img.png); background-repeat: no-repeat;background-position: 790px 55px;">
-	<h1 class="caption w3-container w3-xxlarge">События в музее</span></h1>
-	<div class="w3-row textrow1 w3-container ">
-	    <form method="post">
-	        <input type="hidden" name="context" value="about">
-	        <input type="hidden" name="id" value="{{ id }}">
-	        <input type="hidden" name="return_url" value="{{ wwwroot }}/index.php#_2">
-	        <p class="bold w3-large"><label for="content">О музее:</label></p>
-	        {% if errors.content %}
-	            <div id="loginsnackbar">Вы не указали контент новости
-	            </div>
-	        {% endif %}
-	        <div class="edit-textarea">
-	        <textarea name="content" id="content" required="required">{{ content|raw }}</textarea>
-	        </div>
-	        <div class="button-container-logout w3-container">
-		       	<button type="submit" name="auth">Отмена</button>
-		        <button type="submit" name="auth">Подтвердить</button>
-	    	</div>
-		</form>
-	</div>
+<div id="main" class="about edit-forms museum">
+    <h1 class="caption w3-container w3-xxlarge">О музее</h1>
+    <div class="w3-row textrow1 w3-container ">
+        <form method="post">
+            <input type="hidden" name="id" value="{{ id }}">
+            <p class="bold w3-large"><label for="content">Краткое описание музея:</label></p>
+            {% if errors.content %}
+            <div>
+                Вы не указали краткое описание музея
+            </div>
+            {% endif %}
+            <div class="edit-textarea">
+                <textarea name="content">{{ content|raw }}</textarea>
+            </div>
+            <p class="bold w3-large"><label for="content">Подробное описание музея:</label></p>
+            {% if errors.fulltext %}
+            <div>
+                Вы не указали подробное описание музея
+            </div>
+            {% endif %}
+            <div class="edit-textarea">
+                <textarea name="fulltext">{{ params.fulltext|raw }}</textarea>
+            </div>
+            <div class="button-container-logout w3-container">
+                <button type="submit" name="cancel">Отмена</button>
+                <button type="submit" name="accept">Подтвердить</button>
+            </div>
+        </form>
+    </div>
 </div>
 {% endblock %}
