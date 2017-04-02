@@ -25,7 +25,7 @@
         <ul>
             <li id='museum'><a href="{{ wwwroot }}/index.php#main">Музей</a></li>
             <ul id='museumnav' class="musnav" style="display:none;">
-                <li id='museumabout'><a href="museumabout.html#main"><span>▸</span>О музее</a></li>
+                <li id='museumabout'><a href="{{ wwwroot }}/entity.php?context=about#main"><span>▸</span>О музее</a></li>
                 <li id='news'><a href="news.html#main"><span>▸</span>Новости музея</a></li>
                 <li id='exposition'><a><span>▸</span>Экспозиция</a></li>
                 <li id='exhibitions'><a href="#"><span>▸</span>Тематические <map class="second-line-margin">выставки</map></a></li>
@@ -144,32 +144,7 @@
     {% endblock %}
 
     <script type="application/javascript">
-        tinymce.init({ selector: 'textarea', plugins: 'link image',
-            language: 'ru', file_browser_callback: RoxyFileBrowser });
-        function RoxyFileBrowser(field_name, url, type, win) {
-            var roxyFileman = '{{ wwwroot }}/fileman/index.html';
-            if (roxyFileman.indexOf("?") < 0) {
-                roxyFileman += "?type=" + type;
-            }
-            else {
-                roxyFileman += "&type=" + type;
-            }
-            roxyFileman += '&input=' + field_name + '&value=' + win.document.getElementById(field_name).value;
-            if(tinymce.activeEditor.settings.language){
-                roxyFileman += '&langCode=' + tinymce.activeEditor.settings.language;
-            }
-            tinymce.activeEditor.windowManager.open({
-                file: roxyFileman,
-                title: 'Файловый менеджер',
-                width: 850,
-                height: 650,
-                resizable: "yes",
-                plugins: "media",
-                inline: "yes",
-                close_previous: "no"
-            }, { window: win, input: field_name });
-            return false;
-        }
+
     </script>
 
     <script src="{{ wwwroot }}/js/main.js"></script>
