@@ -7,7 +7,7 @@ require_login();
 $context = optional_param('context', false);
 if ($context) {
     validate_context($context);
-    $entity_id = ContentManager::get_entity_by_context($context)['id'];
+    $entity_id = ContentManager::get_entity_by_context($context)['id']; // предполагается гарантированное получение id
 } else {
     $entity_id = required_param('id');
 }
