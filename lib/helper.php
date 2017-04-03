@@ -1,5 +1,7 @@
 <?php
 
+defined('MUSEUM_INTERNAL') || die;
+
 function require_login() {
     global $USER, $CONFIG;
     if (!$USER->is_admin()) {

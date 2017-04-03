@@ -2,13 +2,21 @@
 
 session_start();
 
+define('MUSEUM_INTERNAL', true);
+define('PARAM_RAW',      'raw');
+define('PARAM_NOTAGS',   'tag');
+define('PARAM_DATE',     'date');
+define('PARAM_NUMBER',   'number');
+
 $CONFIG->entities = array(
     'about' => array(
         'entity_template' => 'about.html',
         'entities_template' => false,
+        'content_type' => PARAM_NOTAGS,
         'params' => array(
             'fulltext' => array(
                 'required' => true,
+                'type'     => PARAM_RAW,
             ),
         ),
         'attachments' => array(),
