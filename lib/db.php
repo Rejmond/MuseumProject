@@ -1,5 +1,7 @@
 <?php
 
+defined('MUSEUM_INTERNAL') || die;
+
 class DBConnection {
 
     private $pdo;
