@@ -82,6 +82,10 @@ $(function () {
 
     imageTransfiguration();
 
+    tinymce.init({
+        selector: '.tiny', plugins: 'link image',
+        language: 'ru', file_browser_callback: RoxyFileBrowser
+    });
 
 });
 
@@ -253,11 +257,6 @@ function tinyImgSize() {
     });
 }
 
-
-tinymce.init({
-    selector: '.tiny', plugins: 'link image',
-    language: 'ru', file_browser_callback: RoxyFileBrowser
-});
 function RoxyFileBrowser(field_name, url, type, win) {
     var roxyFileman = '../fileman/index.html';
     if (roxyFileman.indexOf("?") < 0) {
