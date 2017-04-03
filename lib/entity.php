@@ -1,6 +1,6 @@
 <?php
 
-//defined('MUSEUM_INTERNAL') || die;
+defined('MUSEUM_INTERNAL') || die;
 
 class EntityManager
 {
