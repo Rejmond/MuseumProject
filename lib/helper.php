@@ -106,6 +106,31 @@ function resize_image($filepath, $width, $height)
     $img->save($filepath);
 }
 
+function clean_param($param, $type)
+{
+    switch ($type)
+    {
+        case PARAM_RAW:
+            return trim($param);
+
+        case PARAM_NOTAGS:
+            return trim(strip_tags($param));
+
+        case PARAM_INT:
+            return is_int($param) ? (int)$param : '';
+
+        case PARAM_FLOAT:
+            return is_numeric($param) ? (float)$param : '';
+
+        case PARAM_DATE:
+            $date = DateTime::createFromFormat('d.m.Y', $param);
+            return $date ? $date->format('d.m.Y') : '';
+
+        default:
+            die('unknownparamtype');
+    }
+}
+
 function pagination($totalcount, $page, $perpage)
 {
     $maxdisplay = 9;
