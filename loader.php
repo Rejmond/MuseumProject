@@ -6,7 +6,8 @@ define('MUSEUM_INTERNAL', true);
 define('PARAM_RAW',      'raw');
 define('PARAM_NOTAGS',   'tag');
 define('PARAM_DATE',     'date');
-define('PARAM_NUMBER',   'number');
+define('PARAM_INT',      'int');
+define('PARAM_FLOAT',    'float');
 
 $CONFIG->entities = array(
     'about' => array(

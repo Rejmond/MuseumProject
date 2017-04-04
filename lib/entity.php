@@ -22,14 +22,15 @@ class EntityManager
             $files = array();
 
             $values['content'] = optional_param('content', '');
-            $content = self::clean_param($values['content'], $CONFIG->entities[$context]['content_type']);
+            $content_type = isset($CONFIG->entities[$context]['content_type']) ? $CONFIG->entities[$context]['content_type'] : PARAM_RAW;
+            $content = clean_param($values['content'], $content_type);
             if ($content === '') { // Контент всегда обязателен?
                 $errors['content'] = 'required';
             }
 
             foreach ($CONFIG->entities[$context]['params'] as $paramname => $options) {
                 $values[$paramname] = optional_param($paramname, '');
-                $value = self::clean_param($values[$paramname], $options['type']);
+                $value = clean_param($values[$paramname], isset($options['type']) ? $options['type'] : PARAM_RAW);
                 $required = isset($options['required']) ? $options['required'] === true : false;
                 if ($value === '' && $required) {
                     $errors[$paramname] = 'required';
@@ -92,14 +93,15 @@ class EntityManager
             $files = array();
 
             $values['content'] = optional_param('content', '');
-            $content = self::clean_param($values['content'], $CONFIG->entities[$context]['content_type']);
+            $content_type = isset($CONFIG->entities[$context]['content_type']) ? $CONFIG->entities[$context]['content_type'] : PARAM_RAW;
+            $content = clean_param($values['content'], $content_type);
             if ($content === '') { // Контент всегда обязателен?
                 $errors['content'] = 'required';
             }
 
             foreach ($CONFIG->entities[$context]['params'] as $paramname => $options) {
                 $values[$paramname] = optional_param($paramname, '');
-                $value = self::clean_param($values[$paramname], $options['type']);
+                $value = clean_param($values[$paramname], isset($options['type']) ? $options['type'] : PARAM_RAW);
                 $required = isset($options['required']) ? $options['required'] === true : false;
                 if ($value === '' && $required) {
                     $errors[$paramname] = 'required';
@@ -236,28 +238,6 @@ class EntityManager
             return true;
         } else {
             return false;
-        }
-    }
-
-    private static function clean_param($param, $type)
-    {
-        switch ($type)
-        {
-            case PARAM_RAW:
-                return trim($param);
-
-            case PARAM_NOTAGS:
-                return trim(strip_tags($param));
-
-            case PARAM_NUMBER:
-                return is_numeric($param) ? (float)$param : '';
-
-            case PARAM_DATE:
-                $date = DateTime::createFromFormat('d.m.Y', $param);
-                return $date ? $date->format('d.m.Y') : '';
-
-            default:
-                return die('unknownparamtype');
         }
     }
 
