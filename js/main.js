@@ -1,6 +1,10 @@
 /* Header animation*/
 $(function () {
 
+    var allText = $('.about').text().trim();
+    var firstLetter = allText.charAt(0);
+    $('.about').html("<span style='font-size: 36px; font-family: OpenSans-Regular;'>"+firstLetter+"</span>"+allText.slice(1));
+
     $('.xPoTryMN_0').animate(
         {
             'stroke-dashoffset': 0
@@ -209,7 +213,6 @@ function scrollToTitle() {
     jQuery('body,html').animate({scrollTop: $("header").height()}, 750, 'easeOutQuart');
 }
 
-
 $(window).resize(function () {
     var mainPosition = $("#main").offset();
     width = $(window).width();
@@ -281,3 +284,4 @@ function RoxyFileBrowser(field_name, url, type, win) {
     }, {window: win, input: field_name});
     return false;
 }
+
