@@ -589,7 +589,7 @@ main .notflow p {
     }
 }
 @media screen and (max-width: 900px) {
-    main .w3-co l{ 
+    main .w3-col{
         width: 100% !important; 
         display: block; 
     }
@@ -673,7 +673,7 @@ main .notflow p {
         opacity: 0;
     }
     .headArtemArt w3-display-middle {
-        style:margin-top:-50px;
+        margin-top:-50px;
     }
     .headArtemArt .w3-display-bottommiddle {
         bottom: 25px;
@@ -921,8 +921,8 @@ table th
 
 table td
 {
-    border-top: 1px solid #f0f0f;
-    border-bottom: 1px solid #f0f0f;
+    border-top: 1px solid #f0f0f0;
+    border-bottom: 1px solid #f0f0f0;
 
 }
 
