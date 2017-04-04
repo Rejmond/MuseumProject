@@ -203,14 +203,14 @@ input:invalid {
     height: 100vh;
 }
 /* линии под/над svg */
-._1line {
+.header-line {
     margin: 0 auto;
     width:0px;
     height: 6px;
     background: #494952;
 }
 /* svg Музей */
-._1svg {
+.header-svg {
     width:340px;
     margin: 0 auto; 
     margin-top: 30px;
@@ -225,7 +225,7 @@ header p {
     margin-top:-8px;
 }
 /* обёртка над текстом */
-._1text {
+.header-text {
     margin-bottom: 26px;
     opacity: 0;
 }
@@ -645,7 +645,7 @@ main .notflow p {
     #scroll_btn {
         display: none;
     }
-    ._1line {
+    .header-line {
         width:0px;
         height: 4px;
         max-width: 220px;
@@ -655,7 +655,7 @@ main .notflow p {
         margin-top:-5px;
         width:200px;
     }
-    ._1svg {
+    .header-svg {
         width:200px;
         margin: 0 auto; 
         margin-top: 16px;
@@ -668,7 +668,7 @@ main .notflow p {
         margin-bottom: -8px;
         margin-top:-8px;
     }
-    ._1text {
+    .header-text {
         margin-bottom: 16px;
         opacity: 0;
     }
