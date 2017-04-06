@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div id="main" class="geologic">
+    <div class="w3-container w3-padding-0">
+    <h1 class="caption w3-container w3-xxlarge">Геологический музей</h1>
+    {% if admin %}
+    <div class="h1-to-form w3-container">
+        <form method="get" action="{{ wwwroot }}/admin/edit.php#main">
+            <input type="hidden" name="id" value="{{ entity.id }}" />
+            <button type="submit"><img src="{{ wwwroot }}/images/edit.png" /></button>
+        </form>
+    </div>
+    </div>
+    {% endif %}
+    <div class="post-tiny w3-container">
+        {{ entity.params.fulltext|raw }}
+    </div>
+</div>
+{% endblock %}

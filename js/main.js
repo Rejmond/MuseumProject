@@ -61,11 +61,15 @@ $(function () {
         if (currentPage == "museumabout") {
             currentPage = "museumabout";
         }
+        if (currentPage == "geologic") {
+            currentPage = "geologic";
+        }
         $('#' + currentPage).addClass('sub-menu').find('span').css('color', '#494952');
     }
 
 
-    if (currentPage == "museum" || currentPage == "news" || currentPage == "new" || currentPage == "museumabout") {
+    if (currentPage == "museum" || currentPage == "news" || currentPage == "new" || currentPage == "museumabout" ||
+        currentPage == "geologic") {
         $('#museum').addClass('active');
         $('#museumnav').css({display: 'block'});
     }

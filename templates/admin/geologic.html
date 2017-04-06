@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div id="main" class="geologic edit-forms">
+    <h1 class="caption w3-container w3-xxlarge">Геологический музей</h1>
+    <div class="w3-row textrow1 w3-container ">
+        <form method="post">
+            <input type="hidden" name="id" value="{{ id }}">
+            <p class="bold w3-large"><label for="content">Краткое описание музея:</label></p>
+            {% if errors.content %}
+            <div>
+                Вы не указали краткое описание музея
+            </div>
+            {% endif %}
+            <div class="edit-textarea">
+                <textarea name="content">{{ content|raw }}</textarea>
+            </div>
+            <p class="bold w3-large"><label for="content">Подробное описание музея:</label></p>
+            {% if errors.fulltext %}
+            <div>
+                Вы не указали подробное описание музея
+            </div>
+            {% endif %}
+            <div class="edit-textarea">
+                <textarea name="fulltext" class="tiny">{{ params.fulltext|raw }}</textarea>
+            </div>
+            <div class="button-container-logout w3-container">
+                <button type="submit" name="cancel">Отмена</button>
+                <button type="submit" name="accept">Подтвердить</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
