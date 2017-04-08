@@ -3,7 +3,7 @@ $(function () {
 
     var allText = $('.about').text().trim();
     var firstLetter = allText.charAt(0);
-    $('.about').html("<span style='font-size: 36px; font-family: OpenSans-Regular;'>"+firstLetter+"</span>"+allText.slice(1));
+    $('.about').html("<span style='font-size: 36px; font-family: OpenSans-Regular;'>" + firstLetter + "</span>" + allText.slice(1));
 
     $('.xPoTryMN_0').animate(
         {
@@ -287,4 +287,3 @@ function RoxyFileBrowser(field_name, url, type, win) {
     }, {window: win, input: field_name});
     return false;
 }
-

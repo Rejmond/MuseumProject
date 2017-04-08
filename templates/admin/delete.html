@@ -8,8 +8,9 @@
         margin: 0 auto;
         font-size: 18px;
     }
+
     button {
-        background-color:  #f44336;
+        background-color: #f44336;
         color: white;
         padding: 14px 20px;
         margin: 8px 0;
@@ -17,23 +18,28 @@
         cursor: pointer;
         width: 100%;
     }
+
     .cancel-button {
         padding: 14px 20px;
         background-color: #007bc6;
     }
-    .cancel-button,.delete-button {
+
+    .cancel-button, .delete-button {
         float: left;
         width: 50%;
-        max-width:300px;
+        max-width: 300px;
     }
+
     .container {
         padding: 16px;
     }
+
     .clearfix::after {
         content: "";
         clear: both;
         display: table;
     }
+
     @media screen and (max-width: 300px) {
         .cancel-button, .delete-button {
             width: 100%;
@@ -42,15 +48,14 @@
 </style>
 {% endblock %}
 
-
 {% block content %}
 <div id="main" class="delete">
     <div class="container">
         <form method="post">
             <input type="hidden" value="{{ id }}" name="id">
-            <span>Вы уверены что хотите удалить объект с ID "{{ id }}"?</span>
+            <span>Вы уверены, что хотите удалить объект с ID равным "{{ id }}"?</span>
             <div class="clearfix">
-                <button class="delete-button" type="submit" value="delete" name="delete">Удалить</button>
+                <button class="delete-button" type="submit" value="accept" name="accept">Удалить</button>
                 <button class="cancel-button" type="submit" value="cancel" name="cancel">Отмена</button>
             </div>
         </form>

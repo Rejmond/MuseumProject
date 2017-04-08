@@ -6,9 +6,20 @@ require_login();
 
 $context = required_param('context');
 validate_context($context);
-$model = get_base_model();
 
-if (post_data_submitted()) {
+$accept = optional_param('accept', false);
+$cancel = optional_param('cancel', false);
+$returnurl = optional_param('returnurl', "{$CONFIG->wwwroot}/entities.php?context={$context}#main");
+
+if ($cancel !== false) {
+    redirect($returnurl);
+}
+
+$model = get_base_model();
+$model['title'] = 'Добавление элемента';
+$model['context'] = $context;
+
+if (post_data_submitted() && $accept !== false) {
     $result = EntityManager::add_object_from_submit();
     if (is_numeric($result)) {
         redirect("{$CONFIG->wwwroot}/entity.php?id={$result}");

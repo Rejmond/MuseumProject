@@ -10,12 +10,12 @@ class DBConnection {
         $this->pdo = new PDO("sqlite:$dbpath");  
     }
 
-    public function get_record($table, array $conditions = array()) {
-        $keys = array_keys($conditions);
+    public function get_record($table, array $params = array()) {
+        $keys = array_keys($params);
         $args = array_map(function($e) { return "$e = :$e"; }, $keys);
         $sql = "SELECT * FROM $table " . (count($args) > 0 ? 'WHERE ' . implode(' AND ', $args) : '');
         $sth = $this->pdo->prepare($sql);
-        $sth->execute($conditions);
+        $sth->execute($params);
         $records = $sth->fetchAll(PDO::FETCH_ASSOC);
         if (count($records) > 1) {
             die("Too many records");
@@ -23,12 +23,12 @@ class DBConnection {
         return !empty($records) ? $records[0] : false;
     }
 
-    public function get_records($table, array $conditions = array()) {
-        $keys = array_keys($conditions);
+    public function get_records($table, array $params = array()) {
+        $keys = array_keys($params);
         $args = array_map(function($e) { return "$e = :$e"; }, $keys);
         $sql = "SELECT * FROM $table " . (count($args) > 0 ? 'WHERE ' . implode(' AND ', $args) : '');
         $sth = $this->pdo->prepare($sql);
-        $sth->execute($conditions);
+        $sth->execute($params);
         return $sth->fetchAll(PDO::FETCH_ASSOC);
     }
 
@@ -71,6 +71,15 @@ class DBConnection {
         $sth = $this->pdo->prepare($sql);
         $sth->execute(array($id));
         return $sth->rowCount() > 0;
+    }
+
+    public function count_records($table, $params = array()) {
+        $keys = array_keys($params);
+        $args = array_map(function($e) { return "$e = :$e"; }, $keys);
+        $sql = "SELECT COUNT(*) FROM $table " . (count($args) > 0 ? 'WHERE ' . implode(' AND ', $args) : '');
+        $sth = $this->pdo->prepare($sql);
+        $sth->execute($params);
+        return $sth->fetchColumn();
     }
 
     public function execute($sql, $params) {

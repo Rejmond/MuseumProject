@@ -5,42 +5,51 @@
     <h1 class="caption w3-container w3-xxlarge">Новости музея</span></h1>
     {% if admin %}
     <div class="h1-to-form w3-container">
-        <a  href="{{ add_link }}#main"><button type="submit"><img src="images/add.png" /></button></a>
+        <a href="{{ wwwroot }}/admin/add.php?context={{ context }}#main"><button type="submit"><img src="images/add.png" /></button></a>
     </div>
     {% endif %}
+
     {% for entity in entities %}
     <div class="w3-row textrow1 w3-container ">
-        <a  href="{{ entity.link }}#main"><p class="bold w3-large w3-margin-0">
+        <a  href="{{ wwwroot }}/entity.php?id={{ entity.id }}&returnurl={{ current_url|url_encode }}#main"><p class="bold w3-large w3-margin-0">
             {{ entity.params.name|raw }}
         </p></a>
         {% if admin %}
         <div class="p-to-form">
-            <a href="{{ wwwroot }}/admin/edit.php?id={{ entity.id }}#main"><img src="images/edit.png" /></a>
-            <a href="{{ wwwroot }}/admin/delete.php?id={{ entity.id }}#main"><img src="images/delete.png" /></a>
+            <a href="{{ wwwroot }}/admin/edit.php?id={{ entity.id }}&returnurl={{ current_url|url_encode }}#main"><img src="images/edit.png" /></a>
+            <a href="{{ wwwroot }}/admin/delete.php?id={{ entity.id }}&returnurl={{ current_url|url_encode }}#main"><img src="images/delete.png" /></a>
         </div>
         {% endif %}
         <p class="lightGrey text2 date">
-            {{ entity.date|raw|date("d.m.Y")  }}
+            {{ entity.date|date("d.m.Y H:i") }}
         </p>
         <p>
             {{ entity.content|raw }}
         </p>
-        <div class="imgBox2"><div class="inner"><img src="{{ wwwroot }}/file.php?id={{ entity.files.image }}"></div></div>
-        <div class="more w3-container"><a href="{{ entity.link }}#main">Подробнее</a></div>
+        {% if entity.files.image %}
+        <div class="imgBox2">
+            <div class="inner"><img src="{{ wwwroot }}/file.php?id={{ entity.files.image }}"></div>
+        </div>
+        {% endif %}
+        <div class="more w3-container"><a href="{{ wwwroot }}/entity.php?id={{ entity.id }}&returnurl={{ current_url|url_encode }}#main">Подробнее</a></div>
     </div>
-
     {% endfor %}
-
-
 
     <div class="tudasuda w3-large fowhite w3-container">
         <ul>
-            <li><a><</a></li>
-            <li><a style="font-family:'OpenSans-bold'; color:#007bc6; ">1</a></li>
-            <li><a>2</a></li>
-            <li><a>3</a></li>
-             ...
-            <li><a>></a></li>
+            {% if pages.previous %}<li><a href="{{ pages.previous.url }}">{{ pages.previous.label }}</a></li>{% endif %}
+            {% if pages.first %}
+                <li><a href="{{ pages.first.url }}">{{ pages.first.label }}</a></li>
+                ...
+            {% endif %}
+            {% for page in pages.pages %}
+                <li><a href="{{ page.url }}" {% if page.label == pages.current %}style="font-weight: bold;"{% endif %}>{{ page.label }}</a></li>
+            {% endfor %}
+            {% if pages.last %}
+                ...
+                <li><a href="{{ pages.last.url }}">{{ pages.last.label }}</a></li>
+            {% endif %}
+            {% if pages.next %}<li><a href="{{ pages.next.url }}">{{ pages.next.label }}</a></li>{% endif %}
         </ul>
     </div>
     <div class="to-begin w3-container"><a href="{{ wwwroot }}/index.php#main">В начало</a></div>
