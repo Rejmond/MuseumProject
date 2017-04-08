@@ -6,7 +6,7 @@
     <div class="w3-row textrow1 w3-container ">
         <form method="post">
             <input type="hidden" name="id" value="{{ id }}">
-            <p class="bold w3-large"><label for="content">Краткое описание музея:</label></p>
+            <p class="bold w3-large">Краткое описание музея:</p>
             {% if errors.content %}
             <div>
                 Вы не указали краткое описание музея
@@ -15,7 +15,7 @@
             <div class="edit-textarea">
                 <textarea name="content">{{ content|raw }}</textarea>
             </div>
-            <p class="bold w3-large"><label for="content">Подробное описание музея:</label></p>
+            <p class="bold w3-large">Подробное описание музея:</p>
             {% if errors.fulltext %}
             <div>
                 Вы не указали подробное описание музея

@@ -42,7 +42,7 @@ class ContentManager
             $sql = 'SELECT e.id, COUNT(e.id) AS temp
                       FROM entities e
                 INNER JOIN params p ON e.id = p.entity
-                     WHERE e.context = :context ';
+                     WHERE e.context = :context';
             $keys = array_keys($conditions);
             $args = array_map(function ($e) {
                 global $DB;

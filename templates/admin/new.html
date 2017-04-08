@@ -1,8 +1,62 @@
 {% extends "layout.html" %}
 
 {% block content %}
+<div id="main" class="new edit-forms">
+    <h1 class="caption w3-container w3-xxlarge">Новости</h1>
+    <div class="w3-row textrow1 w3-container ">
+        <form method="post">
+            <input type="hidden" name="id" value="{{ id }}">
+
+            <p class="bold w3-large">Заголовок новости</p>
+            {% if errors.name %}
+            <div>
+                Вы не добавили заголовок новости
+            </div>
+            {% endif %}
+            <div class="edit-textarea-name">
+                <textarea name="name">{{ params.name|raw }}</textarea>
+            </div>
 
 
+            <p class="bold w3-large">Краткое описание новости:</p>
+            {% if errors.content %}
+            <div>
+                Вы не указали краткое описание новости
+            </div>
+            {% endif %}
+            <div class="edit-textarea">
+                <textarea name="content">{{ content|raw }}</textarea>
+            </div>
+
+
+            <p class="bold w3-large">Картинка новости</p>
+            {% if errors.image %}
+            <div>
+                Вы не указали картинку новости
+            </div>
+            {% endif %}
+            <input type="file" class="form-control" name="image" id="image">
+
+
+
+            <p class="bold w3-large">Подробное описание новости:</p>
+            {% if errors.fulltext %}
+            <div>
+                Вы не указали подробное описание музея
+            </div>
+            {% endif %}
+            <div class="edit-textarea">
+                <textarea name="fulltext" class="tiny">{{ params.fulltext|raw }}</textarea>
+            </div>
+            <div class="button-container-logout w3-container">
+                <button type="submit" name="cancel">Отмена</button>
+                <button type="submit" name="accept">Подтвердить</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!--
 <div id="main" class="new edit-forms"  style="background-image: url({{ wwwroot }}/images/museum_img.png); background-repeat: no-repeat;background-position: 790px 55px;">
     <h1 class="caption w3-container w3-xxlarge">События в музее</span></h1>
     <div class="w3-row textrow1 w3-container ">
@@ -14,6 +68,8 @@
         
         <p class="bold w3-large"><label>Текст новости:</label></p>
         <!-- стили убрать -->
+
+<!--
         <textarea style="width: 100%; min-height:250px;  margin-top:10px; margin-bottom:10px" >Торжество открыл ректор Сибирского государственного индустриального университета, профессор Евгений Валентинович Протопопов. Почетными гостями мероприятия стали такие известные  люди города Новокузнецка, как Юрий Павлович Алябьев – полковник, ветеран войны в Афганистане, председатель комитета ветеранов войны и военной службы г. Новокузнецк; Александр Петрович Селезнев – капитан I ранга, член городского комитета ветеранов войны и военной службы; Клобуков Сергей Михайлович - полковник, бывший заместитель начальника военной кафедры СибГИУ, начальник охраны объекта СибГИУ; Виктор Васильевич Похомов  - подполковник, начальник отдела комплексной безопасности.С поздравлениями и приветственной речью выступил ректор СибГИУ, профессор Е.В. Протопопов. Он сказал напутственное слово студентам, в будущем - молодым специалистам и защитникам Отечества. Присутствующих поздравили  гости университетского праздника - офицеры Российской Армии. Они отметили значимость праздника – Дня защитника Отечества для России, подчеркнув, что аналогов мужского  праздника Защитника  не существует больше ни в одной стране. Русский человек всегда был патриотом, служил Отечеству и защищал его в лихую годину.Впервые во время торжественного заседания был вручен кубок за строевую подготовку отрядов. По результатам проведенного конкурса строя и песни, определился отряд-победитель, который выделился по некоторым критериям конкурса (строевой марш, строевая песня, отчет командира командующему парадом). Победителем стал студенческий отряд охраны правопорядка «Атлант»! Бурные аплодисменты были еще одной наградой за победу. Завоеванный кубок обещает стать переходящим кубком ректора СибГИУ.
         </textarea> 
     </div>
@@ -77,4 +133,6 @@
         </div>
     </div>
 </form>
+
+-->
 {% endblock %}

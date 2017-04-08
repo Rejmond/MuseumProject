@@ -6,10 +6,7 @@
     <h1 class="caption w3-container w3-xxlarge">Геологический музей</h1>
     {% if admin %}
     <div class="h1-to-form w3-container">
-        <form method="get" action="{{ wwwroot }}/admin/edit.php#main">
-            <input type="hidden" name="id" value="{{ entity.id }}" />
-            <button type="submit"><img src="{{ wwwroot }}/images/edit.png" /></button>
-        </form>
+        <a href="{{ wwwroot }}/admin/edit.php?id={{ entity.id }}#main"><img src="{{ wwwroot }}/images/edit.png" /></a>
     </div>
     </div>
     {% endif %}

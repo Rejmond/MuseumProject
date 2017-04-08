@@ -15,6 +15,11 @@ switch ($context) {
             $args['author'] = $author;
             //$args['abstract'] = 'Книга 1';
         }
+    case 'news':
+        if ($name = optional_param('name', null)) {
+            $args['name'] = $name;
+            //$args['abstract'] = 'Книга 1';
+        }
 }
 
 $entities = ContentManager::get_entities($context, $args);

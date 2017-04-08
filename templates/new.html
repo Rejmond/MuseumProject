@@ -4,28 +4,33 @@
 <div id="main" class="new"  style="background-image: url(images/museum_img.png); background-repeat: no-repeat;background-position: 790px 55px;">
     <h1 class="caption w3-container w3-xxlarge">События в музее</span></h1>
 
+
     <div class="w3-row textrow1 w3-container ">
-        <p class="bold w3-large w3-margin-0">В предверии дня защитника Отечества прошло традиционное заседание</p>
+        <p class="bold w3-large w3-margin-0">
+            {{ entity.params.name|raw }}
+        </p>
         {% if admin %}
         <div class="p-to-form">
-            <form method="post">
-                <button type="submit"><img src="images/edit.png" /></button>
-                <button type="submit"><img src="images/delete.png" /></button>
-            </form>
+            <a href="{{ wwwroot }}/admin/edit.php?id={{ entity.id }}#main"><img src="images/edit.png" /></a>
+            <a href="{{ wwwroot }}/admin/delete.php?id={{ entity.id }}#main"><img src="images/delete.png" /></a>
         </div>
         {% endif %}
-        <p class="lightGrey text2">22.02.2017</p>
-        <p>Торжество открыл ректор Сибирского государственного индустриального университета, профессор Евгений Валентинович Протопопов. Почетными гостями мероприятия стали такие известные  люди города Новокузнецка, как Юрий Павлович Алябьев – полковник, ветеран войны в Афганистане, председатель комитета ветеранов войны и военной службы г. Новокузнецк; Александр Петрович Селезнев – капитан I ранга, член городского комитета ветеранов войны и военной службы; Клобуков Сергей Михайлович - полковник, бывший заместитель начальника военной кафедры СибГИУ, начальник охраны объекта СибГИУ; Виктор Васильевич Похомов  - подполковник, начальник отдела комплексной безопасности. </p>
-        <p>С поздравлениями и приветственной речью выступил ректор СибГИУ, профессор Е.В. Протопопов. Он сказал напутственное слово студентам, в будущем - молодым специалистам и защитникам Отечества. Присутствующих поздравили  гости университетского праздника - офицеры Российской Армии. Они отметили значимость праздника – Дня защитника Отечества для России, подчеркнув, что аналогов мужского  праздника Защитника  не существует больше ни в одной стране. Русский человек всегда был патриотом, служил Отечеству и защищал его в лихую годину. </p>
-        <p>Впервые во время торжественного заседания был вручен кубок за строевую подготовку отрядов. По результатам проведенного конкурса строя и песни, определился отряд-победитель, который выделился по некоторым критериям конкурса (строевой марш, строевая песня, отчет командира командующему парадом). Победителем стал студенческий отряд охраны правопорядка «Атлант»! Бурные аплодисменты были еще одной наградой за победу.  </p>
-        <p>Завоеванный кубок обещает стать переходящим кубком ректора СибГИУ.   </p>
+        <p class="lightGrey text2">{{ entity.date|raw }}</p>
+
+
+        <!--
         <div class="newimgo">
             <div class="imgBox2"><div class="inner"><img src="images/2-1.jpg"></div></div>
             <div class="imgBox2"><div class="inner"><img src="images/2-2.jpg"></div></div>
             <div class="imgBox2"><div class="inner"><img src="images/2-3.jpg"></div></div>
             <div class="imgBox2"><div class="inner"><img src="images/2-4.jpg"></div></div>
         </div>
+
+        -->
     </div>
-    <div class="to-back"><a href="news.html#main">Назад</a></div>
+    <div class="post-tiny w3-container">
+        {{ entity.params.fulltext|raw }}
+    </div>
+    <div class="to-back"><a href="{{ wwwroot }}/entities.php?context=news#main">Назад</a></div>
 </div>
 {% endblock %}

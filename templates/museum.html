@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<div id="main" class="museum">
+<h1 id="main" class="museum">
     <h1 class="caption w3-container">МУЗЕЙ<span class="lightGrey-2"> / MUSEUM</span></h1>
     <p class="about w3-container">
         {{ about }}
@@ -13,13 +13,13 @@
         <div class="quarter-to-2">
             <div class="w3-quarter w3-container quarttohalf">
                 <div class="imgBox2"><img src="images/2-1.jpg"></div>
-                <a href="new.html#main"><p class="bold w3-large">В предверии дня защитника Отечества прошло традиционное заседание gggggggggggggg g ggggggg ggggggggg ggggggggg fffff ffff</p></a>
+                <a href="{{ wwwroot }}/entity.php?context=new#main"><p class="bold w3-large">В предверии дня защитника Отечества прошло традиционное заседание gggggggggggggg g ggggggg ggggggggg ggggggggg fffff ffff</p></a>
                 <p class="lightGrey text2">22.02.2017</p>
                 <p>Традиционное торжественное заседание, посвященное празднованию Дня защитника Отечества, состоялось в  этом году 20 февраля в восьмой поточной аудитории.</p>
             </div>
             <div class="w3-quarter w3-container quarttohalf">
                 <div class="imgBox2"><img src="images/2-2.jpg"></div>
-                <a href="new.html#main"><p class="bold w3-large">Итоги конкурса рисунков среди старшеклассников "Мой город золотой"</p></a>
+                <a href="{{ wwwroot }}/entity.php?id={$entities[$i]['id']}"><p class="bold w3-large">Итоги конкурса рисунков среди старшеклассников "Мой город золотой"</p></a>
                 <p class="lightGrey text2">22.02.2017</p>
                 <p>В ФГБОУ ВО «Сибирский государственный индустриальный университет» (СибГИУ) подведены итоги конкурса рисунков «МОЙ ГОРОД ЗОЛОТОЙ…», который проводился для старшеклассников общеобразовательных организаций...</p>
             </div>
@@ -27,21 +27,19 @@
         <div class="quarter-to-2">
             <div class="w3-quarter w3-container quarttohalf">
                 <div class="imgBox2"><img src="images/2-3.jpg"></div>
-                <a href="new.html#main"><p class="bold w3-large">Губернаторский приём в честь Дня Российской науки</p></a>
+                <a href="{{ wwwroot }}/entity.php?context=new#main"><p class="bold w3-large">Губернаторский приём в честь Дня Российской науки</p></a>
                 <p class="lightGrey text2">13.02.2017</p>
                 <p>В Кемерово состоялся традиционный  торжественный Губернаторский прием  в честь  Дня российской науки, на который были приглашены учёные со всех уголков региона. В мероприятии приняли участие руководитель федерального ...</p>
             </div>
             <div class="w3-quarter w3-container quarttohalf">
                 <div class="imgBox2"><img src="images/2-4.jpg"></div>
-                <a href="new.html#main"><p class="bold w3-large">Профсоюз СИбГИУ: эффективное партнерство и защита прав</p></a>
+                <a href="{{ wwwroot }}/entity.php?context=new#main"><p class="bold w3-large">Профсоюз СИбГИУ: эффективное партнерство и защита прав</p></a>
                 <p class="lightGrey text2">11.02.2017</p>
                 <p>Состоялась  конференция Первичной организации СибГИУ Профсоюза работников образования и науки РФ. С докладом выступила председатель профсоюзной организации вуза Л.А.Ганзер. В 2016 году показатели ППО значительно улучшились.</p>
             </div>
         </div>
     </div>
-    <div class="allpubs w3-container"><a href="news.html#main">ВСЕ НОВОСТИ</a></div>
-
-    <h2 class="bold w3-container">Экспозиция</h2>
+    <div class="allpubs w3-container"><a href="{{ wwwroot }}/entities.php?context=news#main">ВСЕ НОВОСТИ</a></div>
     <div class="w3-row">
         <div class="w3-container w3-half histoInsts">
             <a><p class="bold w3-large">- От СИЧМ к СибГИУ: 80 лет в истории</p></a>

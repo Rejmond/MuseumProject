@@ -34,6 +34,42 @@ $CONFIG->entities = array(
         ),
         'attachments' => array(),
     ),
+    'news' => array(
+        'entity_template' => 'new.html',
+        'entities_template' => 'news.html',
+        'content_type' => PARAM_NOTAGS,
+        'date' => time(),
+        'params' => array(
+            'name' => array(
+                'required' => true,
+                'type' => PARAM_NOTAGS,
+            ),
+            'fulltext' => array(
+                'required' => true,
+                'type' => PARAM_RAW,
+            ),
+            /*
+            'date' => array(
+                'required' => true,
+                'type' => PARAM_DATE,
+            ),
+            */
+        ),
+        'attachments' => array(
+            'image' => array(
+                'required' => false,
+                'image' => true,
+                'size' => array(400, 300),
+                'list' => false,
+            ),
+            'photos' => array(
+                'required' => false,
+                'image' => true,
+                'size' => array(400, 200),
+                'list' => true,
+            ),
+        )
+    ),
 );
 
 require_once($CONFIG->dirroot . '/Twig/Autoloader.php');

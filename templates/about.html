@@ -3,16 +3,13 @@
 {% block content %}
 <div id="main" class="museumabout">
     <div class="w3-container w3-padding-0">
-    <h1 class="caption w3-container w3-xxlarge">О музее</h1>
-    {% if admin %}
-    <div class="h1-to-form w3-container">
-        <form method="get" action="{{ wwwroot }}/admin/edit.php#main">
-            <input type="hidden" name="id" value="{{ entity.id }}" />
-            <button type="submit"><img src="{{ wwwroot }}/images/edit.png" /></button>
-        </form>
+        <h1 class="caption w3-container w3-xxlarge">О музее</h1>
+        {% if admin %}
+        <div class="h1-to-form w3-container">
+            <a href="{{ wwwroot }}/admin/edit.php?id={{ entity.id }}#main"><img src="{{ wwwroot }}/images/edit.png" /></a>
+        </div>
+        {% endif %}
     </div>
-    </div>
-    {% endif %}
     <div class="post-tiny w3-container">
         {{ entity.params.fulltext|raw }}
     </div>

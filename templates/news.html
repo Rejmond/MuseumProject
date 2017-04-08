@@ -1,137 +1,37 @@
 {% extends "layout.html" %}
 
 {% block content %}
-
-
-<div id="main" class="news"  style="background-image: url(images/museum_img.png); background-repeat: no-repeat;background-position: 790px 55px;">
+<div id="main" class="news">
     <h1 class="caption w3-container w3-xxlarge">Новости музея</span></h1>
     {% if admin %}
     <div class="h1-to-form w3-container">
-        <form method="post">
-            <button type="submit"><img src="images/add.png" /></button>
-        </form>
+        <a  href="{{ add_link }}#main"><button type="submit"><img src="images/add.png" /></button></a>
     </div>
     {% endif %}
+    {% for entity in entities %}
     <div class="w3-row textrow1 w3-container ">
-        <a  href="new.html#main"><p class="bold w3-large w3-margin-0">В предверии дня защитника Отечества прошло традиционное заседание</p></a>
+        <a  href="{{ entity.link }}#main"><p class="bold w3-large w3-margin-0">
+            {{ entity.params.name|raw }}
+        </p></a>
         {% if admin %}
         <div class="p-to-form">
-            <form method="post">
-                <button type="submit"><img src="images/edit.png" /></button>
-                <button type="submit"><img src="images/delete.png" /></button>
-            </form>
+            <a href="{{ wwwroot }}/admin/edit.php?id={{ entity.id }}#main"><img src="images/edit.png" /></a>
+            <a href="{{ wwwroot }}/admin/delete.php?id={{ entity.id }}#main"><img src="images/delete.png" /></a>
         </div>
         {% endif %}
-        <p class="lightGrey text2 ">22.02.2017</p>
-        <p>Торжество открыл ректор Сибирского государственного индустриального университета, профессор Евгений Валентинович Протопопов. Почетными гостями мероприятия стали такие известные  люди города Новокузнецка, как Юрий Павлович Алябьев – полковник, ветеран войны в Афганистане, председатель комитета ветеранов войны и военной службы г. Новокузнецк; Александр Петрович Селезнев – капитан I ранга, член городского комитета ветеранов войны и военной службы; Клобуков Сергей Михайлович - полковник, бывший заместитель начальника военной кафедры СибГИУ, начальник охраны объекта СибГиу; Виктор Васильевич Похомов  - подполковник, начальник отдела комплексной безопасности.</p>
-        <div class="imgBox2"><div class="inner"><img src="images/2-1.jpg"></div></div>
-        <div class="more w3-container"><a href="new.html#main">Подробнее</a></div>
+        <p class="lightGrey text2 date">
+            {{ entity.date|raw|date("d.m.Y")  }}
+        </p>
+        <p>
+            {{ entity.content|raw }}
+        </p>
+        <div class="imgBox2"><div class="inner"><img src="{{ wwwroot }}/file.php?id={{ entity.files.image }}"></div></div>
+        <div class="more w3-container"><a href="{{ entity.link }}#main">Подробнее</a></div>
     </div>
-    <div class="w3-row textrow1 w3-container">
-        <a  href="new.html#main"><p class="bold w3-large w3-margin-0">Итоги конкурса рисунков среди старшеклассников "Мой город золотой"</p></a>
-        {% if admin %}
-        <div class="p-to-form">
-            <form method="post">
-                <button type="submit"><img src="images/edit.png" /></button>
-                <button type="submit"><img src="images/delete.png" /></button>
-            </form>
-        </div>
-        {% endif %}
-        <p class="lightGrey text2">22.02.2017</p>
-        <p>В ФГБОУ ВО «Сибирский государственный индустриальный университет» (СибГИУ) подведены итоги конкурса рисунков «МОЙ ГОРОД ЗОЛОТОЙ…», который проводился для старшеклассников общеобразовательных организаций...</p>
-        <div class="imgBox2"><div class="inner"><img src="images/2-2.jpg"></div></div>
-        <div class="more w3-container"><a href="new.html#main">Подробнее</a></div>
-    </div>
-    <div class="w3-row textrow1 w3-container">
-        <a  href="new.html#main"><p class="bold w3-large w3-margin-0">Губернаторский приём в честь Дня Российской науки</p></a>
-        {% if admin %}
-        <div class="p-to-form">
-            <form method="post">
-                <button type="submit"><img src="images/edit.png" /></button>
-                <button type="submit"><img src="images/delete.png" /></button>
-            </form>
-        </div>
-        {% endif %}
-        <p class="lightGrey text2">13.02.2017</p>
-        <p>В Кемерово состоялся традиционный  торжественный Губернаторский прием  в честь  Дня российской науки, на который были приглашены учёные со всех уголков региона. В мероприятии приняли участие руководитель федерального ...</p>
-        <div class="imgBox2"><div class="inner"><img src="images/2-3.jpg"></div></div>
-        <div class="more w3-container"><a href="new.html#main">Подробнее</a></div>
-    </div>
-    <div class="w3-row textrow1 w3-container">
-        <a  href="new.html#main"><p class="bold w3-large w3-margin-0">Профсоюз СИбГИУ: эффективное партнерство и защита прав</p></a>
-        {% if admin %}
-        <div class="p-to-form">
-            <form method="post">
-                <button type="submit"><img src="images/edit.png" /></button>
-                <button type="submit"><img src="images/delete.png" /></button>
-            </form>
-        </div>
-        {% endif %}
-        <p class="lightGrey text2">11.02.2017</p>
-        <p>Состоялась  конференция Первичной организации СибГИУ Профсоюза работников образования и науки РФ. С докладом выступила председатель профсоюзной организации вуза Л.А.Ганзер. В 2016 году показатели ППО значительно улучшились.</p>
-        <div class="imgBox2"><div class="inner"><img src="images/2-4.jpg"></div></div>
-        <div class="more w3-container"><a href="new.html#main">Подробнее</a></div>
-    </div>
-    <div class="w3-row textrow1 w3-container ">
-        <a  href="new.html#main"><p class="bold w3-large w3-margin-0">В предверии дня защитника Отечества прошло традиционное заседание</p></a>
-        {% if admin %}
-        <div class="p-to-form">
-            <form method="post">
-                <button type="submit"><img src="images/edit.png" /></button>
-                <button type="submit"><img src="images/delete.png" /></button>
-            </form>
-        </div>
-        {% endif %}
-        <p class="lightGrey text2">22.02.2017</p>
-        <p>Традиционное торжественное заседание, посвященное празднованию Дня защитника Отечества, состоялось в  этом году 20 февраля в восьмой поточной аудитории.</p>
-        <div class="imgBox2"><div class="inner"><img src="images/2-1.jpg"></div></div>
-        <div class="more w3-container"><a href="new.html#main">Подробнее</a></div>
-    </div>
-    <div class="w3-row textrow1 w3-container">
-        <a  href="new.html#main"><p class="bold w3-large w3-margin-0">Итоги конкурса рисунков среди старшеклассников "Мой город золотой"</p></a>
-        {% if admin %}
-        <div class="p-to-form">
-            <form method="post">
-                <button type="submit"><img src="images/edit.png" /></button>
-                <button type="submit"><img src="images/delete.png" /></button>
-            </form>
-        </div>
-        {% endif %}
-        <p class="lightGrey text2">22.02.2017</p>
-        <p>В ФГБОУ ВО «Сибирский государственный индустриальный университет» (СибГИУ) подведены итоги конкурса рисунков «МОЙ ГОРОД ЗОЛОТОЙ…», который проводился для старшеклассников общеобразовательных организаций...</p>
-        <div class="imgBox2"><div class="inner"><img src="images/2-2.jpg"></div></div>
-        <div class="more w3-container"><a href="new.html#main">Подробнее</a></div>
-    </div>
-    <div class="w3-row textrow1 w3-container">
-        <a  href="new.html#main"><p class="bold w3-large w3-margin-0">Губернаторский приём в честь Дня Российской науки</p></a>
-        {% if admin %}
-        <div class="p-to-form">
-            <form method="post">
-                <button type="submit"><img src="images/edit.png" /></button>
-                <button type="submit"><img src="images/delete.png" /></button>
-            </form>
-        </div>
-        {% endif %}
-        <p class="lightGrey text2">13.02.2017</p>
-        <p>В Кемерово состоялся традиционный  торжественный Губернаторский прием  в честь  Дня российской науки, на который были приглашены учёные со всех уголков региона. В мероприятии приняли участие руководитель федерального ...</p>
-        <div class="imgBox2"><div class="inner"><img src="images/2-3.jpg"></div></div>
-        <div class="more w3-container"><a href="new.html#main">Подробнее</a></div>
-    </div>
-    <div class="w3-row textrow1 w3-container">
-        <a  href="new.html#main"><p class="bold w3-large w3-margin-0">Профсоюз СИбГИУ: эффективное партнерство и защита прав</p></a>
-        {% if admin %}
-        <div class="p-to-form">
-            <form method="post">
-                <button type="submit"><img src="images/edit.png" /></button>
-                <button type="submit"><img src="images/delete.png" /></button>
-            </form>
-        </div>
-        {% endif %}
-        <p class="lightGrey text2">11.02.2017</p>
-        <p>Состоялась  конференция Первичной организации СибГИУ Профсоюза работников образования и науки РФ. С докладом выступила председатель профсоюзной организации вуза Л.А.Ганзер. В 2016 году показатели ППО значительно улучшились.</p>
-        <div class="imgBox2"><div class="inner"><img src="images/2-4.jpg"></div></div>
-        <div class="more w3-container"><a href="new.html#main">Подробнее</a></div>
-    </div>
+
+    {% endfor %}
+
+
 
     <div class="tudasuda w3-large fowhite w3-container">
         <ul>
@@ -139,11 +39,10 @@
             <li><a style="font-family:'OpenSans-bold'; color:#007bc6; ">1</a></li>
             <li><a>2</a></li>
             <li><a>3</a></li>
+             ...
             <li><a>></a></li>
         </ul>
     </div>
-    <div class="to-begin w3-container"><a href="index.html#main">В начало</a></div>
+    <div class="to-begin w3-container"><a href="{{ wwwroot }}/index.php#main">В начало</a></div>
 </div>
-
-
 {% endblock %}
