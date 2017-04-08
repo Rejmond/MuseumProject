@@ -18,7 +18,7 @@ class DBConnection {
         $sth->execute($conditions);
         $records = $sth->fetchAll(PDO::FETCH_ASSOC);
         if (count($records) > 1) {
-            die("Too many records. Shsh!");
+            die("Too many records");
         }
         return !empty($records) ? $records[0] : false;
     }

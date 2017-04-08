@@ -42,6 +42,7 @@
 </style>
 {% endblock %}
 
+
 {% block content %}
 <div id="main" class="delete">
     <div class="container">
@@ -49,8 +50,8 @@
             <input type="hidden" value="{{ id }}" name="id">
             <span>Вы уверены что хотите удалить объект с ID "{{ id }}"?</span>
             <div class="clearfix">
-                <button class="delete-button" type="submit" name="delete">Удалить</button>
-                <button class="cancel-button" type="submit" name="cancel">Отмена</button>
+                <button class="delete-button" type="submit" value="delete" name="delete">Удалить</button>
+                <button class="cancel-button" type="submit" value="cancel" name="cancel">Отмена</button>
             </div>
         </form>
     </div>
