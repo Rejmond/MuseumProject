@@ -106,6 +106,11 @@ function resize_image($filepath, $width, $height)
     $img->save($filepath);
 }
 
+function limit_words($string, $limit) {
+    $words = explode(' ', $string);
+    return implode(' ', array_splice($words, 0, $limit));
+}
+
 function clean_param($param, $type)
 {
     switch ($type)
@@ -131,11 +136,13 @@ function clean_param($param, $type)
     }
 }
 
-function pagination($totalcount, $page, $perpage)
+function pagination($baseurl, $totalcount, $page, $perpage)
 {
     $maxdisplay = 9;
+    $symbol = mb_strpos($baseurl, '?') !== false ? '&' : '?';
+
     $result = array();
-    $result['current'] = $page;
+    $result['current'] = $page + 1;
     $result['first'] = false; // если установлено, требуется первое "многоточие"
     $result['previous'] = false;
     $result['pages'] = array();
@@ -143,31 +150,36 @@ function pagination($totalcount, $page, $perpage)
     $result['last'] = false; // если установлено, требуется второе "многоточие"
     if ($totalcount > $perpage) {
         if ($page > 0) {
-            $result['previous'] = $page - 1;
+            $pageinfo = array('label' => '<', 'url' => $baseurl . $symbol . 'page=' . ($page - 1) . '#main');
+            $result['previous'] = $pageinfo;
         }
 
         $lastpage = ceil($totalcount / $perpage);
 
         if ($page > round($maxdisplay / 3 * 2)) {
             $currpage = $page - round($maxdisplay / 3);
-            $result['first'] = 0;
+            $pageinfo = array('label' => '1', 'url' => $baseurl . $symbol . 'page=0' . '#main');
+            $result['first'] = $pageinfo;
         } else {
             $currpage = 0;
         }
 
         $displaycount = 0;
         while ($displaycount < $maxdisplay and $currpage < $lastpage) {
-            $result['pages'][] = $currpage;
+            $pageinfo = array('label' => $currpage + 1, 'url' => $baseurl . $symbol . 'page=' . $currpage . '#main');
+            $result['pages'][] = $pageinfo;
             $displaycount++;
             $currpage++;
         }
 
         if ($currpage < $lastpage) {
-            $result['last'] = $lastpage - 1;
+            $pageinfo = array('label' => $lastpage, 'url' => $baseurl . $symbol . 'page=' . ($lastpage - 1) . '#main');
+            $result['last'] = $pageinfo;
         }
 
         if ($page + 1 != $lastpage) {
-            $result['next'] = $page + 1;
+            $pageinfo = array('label' => '>', 'url' => $baseurl . $symbol . 'page=' . ($page + 1) . '#main');
+            $result['next'] = $pageinfo;
         }
     }
 

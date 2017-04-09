@@ -4,19 +4,20 @@
 <div id="main" class="new edit-forms">
     <h1 class="caption w3-container w3-xxlarge">Новости</h1>
     <div class="w3-row textrow1 w3-container ">
-        <form method="post">
+        <form method="post" enctype="multipart/form-data">
+            {% if id %}
             <input type="hidden" name="id" value="{{ id }}">
+            {% else %}
+            <input type="hidden" name="context" value="{{ context }}">
+            {% endif %}
 
-            <p class="bold w3-large">Заголовок новости</p>
+            <p class="bold w3-large">Заголовок новости:</p>
             {% if errors.name %}
             <div>
-                Вы не добавили заголовок новости
+                Вы не указали заголовок новости
             </div>
             {% endif %}
-            <div class="edit-textarea-name">
-                <textarea name="name">{{ params.name|raw }}</textarea>
-            </div>
-
+            <input type="text" name="name" value="{{ params.name|raw }}">
 
             <p class="bold w3-large">Краткое описание новости:</p>
             {% if errors.content %}
@@ -28,16 +29,10 @@
                 <textarea name="content">{{ content|raw }}</textarea>
             </div>
 
-
-            <p class="bold w3-large">Картинка новости</p>
-            {% if errors.image %}
-            <div>
-                Вы не указали картинку новости
-            </div>
-            {% endif %}
+            {% if not id %}
+            <p class="bold w3-large">Картинка новости:</p>
             <input type="file" class="form-control" name="image" id="image">
-
-
+            {% endif %}
 
             <p class="bold w3-large">Подробное описание новости:</p>
             {% if errors.fulltext %}
@@ -48,6 +43,7 @@
             <div class="edit-textarea">
                 <textarea name="fulltext" class="tiny">{{ params.fulltext|raw }}</textarea>
             </div>
+
             <div class="button-container-logout w3-container">
                 <button type="submit" name="cancel">Отмена</button>
                 <button type="submit" name="accept">Подтвердить</button>
@@ -55,84 +51,4 @@
         </form>
     </div>
 </div>
-
-<!--
-<div id="main" class="new edit-forms"  style="background-image: url({{ wwwroot }}/images/museum_img.png); background-repeat: no-repeat;background-position: 790px 55px;">
-    <h1 class="caption w3-container w3-xxlarge">События в музее</span></h1>
-    <div class="w3-row textrow1 w3-container ">
-        <p class="bold w3-large"><label for="">Название новости:</label></p>
-        <input type="text" value="В предверии дня защитника Отечества прошло традиционное заседание"/>
-        
-        <label for="image">Изображение:</label>
-        <input type="file" class="form-control" name="image" id="image">
-        
-        <p class="bold w3-large"><label>Текст новости:</label></p>
-        <!-- стили убрать -->
-
-<!--
-        <textarea style="width: 100%; min-height:250px;  margin-top:10px; margin-bottom:10px" >Торжество открыл ректор Сибирского государственного индустриального университета, профессор Евгений Валентинович Протопопов. Почетными гостями мероприятия стали такие известные  люди города Новокузнецка, как Юрий Павлович Алябьев – полковник, ветеран войны в Афганистане, председатель комитета ветеранов войны и военной службы г. Новокузнецк; Александр Петрович Селезнев – капитан I ранга, член городского комитета ветеранов войны и военной службы; Клобуков Сергей Михайлович - полковник, бывший заместитель начальника военной кафедры СибГИУ, начальник охраны объекта СибГИУ; Виктор Васильевич Похомов  - подполковник, начальник отдела комплексной безопасности.С поздравлениями и приветственной речью выступил ректор СибГИУ, профессор Е.В. Протопопов. Он сказал напутственное слово студентам, в будущем - молодым специалистам и защитникам Отечества. Присутствующих поздравили  гости университетского праздника - офицеры Российской Армии. Они отметили значимость праздника – Дня защитника Отечества для России, подчеркнув, что аналогов мужского  праздника Защитника  не существует больше ни в одной стране. Русский человек всегда был патриотом, служил Отечеству и защищал его в лихую годину.Впервые во время торжественного заседания был вручен кубок за строевую подготовку отрядов. По результатам проведенного конкурса строя и песни, определился отряд-победитель, который выделился по некоторым критериям конкурса (строевой марш, строевая песня, отчет командира командующему парадом). Победителем стал студенческий отряд охраны правопорядка «Атлант»! Бурные аплодисменты были еще одной наградой за победу. Завоеванный кубок обещает стать переходящим кубком ректора СибГИУ.
-        </textarea> 
-    </div>
-    <div class="button-container-logout w3-container">
-        <button type="submit">Отмена</button>
-        <button type="submit">Подтвердить</button>
-    </div>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-<form enctype="multipart/form-data" method="post">
-    <input type="hidden" name="id" value="{{ id }}">
-    <input type="hidden" name="context" value="books">
-    <div class="form-group row">
-        <label for="name" class="col-sm-2 col-form-label">Название</label>
-        <div class="col-sm-10">
-            <input class="form-control" name="name" id="name" value="{{ name|raw }}">
-        </div>
-    </div>
-    {% if id is defined %}
-    <div class="form-group row">
-        <label class="offset-sm-2 col-sm-10">Оставьте поле "Обложка" пустым, чтобы не изменять файл</label>
-    </div>
-    {% endif %}
-    <div class="form-group row">
-        <label for="image" class="col-sm-2 col-form-label">Обложка</label>
-        <div class="col-sm-10">
-            <input type="file" class="form-control" name="image" id="image">
-        </div>
-    </div>
-    <div class="form-group row">
-        <label for="author" class="col-sm-2 col-form-label">Автор</label>
-        <div class="col-sm-10">
-            <input class="form-control" name="author" id="author" value="{{ author|raw }}">
-        </div>
-    </div>
-    <div class="form-group row">
-        <label for="abstract" class="col-sm-2 col-form-label">Аннотация</label>
-        <div class="col-sm-10">
-            <textarea class="form-control" name="abstract" id="abstract">{{ abstract|raw }}</textarea>
-        </div>
-    </div>
-    <div class="form-group row">
-        <label for="content" class="col-sm-2 col-form-label">Контент</label>
-        <div class="col-sm-10">
-            <textarea class="form-control" name="content" id="content">{{ content|raw }}</textarea>
-        </div>
-    </div>
-    <div class="form-group row">
-        <div class="offset-sm-2 col-sm-10">
-            <button type="submit" class="btn btn-primary" name="auth">Подтвердить</button>
-        </div>
-    </div>
-</form>
-
--->
 {% endblock %}

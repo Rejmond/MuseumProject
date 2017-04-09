@@ -10,34 +10,34 @@
 
     <h2 class="bold w3-container">Новости музея</h2>
     <div class="w3-row">
+        {% for new in news|slice(0, 2) %}
         <div class="quarter-to-2">
             <div class="w3-quarter w3-container quarttohalf">
-                <div class="imgBox2"><img src="images/2-1.jpg"></div>
-                <a href="{{ wwwroot }}/entity.php?context=new#main"><p class="bold w3-large">В предверии дня защитника Отечества прошло традиционное заседание gggggggggggggg g ggggggg ggggggggg ggggggggg fffff ffff</p></a>
-                <p class="lightGrey text2">22.02.2017</p>
-                <p>Традиционное торжественное заседание, посвященное празднованию Дня защитника Отечества, состоялось в  этом году 20 февраля в восьмой поточной аудитории.</p>
-            </div>
-            <div class="w3-quarter w3-container quarttohalf">
-                <div class="imgBox2"><img src="images/2-2.jpg"></div>
-                <a href="{{ wwwroot }}/entity.php?id={$entities[$i]['id']}"><p class="bold w3-large">Итоги конкурса рисунков среди старшеклассников "Мой город золотой"</p></a>
-                <p class="lightGrey text2">22.02.2017</p>
-                <p>В ФГБОУ ВО «Сибирский государственный индустриальный университет» (СибГИУ) подведены итоги конкурса рисунков «МОЙ ГОРОД ЗОЛОТОЙ…», который проводился для старшеклассников общеобразовательных организаций...</p>
+                <div class="imgBox2">
+                    {% if new.files.image %}
+                    <img src="{{ wwwroot }}/file.php?id={{ new.files.image }}">
+                    {% endif %}
+                </div>
+                <a href="{{ wwwroot }}/entity.php?id={{ new.id }}&returnurl={{ current_url|url_encode }}#main"><p class="bold w3-large">{{ new.params.name }}</p></a>
+                <p class="lightGrey text2">{{ new.date|raw|date("d.m.Y H:i") }}</p>
+                <p>{{ new.content }}</p>
             </div>
         </div>
+        {% endfor %}
+        {% for new in news|slice(2, 2) %}
         <div class="quarter-to-2">
             <div class="w3-quarter w3-container quarttohalf">
-                <div class="imgBox2"><img src="images/2-3.jpg"></div>
-                <a href="{{ wwwroot }}/entity.php?context=new#main"><p class="bold w3-large">Губернаторский приём в честь Дня Российской науки</p></a>
-                <p class="lightGrey text2">13.02.2017</p>
-                <p>В Кемерово состоялся традиционный  торжественный Губернаторский прием  в честь  Дня российской науки, на который были приглашены учёные со всех уголков региона. В мероприятии приняли участие руководитель федерального ...</p>
-            </div>
-            <div class="w3-quarter w3-container quarttohalf">
-                <div class="imgBox2"><img src="images/2-4.jpg"></div>
-                <a href="{{ wwwroot }}/entity.php?context=new#main"><p class="bold w3-large">Профсоюз СИбГИУ: эффективное партнерство и защита прав</p></a>
-                <p class="lightGrey text2">11.02.2017</p>
-                <p>Состоялась  конференция Первичной организации СибГИУ Профсоюза работников образования и науки РФ. С докладом выступила председатель профсоюзной организации вуза Л.А.Ганзер. В 2016 году показатели ППО значительно улучшились.</p>
+                <div class="imgBox2">
+                    {% if new.files.image %}
+                    <img src="{{ wwwroot }}/file.php?id={{ new.files.image }}">
+                    {% endif %}
+                </div>
+                <a href="{{ wwwroot }}/entity.php?id={{ new.id }}&returnurl={{ current_url|url_encode }}#main"><p class="bold w3-large">{{ new.params.name }}</p></a>
+                <p class="lightGrey text2">{{ new.date|raw|date("d.m.Y H:i") }}</p>
+                <p>{{ new.content }}</p>
             </div>
         </div>
+        {% endfor %}
     </div>
     <div class="allpubs w3-container"><a href="{{ wwwroot }}/entities.php?context=news#main">ВСЕ НОВОСТИ</a></div>
 
@@ -95,12 +95,6 @@
 
     <h2 class="bold w3-container">Геологический музей</h2>
     <div class="w3-row">
-        <div class="w3-container w3-half quarttohalf w3-margin-bottom">
-            <div><img style='display:inline-block;  float:left; margin: 0 auto; width: 100%; ' src="images/geology.jpg"></div>
-        </div>
-        <div class="w3-container w3-half quarttohalf  w3-margin-bottom">
-            <div><img style='display:inline-block;  float:left; margin: 0 auto; width: 100%;' src="images/geology-2.jpg"></div>
-        </div>
         <p class="w3-container">
             {{ geologic }}
         </p>

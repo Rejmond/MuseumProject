@@ -35,14 +35,14 @@ class ContentManager
         return $record;
     }
 
-    public static function get_entities($context, array $conditions = array())
+    public static function get_entities($context, array $conditions = array(), $orderby = null, $offset = null, $limit = null)
     {
         global $DB;
         if (!empty($conditions)) {
             $sql = 'SELECT e.id, COUNT(e.id) AS temp
                       FROM entities e
                 INNER JOIN params p ON e.id = p.entity
-                     WHERE e.context = :context';
+                     WHERE e.context = :context ';
             $keys = array_keys($conditions);
             $args = array_map(function ($e) {
                 global $DB;
@@ -54,6 +54,21 @@ class ContentManager
             $sql = 'SELECT id
                       FROM entities
                      WHERE context = :context';
+        }
+
+        $sql = 'SELECT *
+                  FROM entities e
+                  JOIN (' . $sql . ') j ON e.id = j.id ';
+        if ($orderby) {
+            $sql .= "$orderby ";
+        }
+        if ($limit) {
+            $sql .= "LIMIT :limit ";
+            $conditions['limit'] = $limit;
+        }
+        if ($offset) {
+            $sql .= "OFFSET :offset ";
+            $conditions['offset'] = $offset;
         }
 
         $result = array();

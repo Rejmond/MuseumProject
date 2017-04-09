@@ -38,7 +38,7 @@ $CONFIG->entities = array(
         'entity_template' => 'new.html',
         'entities_template' => 'news.html',
         'content_type' => PARAM_NOTAGS,
-        'date' => time(),
+        'perpage' => 2,
         'params' => array(
             'name' => array(
                 'required' => true,
@@ -48,12 +48,6 @@ $CONFIG->entities = array(
                 'required' => true,
                 'type' => PARAM_RAW,
             ),
-            /*
-            'date' => array(
-                'required' => true,
-                'type' => PARAM_DATE,
-            ),
-            */
         ),
         'attachments' => array(
             'image' => array(

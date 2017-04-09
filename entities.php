@@ -7,33 +7,35 @@ validate_context($context);
 if (is_singleton_context($context)) {
     die();
 }
+$page = optional_param('page', 0);
 
-$args = array();
+/*$args = array();
 switch ($context) {
-    case 'books':
-        if ($author = optional_param('author', null)) {
-            $args['author'] = $author;
-            //$args['abstract'] = 'Книга 1';
-        }
     case 'news':
         if ($name = optional_param('name', null)) {
             $args['name'] = $name;
             //$args['abstract'] = 'Книга 1';
         }
-}
+        break;
+}*/
 
-$entities = ContentManager::get_entities($context, $args);
+$total = $DB->count_records('entities', array('context' => $context));
+$perpage = isset($CONFIG->entities[$context]['perpage']) ? $CONFIG->entities[$context]['perpage'] : 10;
+$lastpage = ceil($total / $perpage);
+if ($page >= $lastpage) $page = $lastpage - 1;
+$entities = ContentManager::get_entities($context, array(), "ORDER BY date DESC", $page * $perpage, $perpage);
 
 $objects = array();
 for ($i = 0; $i < count($entities); $i++) {
     $objects[$i] = EntityManager::get_object($entities[$i]['id']);
-    $objects[$i]['edit_link'] = "{$CONFIG->wwwroot}/admin/edit.php?id={$entities[$i]['id']}";
-    $objects[$i]['delete_link'] = "{$CONFIG->wwwroot}/admin/delete.php?id={$entities[$i]['id']}";
-    $objects[$i]['link'] = "{$CONFIG->wwwroot}/entity.php?id={$entities[$i]['id']}";
 }
 
 $model = get_base_model();
-$model['add_link'] = "{$CONFIG->wwwroot}/admin/add.php?context=$context";
+$model['title'] = 'Список элементов';
+$model['context'] = $context;
 $model['entities'] = $objects;
+
+$baseurl = "$CONFIG->wwwroot/entities.php?context=$context";
+$model['pages'] = pagination($baseurl, $total, $page, $perpage);
 
 echo $Twig->render(get_entities_template($context), $model);

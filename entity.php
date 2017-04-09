@@ -11,10 +11,11 @@ if ($context) {
 }
 
 $object = EntityManager::get_object($entity_id);
-if (!$object) die(); // Записи не существует
+if (!$object) die();
 
 $model = get_base_model();
 $model['title'] = 'Информация об элементе';
+$model['returnurl'] = optional_param('returnurl', "{$CONFIG->wwwroot}/entities.php?context={$object['context']}");
 $model['entity'] = $object;
 
 echo $Twig->render(get_entity_template($model['entity']['context']), $model);
