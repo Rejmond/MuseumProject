@@ -109,7 +109,7 @@ footer {
     text-align: center;
     max-width: 100%;
     margin: 0 auto;
-    font-family: "OpenSans-Light";
+    font-family: "OpenSans-Light", sans-serif;
     z-index: 1;
 }
 footer a:link{
@@ -134,7 +134,7 @@ footer a:active{
     text-decoration: none;
 }
 h1 {
-    font-family: "Acrom-Bold";
+    font-family: "Acrom-Bold", sans-serif;
     font-size: 60px;
     padding-top: 65px !important;
     padding-bottom: 45px !important; 
@@ -153,7 +153,7 @@ h2 {
     background: #b8e4ff; /* Gecko Browsers */
 }
 .bold {
-    font-family: "OpenSans-Bold";
+    font-family: "OpenSans-Bold", sans-serif;
 }
 /* отключаем красную рамку для input moz */
 input:invalid {
@@ -217,7 +217,7 @@ input:invalid {
 header p {
     font-size: 24px;
     text-align: center;
-    font-family: "Acrom-Bold";
+    font-family: "Acrom-Bold", sans-serif;
     margin-bottom: -8px;
     margin-top:-8px;
 }
@@ -273,7 +273,7 @@ footer .bold {
     margin-bottom: 0px;
 }
 .fowhite {
-    font-family: "OpenSans-Regular";
+    font-family: "OpenSans-Regular", sans-serif;
 }
 .footerbefore2 {
     margin-top: 30px;
@@ -282,13 +282,13 @@ footer .bold {
     margin-top: -2px;
 }
 .footersiu {
-    font-family: 'MinionPro-Medium'; 
+    font-family: 'MinionPro-Medium', sans-serif; 
     font-size: 14pt;
     margin-top: 22px;
 }
 .foexcurcio {
     color: #989797;
-    font-family: "OpenSans-Bold";
+    font-family: "OpenSans-Bold", sans-serif;
 }
 .footersiuimg {
     width: 235px;
@@ -316,7 +316,7 @@ footer .bold {
     overflow: hidden;
     position: absolute;
     top:100vh;
-    font-family: "OpenSans-Light";
+    font-family: "OpenSans-Light", sans-serif;
 }
 /* выравнивание высоты ссылок */
 .mynav a{
@@ -335,7 +335,7 @@ footer .bold {
 /* активный элемент меню */
 .active {
     border-right: 3px solid black; 
-    font-family: 'OpenSans-bold';
+    font-family: 'OpenSans-bold', sans-serif;
 }
 ul {
     margin-top: 0; 
@@ -361,7 +361,7 @@ ul > ul li a{
     margin-bottom: 6px !important;
 }
 .sub-menu{
-    font-family: 'OpenSans-Regular';
+    font-family: 'OpenSans-Regular', sans-serif;
 }
 
 li {list-style-type: none;}
@@ -424,7 +424,7 @@ main .notflow p {
 }
 /* светлый текст авторы, даты публикации*/
 .lightGrey {
-    font-family: "OpenSans-Regular";
+    font-family: "OpenSans-Regular", sans-serif;
     color: #989797;
 }
 /* h1 - текст справа зеркальный иностранный*/
@@ -435,7 +435,7 @@ main .notflow p {
 
 /* обёртка на ссылку ВСЕ ...  страницы 2 уровня*/
 .allpubs {
-    font-family: "OpenSans-Regular";
+    font-family: "OpenSans-Regular", sans-serif;
     text-align:right;
     margin-bottom: 30px;
     margin-top: 30px;
@@ -656,7 +656,7 @@ main .notflow p {
     header p {
         font-size: 18px;
         text-align: center;
-        font-family: "Acrom-Bold";
+        font-family: "Acrom-Bold", sans-serif;
         margin-bottom: -8px;
         margin-top:-8px;
     }
@@ -688,7 +688,7 @@ main .notflow p {
 
 /*НОВЫЕ КЛАССЫ */
 .about {
-    font-family: "OpenSans-Light";
+    font-family: "OpenSans-Light", sans-serif;
     font-size: 18px;
     line-height: 28px;
 }
@@ -833,7 +833,7 @@ h2:after {
 
 
 .more {
-    font-family: "OpenSans-Regular";
+    font-family: "OpenSans-Regular", sans-serif;
     text-align:right;
     margin-bottom: 15px;
     margin-top: 15px;
@@ -847,7 +847,7 @@ h2:after {
 
 .to-begin
 {
-    font-family: "OpenSans-Regular";
+    font-family: "OpenSans-Regular", sans-serif;
     text-align:center;
     font-size: 16px;
 }
@@ -871,7 +871,7 @@ h2:after {
 
 .to-back
 {
-    font-family: "OpenSans-Regular";
+    font-family: "OpenSans-Regular", sans-serif;
     text-align:right;
     margin-top: 18px;
     font-size: 16px;
@@ -882,7 +882,7 @@ h2:after {
     margin-bottom: 30px;
     margin-left: 14px;
 
-    font-family: "Acrom-Bold";
+    font-family: "Acrom-Bold", sans-serif;
     /*font-family: "MinionPro-Bold";*/
     color: #007bc6;
     font-size: 44px;
@@ -1182,7 +1182,7 @@ table td
     font-size: 20px;
     color: #007bc6;
     margin-top:0px;
-    font-family: "OpenSans-Regular";
+    font-family: "OpenSans-Regular", sans-serif;
 }
 
 

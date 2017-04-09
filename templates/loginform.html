@@ -23,7 +23,7 @@
             </div>
             {% endif %}
             <div class="input-container">
-                <input type="password" id="password" name="password" autocomplete="off" required="required" />
+                <input type="password" id="password" name="password" readonly onfocus="this.removeAttribute('readonly')"  required="required" />
                 <label>Введите пароль</label>
                 <div class="bar"></div>
             </div>
