@@ -10,8 +10,8 @@
 
     <h2 class="bold w3-container">Новости музея</h2>
     <div class="w3-row">
+        <div class="quarter-to-2">
         {% for new in news|slice(0, 2) %}
-        <div class="quarter-to-2">
             <div class="w3-quarter w3-container quarttohalf">
                 <div class="imgBox2">
                     {% if new.files.image %}
@@ -22,10 +22,10 @@
                 <p class="lightGrey text2">{{ new.date|raw|date("d.m.Y H:i") }}</p>
                 <p>{{ new.content }}</p>
             </div>
-        </div>
         {% endfor %}
+        </div>
+        <div class="quarter-to-2">
         {% for new in news|slice(2, 2) %}
-        <div class="quarter-to-2">
             <div class="w3-quarter w3-container quarttohalf">
                 <div class="imgBox2">
                     {% if new.files.image %}
@@ -36,8 +36,8 @@
                 <p class="lightGrey text2">{{ new.date|raw|date("d.m.Y H:i") }}</p>
                 <p>{{ new.content }}</p>
             </div>
-        </div>
         {% endfor %}
+        </div>
     </div>
     <div class="allpubs w3-container"><a href="{{ wwwroot }}/entities.php?context=news#main">ВСЕ НОВОСТИ</a></div>
 
