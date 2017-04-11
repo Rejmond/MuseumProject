@@ -736,20 +736,20 @@ h2:after {
     color: #494952;
 }
 
-/* надстройка изображений для новостей */
-.news .imgBox2 {
+/* надстройка изображений для новостей и выставок */
+.news .imgBox2, .exhibitions .imgBox2 {
     height: 400px;
     max-width:800px;
     margin: 0 auto;
 }
 
-.new .imgBox2 {
+.new .imgBox2, .exhibition .imgBox2 {
     max-width:200px;
 
     float: left; 
     margin: 10px 20px 10px 0px;
 
-} 
+}
 
 
 

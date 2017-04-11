@@ -49,10 +49,11 @@ class EntityManager
                     $errors[$paramname] = 'required';
                 } else if ($file) {
                     if ($image) {
-                        try {
-                            $size = isset($options['size']) ? $options['size'] : array(100, 100);
-                            resize_image($file['tmp_name'], $size[0], $size[1]);
-                        } catch (InvalidFileException $e) {
+                        if (AcImage::isFileImage($file['tmp_name'])) {
+                            if (isset($options['size'])) {
+                                resize_image($file['tmp_name'], $options['size'][0], $options['size'][1]);
+                            }
+                        } else {
                             $errors[$paramname] = 'required';
                             continue;
                         }
@@ -117,10 +118,11 @@ class EntityManager
                 $image = isset($options['image']) ? $options['image'] === true : false;
                 if ($file) {
                     if ($image) {
-                        try {
-                            $size = isset($options['size']) ? $options['size'] : array(100, 100);
-                            resize_image($file['tmp_name'], $size[0], $size[1]);
-                        } catch (InvalidFileException $e) {
+                        if (AcImage::isFileImage($file['tmp_name'])) {
+                            if (isset($options['size'])) {
+                                resize_image($file['tmp_name'], $options['size'][0], $options['size'][1]);
+                            }
+                        } else {
                             $errors[$paramname] = 'required';
                             continue;
                         }
@@ -205,11 +207,11 @@ class EntityManager
 
         $image = isset($options['image']) ? $options['image'] === true : false;
         if ($image) {
-            try {
-                $size = isset($options['size']) ? $options['size'] : array(100, 100);
-                resize_image($file['tmp_name'], $size[0], $size[1]);
-            }
-            catch(InvalidFileException $e) {
+            if (AcImage::isFileImage($file['tmp_name'])) {
+                if (isset($options['size'])) {
+                    resize_image($file['tmp_name'], $options['size'][0], $options['size'][1]);
+                }
+            } else {
                 return false;
             }
         }

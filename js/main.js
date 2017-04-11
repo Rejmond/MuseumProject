@@ -51,6 +51,27 @@ $(function () {
 
     var currentPage = $("#main").attr("class").replace(" edit-forms", "");
     if (currentPage != "museum" && currentPage != "history") {
+        switch (currentPage) {
+            case "new":
+            case "exhibition":
+                currentPage += 's';
+                break;
+        }
+        $('#' + currentPage).addClass('sub-menu').find('span').css('color', '#494952');
+    }
+
+    var museum =  ["museum" , "museumabout", "news", "new", "exhibitions", "exhibition", "geologic"];
+    var history = ["history", "books", "book"];
+    if ($.inArray(currentPage, museum) >= 0) {
+        $('#museum').addClass('active');
+        $('#museumnav').show();
+    }
+    if ($.inArray(currentPage, history) >= 0) {
+        $('#history').addClass('active');
+        $('#historynav').show();
+    }
+    
+    /*if (currentPage != "museum" && currentPage != "history") {
         if (currentPage == "book") {
             currentPage = "books";
         }
@@ -75,7 +96,7 @@ $(function () {
     else if (currentPage == "history" || currentPage == "books" || currentPage == "book") {
         $('#history').addClass('active');
         $('#historynav').css({display: 'block'});
-    }
+    }*/
 
     $('#mouse').delay(3000).animate(
         {
