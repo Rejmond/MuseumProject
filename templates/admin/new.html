@@ -31,6 +31,11 @@
 
             {% if not id %}
             <p class="bold w3-large">Картинка новости:</p>
+            {% if errors.image %}
+            <div>
+                Прикрепленный файл не являлся изображением
+            </div>
+            {% endif %}
             <input type="file" class="form-control" name="image" id="image">
             {% endif %}
 

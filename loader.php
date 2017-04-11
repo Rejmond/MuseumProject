@@ -59,7 +59,7 @@ $CONFIG->entities = array(
             'photos' => array(
                 'required' => false,
                 'image' => true,
-                'size' => array(400, 200),
+                //'size' => array(400, 200),
                 'list' => true,
             ),
         )
