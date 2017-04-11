@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div id="main" class="exhibition">
+    <h1 class="caption w3-container w3-xxlarge">События в музее</span></h1>
+    <div class="w3-row textrow1 w3-container ">
+        <p class="bold w3-large w3-margin-0">
+            {{ entity.params.name|raw }}
+        </p>
+        {% if admin %}
+        <div class="p-to-form">
+            <a href="{{ wwwroot }}/admin/edit.php?id={{ entity.id }}#main"><img src="images/edit.png" /></a>
+            <a href="{{ wwwroot }}/admin/delete.php?id={{ entity.id }}#main"><img src="images/delete.png" /></a>
+        </div>
+        {% endif %}
+        <p class="lightGrey text2">{{ entity.params.interval }}</p>
+    </div>
+    <div class="post-tiny w3-container">
+        {{ entity.params.fulltext|raw }}
+    </div>
+    <div>
+        {% for photo in entity.files.photos %}
+            <div>
+                <img src="{{ wwwroot }}/file.php?id={{ photo }}">
+                {% if admin %}
+                <form method="post" enctype="multipart/form-data" action="{{ wwwroot }}/admin/delfile.php">
+                    <input type="hidden" name="id" value="{{ photo }}">
+                    <input type="submit" name="add" value="Удалить фотографию">
+                </form>
+                {% endif %}
+            </div>
+        {% endfor %}
+        {% if admin %}
+        <form method="post" enctype="multipart/form-data" action="{{ wwwroot }}/admin/addfile.php">
+            <input type="hidden" name="id" value="{{ entity.id }}">
+            <input type="hidden" name="filearea" value="photos">
+            <input type="file" name="file">
+            <input type="submit" name="add" value="Добавить фотографию">
+        </form>
+        {% endif %}
+    </div>
+    <div class="to-back"><a href="{{ returnurl }}#main">Назад</a></div>
+</div>
+{% endblock %}

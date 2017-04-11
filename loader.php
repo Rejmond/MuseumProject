@@ -64,6 +64,40 @@ $CONFIG->entities = array(
             ),
         )
     ),
+    'exhibitions' => array(
+        'entity_template' => 'theme.html',
+        'entities_template' => 'themes.html',
+        'content_type' => PARAM_NOTAGS,
+        'perpage' => 2,
+        'params' => array(
+            'name' => array(
+                'required' => true,
+                'type' => PARAM_NOTAGS,
+            ),
+            'interval' => array(
+                'required' => true,
+                'type' => PARAM_NOTAGS,
+            ),
+            'fulltext' => array(
+                'required' => true,
+                'type' => PARAM_RAW,
+            ),
+        ),
+        'attachments' => array(
+            'image' => array(
+                'required' => false,
+                'image' => true,
+                'size' => array(400, 300),
+                'list' => false,
+            ),
+            'photos' => array(
+                'required' => false,
+                'image' => true,
+                //'size' => array(400, 200),
+                'list' => true,
+            ),
+        )
+    ),
 );
 
 require_once($CONFIG->dirroot . '/Twig/Autoloader.php');
