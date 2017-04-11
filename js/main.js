@@ -91,16 +91,49 @@ $(function () {
 
     tinymce.init({
         selector: '.tiny', plugins: 'link image',
-        language: 'ru', file_browser_callback: RoxyFileBrowser
+        language: 'ru', file_browser_callback: RoxyFileBrowser,
+        style_formats: [
+            {title: 'Цвет текста', items: [
+                {title: 'Основной', inline: 'span', styles:{'color': '#494952'}},
+                {title: 'Серый светлый', inline: 'span', styles:{'color': '#989797'}},
+                {title: 'Синий Сибгиу', inline: 'span', styles:{'color': '#007bc6'}}
+            ]},
+            {title: 'Headers', items: [
+                {title: 'Header 3', block: 'h3', styles:{'color': '#ff0000', 'font-size': '32px' }},
+                {title: 'Header 4', format: 'h4'},
+                {title: 'Header 5', format: 'h5'}
+            ]},
+            {title: 'Inline', items: [
+                {title: 'Bold', icon: 'bold', format: 'bold'},
+                {title: 'Italic', icon: 'italic', format: 'italic'},
+                {title: 'Underline', icon: 'underline', format: 'underline'},
+                {title: 'Strikethrough', icon: 'strikethrough', format: 'strikethrough'},
+                {title: 'Superscript', icon: 'superscript', format: 'superscript'},
+                {title: 'Subscript', icon: 'subscript', format: 'subscript'},
+                {title: 'Code', icon: 'code', format: 'code'}
+            ]},
+            {title: 'Blocks', items: [
+                {title: 'Paragraph', format: 'p'},
+                {title: 'Blockquote', format: 'blockquote'},
+                {title: 'Div', format: 'div'},
+                {title: 'Pre', format: 'pre'}
+            ]},
+            {title: 'Alignment', items: [
+                {title: 'Left', icon: 'alignleft', format: 'alignleft'},
+                {title: 'Center', icon: 'aligncenter', format: 'aligncenter'},
+                {title: 'Right', icon: 'alignright', format: 'alignright'},
+                {title: 'Justify', icon: 'alignjustify', format: 'alignjustify'}
+            ]}
+        ]
     });
 
 });
 
 
 function imageTransfiguration() {
-    $('main .imgBox2 img').each(function () {
-        var maxWidth = $('.imgBox2').width();
-        var maxHeight = $('.imgBox2').height();
+    $('main .imgBox2 img, main .imgBox1 img').each(function () {
+        var maxWidth = $('.imgBox2, .imgBox1').width();
+        var maxHeight = $('.imgBox2, .imgBox1').height();
         var ratio = 0;
         var width = $(this).width();
         var height = $(this).height();
@@ -120,7 +153,7 @@ function imageTransfiguration() {
             width = width * ratio;
         }
 
-        var center = $('.imgBox2'),
+        var center = $('.imgBox2, .imgBox1'),
             imgPos = $(this, center),
             imgW = imgPos.width();
         imgH = imgPos.height();
@@ -131,7 +164,6 @@ function imageTransfiguration() {
 
     });
 }
-
 
 function ChangePosition() {
 
