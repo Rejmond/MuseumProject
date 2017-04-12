@@ -1,8 +1,8 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<div id="main" class="news" data-location="news">
-    <h1 class="caption w3-container w3-xxlarge">Новости музея</h1>
+<div id="main" class="exhibitions" data-location="exhibitions">
+    <h1 class="caption w3-container w3-xxlarge">Тематические выставки</span></h1>
     {% if admin %}
     <div class="h1-to-form w3-container">
         <a href="{{ wwwroot }}/admin/add.php?context={{ context }}#main"><button type="submit"><img src="images/add.png" /></button></a>
@@ -21,7 +21,7 @@
         </div>
         {% endif %}
         <p class="lightGrey text2 date">
-            {{ entity.date|date("d.m.Y H:i") }}
+            {{ entity.params.interval }}
         </p>
         <p>
             {{ entity.content|raw }}

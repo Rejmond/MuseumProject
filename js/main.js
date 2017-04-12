@@ -51,35 +51,29 @@ $(function () {
 
     var currentPage = $("#main").data("location");
     if (currentPage != "museum" && currentPage != "history") {
-        if (currentPage == "book") {
-            currentPage = "books";
-        }
-        if (currentPage == "new") {
-            currentPage = "news";
-        }
-        if (currentPage == "museumabout") {
-            currentPage = "museumabout";
-        }
-        if (currentPage == "geologic") {
-            currentPage = "geologic";
+        switch (currentPage) {
+            case "new":
+            case "exhibition":
+                currentPage += 's';
+                break;
         }
         $('#' + currentPage).addClass('sub-menu').find('span').css('color', '#494952');
     }
 
-
-    if (currentPage == "museum" || currentPage == "news" || currentPage == "new" || currentPage == "museumabout" ||
-        currentPage == "geologic") {
+    var museum =  ["museum" , "museumabout", "news", "new", "exhibitions", "exhibition", "geologic"];
+    var history = ["history", "books", "book"];
+    if ($.inArray(currentPage, museum) >= 0) {
         $('#museum').addClass('active');
-        $('#museumnav').css({display: 'block'});
+        $('#museumnav').show();
     }
-    else if (currentPage == "history" || currentPage == "books" || currentPage == "book") {
+    if ($.inArray(currentPage, history) >= 0) {
         $('#history').addClass('active');
-        $('#historynav').css({display: 'block'});
+        $('#historynav').show();
     }
 
     $('#mouse').delay(3000).animate(
         {
-            opacity: 0.5,
+            opacity: 0.5
         }, 1000, function () {
             loop()
         });
@@ -144,8 +138,8 @@ function imageTransfiguration() {
             $(this).css("height", height * ratio);
             height = height * ratio;
         }
-        var width = $(this).width();
-        var height = $(this).height();
+        width = $(this).width();
+        height = $(this).height();
         if (width / maxWidth > height / maxHeight) {
             ratio = maxHeight / height;
             $(this).css("height", maxHeight);
@@ -180,13 +174,8 @@ function ChangePosition() {
     }
 
     var hHeight = $('header').outerHeight();
-
     var scroll_top = $(this).scrollTop(); // get scroll position top
-
     var height_element_parent = $("main").outerHeight(); //get high parent element
-
-    var height_element = $(target).outerHeight(); //get high of elemeneto
-
     var position_fixed_max = height_element_parent; //- height_element; // get the maximum position of the elemen
 
     if (scroll_top < hHeight) {
@@ -198,17 +187,17 @@ function ChangePosition() {
         if (position_fixed_max > scroll_top) {
             $(target).css("position", "fixed");
             $('.mynav').css('height', $(window).height());
-            var position_fixed = 0;
+            position_fixed = 0;
         }
         else {
             $(target).css("position", "absolute");
 
             if ($('main').height() <= $(window).height()) {
-                var position_fixed = hHeight;
+                position_fixed = hHeight;
                 $('.mynav').css('height', height_element_parent);
             }
             else {
-                var position_fixed = position_fixed_max;
+                position_fixed = position_fixed_max;
                 $('.mynav').css('height', $(window).height());
             }
         }
@@ -222,7 +211,7 @@ $(window).scroll(function () {
     ChangePosition();
 });
 
-$(window).resize(function (event) {
+$(window).resize(function () {
     ChangePosition();
     imageTransfiguration();
     tinyImgSize();
@@ -237,7 +226,7 @@ function w3_open() {
 function w3_close() {
     $('#openNav').css({display: 'inline-block'});
     $('#main').css({marginLeft: '0%'});
-    $('.mynav').animate({left: -300,}, 350, 'easeInCubic',
+    $('.mynav').animate({left: -300}, 350, 'easeInCubic',
         function () {
             $(this).css({display: "none", left: 0});
         });
@@ -250,7 +239,7 @@ function scrollToTitle() {
 
 $(window).resize(function () {
     var mainPosition = $("#main").offset();
-    width = $(window).width();
+    var width = $(window).width();
     if (width >= 1840) {
         $(".mynav").css({marginLeft: mainPosition.left - 320});
     }
@@ -270,10 +259,7 @@ function loop() {
         {
             opacity: 0.5,
             top: spTop
-        });
-
-    $('#scroll_btn')
-        .animate(
+        }).animate(
             {
                 opacity: 0.0,
                 top: spTop + 15

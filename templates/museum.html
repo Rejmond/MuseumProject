@@ -58,35 +58,35 @@
     <h2 class="bold w3-container">Тематические выставки</h2>
     <div class="w3-row">
         <div class="quarter-to-2">
+            {% for exhibition in exhibitions|slice(0, 2) %}
             <div class="w3-quarter w3-container quarttohalf">
-                <div class="imgBox2"><img src="images/4-1.jpg"></div>
-                <a href="new.html#main"><p class="bold w3-large">Выставка фотографий в блоке поточных аудиторий</p></a>
-                <p class="lightGrey text2">22.02.2017-16.05.17</p>
-                <p>С такого-то по такое-то будет проведена выставка фотографий в блоке поточных аудиторий. Иначе говоря, в блоке поточных аудиторий пройдёт выставка с фотографиями.</p>
+                <div class="imgBox2">
+                    {% if exhibition.files.image %}
+                    <img src="{{ wwwroot }}/file.php?id={{ exhibition.files.image }}">
+                    {% endif %}
+                </div>
+                <a href="{{ wwwroot }}/entity.php?id={{ exhibition.id }}&returnurl={{ current_url|url_encode }}#main"><p class="bold w3-large">{{ exhibition.params.name }}</p></a>
+                <p class="lightGrey text2">{{ exhibition.params.interval }}</p>
+                <p>{{ exhibition.content }}</p>
             </div>
-            <div class="w3-quarter w3-container quarttohalf">
-                <div class="imgBox2"><img src="images/4-2.jpg"></div>
-                <a href="new.html#main"><p class="bold w3-large">Выставка к юбилею университета</p></a>
-                <p class="lightGrey text2">16.04.2015-18.06.2015</p>
-                <p>В конце апреля состоялось торжественное открытие выставки, посвященной предстоящему юбилею нашего вуза. Выставка расположилась в рекреации второго этажа.</p>
-            </div>
+            {% endfor %}
         </div>
         <div class="quarter-to-2">
+            {% for exhibition in exhibitions|slice(2, 2) %}
             <div class="w3-quarter w3-container quarttohalf">
-                <div class="imgBox2"><img src="images/4-3.jpg"></div>
-                <a href="new.html#main"><p class="bold w3-large">В СибГИУ открыта творческая выставка</p></a>
-                <p class="lightGrey text2">06.05.2017-15.15.2016</p>
-                <p>Творческая выставка художественных репродукций картин художников-классиков: А.М. Васнецова, М.Н. Нестерова, А.Д. Кившенко. Есть работы Николая Рериха. Его перевёрнутую картину, можно наблюдать на месте изображения.</p>
+                <div class="imgBox2">
+                    {% if exhibition.files.image %}
+                    <img src="{{ wwwroot }}/file.php?id={{ exhibition.files.image }}">
+                    {% endif %}
+                </div>
+                <a href="{{ wwwroot }}/entity.php?id={{ exhibition.id }}&returnurl={{ current_url|url_encode }}#main"><p class="bold w3-large">{{ exhibition.params.name }}</p></a>
+                <p class="lightGrey text2">{{ exhibition.params.interval }}</p>
+                <p>{{ exhibition.content }}</p>
             </div>
-            <div class="w3-quarter w3-container quarttohalf">
-                <div class="imgBox2"><img src="images/4-4.jpg"></div>
-                <a href="new.html#main"><p class="bold w3-large">Выставка оружия в СибГИУ</p></a>
-                <p class="lightGrey text2">19.02.2016-27.02.2016</p>
-                <p>Все экспонаты принадлежат центру «Без Имени». Автоматы Калашникова, пулеметы и винтовки деактивированы, то есть не представляют опасности. Все желающие могли даже принять участие в сборке-разборке оружия на время.</p>
-            </div>
+            {% endfor %}
         </div>
     </div>
-    <div class="allpubs w3-container"><a>ВСЕ ВЫСТАВКИ</a></div>
+    <div class="allpubs w3-container"><a href="{{ wwwroot }}/entities.php?context=exhibitions#main">ВСЕ ВЫСТАВКИ</a></div>
 
     <h2 class="bold w3-container">Календарь знаменательных дат</h2>
 
