@@ -49,7 +49,7 @@ $(function () {
     $(".header-line").delay(2000).animate({width: 340}, 1500, 'easeOutQuad');
 
 
-    var currentPage = $("#main").attr("class").replace(" edit-forms", "");
+    var currentPage = $("#main").data("location");
     if (currentPage != "museum" && currentPage != "history") {
         if (currentPage == "book") {
             currentPage = "books";
