@@ -17,7 +17,7 @@
                     <img src="{{ wwwroot }}/file.php?id={{ new.files.image }}">
                     {% endif %}
                 </div>
-                <a href="{{ wwwroot }}/entity.php?id={{ new.id }}&returnurl={{ current_url|url_encode }}#main"><p class="bold w3-large">{{ new.params.name }}</p></a>
+                <a href="{{ wwwroot }}/entity.php?id={{ new.id }}&returnurl={{ returnurl|url_encode }}#main"><p class="bold w3-large">{{ new.params.name }}</p></a>
                 <p class="lightGrey text2">{{ new.date|raw|date("d.m.Y H:i") }}</p>
                 <p>{{ new.content }}</p>
             </div>
@@ -31,7 +31,7 @@
                     <img src="{{ wwwroot }}/file.php?id={{ new.files.image }}">
                     {% endif %}
                 </div>
-                <a href="{{ wwwroot }}/entity.php?id={{ new.id }}&returnurl={{ current_url|url_encode }}#main"><p class="bold w3-large">{{ new.params.name }}</p></a>
+                <a href="{{ wwwroot }}/entity.php?id={{ new.id }}&returnurl={{ returnurl|url_encode }}#main"><p class="bold w3-large">{{ new.params.name }}</p></a>
                 <p class="lightGrey text2">{{ new.date|raw|date("d.m.Y H:i") }}</p>
                 <p>{{ new.content }}</p>
             </div>
@@ -65,7 +65,7 @@
                     <img src="{{ wwwroot }}/file.php?id={{ exhibition.files.image }}">
                     {% endif %}
                 </div>
-                <a href="{{ wwwroot }}/entity.php?id={{ exhibition.id }}&returnurl={{ current_url|url_encode }}#main"><p class="bold w3-large">{{ exhibition.params.name }}</p></a>
+                <a href="{{ wwwroot }}/entity.php?id={{ exhibition.id }}&returnurl={{ returnurl|url_encode }}#main"><p class="bold w3-large">{{ exhibition.params.name }}</p></a>
                 <p class="lightGrey text2">{{ exhibition.params.interval }}</p>
                 <p>{{ exhibition.content }}</p>
             </div>
@@ -79,7 +79,7 @@
                     <img src="{{ wwwroot }}/file.php?id={{ exhibition.files.image }}">
                     {% endif %}
                 </div>
-                <a href="{{ wwwroot }}/entity.php?id={{ exhibition.id }}&returnurl={{ current_url|url_encode }}#main"><p class="bold w3-large">{{ exhibition.params.name }}</p></a>
+                <a href="{{ wwwroot }}/entity.php?id={{ exhibition.id }}&returnurl={{ returnurl|url_encode }}#main"><p class="bold w3-large">{{ exhibition.params.name }}</p></a>
                 <p class="lightGrey text2">{{ exhibition.params.interval }}</p>
                 <p>{{ exhibition.content }}</p>
             </div>

@@ -25,7 +25,6 @@ if (!$object) die(); // Записи не существует
 
 $model = get_base_model();
 $model['title'] = 'Редактирование элемента';
-$model['returnurl'] = $returnurl;
 $model = array_merge($model, $object);
 
 if (post_data_submitted() && $accept !== false) {
