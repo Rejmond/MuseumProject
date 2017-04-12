@@ -60,8 +60,9 @@ $(function () {
         $('#' + currentPage).addClass('sub-menu').find('span').css('color', '#494952');
     }
 
-    var museum =  ["museum" , "museumabout", "news", "new", "exhibitions", "exhibition", "geologic"];
+    var museum =  ["museum", "museumabout", "news", "exhibitions", "geologic"];
     var history = ["history", "books", "book"];
+
     if ($.inArray(currentPage, museum) >= 0) {
         $('#museum').addClass('active');
         $('#museumnav').show();
