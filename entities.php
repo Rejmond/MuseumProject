@@ -32,7 +32,7 @@ for ($i = 0; $i < count($entities); $i++) {
 
 $model = get_base_model();
 $model['title'] = 'Список элементов';
-$model['returnurl'] = "{$model['current url']}#main";
+$model['returnurl'] = "{$model['current_url']}#main";
 $model['context'] = $context;
 $model['entities'] = $objects;
 
