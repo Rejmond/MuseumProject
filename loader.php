@@ -65,8 +65,8 @@ $CONFIG->entities = array(
         )
     ),
     'exhibitions' => array(
-        'entity_template' => 'theme.html',
-        'entities_template' => 'themes.html',
+        'entity_template' => 'exhibition.html',
+        'entities_template' => 'exhibitions.html',
         'content_type' => PARAM_NOTAGS,
         'perpage' => 2,
         'params' => array(

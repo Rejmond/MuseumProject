@@ -50,17 +50,19 @@
     url(../fonts/MinionPro-Bold.woff) format('woff'),
     url(../fonts/MinionPro-Bold.otf) format('otf'); 
 }
-
-
-/* Фоновые изображения, символизирующие страницу */
+/* Фоновые изображения, символизирующие 4 основные категории */
 .museum {
     background: url(../images/museum_img.png) no-repeat 790px 55px;
 }
 .history {
     background: url(../images/history_img.png) no-repeat 790px 55px;
 }
-
-
+.projects {
+    background: url(../images/project_img.png) no-repeat 790px 55px;
+}
+.student-groups {
+    background: url(../images/student-group_img.png) no-repeat 790px 55px;
+}
 /* Общие стили */
 body {
     color: #494952;
@@ -137,9 +139,8 @@ h1 {
     font-family: "Acrom-Bold", sans-serif;
     font-size: 60px;
     padding-top: 65px !important;
-    padding-bottom: 45px !important; 
-    margin-bottom: 0px; 
-    margin-top: 0px; 
+    padding-bottom: 45px !important;
+    margin-top: 0;
 }
 h2 {
     font-size: 30px;
@@ -202,16 +203,14 @@ input:invalid {
 /* линии под/над svg */
 .header-line {
     margin: 0 auto;
-    width:0px;
+    width: 0;
     height: 6px;
     background: #494952;
 }
 /* svg Музей */
 .header-svg {
     width:340px;
-    margin: 0 auto; 
-    margin-top: 30px;
-    margin-bottom: 24px;
+    margin: 30px auto 24px;
 }
 /* анимированный текст */
 header p {
@@ -248,10 +247,10 @@ header p {
 
 
 /* Footer стили */
-.foofoofoo {
+footer > div {
     max-width: 1200px;
     margin: 0 auto;
-    color: #BCBABA;
+    color: #bcbaba;
 }
 footer p {
     line-height: 10px;
@@ -270,7 +269,7 @@ footer .bold {
     margin-top: 28px;
 }
 .quarttohalf .bold {
-    margin-bottom: 0px;
+    margin-bottom: 0;
 }
 .fowhite {
     font-family: "OpenSans-Regular", sans-serif;
@@ -351,7 +350,7 @@ ul > ul {
 ul > ul li span{ 
     display: inline-block;
     color: transparent;
-    margin-left: 0px;
+    margin-left: 0;
     padding-right: 8px;
 }
 
@@ -747,7 +746,7 @@ h2:after {
     max-width:200px;
 
     float: left; 
-    margin: 10px 20px 10px 0px;
+    margin: 10px 20px 10px 0;
 
 }
 
@@ -776,14 +775,14 @@ h2:after {
     line-height:120px;
     text-align:center;
     color:#fff;
-    text-shadow:0px 0px 1px #444;
+    text-shadow:0 0 1 #444;
 }
 .down-fold span:after {
     position:absolute;
     content:'\00A0';
     display:inline-block;
-    height:0px;
-    width:0px;
+    height:0;
+    width:0;
     margin-top: 20px;
     border-bottom:25px solid #005b96;
     border-right:25px solid #fff;
@@ -801,9 +800,9 @@ h2:after {
     font-size: 18px;
     outline:none;
 
-    border-top: 0px;
-    border-left: 0px;
-    border-right: 0px;
+    border-top-width: 0;
+    border-left-width: 0;
+    border-right-width: 0;
 
     background: rgba(255, 255, 255, 0.75);
     color: #494952;
@@ -1068,7 +1067,7 @@ table td
 /* надпись - введите пароль */
 .log-inner .input-container label {
     position: absolute;
-    top:0px;
+    top:0;
     left: 0;
     color: #BCBABA;
     font-size: 18px;
@@ -1076,7 +1075,7 @@ table td
     -webkit-transition: 0.2s ease;
     transition: 0.2s ease;
     z-index: -1;
-    font-family: "OpenSans-Light";
+    font-family: "OpenSans-Light", sans-serif;
 }
 
 /* линия */
@@ -1119,13 +1118,13 @@ table td
     background: 0;
     width: 340px;
     background: #007bc6;
-    border: 0px solid #007bc6;
+    border: 0 solid #007bc6;
     padding: 10px 0;
     font-size: 18px;
     overflow: hidden;
     -webkit-transition: .3s ease;
     transition: .3s ease;
-    font-family: "OpenSans-Regular";
+    font-family: "OpenSans-Regular", sans-serif;
 }
 .log-inner .button-container button span {
     position: relative;
@@ -1264,4 +1263,56 @@ However, delay the fade out process for 2.5 seconds */
     height: 32px;
     margin-top:10px;
     margin-bottom:10px;
+}
+
+
+.entity-image-container {
+    width: 300px;
+    height:200px;
+    margin: 10px;
+    position: relative;
+    float: left;
+    overflow:hidden;
+}
+.delete-image {
+    position: absolute;
+    right: 0;
+}
+.delete-image input{
+    background-color: #f44336;
+    color: white;
+    padding: 12px 20px;
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.7;
+}
+.delete-image input:hover{
+    opacity: 0.9;
+ }
+
+.entity-image-add {
+    position: relative;
+    overflow: hidden;
+    float: left;
+    background-color: #e0f9d4;
+    width: 300px;
+    height:200px;
+    margin: 10px;
+}
+
+.entity-image-add input[type="file"]{
+    display: none;
+}
+
+.entity-image-add label {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    background: url("../images/add.png") no-repeat center;
 }

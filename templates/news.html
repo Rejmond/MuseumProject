@@ -1,8 +1,8 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<div id="main" class="news">
-    <h1 class="caption w3-container w3-xxlarge">Новости музея</span></h1>
+<div id="main" class="news" data-location="news">
+    <h1 class="caption w3-container w3-xxlarge">Новости музея</h1>
     {% if admin %}
     <div class="h1-to-form w3-container">
         <a href="{{ wwwroot }}/admin/add.php?context={{ context }}#main"><button type="submit"><img src="images/add.png" /></button></a>
@@ -11,13 +11,13 @@
 
     {% for entity in entities %}
     <div class="w3-row textrow1 w3-container ">
-        <a  href="{{ wwwroot }}/entity.php?id={{ entity.id }}&returnurl={{ current_url|url_encode }}#main"><p class="bold w3-large w3-margin-0">
+        <a  href="{{ wwwroot }}/entity.php?id={{ entity.id }}&returnurl={{ returnurl|url_encode }}#main"><p class="bold w3-large w3-margin-0">
             {{ entity.params.name|raw }}
         </p></a>
         {% if admin %}
         <div class="p-to-form">
-            <a href="{{ wwwroot }}/admin/edit.php?id={{ entity.id }}&returnurl={{ current_url|url_encode }}#main"><img src="images/edit.png" /></a>
-            <a href="{{ wwwroot }}/admin/delete.php?id={{ entity.id }}&returnurl={{ current_url|url_encode }}#main"><img src="images/delete.png" /></a>
+            <a href="{{ wwwroot }}/admin/edit.php?id={{ entity.id }}&returnurl={{ returnurl|url_encode }}#main"><img src="images/edit.png" /></a>
+            <a href="{{ wwwroot }}/admin/delete.php?id={{ entity.id }}&returnurl={{ returnurl|url_encode }}#main"><img src="images/delete.png" /></a>
         </div>
         {% endif %}
         <p class="lightGrey text2 date">
@@ -31,7 +31,7 @@
             <div class="inner"><img src="{{ wwwroot }}/file.php?id={{ entity.files.image }}"></div>
         </div>
         {% endif %}
-        <div class="more w3-container"><a href="{{ wwwroot }}/entity.php?id={{ entity.id }}&returnurl={{ current_url|url_encode }}#main">Подробнее</a></div>
+        <div class="more w3-container"><a href="{{ wwwroot }}/entity.php?id={{ entity.id }}&returnurl={{ returnurl|url_encode }}#main">Подробнее</a></div>
     </div>
     {% endfor %}
 

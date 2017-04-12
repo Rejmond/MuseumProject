@@ -49,7 +49,7 @@ $(function () {
     $(".header-line").delay(2000).animate({width: 340}, 1500, 'easeOutQuad');
 
 
-    var currentPage = $("#main").attr("class").replace(" edit-forms", "");
+    var currentPage = $("#main").data("location");
     if (currentPage != "museum" && currentPage != "history") {
         switch (currentPage) {
             case "new":
@@ -60,8 +60,9 @@ $(function () {
         $('#' + currentPage).addClass('sub-menu').find('span').css('color', '#494952');
     }
 
-    var museum =  ["museum" , "museumabout", "news", "new", "exhibitions", "exhibition", "geologic"];
+    var museum =  ["museum", "museumabout", "news", "exhibitions", "geologic"];
     var history = ["history", "books", "book"];
+
     if ($.inArray(currentPage, museum) >= 0) {
         $('#museum').addClass('active');
         $('#museumnav').show();
@@ -70,37 +71,10 @@ $(function () {
         $('#history').addClass('active');
         $('#historynav').show();
     }
-    
-    /*if (currentPage != "museum" && currentPage != "history") {
-        if (currentPage == "book") {
-            currentPage = "books";
-        }
-        if (currentPage == "new") {
-            currentPage = "news";
-        }
-        if (currentPage == "museumabout") {
-            currentPage = "museumabout";
-        }
-        if (currentPage == "geologic") {
-            currentPage = "geologic";
-        }
-        $('#' + currentPage).addClass('sub-menu').find('span').css('color', '#494952');
-    }
-
-
-    if (currentPage == "museum" || currentPage == "news" || currentPage == "new" || currentPage == "museumabout" ||
-        currentPage == "geologic") {
-        $('#museum').addClass('active');
-        $('#museumnav').css({display: 'block'});
-    }
-    else if (currentPage == "history" || currentPage == "books" || currentPage == "book") {
-        $('#history').addClass('active');
-        $('#historynav').css({display: 'block'});
-    }*/
 
     $('#mouse').delay(3000).animate(
         {
-            opacity: 0.5,
+            opacity: 0.5
         }, 1000, function () {
             loop()
         });
@@ -112,16 +86,49 @@ $(function () {
 
     tinymce.init({
         selector: '.tiny', plugins: 'link image',
-        language: 'ru', file_browser_callback: RoxyFileBrowser
+        language: 'ru', file_browser_callback: RoxyFileBrowser,
+        style_formats: [
+            {title: 'Цвет текста', items: [
+                {title: 'Основной', inline: 'span', styles:{'color': '#494952'}},
+                {title: 'Серый светлый', inline: 'span', styles:{'color': '#989797'}},
+                {title: 'Синий Сибгиу', inline: 'span', styles:{'color': '#007bc6'}}
+            ]},
+            {title: 'Headers', items: [
+                {title: 'Header 3', block: 'h3', styles:{'color': '#ff0000', 'font-size': '32px' }},
+                {title: 'Header 4', format: 'h4'},
+                {title: 'Header 5', format: 'h5'}
+            ]},
+            {title: 'Inline', items: [
+                {title: 'Bold', icon: 'bold', format: 'bold'},
+                {title: 'Italic', icon: 'italic', format: 'italic'},
+                {title: 'Underline', icon: 'underline', format: 'underline'},
+                {title: 'Strikethrough', icon: 'strikethrough', format: 'strikethrough'},
+                {title: 'Superscript', icon: 'superscript', format: 'superscript'},
+                {title: 'Subscript', icon: 'subscript', format: 'subscript'},
+                {title: 'Code', icon: 'code', format: 'code'}
+            ]},
+            {title: 'Blocks', items: [
+                {title: 'Paragraph', format: 'p'},
+                {title: 'Blockquote', format: 'blockquote'},
+                {title: 'Div', format: 'div'},
+                {title: 'Pre', format: 'pre'}
+            ]},
+            {title: 'Alignment', items: [
+                {title: 'Left', icon: 'alignleft', format: 'alignleft'},
+                {title: 'Center', icon: 'aligncenter', format: 'aligncenter'},
+                {title: 'Right', icon: 'alignright', format: 'alignright'},
+                {title: 'Justify', icon: 'alignjustify', format: 'alignjustify'}
+            ]}
+        ]
     });
 
 });
 
 
 function imageTransfiguration() {
-    $('main .imgBox2 img').each(function () {
-        var maxWidth = $('.imgBox2').width();
-        var maxHeight = $('.imgBox2').height();
+    $('main .imgBox2 img, main .imgBox1 img').each(function () {
+        var maxWidth = $('.imgBox2, .imgBox1').width();
+        var maxHeight = $('.imgBox2, .imgBox1').height();
         var ratio = 0;
         var width = $(this).width();
         var height = $(this).height();
@@ -132,8 +139,8 @@ function imageTransfiguration() {
             $(this).css("height", height * ratio);
             height = height * ratio;
         }
-        var width = $(this).width();
-        var height = $(this).height();
+        width = $(this).width();
+        height = $(this).height();
         if (width / maxWidth > height / maxHeight) {
             ratio = maxHeight / height;
             $(this).css("height", maxHeight);
@@ -141,7 +148,7 @@ function imageTransfiguration() {
             width = width * ratio;
         }
 
-        var center = $('.imgBox2'),
+        var center = $('.imgBox2, .imgBox1'),
             imgPos = $(this, center),
             imgW = imgPos.width();
         imgH = imgPos.height();
@@ -152,7 +159,6 @@ function imageTransfiguration() {
 
     });
 }
-
 
 function ChangePosition() {
 
@@ -169,13 +175,8 @@ function ChangePosition() {
     }
 
     var hHeight = $('header').outerHeight();
-
     var scroll_top = $(this).scrollTop(); // get scroll position top
-
     var height_element_parent = $("main").outerHeight(); //get high parent element
-
-    var height_element = $(target).outerHeight(); //get high of elemeneto
-
     var position_fixed_max = height_element_parent; //- height_element; // get the maximum position of the elemen
 
     if (scroll_top < hHeight) {
@@ -187,17 +188,17 @@ function ChangePosition() {
         if (position_fixed_max > scroll_top) {
             $(target).css("position", "fixed");
             $('.mynav').css('height', $(window).height());
-            var position_fixed = 0;
+            position_fixed = 0;
         }
         else {
             $(target).css("position", "absolute");
 
             if ($('main').height() <= $(window).height()) {
-                var position_fixed = hHeight;
+                position_fixed = hHeight;
                 $('.mynav').css('height', height_element_parent);
             }
             else {
-                var position_fixed = position_fixed_max;
+                position_fixed = position_fixed_max;
                 $('.mynav').css('height', $(window).height());
             }
         }
@@ -211,7 +212,7 @@ $(window).scroll(function () {
     ChangePosition();
 });
 
-$(window).resize(function (event) {
+$(window).resize(function () {
     ChangePosition();
     imageTransfiguration();
     tinyImgSize();
@@ -226,7 +227,7 @@ function w3_open() {
 function w3_close() {
     $('#openNav').css({display: 'inline-block'});
     $('#main').css({marginLeft: '0%'});
-    $('.mynav').animate({left: -300,}, 350, 'easeInCubic',
+    $('.mynav').animate({left: -300}, 350, 'easeInCubic',
         function () {
             $(this).css({display: "none", left: 0});
         });
@@ -239,7 +240,7 @@ function scrollToTitle() {
 
 $(window).resize(function () {
     var mainPosition = $("#main").offset();
-    width = $(window).width();
+    var width = $(window).width();
     if (width >= 1840) {
         $(".mynav").css({marginLeft: mainPosition.left - 320});
     }
@@ -259,10 +260,7 @@ function loop() {
         {
             opacity: 0.5,
             top: spTop
-        });
-
-    $('#scroll_btn')
-        .animate(
+        }).animate(
             {
                 opacity: 0.0,
                 top: spTop + 15
