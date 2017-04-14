@@ -53,13 +53,13 @@ $CONFIG->entities = array(
             'image' => array(
                 'required' => false,
                 'image' => true,
-                'size' => array(400, 300),
+                'size' => array(800, 600),
                 'list' => false,
             ),
             'photos' => array(
                 'required' => false,
                 'image' => true,
-                //'size' => array(400, 200),
+                'size' => array(1200, 800),
                 'list' => true,
             ),
         )
@@ -93,7 +93,7 @@ $CONFIG->entities = array(
             'photos' => array(
                 'required' => false,
                 'image' => true,
-                //'size' => array(400, 200),
+                'size' => array(1200, 800),
                 'list' => true,
             ),
         )

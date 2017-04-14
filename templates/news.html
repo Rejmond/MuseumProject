@@ -27,7 +27,7 @@
             {{ entity.content|raw }}
         </p>
         {% if entity.files.image %}
-        <div class="imgBox2">
+        <div class="imgBox2 image-proportional-resizing">
             <div class="inner"><img src="{{ wwwroot }}/file.php?id={{ entity.files.image }}"></div>
         </div>
         {% endif %}

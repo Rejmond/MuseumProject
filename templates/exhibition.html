@@ -20,14 +20,18 @@
     </div>
     <div>
         {% for photo in entity.files.photos %}
-        <div class="entity-image-container imgBox1">
+        <div class="entity-image-container imgBox1 image-proportional-resizing">
             {% if admin %}
             <form class="delete-image" method="post" enctype="multipart/form-data" action="{{ wwwroot }}/admin/delfile.php">
                 <input type="hidden" name="id" value="{{ photo }}">
                 <input type="submit" name="add" value="X">
             </form>
             {% endif %}
-            <img src="{{ wwwroot }}/file.php?id={{ photo }}">
+            <a href="{{ wwwroot }}/file.php?id={{ photo }}" data-fancybox="group" data-type="image">
+                <div>
+                    <img  src="{{ wwwroot }}/file.php?id={{ photo }}">
+                </div>
+            </a>
         </div>
         {% endfor %}
         {% if admin %}

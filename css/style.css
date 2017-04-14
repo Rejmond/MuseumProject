@@ -450,7 +450,7 @@ main .notflow p {
 .imgBox1{
     width: 136px;
     height: 184px;
-    background: #007bc6;
+    background: #f5f2f0;
     float: left;
     margin-right: 15px;
     margin-bottom:20px; 
@@ -463,7 +463,7 @@ main .notflow p {
 .imgBox2 {
     position: relative;
     width: 100%;
-    background: #007bc6;
+    background: #f5f2f0;
     margin-bottom: 15px;
     height: 200px;
     overflow: hidden;
@@ -736,12 +736,15 @@ h2:after {
 }
 
 /* надстройка изображений для новостей и выставок */
+
+
 .news .imgBox2, .exhibitions .imgBox2 {
     height: 400px;
     max-width:800px;
     margin: 0 auto;
 }
 
+/*
 .new .imgBox2, .exhibition .imgBox2 {
     max-width:200px;
 
@@ -749,7 +752,7 @@ h2:after {
     margin: 10px 20px 10px 0;
 
 }
-
+*/
 
 
 
@@ -928,25 +931,6 @@ table td
     margin-top: 5px;
 }
 
-
-
-
-
-/* 
-пары w3-quarter одевать в <div class="quarter-to-2"> для адекватного переноса
-при большой разнице в высоте w3-quarter
-            * *       * *
-не так ->     *       * *    <- а вот так
-            * 
-
-
-
-
-
-
-
-
-*/
 
 
 
@@ -1268,12 +1252,13 @@ However, delay the fade out process for 2.5 seconds */
 
 .entity-image-container {
     width: 300px;
-    height:200px;
+    height: 220px;
     margin: 10px;
     position: relative;
     float: left;
     overflow:hidden;
 }
+
 .delete-image {
     position: absolute;
     right: 0;
@@ -1283,6 +1268,7 @@ However, delay the fade out process for 2.5 seconds */
     color: white;
     padding: 12px 20px;
     font-size: 18px;
+    font-family: "OpenSans-Bold", sans-serif;
     border: none;
     cursor: pointer;
     width: 100%;
@@ -1290,7 +1276,7 @@ However, delay the fade out process for 2.5 seconds */
 }
 .delete-image input:hover{
     opacity: 0.9;
- }
+}
 
 .entity-image-add {
     position: relative;
@@ -1298,8 +1284,9 @@ However, delay the fade out process for 2.5 seconds */
     float: left;
     background-color: #e0f9d4;
     width: 300px;
-    height:200px;
+    height:220px;
     margin: 10px;
+    border: 3px dashed limegreen;
 }
 
 .entity-image-add input[type="file"]{

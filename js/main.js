@@ -126,12 +126,12 @@ $(function () {
 
 
 function imageTransfiguration() {
-    $('main .imgBox2 img, main .imgBox1 img').each(function () {
-        var maxWidth = $('.imgBox2, .imgBox1').width();
-        var maxHeight = $('.imgBox2, .imgBox1').height();
-        var ratio = 0;
-        var width = $(this).width();
-        var height = $(this).height();
+    $('.image-proportional-resizing img').each(function () {
+        var maxWidth = $('.image-proportional-resizing').width(),
+            maxHeight = $('.image-proportional-resizing').height(),
+            ratio = 0,
+            width = $(this).width(),
+            height = $(this).height();
 
         if (width / maxWidth <= height / maxHeight) {
             ratio = maxWidth / width;
@@ -140,7 +140,7 @@ function imageTransfiguration() {
             height = height * ratio;
         }
         width = $(this).width();
-        height = $(this).height();
+        /*height = $(this).height();*/
         if (width / maxWidth > height / maxHeight) {
             ratio = maxHeight / height;
             $(this).css("height", maxHeight);
@@ -148,10 +148,10 @@ function imageTransfiguration() {
             width = width * ratio;
         }
 
-        var center = $('.imgBox2, .imgBox1'),
+        var center = $('.image-proportional-resizing'),
             imgPos = $(this, center),
-            imgW = imgPos.width();
-        imgH = imgPos.height();
+            imgW = imgPos.width(),
+            imgH = imgPos.height();
         imgPos.css({
             marginLeft: (center.width() - imgW) / 2,
             marginTop: (center.height() - imgH) / 2
