@@ -1,0 +1,19 @@
+<div id="pagination">
+    <div class="tudasuda w3-large fowhite w3-container">
+        <ul>
+            {% if pages.previous %}<li><a href="{{ pages.previous.url }}">{{ pages.previous.label }}</a></li>{% endif %}
+            {% if pages.first %}
+                <li><a href="{{ pages.first.url }}">{{ pages.first.label }}</a></li>
+                ...
+            {% endif %}
+            {% for page in pages.pages %}
+                <li><a href="{{ page.url }}" {% if page.label == pages.current %}style="font-weight: bold;"{% endif %}>{{ page.label }}</a></li>
+            {% endfor %}
+            {% if pages.last %}
+                ...
+                <li><a href="{{ pages.last.url }}">{{ pages.last.label }}</a></li>
+            {% endif %}
+            {% if pages.next %}<li><a href="{{ pages.next.url }}">{{ pages.next.label }}</a></li>{% endif %}
+        </ul>
+    </div>
+</div>

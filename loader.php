@@ -38,7 +38,7 @@ $CONFIG->entities = array(
         'entity_template' => 'new.html',
         'entities_template' => 'news.html',
         'content_type' => PARAM_NOTAGS,
-        'perpage' => 2,
+        'perpage' => 5,
         'params' => array(
             'name' => array(
                 'required' => true,
@@ -50,16 +50,10 @@ $CONFIG->entities = array(
             ),
         ),
         'attachments' => array(
-            'image' => array(
-                'required' => false,
-                'image' => true,
-                'size' => array(400, 300),
-                'list' => false,
-            ),
             'photos' => array(
                 'required' => false,
                 'image' => true,
-                //'size' => array(400, 200),
+                'size' => array(1200, 800),
                 'list' => true,
             ),
         )
@@ -68,7 +62,7 @@ $CONFIG->entities = array(
         'entity_template' => 'exhibition.html',
         'entities_template' => 'exhibitions.html',
         'content_type' => PARAM_NOTAGS,
-        'perpage' => 2,
+        'perpage' => 5,
         'params' => array(
             'name' => array(
                 'required' => true,
@@ -84,16 +78,10 @@ $CONFIG->entities = array(
             ),
         ),
         'attachments' => array(
-            'image' => array(
-                'required' => false,
-                'image' => true,
-                'size' => array(400, 300),
-                'list' => false,
-            ),
             'photos' => array(
                 'required' => false,
                 'image' => true,
-                //'size' => array(400, 200),
+                'size' => array(1200, 800),
                 'list' => true,
             ),
         )

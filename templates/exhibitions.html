@@ -5,7 +5,7 @@
     <h1 class="caption w3-container w3-xxlarge">Тематические выставки</span></h1>
     {% if admin %}
     <div class="h1-to-form w3-container">
-        <a href="{{ wwwroot }}/admin/add.php?context={{ context }}#main"><button type="submit"><img src="images/add.png" /></button></a>
+        <a href="{{ wwwroot }}/admin/add.php?context={{ context }}#main"><button type="submit"><img src="{{ wwwroot }}/images/add.png" /></button></a>
     </div>
     {% endif %}
 
@@ -16,8 +16,8 @@
         </p></a>
         {% if admin %}
         <div class="p-to-form">
-            <a href="{{ wwwroot }}/admin/edit.php?id={{ entity.id }}&returnurl={{ returnurl|url_encode }}#main"><img src="images/edit.png" /></a>
-            <a href="{{ wwwroot }}/admin/delete.php?id={{ entity.id }}&returnurl={{ returnurl|url_encode }}#main"><img src="images/delete.png" /></a>
+            <a href="{{ wwwroot }}/admin/edit.php?id={{ entity.id }}&returnurl={{ returnurl|url_encode }}#main"><img src="{{ wwwroot }}/images/edit.png" /></a>
+            <a href="{{ wwwroot }}/admin/delete.php?id={{ entity.id }}&returnurl={{ returnurl|url_encode }}#main"><img src="{{ wwwroot }}/images/delete.png" /></a>
         </div>
         {% endif %}
         <p class="lightGrey text2 date">
@@ -26,32 +26,17 @@
         <p>
             {{ entity.content|raw }}
         </p>
-        {% if entity.files.image %}
-        <div class="imgBox2">
-            <div class="inner"><img src="{{ wwwroot }}/file.php?id={{ entity.files.image }}"></div>
+        {% if entity.files.photos %}
+        <div class="imgBox2 image-proportional-resizing">
+            <div class="inner"><img src="{{ wwwroot }}/file.php?id={{ entity.files.photos|last }}"></div>
         </div>
         {% endif %}
         <div class="more w3-container"><a href="{{ wwwroot }}/entity.php?id={{ entity.id }}&returnurl={{ returnurl|url_encode }}#main">Подробнее</a></div>
     </div>
     {% endfor %}
 
-    <div class="tudasuda w3-large fowhite w3-container">
-        <ul>
-            {% if pages.previous %}<li><a href="{{ pages.previous.url }}">{{ pages.previous.label }}</a></li>{% endif %}
-            {% if pages.first %}
-                <li><a href="{{ pages.first.url }}">{{ pages.first.label }}</a></li>
-                ...
-            {% endif %}
-            {% for page in pages.pages %}
-                <li><a href="{{ page.url }}" {% if page.label == pages.current %}style="font-weight: bold;"{% endif %}>{{ page.label }}</a></li>
-            {% endfor %}
-            {% if pages.last %}
-                ...
-                <li><a href="{{ pages.last.url }}">{{ pages.last.label }}</a></li>
-            {% endif %}
-            {% if pages.next %}<li><a href="{{ pages.next.url }}">{{ pages.next.label }}</a></li>{% endif %}
-        </ul>
-    </div>
+    {% include 'pagination.html' %}
+
     <div class="to-begin w3-container"><a href="{{ wwwroot }}/index.php#main">В начало</a></div>
 </div>
 {% endblock %}
