@@ -1,5 +1,5 @@
 /* Header animation*/
-$(function () {
+$( document ).ready(function() {
 
     var text = $('.about'),
         allText = text.text().trim(),
@@ -115,6 +115,27 @@ $(function () {
             ]}
         ]
     });
+
+    imageTransfiguration();
+    $(window).resize(function () {
+        var mainPosition = $("#main").offset();
+        var width = $(window).width();
+        if (width >= 1840) {
+            $(".mynav").css({marginLeft: mainPosition.left - 320});
+        }
+        else {
+            $(".mynav").css({marginLeft: 0});
+        }
+    }).resize();
+    $(window).scroll(function () {
+        changePosition();
+    });
+
+    $(window).resize(function () {
+        changePosition();
+        imageTransfiguration();
+        tinyImgSize();
+    });
 });
 
 function tinyImgSize() {
@@ -157,30 +178,6 @@ function imageTransfiguration() {
         }
     });
 }
-
-$( document ).ready(function() {
-    imageTransfiguration();
-    $(window).resize(function () {
-        var mainPosition = $("#main").offset();
-        var width = $(window).width();
-        if (width >= 1840) {
-            $(".mynav").css({marginLeft: mainPosition.left - 320});
-        }
-        else {
-            $(".mynav").css({marginLeft: 0});
-        }
-
-    }).resize();
-    $(window).scroll(function () {
-        changePosition();
-    });
-
-    $(window).resize(function () {
-        changePosition();
-        imageTransfiguration();
-        tinyImgSize();
-    });
-});
 
 function changePosition() {
     var target = $('#openNav'),
