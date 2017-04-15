@@ -60,7 +60,7 @@
         <div class="quarter-to-2">
             {% for exhibition in exhibitions|slice(0, 2) %}
             <div class="w3-quarter w3-container quarttohalf">
-                <div class="imgBox2">
+                <div class="imgBox2 image-proportional-resizing">
                     {% if exhibition.files.image %}
                     <img src="{{ wwwroot }}/file.php?id={{ exhibition.files.image }}">
                     {% endif %}

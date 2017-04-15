@@ -1,9 +1,11 @@
 /* Header animation*/
 $(function () {
 
-    var allText = $('.about').text().trim();
-    var firstLetter = allText.charAt(0);
-    $('.about').html("<span style='font-size: 36px; font-family: OpenSans-Regular;'>" + firstLetter + "</span>" + allText.slice(1));
+    var text = $('.about'),
+        allText = text.text().trim(),
+        firstLetter = allText.charAt(0);
+    text.html("<span style='font-size: 36px; font-family: OpenSans-Regular, sans-serif;'>" +
+        firstLetter + "</span>" + allText.slice(1));
 
     $('.xPoTryMN_0').animate(
         {
@@ -43,11 +45,8 @@ $(function () {
             'stroke-dashoffset': 0
         }, 1000, 'linear');
 
-    // $("._1text").animate({opacity: 1},4000, 'easeInOutSine');
-
     $(".header-text").delay(2000).animate({opacity: 1}, 1500, 'easeInSine');
     $(".header-line").delay(2000).animate({width: 340}, 1500, 'easeOutQuad');
-
 
     var currentPage = $("#main").data("location");
     if (currentPage != "museum" && currentPage != "history") {
@@ -59,10 +58,8 @@ $(function () {
         }
         $('#' + currentPage).addClass('sub-menu').find('span').css('color', '#494952');
     }
-
     var museum =  ["museum", "museumabout", "news", "exhibitions", "geologic"];
     var history = ["history", "books", "book"];
-
     if ($.inArray(currentPage, museum) >= 0) {
         $('#museum').addClass('active');
         $('#museumnav').show();
@@ -79,13 +76,10 @@ $(function () {
             loop()
         });
 
-    //jQuery.scrollSpeed(100, 1500, 'easeOutQuint');
-
-
-    imageTransfiguration();
-
     tinymce.init({
-        selector: '.tiny', plugins: 'link image',
+        selector: '.tiny', plugins: 'link image autoresize',
+        autoresize_bottom_margin: 20,
+        content_style: "body {margin: 14px; font-family: OpenSans-Regular, sans-serif !important}",
         language: 'ru', file_browser_callback: RoxyFileBrowser,
         style_formats: [
             {title: 'Цвет текста', items: [
@@ -108,7 +102,7 @@ $(function () {
                 {title: 'Code', icon: 'code', format: 'code'}
             ]},
             {title: 'Blocks', items: [
-                {title: 'Paragraph', format: 'p'},
+                {title: 'Paragraph', format: 'p', styles:{'color': '#007bc6'}},
                 {title: 'Blockquote', format: 'blockquote'},
                 {title: 'Div', format: 'div'},
                 {title: 'Pre', format: 'pre'}
@@ -121,18 +115,24 @@ $(function () {
             ]}
         ]
     });
-
 });
 
+function tinyImgSize() {
+    $('.post-tiny img').each(function () {
+        if ($(this).width() >= $('.post-tiny').width()) {
+            $(this).css({'max-width': '100%', height: 'auto'});
+        }
+    });
+}
 
 function imageTransfiguration() {
-    $('.image-proportional-resizing img').each(function () {
-        var maxWidth = $('.image-proportional-resizing').width(),
-            maxHeight = $('.image-proportional-resizing').height(),
+    $('.image-proportional-resizing img').one('load', function() { // вызываем один раз после загрузки картинки
+        var imgBox = $('.image-proportional-resizing'),
+            maxWidth = imgBox.width(),
+            maxHeight = imgBox.height(),
             ratio = 0,
             width = $(this).width(),
             height = $(this).height();
-
         if (width / maxWidth <= height / maxHeight) {
             ratio = maxWidth / width;
             $(this).css("width", maxWidth);
@@ -140,49 +140,61 @@ function imageTransfiguration() {
             height = height * ratio;
         }
         width = $(this).width();
-        /*height = $(this).height();*/
         if (width / maxWidth > height / maxHeight) {
             ratio = maxHeight / height;
             $(this).css("height", maxHeight);
             $(this).css("width", width * ratio);
             width = width * ratio;
         }
-
-        var center = $('.image-proportional-resizing'),
-            imgPos = $(this, center),
-            imgW = imgPos.width(),
-            imgH = imgPos.height();
+        var imgPos = $(this, imgBox);
         imgPos.css({
-            marginLeft: (center.width() - imgW) / 2,
-            marginTop: (center.height() - imgH) / 2
-        });
-
+            marginLeft: (imgBox.width() - imgPos.width()) / 2,
+            marginTop: (imgBox.height() - imgPos.height()) / 2
+        })
+    }).each(function () { // так как подписка на событие загрузки картинки могла быть уже после самой загрузки
+        if (this.complete) { // проверяем для каждого элемента, не был ли он уже загружен
+            $(this).trigger('load'); // если был, искусственно вызываем событие загрузки
+        }
     });
 }
 
-function ChangePosition() {
+$( document ).ready(function() {
+    imageTransfiguration();
+    $(window).resize(function () {
+        var mainPosition = $("#main").offset();
+        var width = $(window).width();
+        if (width >= 1840) {
+            $(".mynav").css({marginLeft: mainPosition.left - 320});
+        }
+        else {
+            $(".mynav").css({marginLeft: 0});
+        }
 
-    var burger = $('#openNav').css('display');
-    var id = 0;
+    }).resize();
+    $(window).scroll(function () {
+        changePosition();
+    });
 
+    $(window).resize(function () {
+        changePosition();
+        imageTransfiguration();
+        tinyImgSize();
+    });
+});
+
+function changePosition() {
+    var target = $('#openNav'),
+        burger = target.css('display');
     if (burger == 'none') {
-        id = 1;
-        var target = $('.mynav');
+        target = $('.mynav');
     }
-    else {
-        id = 2;
-        var target = $('#openNav');
-    }
-
-    var hHeight = $('header').outerHeight();
-    var scroll_top = $(this).scrollTop(); // get scroll position top
-    var height_element_parent = $("main").outerHeight(); //get high parent element
-    var position_fixed_max = height_element_parent; //- height_element; // get the maximum position of the elemen
-
+    var hHeight = $('header').outerHeight(),
+        scroll_top = $(this).scrollTop(), // get scroll position top
+        height_element_parent = $("main").outerHeight(), //get high parent element
+        position_fixed_max = height_element_parent; //- height_element; // get the maximum position of the elemen
     if (scroll_top < hHeight) {
         $(target).css("position", "absolute");
         var position_fixed = hHeight;
-
     }
     else {
         if (position_fixed_max > scroll_top) {
@@ -203,21 +215,10 @@ function ChangePosition() {
             }
         }
     }
-
-
     $(target).css("top", position_fixed);
 }
 
-$(window).scroll(function () {
-    ChangePosition();
-});
 
-$(window).resize(function () {
-    ChangePosition();
-    imageTransfiguration();
-    tinyImgSize();
-
-});
 
 function w3_open() {
     $(".mynav").css({display: 'block', left: -300}).animate({left: 0}, 350, 'easeOutCubic');
@@ -231,25 +232,12 @@ function w3_close() {
         function () {
             $(this).css({display: "none", left: 0});
         });
-    ChangePosition();
+    changePosition();
 }
 
 function scrollToTitle() {
     jQuery('body,html').animate({scrollTop: $("header").height()}, 750, 'easeOutQuart');
 }
-
-$(window).resize(function () {
-    var mainPosition = $("#main").offset();
-    var width = $(window).width();
-    if (width >= 1840) {
-        $(".mynav").css({marginLeft: mainPosition.left - 320});
-    }
-    else {
-        $(".mynav").css({marginLeft: 0});
-    }
-
-}).resize();
-
 
 function loop() {
     var pst = $("p:first");
@@ -267,19 +255,6 @@ function loop() {
             }, 1000, 'easeOutQuad', function () {
                 loop();
             });
-}
-
-
-// для отображение, но в редакторе не так выглядит маленько, поправить
-function tinyImgSize() {
-    $('.post-tiny img').each(function () {
-        if ($(this).width() >= $('.post-tiny').width()) {
-            $(this).css({'max-width': '100%', height: 'auto'});
-        }
-        else {
-
-        }
-    });
 }
 
 function RoxyFileBrowser(field_name, url, type, win) {
