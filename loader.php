@@ -86,6 +86,21 @@ $CONFIG->entities = array(
             ),
         )
     ),
+            /*                                                     */
+            /*                   history entities                  */
+            /*                                                     */
+    'about-history' => array(
+        'entity_template' => 'about-history.html',
+        'entities_template' => false,
+        'content_type' => PARAM_NOTAGS,
+        'params' => array(
+            'fulltext' => array(
+                'required' => true,
+                'type'     => PARAM_RAW,
+            ),
+        ),
+        'attachments' => array(),
+    ),
 );
 
 require_once($CONFIG->dirroot . '/Twig/Autoloader.php');

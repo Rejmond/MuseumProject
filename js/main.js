@@ -59,7 +59,7 @@ $(document).ready(function() {
         $('#' + currentPage).addClass('sub-menu').find('span').css('color', '#494952');
     }
     var museum =  ["museum", "museumabout", "news", "exhibitions", "geologic"];
-    var history = ["history", "books", "book"];
+    var history = ["history", "books", "book", "history-about"];
     if ($.inArray(currentPage, museum) >= 0) {
         $('#museum').addClass('active');
         $('#museumnav').show();
