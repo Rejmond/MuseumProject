@@ -1,5 +1,5 @@
 /* Header animation*/
-$( document ).ready(function() {
+$(document).ready(function() {
 
     var text = $('.about'),
         allText = text.text().trim(),
@@ -85,7 +85,7 @@ $( document ).ready(function() {
             {title: 'Цвет текста', items: [
                 {title: 'Основной', inline: 'span', styles:{'color': '#494952'}},
                 {title: 'Серый светлый', inline: 'span', styles:{'color': '#989797'}},
-                {title: 'Синий Сибгиу', inline: 'span', styles:{'color': '#007bc6'}}
+                {title: 'Синий СибГИУ', inline: 'span', styles:{'color': '#007bc6'}}
             ]},
             {title: 'Headers', items: [
                 {title: 'Header 3', block: 'h3', styles:{'color': '#ff0000', 'font-size': '32px' }},
@@ -214,8 +214,6 @@ function changePosition() {
     }
     $(target).css("top", position_fixed);
 }
-
-
 
 function w3_open() {
     $(".mynav").css({display: 'block', left: -300}).animate({left: 0}, 350, 'easeOutCubic');
