@@ -13,8 +13,8 @@
         {% for new in news|slice(0, 2) %}
             <div class="w3-quarter w3-container quarttohalf">
                 <div class="imgBox2 image-proportional-resizing">
-                    {% if new.files.image %}
-                    <img src="{{ wwwroot }}/file.php?id={{ new.files.image }}">
+                    {% if new.files.photos %}
+                    <img src="{{ wwwroot }}/file.php?id={{ new.files.photos|last }}">
                     {% endif %}
                 </div>
                 <a href="{{ wwwroot }}/entity.php?id={{ new.id }}&returnurl={{ returnurl|url_encode }}#main"><p class="bold w3-large">{{ new.params.name }}</p></a>
@@ -27,8 +27,8 @@
         {% for new in news|slice(2, 2) %}
             <div class="w3-quarter w3-container quarttohalf">
                 <div class="imgBox2 image-proportional-resizing">
-                    {% if new.files.image %}
-                    <img src="{{ wwwroot }}/file.php?id={{ new.files.image }}">
+                    {% if new.files.photos %}
+                    <img src="{{ wwwroot }}/file.php?id={{ new.files.photos|last }}">
                     {% endif %}
                 </div>
                 <a href="{{ wwwroot }}/entity.php?id={{ new.id }}&returnurl={{ returnurl|url_encode }}#main"><p class="bold w3-large">{{ new.params.name }}</p></a>
@@ -61,8 +61,8 @@
             {% for exhibition in exhibitions|slice(0, 2) %}
             <div class="w3-quarter w3-container quarttohalf">
                 <div class="imgBox2 image-proportional-resizing">
-                    {% if exhibition.files.image %}
-                    <img src="{{ wwwroot }}/file.php?id={{ exhibition.files.image }}">
+                    {% if exhibition.files.photos %}
+                    <img src="{{ wwwroot }}/file.php?id={{ exhibition.files.photos|last }}">
                     {% endif %}
                 </div>
                 <a href="{{ wwwroot }}/entity.php?id={{ exhibition.id }}&returnurl={{ returnurl|url_encode }}#main"><p class="bold w3-large">{{ exhibition.params.name }}</p></a>
@@ -75,8 +75,8 @@
             {% for exhibition in exhibitions|slice(2, 2) %}
             <div class="w3-quarter w3-container quarttohalf">
                 <div class="imgBox2">
-                    {% if exhibition.files.image %}
-                    <img src="{{ wwwroot }}/file.php?id={{ exhibition.files.image }}">
+                    {% if exhibition.files.photos %}
+                    <img src="{{ wwwroot }}/file.php?id={{ exhibition.files.photos|last }}">
                     {% endif %}
                 </div>
                 <a href="{{ wwwroot }}/entity.php?id={{ exhibition.id }}&returnurl={{ returnurl|url_encode }}#main"><p class="bold w3-large">{{ exhibition.params.name }}</p></a>

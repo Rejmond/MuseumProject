@@ -18,34 +18,9 @@
     <div class="post-tiny w3-container">
         {{ entity.params.fulltext|raw }}
     </div>
-    <div style="display: inline-block">
-        {% for photo in entity.files.photos %}
-            <div class="imgBox2 entity-image-container image-proportional-resizing">
-                {% if admin %}
-                <form class="delete-image" method="post" enctype="multipart/form-data" action="{{ wwwroot }}/admin/delfile.php">
-                    <input type="hidden" name="id" value="{{ photo }}">
-                    <input type="submit" name="add" value="X">
-                </form>
-                {% endif %}
-                <a href="{{ wwwroot }}/file.php?id={{ photo }}" data-fancybox="group" data-type="image">
-                    <div>
-                        <img src="{{ wwwroot }}/file.php?id={{ photo }}">
-                    </div>
-                </a>
-            </div>
-        {% endfor %}
-        {% if admin %}
-        <div class="entity-image-add">
-            <form method="post" enctype="multipart/form-data" action="{{ wwwroot }}/admin/addfile.php">
-                <input type="hidden" name="id" value="{{ entity.id }}">
-                <input type="hidden" name="filearea" value="photos">
-                <label>
-                    <input type="file" name="file" onchange="this.form.submit()">
-                </label>
-            </form>
-        </div>
-        {% endif %}
-    </div>
+
+    {% include 'images.html' with {'images': entity.files.photos } %}
+
     <div class="to-back"><a href="{{ returnurl }}">Назад</a></div>
 </div>
 {% endblock %}
