@@ -347,7 +347,7 @@ ul > ul {
     font-size: 16px;
     color: #494952;
 }
-ul > ul li span{ 
+ul > ul li span:not(.second-line-margin){
     display: inline-block;
     color: transparent;
     margin-left: 0;
