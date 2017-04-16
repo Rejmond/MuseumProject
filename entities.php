@@ -39,4 +39,9 @@ $model['entities'] = $objects;
 $baseurl = "$CONFIG->wwwroot/entities.php?context=$context";
 $model['pages'] = pagination($baseurl, $total, $page, $perpage);
 
-echo $Twig->render(get_entities_template($context), $model);
+$template = get_entities_template($context);
+if (file_exists("$CONFIG->dirroot/templates/$template")) {
+    echo $Twig->render($template, $model);
+} else {
+    redirect("$CONFIG->wwwroot/index.php#main");
+}
