@@ -86,9 +86,43 @@ $CONFIG->entities = array(
             ),
         )
     ),
-            /*                                                     */
-            /*                   history entities                  */
-            /*                                                     */
+    'presents' => array(
+        'entity_template' => 'present.html',
+        'entities_template' => 'presents.html',
+        'content_type' => PARAM_NOTAGS,
+        'perpage' => 5,
+        'params' => array(
+            'name' => array(
+                'required' => true,
+                'type' => PARAM_NOTAGS,
+            ),
+            'presenter' => array(
+                'required' => true,
+                'type' => PARAM_NOTAGS,
+            ),
+            'fulltext' => array(
+                'required' => true,
+                'type' => PARAM_RAW,
+            ),
+        ),
+        'attachments' => array(
+            'image' => array(
+                'required' => true,
+                'image' => true,
+                'size' => array(1200, 800),
+                'list' => false,
+            ),
+            'photos' => array(
+                'required' => false,
+                'image' => true,
+                'size' => array(1200, 800),
+                'list' => true,
+            ),
+        )
+    ),
+    /*                                                     */
+    /*                   history entities                  */
+    /*                                                     */
     'about-history' => array(
         'entity_template' => 'about-history.html',
         'entities_template' => false,

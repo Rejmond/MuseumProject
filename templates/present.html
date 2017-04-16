@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div id="main" class="entity" data-location="presents">
+    <h1 class="caption w3-container w3-xxlarge">Информация о подарке</h1>
+    <div class="w3-row textrow1 w3-container ">
+        <p class="bold w3-large w3-margin-0">
+            {{ entity.params.name|raw }}
+        </p>
+        {% if admin %}
+        <div class="p-to-form">
+            <a href="{{ wwwroot }}/admin/edit.php?id={{ entity.id }}#main"><img src="{{ wwwroot }}/images/edit.png" /></a>
+            <a href="{{ wwwroot }}/admin/delete.php?id={{ entity.id }}#main"><img src="{{ wwwroot }}/images/delete.png" /></a>
+        </div>
+        {% endif %}
+    </div>
+    <div class="post-tiny w3-container">
+        {{ entity.params.fulltext|raw }}
+    </div>
+    {% if entity.files.image %}
+    <div class="imgBox2 image-proportional-resizing">
+        {% if admin %}
+        <div class="entity-image-edit">
+            <form method="post" enctype="multipart/form-data" action="{{ wwwroot }}/admin/addfile.php">
+                <input type="hidden" name="id" value="{{ entity.id }}">
+                <input type="hidden" name="filearea" value="image">
+                <input type="hidden" name="returnurl" value="{{ returnurl }}">
+                <label>
+                    <input type="file" name="file" onchange="this.form.submit()">
+                </label>
+            </form>
+        </div>
+        {% endif %}
+        <div class="inner"><img src="{{ wwwroot }}/file.php?id={{ entity.files.image }}"></div>
+    </div>
+    <p class="text2" style="text-align: center;">Даритель: {{ entity.params.presenter }}</p>
+    {% endif %}
+
+    {% include 'images.html' with {'images': entity.files.photos } %}
+
+    <div class="to-back"><a href="{{ returnurl }}">Назад</a></div>
+</div>
+{% endblock %}
