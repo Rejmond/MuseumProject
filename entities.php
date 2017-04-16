@@ -23,7 +23,7 @@ $total = $DB->count_records('entities', array('context' => $context));
 $perpage = isset($CONFIG->entities[$context]['perpage']) ? $CONFIG->entities[$context]['perpage'] : 10;
 $lastpage = ceil($total / $perpage);
 if ($page >= $lastpage) $page = $lastpage - 1;
-$entities = ContentManager::get_entities($context, array(), "ORDER BY date DESC", $page * $perpage, $perpage);
+$entities = ContentManager::get_entities($context, array(), array('param' => 'date', 'order' => 'DESC'), $page * $perpage, $perpage);
 
 $objects = array();
 for ($i = 0; $i < count($entities); $i++) {
