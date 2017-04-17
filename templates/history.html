@@ -25,44 +25,41 @@
         <div class="w3-col s3 w3-center histoChronics"><a><p class="bold w3-large  w3-margin-0">1998-н.в.&nbsp;</p></a></div>
         <div class="w3-col s9 w3-justify text2 fowhite"><p class=" w3-margin-0">Сибирский государственный институт чёрных металлов. Первоначально состоял из металлургического и технологического факультетов.</p></div>
     </div>
+
     <h2 class="sub-caption bold w3-container"><span>Список книг</span></h2>
     <div class="w3-row textrow1">
+        {% for book in books|slice(0, 2) %}
         <div class="w3-container w3-half">
-            <div class="imgBox1"><img src="images/1-1.jpg"></div>
+            <div class="imgBox1">
+                {% if book.files.image %}
+                <img src="{{ wwwroot }}/file.php?id={{ book.files.image.id }}">
+                {% endif %}
+            </div>
             <div class="notflow">
-                <a href="book.html#main"><p class="bold w3-large">Сибирский государственный индустриальный университет 1930 - 2010</p></a>
+                <a href="{{ wwwroot }}/entity.php?id={{ book.id }}&returnurl={{ returnurl|url_encode }}#main"><p class="bold w3-large">{{ book.params.name }}</p></a>
                 <p class="lightGrey text2"></p>
-                <p>Книга посвящена 80-летию ГОУ ВПО «Сибирский государственный индустриальный университет». Она представляет собой научно-историческое...</p>
+                <p>{{ book.content }}</p>
             </div>
         </div>
-        <div class="w3-container w3-half">
-            <div class="imgBox1"><img src="images/1-2.jpg"></div>
-            <div class="notflow">
-                <a href="book-2.html#main"><p class="bold w3-large">За кадры, 1987 год</p></a>
-                <p class="lightGrey text2"></p>
-                <p>Издание содержит информацию об истории создания и развития Си­бирского государственного индустриального университета, материалы по достижениям...</p>
-            </div>
-        </div>
+        {% endfor %}
     </div>
     <div class="w3-row textrow1">
+        {% for book in books|slice(2, 2) %}
         <div class="w3-container w3-half">
-            <div class="imgBox1"><img src="images/1-3.jpg"></div>
+            <div class="imgBox1">
+                {% if book.files.image %}
+                <img src="{{ wwwroot }}/file.php?id={{ book.files.image.id }}">
+                {% endif %}
+            </div>
             <div class="notflow">
-                <a href="book.html#main"><p class="bold w3-large">Выдающиеся металлурги – выпускники СМИ – СибГИУ</p></a>
-                <p class="lightGrey text2"></p>
-                <p>В книге представлены в алфавитном порядке биографические сведения о 85-ти выдающихся металлургах – выпускниках Сибирского государственного...</p>
+                <a href="{{ wwwroot }}/entity.php?id={{ book.id }}&returnurl={{ returnurl|url_encode }}#main"><p class="bold w3-large">{{ book.params.name }}</p></a>
+                <p>{{ book.content }}</p>
             </div>
         </div>
-        <div class="w3-container w3-half">
-            <div class="imgBox1"><img src="images/1-4.jpg"></div>
-            <div class="notflow">
-                <a href="book.html#main"><p class="bold w3-large">Сибирский государственный индустриальный университет 1930 - 2010</p></a>
-                <p class="lightGrey text2"></p>
-                <p>Книга посвящена 80-летию ГОУ ВПО «Сибирский государственный индустриальный университет». Она представляет собой научно-историческое...</p>
-            </div>
-        </div>
+        {% endfor %}
     </div>
-    <div class="allpubs w3-container"><a href="books.html#main">ВСЕ ПУБЛИКАЦИИ</a></div>
+    <div class="allpubs w3-container"><a href="{{ wwwroot }}/entities.php?context=books#main">ВСЕ ПУБЛИКАЦИИ</a></div>
+
     <h2 class="sub-caption bold"><span>Университетские газеты</span></h2>
     <div class="w3-row textrow1">
         <div class="w3-container w3-third">
@@ -91,6 +88,7 @@
         </div>
     </div>
     <div class="allpubs w3-container"><a href="books.html#main">ВСЕ ГАЗЕТЫ</a></div>
+
     <h2 class="sub-caption bold w3-container"><span>Руководители</span></h2>
     <div class="w3-row histoHea">
         <div class="w3-quarter w3-container quarttohalf w3-center">
@@ -158,6 +156,7 @@
         </div>
     </div>
     <div class="allpubs w3-container"><a>ВСЕ ВОСПОМИНАНИЯ</a></div>
+
     <h2 class="sub-caption bold w3-container"><span>История институтов</span></h2>
     <div class="w3-container w3-half histoInsts">
         <a><p class="bold w3-large">- Институт металлургии и материаловедения</p></a>
@@ -176,6 +175,7 @@
         <a><p class="bold w3-large">- Институт дополнительного профессионального образования</p></a>
     </div>
     <div class="allpubs w3-container"></div>
+
     <h2 class="sub-caption bold w3-container"><span>История успеха</span></h2>
     <div class="histoAge w3-large fowhite w3-container">
         <ul>

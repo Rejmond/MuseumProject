@@ -135,6 +135,35 @@ $CONFIG->entities = array(
         ),
         'attachments' => array(),
     ),
+    'books' => array(
+        'entity_template' => 'book.html',
+        'entities_template' => 'books.html',
+        'content_type' => PARAM_NOTAGS,
+        'perpage' => 5,
+        'params' => array(
+            'name' => array(
+                'required' => true,
+                'type' => PARAM_NOTAGS,
+            ),
+            'description' => array(
+                'required' => true,
+                'type' => PARAM_RAW,
+            ),
+        ),
+        'attachments' => array(
+            'image' => array(
+                'required' => false,
+                'image' => true,
+                'size' => array(1200, 800),
+                'list' => false,
+            ),
+            'files' => array(
+                'required' => false,
+                'image' => false,
+                'list' => true,
+            ),
+        )
+    ),
 );
 
 require_once($CONFIG->dirroot . '/Twig/Autoloader.php');

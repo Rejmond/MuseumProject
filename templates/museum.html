@@ -14,7 +14,7 @@
             <div class="w3-quarter w3-container quarttohalf">
                 <div class="imgBox2 image-proportional-resizing">
                     {% if new.files.photos %}
-                    <img src="{{ wwwroot }}/file.php?id={{ new.files.photos|last }}">
+                    <img src="{{ wwwroot }}/file.php?id={{ (new.files.photos|last).id }}">
                     {% endif %}
                 </div>
                 <a href="{{ wwwroot }}/entity.php?id={{ new.id }}&returnurl={{ returnurl|url_encode }}#main"><p class="bold w3-large">{{ new.params.name }}</p></a>
@@ -28,7 +28,7 @@
             <div class="w3-quarter w3-container quarttohalf">
                 <div class="imgBox2 image-proportional-resizing">
                     {% if new.files.photos %}
-                    <img src="{{ wwwroot }}/file.php?id={{ new.files.photos|last }}">
+                    <img src="{{ wwwroot }}/file.php?id={{ (new.files.photos|last).id }}">
                     {% endif %}
                 </div>
                 <a href="{{ wwwroot }}/entity.php?id={{ new.id }}&returnurl={{ returnurl|url_encode }}#main"><p class="bold w3-large">{{ new.params.name }}</p></a>
@@ -62,7 +62,7 @@
             <div class="w3-quarter w3-container quarttohalf">
                 <div class="imgBox2 image-proportional-resizing">
                     {% if exhibition.files.photos %}
-                    <img src="{{ wwwroot }}/file.php?id={{ exhibition.files.photos|last }}">
+                    <img src="{{ wwwroot }}/file.php?id={{ (exhibition.files.photos|last).id }}">
                     {% endif %}
                 </div>
                 <a href="{{ wwwroot }}/entity.php?id={{ exhibition.id }}&returnurl={{ returnurl|url_encode }}#main"><p class="bold w3-large">{{ exhibition.params.name }}</p></a>
@@ -76,7 +76,7 @@
             <div class="w3-quarter w3-container quarttohalf">
                 <div class="imgBox2">
                     {% if exhibition.files.photos %}
-                    <img src="{{ wwwroot }}/file.php?id={{ exhibition.files.photos|last }}">
+                    <img src="{{ wwwroot }}/file.php?id={{ (exhibition.files.photos|last).id }}">
                     {% endif %}
                 </div>
                 <a href="{{ wwwroot }}/entity.php?id={{ exhibition.id }}&returnurl={{ returnurl|url_encode }}#main"><p class="bold w3-large">{{ exhibition.params.name }}</p></a>
@@ -97,7 +97,7 @@
             <div class="w3-quarter w3-container quarttohalf">
                 <div class="imgBox2 image-proportional-resizing">
                     {% if present.files.image %}
-                    <img src="{{ wwwroot }}/file.php?id={{ present.files.image }}">
+                    <img src="{{ wwwroot }}/file.php?id={{ (present.files.image).id }}">
                     {% endif %}
                 </div>
                 <a href="{{ wwwroot }}/entity.php?id={{ present.id }}&returnurl={{ returnurl|url_encode }}#main"><p class="bold w3-large">{{ present.params.name }}</p></a>
@@ -111,7 +111,7 @@
             <div class="w3-quarter w3-container quarttohalf">
                 <div class="imgBox2">
                     {% if present.files.image %}
-                    <img src="{{ wwwroot }}/file.php?id={{ present.files.image }}">
+                    <img src="{{ wwwroot }}/file.php?id={{ (present.files.image).id }}">
                     {% endif %}
                 </div>
                 <a href="{{ wwwroot }}/entity.php?id={{ present.id }}&returnurl={{ returnurl|url_encode }}#main"><p class="bold w3-large">{{ present.params.name }}</p></a>

@@ -37,7 +37,7 @@
                 </form>
             </div>
             {% endif %}
-            <div class="inner"><img src="{{ wwwroot }}/file.php?id={{ entity.files.image }}"></div>
+            <div class="inner"><img src="{{ wwwroot }}/file.php?id={{ entity.files.image.id }}"></div>
         </div>
         <p class="text2" style="text-align: center;">Даритель: {{ entity.params.presenter }}</p>
         {% endif %}

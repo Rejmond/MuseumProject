@@ -1,31 +1,42 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<form>
-    <input type="hidden" name="context" value="books">
-    <div class="form-group row">
-        <label for="author" class="col-sm-2 col-form-label">Автор</label>
-        <div class="col-sm-10">
-            <input class="form-control" name="author" id="author" value="{{ author|raw }}">
-        </div>
+<div id="main" class="entitylist" data-location="books">
+    <h1 class="caption w3-container w3-xxlarge">Книги</h1>
+    {% if admin %}
+    <div class="h1-to-form w3-container">
+        <a href="{{ wwwroot }}/admin/add.php?context={{ context }}#main"><button type="submit"><img src="{{ wwwroot }}/images/add.png" /></button></a>
     </div>
-    <div class="form-group row">
-        <div class="offset-sm-2 col-sm-10">
-            <button type="submit" class="btn btn-primary">Искать</button>
+    {% endif %}
+
+    {% for entity in entities %}
+    <div class="w3-row textrow1 w3-container ">
+        <div class="imgBox1">
+            {% if entity.files.image %}
+            <img src="{{ wwwroot }}/file.php?id={{ entity.files.image.id }}">
+            {% endif %}
         </div>
+
+        <div class="notflow">
+            <a href="{{ wwwroot }}/entity.php?id={{ present.id }}&returnurl={{ returnurl|url_encode }}#main">
+                <p class="bold w3-large w3-padding-top">
+                    {{ entity.params.name }}
+                </p>
+            </a>
+            {% if admin %}
+            <div class="p-to-form">
+                <a href="{{ wwwroot }}/admin/edit.php?id={{ entity.id }}&returnurl={{ returnurl|url_encode }}#main"><img src="{{ wwwroot }}/images/edit.png" /></a>
+                <a href="{{ wwwroot }}/admin/delete.php?id={{ entity.id }}&returnurl={{ returnurl|url_encode }}#main"><img src="{{ wwwroot }}/images/delete.png" /></a>
+            </div>
+            {% endif %}
+            <p>
+                {{ entity.content }}
+            </p>
+        </div>
+        <div class="more w3-container"><a href="{{ wwwroot }}/entity.php?id={{ entity.id }}&returnurl={{ returnurl|url_encode }}#main">Подробнее</a></div>
     </div>
-</form>
-{% for entity in entities %}
-<div class="post">
-    <h3><a href="{{ entity.link }}">{{ entity.params.name }}</a></h3>
-    <div>Автор: {{ entity.params.author|raw }}</div>
-    <h4>Аннотация</h4>
-    <div>{{ entity.params.abstract|raw }}</div>
+    {% endfor %}
+    {% include 'pagination.html' %}
+    <div class="to-begin w3-container"><a href="{{ wwwroot }}/index.php#main">В начало</a></div>
 </div>
-{% endfor %}
-{% if admin %}
-    <div class="post">
-        <a href="{{ add_link }}">Добавить книгу</a>
-    </div>
-{% endif %}
 {% endblock %}
