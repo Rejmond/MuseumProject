@@ -1,59 +1,37 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<div id="main" class="edit-forms" data-location="books">
-    <h1 class="caption w3-container w3-xxlarge">Книги: {{ title|lower }}</h1>
-    <div class="w3-row textrow1 w3-container ">
-        <form method="post" enctype="multipart/form-data">
-            {% if id %}
-            <input type="hidden" name="id" value="{{ id }}">
-            {% else %}
-            <input type="hidden" name="context" value="{{ context }}">
-            {% endif %}
-
-            <p class="bold w3-large">Название книги:</p>
-            {% if errors.name %}
-            <div>
-                Вы не указали название книги
-            </div>
-            {% endif %}
-            <input type="text" name="name" value="{{ params.name|raw }}">
-
-            {% if not id %}
-            <p class="bold w3-large">Обложка книги:</p>
-            {% if errors.image %}
-            <div>
-                Вы не указали обложку книги
-            </div>
-            {% endif %}
-            <input type="file" name="image">
-            {% endif %}
-
-            <p class="bold w3-large">Аннотация книги:</p>
-            {% if errors.content %}
-            <div>
-                Вы не указали аннотацию книги
-            </div>
-            {% endif %}
-            <div class="edit-textarea">
-                <textarea name="content">{{ content|raw }}</textarea>
-            </div>
-
-            <p class="bold w3-large">Описание кнги:</p>
-            {% if errors.description %}
-            <div>
-                Вы не указали описание книги
-            </div>
-            {% endif %}
-            <div class="edit-textarea">
-                <textarea name="description">{{ params.description|raw }}</textarea>
-            </div>
-
-            <div class="button-container-logout w3-container">
-                <button type="submit" name="cancel">Отмена</button>
-                <button type="submit" name="accept">Подтвердить</button>
-            </div>
-        </form>
+<form method="post">
+    <input type="hidden" name="id" value="{{ id }}">
+    <input type="hidden" name="context" value="books">
+    <div class="form-group row">
+        <label for="name" class="col-sm-2 col-form-label">Название</label>
+        <div class="col-sm-10">
+            <input class="form-control" name="name" id="name" value="{{ name|raw }}">
+        </div>
     </div>
-</div>
+    <div class="form-group row">
+        <label for="author" class="col-sm-2 col-form-label">Автор</label>
+        <div class="col-sm-10">
+            <input class="form-control" name="author" id="author" value="{{ author|raw }}">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="abstract" class="col-sm-2 col-form-label">Аннотация</label>
+        <div class="col-sm-10">
+            <textarea class="form-control" name="abstract" id="abstract">{{ abstract|raw }}</textarea>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="content" class="col-sm-2 col-form-label">Контент</label>
+        <div class="col-sm-10">
+            <textarea class="form-control" name="content" id="content">{{ content|raw }}</textarea>
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="offset-sm-2 col-sm-10">
+            <button type="submit" class="btn btn-primary" name="auth">Подтвердить</button>
+        </div>
+    </div>
+</form>
 {% endblock %}

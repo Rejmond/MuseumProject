@@ -14,7 +14,7 @@
             <div class="w3-quarter w3-container quarttohalf">
                 <div class="imgBox2 image-proportional-resizing">
                     {% if new.files.photos %}
-                    <img src="{{ wwwroot }}/file.php?id={{ (new.files.photos|last).id }}">
+                    <img src="{{ wwwroot }}/file.php?id={{ new.files.photos|last }}">
                     {% endif %}
                 </div>
                 <a href="{{ wwwroot }}/entity.php?id={{ new.id }}&returnurl={{ returnurl|url_encode }}#main"><p class="bold w3-large">{{ new.params.name }}</p></a>
@@ -28,7 +28,7 @@
             <div class="w3-quarter w3-container quarttohalf">
                 <div class="imgBox2 image-proportional-resizing">
                     {% if new.files.photos %}
-                    <img src="{{ wwwroot }}/file.php?id={{ (new.files.photos|last).id }}">
+                    <img src="{{ wwwroot }}/file.php?id={{ new.files.photos|last }}">
                     {% endif %}
                 </div>
                 <a href="{{ wwwroot }}/entity.php?id={{ new.id }}&returnurl={{ returnurl|url_encode }}#main"><p class="bold w3-large">{{ new.params.name }}</p></a>
@@ -62,7 +62,7 @@
             <div class="w3-quarter w3-container quarttohalf">
                 <div class="imgBox2 image-proportional-resizing">
                     {% if exhibition.files.photos %}
-                    <img src="{{ wwwroot }}/file.php?id={{ (exhibition.files.photos|last).id }}">
+                    <img src="{{ wwwroot }}/file.php?id={{ exhibition.files.photos|last }}">
                     {% endif %}
                 </div>
                 <a href="{{ wwwroot }}/entity.php?id={{ exhibition.id }}&returnurl={{ returnurl|url_encode }}#main"><p class="bold w3-large">{{ exhibition.params.name }}</p></a>
@@ -76,7 +76,7 @@
             <div class="w3-quarter w3-container quarttohalf">
                 <div class="imgBox2">
                     {% if exhibition.files.photos %}
-                    <img src="{{ wwwroot }}/file.php?id={{ (exhibition.files.photos|last).id }}">
+                    <img src="{{ wwwroot }}/file.php?id={{ exhibition.files.photos|last }}">
                     {% endif %}
                 </div>
                 <a href="{{ wwwroot }}/entity.php?id={{ exhibition.id }}&returnurl={{ returnurl|url_encode }}#main"><p class="bold w3-large">{{ exhibition.params.name }}</p></a>
@@ -91,37 +91,6 @@
     <h2 class="bold w3-container">Календарь знаменательных дат</h2>
 
     <h2 class="bold w3-container">День дарителя</h2>
-    <div class="w3-row">
-        <div class="quarter-to-2">
-            {% for present in presents|slice(0, 2) %}
-            <div class="w3-quarter w3-container quarttohalf">
-                <div class="imgBox2 image-proportional-resizing">
-                    {% if present.files.image %}
-                    <img src="{{ wwwroot }}/file.php?id={{ (present.files.image).id }}">
-                    {% endif %}
-                </div>
-                <a href="{{ wwwroot }}/entity.php?id={{ present.id }}&returnurl={{ returnurl|url_encode }}#main"><p class="bold w3-large">{{ present.params.name }}</p></a>
-                <p class="lightGrey text2">Даритель: {{ present.params.presenter }}</p>
-                <p>{{ present.content }}</p>
-            </div>
-            {% endfor %}
-        </div>
-        <div class="quarter-to-2">
-            {% for present in presents|slice(2, 2) %}
-            <div class="w3-quarter w3-container quarttohalf">
-                <div class="imgBox2">
-                    {% if present.files.image %}
-                    <img src="{{ wwwroot }}/file.php?id={{ (present.files.image).id }}">
-                    {% endif %}
-                </div>
-                <a href="{{ wwwroot }}/entity.php?id={{ present.id }}&returnurl={{ returnurl|url_encode }}#main"><p class="bold w3-large">{{ present.params.name }}</p></a>
-                <p class="lightGrey text2">Даритель: {{ present.params.presenter }}</p>
-                <p>{{ present.content }}</p>
-            </div>
-            {% endfor %}
-        </div>
-    </div>
-    <div class="allpubs w3-container"><a href="{{ wwwroot }}/entities.php?context=presents#main">ВСЕ ПОДАРКИ</a></div>
 
     <h2 class="bold w3-container">Геологический музей</h2>
     <div class="w3-row">

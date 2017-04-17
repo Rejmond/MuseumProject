@@ -39,9 +39,4 @@ if (post_data_submitted() && $accept !== false) {
     }
 }
 
-$template = 'admin/' . get_entity_template($object['context']);
-if (file_exists("$CONFIG->dirroot/templates/$template")) {
-    echo $Twig->render($template, $model);
-} else {
-    redirect("$CONFIG->wwwroot/index.php#main");
-}
+echo $Twig->render('admin/' . get_entity_template($object['context']), $model);

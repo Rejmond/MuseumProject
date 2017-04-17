@@ -9,24 +9,21 @@ if (is_singleton_context($context)) {
 }
 $page = optional_param('page', 0);
 
-$order = array('param' => 'date', 'order' => 'DESC');
+/*$args = array();
 switch ($context) {
-    case 'periods':
-        $order = array('param' => 'order', 'order' => 'ASC');
+    case 'news':
+        if ($name = optional_param('name', null)) {
+            $args['name'] = $name;
+            //$args['abstract'] = 'Книга 1';
+        }
         break;
-}
+}*/
 
-$offset = $pagination = null;
-$perpage = isset($CONFIG->entities[$context]['perpage']) ? $CONFIG->entities[$context]['perpage'] : null;
-if ($perpage !== null) {
-    $total = $DB->count_records('entities', array('context' => $context));
-    $lastpage = ceil($total / $perpage);
-    if ($page >= $lastpage) $page = $lastpage - 1;
-    $offset = $page * $perpage;
-    $baseurl = "$CONFIG->wwwroot/entities.php?context=$context";
-    $pagination = pagination($baseurl, $total, $page, $perpage);
-}
-$entities = ContentManager::get_entities($context, array(), $order, $offset, $perpage);
+$total = $DB->count_records('entities', array('context' => $context));
+$perpage = isset($CONFIG->entities[$context]['perpage']) ? $CONFIG->entities[$context]['perpage'] : 10;
+$lastpage = ceil($total / $perpage);
+if ($page >= $lastpage) $page = $lastpage - 1;
+$entities = ContentManager::get_entities($context, array(), "ORDER BY date DESC", $page * $perpage, $perpage);
 
 $objects = array();
 for ($i = 0; $i < count($entities); $i++) {
@@ -38,11 +35,8 @@ $model['title'] = 'Список элементов';
 $model['returnurl'] = "{$model['current_url']}#main";
 $model['context'] = $context;
 $model['entities'] = $objects;
-$model['pages'] = $pagination;
 
-$template = get_entities_template($context);
-if (file_exists("$CONFIG->dirroot/templates/$template")) {
-    echo $Twig->render($template, $model);
-} else {
-    redirect("$CONFIG->wwwroot/index.php#main");
-}
+$baseurl = "$CONFIG->wwwroot/entities.php?context=$context";
+$model['pages'] = pagination($baseurl, $total, $page, $perpage);
+
+echo $Twig->render(get_entities_template($context), $model);

@@ -56,18 +56,11 @@ class ContentManager
                      WHERE context = :context';
         }
 
-        $sql = 'SELECT e.id AS id
+        $sql = 'SELECT *
                   FROM entities e
                   JOIN (' . $sql . ') j ON e.id = j.id ';
         if ($orderby) {
-            $paramname = isset($orderby['param']) ? $orderby['param'] : 'date';
-            $order = isset($orderby['order']) && $orderby['order'] == 'DESC' ? 'DESC' : 'ASC';
-            if ($paramname != 'date') {
-                $sql .= "JOIN params p ON (e.id = p.entity AND p.name = {$DB->quote($paramname)}) ";
-                $sql .= "ORDER BY value $order ";
-            } else {
-                $sql .= "ORDER BY date $order ";
-            }
+            $sql .= "$orderby ";
         }
         if ($limit) {
             $sql .= "LIMIT :limit ";

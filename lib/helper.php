@@ -111,15 +111,6 @@ function limit_words($string, $limit) {
     return implode(' ', array_splice($words, 0, $limit));
 }
 
-function format_bytes($bytes, $precision = 2) {
-    $units = array('B', 'KB', 'MB', 'GB', 'TB');
-    $bytes = max($bytes, 0);
-    $pow = floor(($bytes ? log($bytes) : 0) / log(1024));
-    $pow = min($pow, count($units) - 1);
-    $bytes /= pow(1024, $pow);
-    return round($bytes, $precision) . ' ' . $units[$pow];
-}
-
 function clean_param($param, $type)
 {
     switch ($type)
@@ -131,16 +122,14 @@ function clean_param($param, $type)
             return trim(strip_tags($param));
 
         case PARAM_INT:
-            return is_numeric($param) ? (int)$param : '';
+            return is_int($param) ? (int)$param : '';
 
         case PARAM_FLOAT:
             return is_numeric($param) ? (float)$param : '';
 
         case PARAM_DATE:
             $date = DateTime::createFromFormat('d.m.Y', $param);
-            $errors = DateTime::getLastErrors();
-            $timestamp = $date->getTimestamp();
-            return empty($errors['warning_count']) && $timestamp > 0 ? $timestamp : '';
+            return $date ? $date->format('d.m.Y') : '';
 
         default:
             die('unknownparamtype');

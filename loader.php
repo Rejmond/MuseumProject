@@ -86,43 +86,9 @@ $CONFIG->entities = array(
             ),
         )
     ),
-    'presents' => array(
-        'entity_template' => 'present.html',
-        'entities_template' => 'presents.html',
-        'content_type' => PARAM_NOTAGS,
-        'perpage' => 5,
-        'params' => array(
-            'name' => array(
-                'required' => true,
-                'type' => PARAM_NOTAGS,
-            ),
-            'presenter' => array(
-                'required' => true,
-                'type' => PARAM_NOTAGS,
-            ),
-            'fulltext' => array(
-                'required' => true,
-                'type' => PARAM_RAW,
-            ),
-        ),
-        'attachments' => array(
-            'image' => array(
-                'required' => true,
-                'image' => true,
-                'size' => array(1200, 800),
-                'list' => false,
-            ),
-            'photos' => array(
-                'required' => false,
-                'image' => true,
-                'size' => array(1200, 800),
-                'list' => true,
-            ),
-        )
-    ),
-    /*                                                     */
-    /*                   history entities                  */
-    /*                                                     */
+            /*                                                     */
+            /*                   history entities                  */
+            /*                                                     */
     'about-history' => array(
         'entity_template' => 'about-history.html',
         'entities_template' => false,
@@ -134,55 +100,6 @@ $CONFIG->entities = array(
             ),
         ),
         'attachments' => array(),
-    ),
-    'periods' => array(
-        'entity_template' => 'period.html',
-        'entities_template' => 'periods.html',
-        'content_type' => PARAM_NOTAGS,
-        'params' => array(
-            'interval' => array(
-                'required' => true,
-                'type' => PARAM_NOTAGS,
-            ),
-            'fulltext' => array(
-                'required' => true,
-                'type' => PARAM_RAW,
-            ),
-            'order' => array(
-                'required' => true,
-                'type' => PARAM_INT,
-            ),
-        ),
-        'attachments' => array(),
-    ),
-    'books' => array(
-        'entity_template' => 'book.html',
-        'entities_template' => 'books.html',
-        'content_type' => PARAM_NOTAGS,
-        'perpage' => 10,
-        'params' => array(
-            'name' => array(
-                'required' => true,
-                'type' => PARAM_NOTAGS,
-            ),
-            'description' => array(
-                'required' => true,
-                'type' => PARAM_RAW,
-            ),
-        ),
-        'attachments' => array(
-            'image' => array(
-                'required' => false,
-                'image' => true,
-                'size' => array(1200, 800),
-                'list' => false,
-            ),
-            'files' => array(
-                'required' => false,
-                'image' => false,
-                'list' => true,
-            ),
-        )
     ),
 );
 

@@ -176,23 +176,14 @@ class EntityManager
             if (!$list) {
                 $filerecord = FileManager::get_file_by_filearea($entity_id, $paramname);
                 if ($filerecord) {
-                    $entity['files'][$paramname] = array();
-                    $entity['files'][$paramname]['id'] = $filerecord['id'];
-                    $entity['files'][$paramname]['name'] = pathinfo($filerecord['filename'], PATHINFO_FILENAME);
-                    $entity['files'][$paramname]['type'] = pathinfo($filerecord['filename'], PATHINFO_EXTENSION);
-                    $entity['files'][$paramname]['size'] = format_bytes(filesize(FileManager::get_file_path($filerecord['id'])));
+                    $entity['files'][$paramname] = $filerecord['id'];
                 }
             } else {
                 $filerecords = FileManager::get_files_in_filearea($entity_id, $paramname);
                 if (count($filerecords) > 0) {
                     $entity['files'][$paramname] = array();
                     foreach ($filerecords as $filerecord) {
-                        $fileid = $filerecord['id'];
-                        $entity['files'][$paramname][$fileid] = array();
-                        $entity['files'][$paramname][$fileid]['id'] = $fileid;
-                        $entity['files'][$paramname][$fileid]['name'] = pathinfo($filerecord['filename'], PATHINFO_FILENAME);
-                        $entity['files'][$paramname][$fileid]['type'] = pathinfo($filerecord['filename'], PATHINFO_EXTENSION);
-                        $entity['files'][$paramname][$fileid]['size'] = format_bytes(filesize(FileManager::get_file_path($fileid)));
+                        $entity['files'][$paramname][] = $filerecord['id'];
                     }
                 }
             }
