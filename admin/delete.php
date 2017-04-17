@@ -13,6 +13,9 @@ if ($cancel !== false) {
     redirect($returnurl ? $returnurl : "{$CONFIG->wwwroot}/entity.php?id={$entity_id}#main");
 }
 
+$object = EntityManager::get_object($entity_id);
+if (!$object) die(); // Записи не существует
+
 if (post_data_submitted() && $accept !== false) {
     $result = EntityManager::delete_object_from_submit();
     if ($result) {
@@ -22,5 +25,6 @@ if (post_data_submitted() && $accept !== false) {
 
 $model = get_base_model();
 $model['title'] = 'Удаление элемента';
+$model['context'] = $object['context'];
 $model['id'] = $entity_id;
 echo $Twig->render('admin/delete.html', $model);
