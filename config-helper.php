@@ -5,7 +5,7 @@ $CONFIG->dirroot = 'C:/inetpub/wwwroot/museum';
 $CONFIG->wwwroot = 'http://localhost:89';
 $CONFIG->dbpath = 'C:/inetpub/wwwroot/museum/database.db';
 $CONFIG->dataroot = 'C:/inetpub/wwwroot/museum/files';
-$CONFIG->password = '000000';
+$CONFIG->password = '123456';
 
 $CONFIG->entities = array(
     'about' => array(

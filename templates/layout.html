@@ -31,20 +31,21 @@
                 <li id='museumabout'><a href="{{ wwwroot }}/entity.php?context=about#main"><span>▸</span>О музее</a></li>
                 <li id='news'><a href="{{ wwwroot }}/entities.php?context=news#main"><span>▸</span>Новости музея</a></li>
                 <li id='exposition'><a><span>▸</span>Экспозиция</a></li>
-                <li id='exhibitions'><a href="{{ wwwroot }}/entities.php?context=exhibitions#main"><span>▸</span>Тематические <map class="second-line-margin">выставки</map></a></li>
-                <li id='calendar'><a><span>▸</span>Календарь <map class="second-line-margin">знаменательных дат</map></a></li>
-                <li id='presents'><a><span>▸</span>День дарителя</a></li>
+                <li id='exhibitions'><a href="{{ wwwroot }}/entities.php?context=exhibitions#main"><span>▸</span>Тематические <span class="second-line-margin">выставки</span></a></li>
+                <li id='calendar'><a><span>▸</span>Календарь <span class="second-line-margin">знаменательных дат</span></a></li>
+                <li id='presents'><a href="{{ wwwroot }}/entities.php?context=presents#main"><span>▸</span>День дарителя</a></li>
                 <li id='geologic'><a href="{{ wwwroot }}/entity.php?context=geologic#main"><span>▸</span>Геологический музей</a></li>
             </ul>
             <li id='history'><a href="{{ wwwroot }}/history.php#main">История</a></li>
             <ul id='historynav' class="musnav" style="display:none;">
-                <li id='history-about'><a href="{{ wwwroot }}/entity.php?context=about-history#main"><span>▸</span>Summary</a></li>
-                <li id='books'><a href="history.html#main"><span>▸</span>Книги</a></li>
-                <li id='magazines'><a href="history.html#main"><span>▸</span>Газеты</a></li>
-                <li id='leaders'><a href="history.html#main"><span>▸</span>Руководители</a></li>
-                <li id='memories'><a href="history.html#main"><span>▸</span>Воспоминания</a></li>
-                <li id='history-of-institute'><a href="history.html#main"><span>▸</span>История институтов</a></li>
-                <li id='history-of-success'><a href="history.html#main"><span>▸</span>История успеха</a></li>
+                <li id='history-about'><a href="{{ wwwroot }}/entity.php?context=about-history#main"><span>▸</span>Становление</a></li>
+                <li id='periods'><a href="{{ wwwroot }}/entities.php?context=periods#main"><span>▸</span>Хронология</a></li>
+                <li id='books'><a href="{{ wwwroot }}/entities.php?context=books#main"><span>▸</span>Книги</a></li>
+                <li id='magazines'><a><span>▸</span>Газеты</a></li>
+                <li id='leaders'><a><span>▸</span>Руководители</a></li>
+                <li id='memories'><a><span>▸</span>Воспоминания</a></li>
+                <li id='history-of-institute'><a><span>▸</span>История институтов</a></li>
+                <li id='history-of-success'><a><span>▸</span>История успеха</a></li>
             </ul>
             <li id="projects"><a href="">Проекты</a></li>
             <li id="student-groups"><a href="">Студотряды</a></li>
@@ -114,12 +115,14 @@
                     <a><p>Экспозиция</p></a>
                     <a href="{{ wwwroot }}/entities.php?context=exhibitions#main"><p>Тематические выставки</p></a>
                     <a><p>Календарь знаменательных дат</p></a>
-                    <a><p>День дарителя</p></a>
+                    <a href="{{ wwwroot }}/entities.php?context=presents#main"><p>День дарителя</p></a>
                     <a href="{{ wwwroot }}/entity.php?context=geologic#main"><p>Геологический музей</p></a>
                 </div>
                 <div class="w3-quarter w3-justify w3-container">
-                    <a><p class="bold footerbold">История</p></a>
-                    <a><p>Книги</p></a>
+                    <a href="{{ wwwroot }}/history.php#main"><p class="bold footerbold">История</p></a>
+                    <a href="{{ wwwroot }}/entity.php?context=about-history#main"><p>Становление</p></a>
+                    <a href="{{ wwwroot }}/entities.php?context=periods#main"><p>Хронология</p></a>
+                    <a href="{{ wwwroot }}/entities.php?context=books#main"><p>Книги</p></a>
                     <a><p>Газеты</p></a>
                     <a><p>Руководители</p></a>
                     <a><p>Воспоминания</p></a>

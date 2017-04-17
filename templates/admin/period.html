@@ -1,8 +1,8 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<div id="main" class="new edit-forms" data-location="news">
-    <h1 class="caption w3-container w3-xxlarge">Новости: {{ title|lower }}</h1>
+<div id="main" class="edit-forms" data-location="periods">
+    <h1 class="caption w3-container w3-xxlarge">Хронология: {{ title|lower }}</h1>
     <div class="w3-row textrow1 w3-container ">
         <form method="post">
             {% if id %}
@@ -11,29 +11,36 @@
             <input type="hidden" name="context" value="{{ context }}">
             {% endif %}
 
-
-            <p class="bold w3-large">Заголовок новости:</p>
-            {% if errors.name %}
+            <p class="bold w3-large">Временной интервал:</p>
+            {% if errors.interval %}
             <div>
                 Вы не указали заголовок новости
             </div>
             {% endif %}
-            <input type="text" name="name" value="{{ params.name|raw }}">
+            <input type="text" name="interval" value="{{ params.interval|raw }}">
 
-            <p class="bold w3-large">Краткое описание новости:</p>
+            <p class="bold w3-large">Порядок отображения:</p>
+            {% if errors.order %}
+            <div>
+                Вы не указали номер порядка отображения
+            </div>
+            {% endif %}
+            <input type="number" name="order" value="{{ params.order|raw }}">
+
+            <p class="bold w3-large">Краткое описание промежутка времени:</p>
             {% if errors.content %}
             <div>
-                Вы не указали краткое описание новости
+                Вы не указали краткое описание промежутка времени
             </div>
             {% endif %}
             <div class="edit-textarea">
                 <textarea name="content">{{ content|raw }}</textarea>
             </div>
 
-            <p class="bold w3-large">Подробное описание новости:</p>
+            <p class="bold w3-large">Подробное описание промежутка времени:</p>
             {% if errors.fulltext %}
             <div>
-                Вы не указали подробное описание новости
+                Вы не указали подробное описание промежутка времени
             </div>
             {% endif %}
             <div class="edit-textarea">
