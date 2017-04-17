@@ -131,14 +131,16 @@ function clean_param($param, $type)
             return trim(strip_tags($param));
 
         case PARAM_INT:
-            return is_int($param) ? (int)$param : '';
+            return is_numeric($param) ? (int)$param : '';
 
         case PARAM_FLOAT:
             return is_numeric($param) ? (float)$param : '';
 
         case PARAM_DATE:
             $date = DateTime::createFromFormat('d.m.Y', $param);
-            return $date ? $date->format('d.m.Y') : '';
+            $errors = DateTime::getLastErrors();
+            $timestamp = $date->getTimestamp();
+            return empty($errors['warning_count']) && $timestamp > 0 ? $timestamp : '';
 
         default:
             die('unknownparamtype');

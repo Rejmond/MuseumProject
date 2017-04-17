@@ -9,22 +9,15 @@
     <div class="allpubs w3-container"><a href="{{ wwwroot }}/entity.php?context=about-history#main">ПОДРОБНЕЕ</a></div>
 
     <h2 class="sub-caption bold w3-container"><span>Хронология создания и развития университета</span></h2>
+    {% for period in periods %}
     <div class="w3-row w3-container">
-        <div class="w3-col s3 w3-center histoChronics"><a><p class="bold w3-large w3-margin-0">1930-1933</p></a></div>
-        <div class="w3-col s9 w3-justify text2 fowhite"><p class="w3-margin-0">Сибирский государственный институт чёрных металлов. Первоначально состоял из металлургического и технологического факультетов.</p></div>
+        <div class="w3-col s3 w3-center histoChronics"><a href="{{ wwwroot }}/entity.php?id={{ period.id }}&returnurl={{ returnurl|url_encode }}#main">
+            <p class="bold w3-large w3-margin-0">{{ period.params.interval }}</p>
+        </a></div>
+        <div class="w3-col s9 w3-justify text2 fowhite"><p class="w3-margin-0">{{ period.content }}</p></div>
     </div>
-    <div class="w3-row w3-container">
-        <div class="w3-col s3 w3-center histoChronics"><a><p class="bold w3-large  w3-margin-0">1933-1994</p></a></div>
-        <div class="w3-col s9 w3-justify text2 fowhite"><p class="w3-margin-0">Сибирский государственный металлургический институт имени Серго Орджоникидзе. Во время Великой Отечественной войны институт располагался в доме культуры для детей.  Появились горный (1949), строительный (1960) факультеты. Проводится строительство кампуса — главного (1965) и металлургического (1985) корпусов. Появились Электрометаллургический (1965)...</p></div>
-    </div>
-    <div class="w3-row  w3-container">
-        <div class="w3-col s3 w3-center histoChronics"><a><p class="bold w3-large  w3-margin-0">1994-1997</p></a></div>
-        <div class="w3-col s9 w3-justify text2 fowhite"><p class="w3-margin-0">Сибирский государственный институт чёрных металлов. Первоначально состоял из металлургического и технологического факультетов.</p></div>
-    </div>
-    <div class="w3-row  w3-container">
-        <div class="w3-col s3 w3-center histoChronics"><a><p class="bold w3-large  w3-margin-0">1998-н.в.&nbsp;</p></a></div>
-        <div class="w3-col s9 w3-justify text2 fowhite"><p class=" w3-margin-0">Сибирский государственный институт чёрных металлов. Первоначально состоял из металлургического и технологического факультетов.</p></div>
-    </div>
+    {% endfor %}
+    <div class="allpubs w3-container"><a href="{{ wwwroot }}/entities.php?context=periods#main">ВСЯ ХРОНОЛОГИЯ</a></div>
 
     <h2 class="sub-caption bold w3-container"><span>Список книг</span></h2>
     <div class="w3-row textrow1">

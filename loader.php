@@ -135,11 +135,31 @@ $CONFIG->entities = array(
         ),
         'attachments' => array(),
     ),
+    'periods' => array(
+        'entity_template' => 'period.html',
+        'entities_template' => 'periods.html',
+        'content_type' => PARAM_NOTAGS,
+        'params' => array(
+            'interval' => array(
+                'required' => true,
+                'type' => PARAM_NOTAGS,
+            ),
+            'fulltext' => array(
+                'required' => true,
+                'type' => PARAM_RAW,
+            ),
+            'order' => array(
+                'required' => true,
+                'type' => PARAM_INT,
+            ),
+        ),
+        'attachments' => array(),
+    ),
     'books' => array(
         'entity_template' => 'book.html',
         'entities_template' => 'books.html',
         'content_type' => PARAM_NOTAGS,
-        'perpage' => 5,
+        'perpage' => 10,
         'params' => array(
             'name' => array(
                 'required' => true,
