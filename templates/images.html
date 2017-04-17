@@ -1,16 +1,16 @@
 <div id="images">
     <div style="display: inline-block">
-        {% for imageid in images %}
+        {% for image in images %}
         <div class="imgBox2 entity-image-container image-proportional-resizing">
             {% if admin %}
             <form class="delete-image" method="post" action="{{ wwwroot }}/admin/delfile.php">
-                <input type="hidden" name="id" value="{{ imageid }}">
+                <input type="hidden" name="id" value="{{ image.id }}">
                 <input type="submit" name="del" value="X">
             </form>
             {% endif %}
-            <a href="{{ wwwroot }}/file.php?id={{ imageid }}" data-fancybox="group" data-type="image">
+            <a href="{{ wwwroot }}/file.php?id={{ image.id }}" data-fancybox="group" data-type="image">
                 <div>
-                    <img src="{{ wwwroot }}/file.php?id={{ imageid }}">
+                    <img src="{{ wwwroot }}/file.php?id={{ image.id }}">
                 </div>
             </a>
         </div>
@@ -18,7 +18,7 @@
         {% if admin %}
         <div class="entity-image-add">
             <form method="post" enctype="multipart/form-data" action="{{ wwwroot }}/admin/addfile.php">
-                <input type="hidden" name="id" value="{{ entityid }}">
+                <input type="hidden" name="id" value="{{ entity.id }}">
                 <input type="hidden" name="filearea" value="photos">
                 <label>
                     <input type="file" name="file" onchange="this.form.submit()">

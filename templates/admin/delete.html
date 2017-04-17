@@ -49,7 +49,7 @@
 {% endblock %}
 
 {% block content %}
-<div id="main" class="delete">
+<div id="main" class="delete" data-location="{{ context }}">
     <div class="container">
         <form method="post">
             <input type="hidden" value="{{ id }}" name="id">
