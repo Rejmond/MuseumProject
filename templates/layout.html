@@ -91,11 +91,11 @@
         </div>
     </header>
     {% endblock %}
-    <main>
+    <main class="w3-container">
         <span class="w3-opennav w3-xxlarge w3-container w3-light-grey w3-opacity-min hide-large" onclick="w3_open(); $(window).scroll();" id="openNav">&#9776;</span>
         {% if admin %}
         <form method="post" action="{{ wwwroot }}/auth.php">
-            <div class="button-container-logout w3-container">
+            <div class="button-container-logout">
                 <input type="hidden" name="returnurl" value="{{ current_url }}#main" />
                 <button type="submit" name="logout">Выход</button>
             </div>
@@ -109,7 +109,7 @@
         <div>
             <div class="w3-row">
                 <div class="w3-quarter w3-justify w3-container">
-                    <a href="{{ wwwroot }}/index.php#main"><p class="bold footerbold">Музей</p></a>
+                    <a href="{{ wwwroot }}/index.php#main"><p class="bold heads">Музей</p></a>
                     <a href="{{ wwwroot }}/entity.php?context=about#main"><p>О музее</p></a>
                     <a href="{{ wwwroot }}/entities.php?context=news#main"><p>Новости музея</p></a>
                     <a><p>Экспозиция</p></a>
@@ -119,7 +119,7 @@
                     <a href="{{ wwwroot }}/entity.php?context=geologic#main"><p>Геологический музей</p></a>
                 </div>
                 <div class="w3-quarter w3-justify w3-container">
-                    <a href="{{ wwwroot }}/history.php#main"><p class="bold footerbold">История</p></a>
+                    <a href="{{ wwwroot }}/history.php#main"><p class="bold heads">История</p></a>
                     <a href="{{ wwwroot }}/entity.php?context=about-history#main"><p>Становление</p></a>
                     <a href="{{ wwwroot }}/entities.php?context=periods#main"><p>Хронология</p></a>
                     <a href="{{ wwwroot }}/entities.php?context=books#main"><p>Книги</p></a>
@@ -130,22 +130,22 @@
                     <a><p>История успеха</p></a>
                 </div>
                 <div class="w3-quarter w3-justify w3-container">
-                    <a><p class="bold footerbold ">Проекты</p></a>
-                    <a><p class="bold footerbold ">Студенческие отряды</p></a>
+                    <a><p class="bold heads">Проекты</p></a>
+                    <a><p class="bold heads">Студенческие отряды</p></a>
                 </div>
                 <div class="contacts w3-quarter w3-justify w3-container">
-                    <p class="bold footerbold">Контакты</p>
-                    <p class="footerbefore3">654007, ул. Кирова, 42 каб. 239, 234</p>
-                    <p class="footerbefore3">Кемеровская область, г. Новокузнецк</p>
-                    <p class="foexcurcio">Экскурсия по записи</p>
-                    <p class="footerbold fowhite" style="word-spacing: 48px;">Телефон <span>(3843)46-45-47</span></p>
-                    <p class="footerbold fowhite" style="word-spacing: 66px;">E-mail <span>museum@sibsiu.ru</span></p>
-                    <p class="footerbold fowhite" style="word-spacing: 20px;">Заведующая <span>Быкасова&nbsp;Л.В.</span></p>
-                    <p class="footerbold fowhite" style="word-spacing: 61px;">vk.com <span>/club137905709</span></p>
+                    <p class="bold heads">Контакты</p>
+                    <p class="footer-before">654007, ул. Кирова, 42 каб. 239, 234</p>
+                    <p class="footer-before">Кемеровская область, г. Новокузнецк</p>
+                    <p class="excursion">Экскурсия по записи</p>
+                    <p class="heads white" style="word-spacing: 48px;">Телефон <span>(3843)46-45-47</span></p>
+                    <p class="heads white" style="word-spacing: 66px;">E-mail <span>museum@sibsiu.ru</span></p>
+                    <p class="heads white" style="word-spacing: 20px;">Заведующая <span>Быкасова&nbsp;Л.В.</span></p>
+                    <p class="heads white" style="word-spacing: 61px;">vk.com <span>/club137905709</span></p>
                 </div>
             </div>
-            <div class="footersiu ">СибГИУ</div>
-            <img class="footersiuimg" src="{{ wwwroot }}/images/siu.png">
+            <div class="siu ">СибГИУ</div>
+            <img class="siu-img" src="{{ wwwroot }}/images/siu.png">
         </div>
     </footer>
     {% endblock %}

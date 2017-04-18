@@ -1,12 +1,16 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<div id="main" class="book" data-location="books">
-    <h1 class="caption w3-container w3-xxlarge">Описание публикации</h1>
-    <div class="w3-row textrow1 w3-container ">
+<div id="main" class="book history-image" data-location="books">
+    <h1 class="caption w3-xxlarge">Описание публикации</h1>
+    <div>
         <div class="imgBox1">
             {% if entity.files.image %}
-            <img src="{{ wwwroot }}/file.php?id={{ entity.files.image.id }}">
+            <a href="{{ wwwroot }}/file.php?id={{ entity.files.image.id }}" data-fancybox="group" data-type="image">
+                <div>
+                    <img src="{{ wwwroot }}/file.php?id={{ entity.files.image.id }}">
+                </div>
+            </a>
             {% endif %}
         </div>
         <div class="notflow//">
@@ -29,7 +33,7 @@
         </div>
     </div>
     {% if entity.files.files|length > 0 %}
-    <div class="w3-container w3-responsive">
+    <div class="w3-responsive">
         <table class="my-margin w3-table w3-bordered ">
             <tr>
                 <th>Название</th>

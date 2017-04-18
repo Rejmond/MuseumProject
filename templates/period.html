@@ -1,9 +1,9 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<div id="main" class="entity" data-location="periods">
-    <h1 class="caption w3-container w3-xxlarge">Хронология создания и развития университета</h1>
-    <div class="w3-row textrow1 w3-container ">
+<div id="main" class="entity history-image" data-location="periods">
+    <h1 class="caption w3-xxlarge">Хронология создания и развития университета</h1>
+    <div>
         <p class="bold w3-large w3-margin-0">
             {{ entity.params.interval|raw }}
         </p>
@@ -15,7 +15,7 @@
         <p class="lightGrey text2">Приоритет отображения: {{ entity.params.order }}</p>
         {% endif %}
     </div>
-    <div class="post-tiny w3-container">
+    <div class="post-tiny">
         {{ entity.params.fulltext|raw }}
     </div>
     <div class="to-back"><a href="{{ returnurl }}">Назад</a></div>

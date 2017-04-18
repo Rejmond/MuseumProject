@@ -5,7 +5,7 @@
 #007bc6; синий сибгиу
 #b8e4ff; голубой сибгиу
 #494952; серый темный текст
-#BCBABA; для футера
+#bcbaba; для футера
 */
 
 @font-face {
@@ -20,7 +20,7 @@
     src: url('../fonts/OpenSans-Bold.eot');
     src: url('../fonts/OpenSans-Bold.eot?#iefix') format("embedded-opentype"),
     url(../fonts/OpenSans-Bold.woff) format('woff'),
-    url(../fonts/OpenSans-Bold.ttf) format('ttf'); 
+    url(../fonts/OpenSans-Bold.ttf) format('ttf');
 }
 @font-face {
     font-family: 'OpenSans-Regular';
@@ -38,32 +38,51 @@
 }
 @font-face {
     font-family: 'MinionPro-Medium';
-    src: url('../fonts/MinionPro-Medium.eot'); 
+    src: url('../fonts/MinionPro-Medium.eot');
     src: url('../fonts/MinionPro-Medium.eot?#iefix') format("embedded-opentype"),
     url(../fonts/MinionPro-Medium.woff) format('woff'),
-    url(../fonts/MinionPro-Medium.otf) format('otf'); 
+    url(../fonts/MinionPro-Medium.otf) format('otf');
 }
 @font-face {
     font-family: 'MinionPro-Bold';
     src: url('../fonts/MinionPro-Bold.eot');
     src: url('../fonts/MinionPro-Bold.eot?#iefix') format("embedded-opentype"),
     url(../fonts/MinionPro-Bold.woff) format('woff'),
-    url(../fonts/MinionPro-Bold.otf) format('otf'); 
+    url(../fonts/MinionPro-Bold.otf) format('otf');
 }
+
+
+
+
+
+
+
+
 /* Фоновые изображения, символизирующие 4 основные категории */
-.museum {
+.museum-image {
     background: url(../images/museum_img.png) no-repeat 790px 55px;
 }
-.history {
+.history-image {
     background: url(../images/history_img.png) no-repeat 790px 55px;
 }
-.projects {
+.projects-image {
     background: url(../images/project_img.png) no-repeat 790px 55px;
 }
-.student-groups {
+.student-groups-image {
     background: url(../images/student-group_img.png) no-repeat 790px 55px;
 }
+
+
+
+
+
+
+
+
 /* Общие стили */
+html {
+    font-size: 1px;
+}
 body {
     color: #494952;
     font-family: "OpenSans-Regular", sans-serif;
@@ -73,11 +92,11 @@ header {
     cursor: pointer;
 }
 main {
-    background: #fff; 
+    background: #fff;
     max-width: 1200px;
     margin: 0 auto;
     padding-bottom: 60px;
-    font-size: 14px;
+    font-size: 14rem;
     min-height: 800px;
 }
 main a{
@@ -112,15 +131,18 @@ footer {
     max-width: 100%;
     margin: 0 auto;
     font-family: "OpenSans-Light", sans-serif;
-    z-index: 1;
+    z-index: 20000;
+}
+footer a {
+    color: #bcbaba;
 }
 footer a:link{
-    color: white;
+    color: #bcbaba;
     background-color: transparent;
     text-decoration: none;
 }
 footer a:visited{
-    color: white;
+    color: #bcbaba;
     background-color: transparent;
     text-decoration: none;
 }
@@ -137,13 +159,13 @@ footer a:active{
 }
 h1 {
     font-family: "Acrom-Bold", sans-serif;
-    font-size: 60px;
+    font-size: 60rem;
     padding-top: 65px !important;
     padding-bottom: 45px !important;
     margin-top: 0;
 }
 h2 {
-    font-size: 30px;
+    font-size: 30rem;
     margin-top: 40px;
     margin-bottom: 18px;
 }
@@ -156,6 +178,13 @@ h2 {
 .bold {
     font-family: "OpenSans-Bold", sans-serif;
 }
+/* ссылка возврата назад */
+.to-back {
+    font-family: "OpenSans-Regular", sans-serif;
+    text-align:right;
+    margin-top: 18px;
+    font-size: 16rem;
+}
 /* отключаем красную рамку для input moz */
 input:invalid {
     box-shadow: none;
@@ -164,51 +193,55 @@ input:invalid {
 
 
 
+
+
+
+
 /* Header стили */
 /* SVG анимация */
-.xPoTryMN_0 {
+header .xPoTryMN_0 {
     fill:#494951;
     fill-opacity: 0.0;
     stroke-dasharray:3456 3458;stroke-dashoffset:3457;
     animation:xPoTryMN_draw 2s linear 0s forwards, KLxHEKXr_fill 500ms ease 2s forwards;
 }
-.xPoTryMN_1 {
+header .xPoTryMN_1 {
     fill:#494951;
     fill-opacity: 0.0;
     stroke-dasharray:790 792;stroke-dashoffset:791;
     animation:xPoTryMN_draw 1.5s linear 0.5s forwards, KLxHEKXr_fill 500ms ease 2s forwards;
 }
-.xPoTryMN_2 {
+header .xPoTryMN_2 {
     fill:#494951;
     fill-opacity: 0.0;
     stroke-dasharray:93 95;stroke-dashoffset:94;
     animation:xPoTryMN_draw 1s linear 0.5s forwards, KLxHEKXr_fill 500ms ease 2s forwards;
 }
-.xPoTryMN_3 {
+header .xPoTryMN_3 {
     fill:#f0f0f0;
     stroke-dasharray:51 53;stroke-dashoffset:52;
     animation:xPoTryMN_draw 1s linear 1s forwards;
 }
-.xPoTryMN_4 {
+header .xPoTryMN_4 {
     fill:#f0f0f0;
     stroke-dasharray:176 178;stroke-dashoffset:177;
     animation:xPoTryMN_draw 1s linear 0.75s forwards, KLxHEKXr_fill 500ms ease 4s forwards;
 }
-/* центрирующая обёртка под header*/
-.headArtemArt { 
+/* центрирующая обёртка под header */
+header .headArtemArt {
     max-width: 1200px;
     margin: 0 auto;
     height: 100vh;
 }
 /* линии под/над svg */
-.header-line {
+header .header-line {
     margin: 0 auto;
     width: 0;
     height: 6px;
     background: #494952;
 }
 /* svg Музей */
-.header-svg {
+header .header-svg {
     width:340px;
     margin: 30px auto 24px;
 }
@@ -221,26 +254,29 @@ header p {
     margin-top:-8px;
 }
 /* обёртка над текстом */
-.header-text {
+header .header-text {
     margin-bottom: 26px;
     opacity: 0;
 }
 /* извращения артема */
-.headArtemArt .w3-display-bottommiddle {
+header .headArtemArt .w3-display-bottommiddle {
     bottom: 25px;
 }
-#mouse {
+header #mouse {
     position: relative;
-    opacity: 0.0; 
+    opacity: 0.0;
 }
-#scroll_btn {
+header #scroll_btn {
     margin: auto;
     position: relative;
-    opacity: 0.0; 
+    opacity: 0.0;
     background: #494951;
     height: 10px;
     width: 2px;
 }
+
+
+
 
 
 
@@ -255,7 +291,7 @@ footer > div {
 footer p {
     line-height: 10px;
     text-align: left;
-    font-size: 14px;
+    font-size: 14rem;
 }
 footer span {
     white-space: nowrap;
@@ -264,42 +300,36 @@ footer span {
 footer .bold {
     color: white;
 }
-.footerbold {
+footer .heads {
     margin-bottom: 12px;
     margin-top: 28px;
 }
-.quarttohalf .bold {
+footer .quarttohalf .bold {
     margin-bottom: 0;
 }
-.fowhite {
+footer .white {
     font-family: "OpenSans-Regular", sans-serif;
 }
-.footerbefore2 {
-    margin-top: 30px;
-}
-.footerbefore3 {
+footer .contacts {
     margin-top: -2px;
 }
-.footersiu {
-    font-family: 'MinionPro-Medium', sans-serif; 
-    font-size: 14pt;
+footer .siu {
+    font-family: 'MinionPro-Medium', sans-serif;
+    font-size: 14rem;
     margin-top: 22px;
 }
-.foexcurcio {
-    color: #989797;
-    font-family: "OpenSans-Bold", sans-serif;
-}
-.footersiuimg {
+footer .siu-img {
     width: 235px;
     padding-bottom: 15px;
     opacity: 0.5;
 }
+footer .excursion {
+    color: #989797;
+    font-family: "OpenSans-Bold", sans-serif;
+}
 
 
 
-
-
-/* То что далее редактируется чаще чем никогда*/
 
 
 
@@ -307,8 +337,8 @@ footer .bold {
 
 /* Стили навигации / боковое меню */
 .mynav{
-    font-size: 18px;
-    width: 220px; 
+    font-size: 18rem;
+    width: 220px;
     line-height: 15px;
     height: 100vh;
     z-index: 1999;
@@ -330,21 +360,20 @@ footer .bold {
 /* для бургера */
 .hide-large{
     z-index: 1000;
+    margin-left: -16px;
 }
 /* активный элемент меню */
 .active {
-    border-right: 3px solid black; 
+    border-right: 3px solid black;
     font-family: 'OpenSans-bold', sans-serif;
 }
 ul {
-    margin-top: 0; 
-    margin-left: 0; 
+    margin-top: 0;
+    margin-left: 0;
     padding-left: 0;
 }
-
-ul > ul { 
-    /*margin-left:16px; */
-    font-size: 16px;
+ul > ul {
+    font-size: 16rem;
     color: #494952;
 }
 ul > ul li span:not(.second-line-margin){
@@ -353,8 +382,7 @@ ul > ul li span:not(.second-line-margin){
     margin-left: 0;
     padding-right: 8px;
 }
-
-ul > ul li a{ 
+ul > ul li a{
     max-width: 215px;
     margin-top: 6px !important;
     margin-bottom: 6px !important;
@@ -362,9 +390,7 @@ ul > ul li a{
 .sub-menu{
     font-family: 'OpenSans-Regular', sans-serif;
 }
-
 li {list-style-type: none;}
-/*end*/
 /* большой экран меню */
 @media (min-width:1740px) {
     .hide-large, .hide-large2 {
@@ -378,13 +404,10 @@ li {list-style-type: none;}
     .mynav > li:nth-child(1) {
         margin-top: 51px !important;
     }
-
     .menu-left-border {
-        height: 300px; 
+        height: 300px;
     }
-
 }
-/*ul > ul li:nth-child(1) { margin-top:0px !important; }*/
 /* маленький экран меню */
 @media (max-width:1739px) {
     /* бургер */
@@ -396,21 +419,40 @@ li {list-style-type: none;}
         display: none;
     }
     .menu-left-border {
-        height: 100%; 
+        height: 100%;
     }
-
-    #museum{
-        margin-top:0px;
+    #museum {
+        margin-top:0;
     }
 }
 /* линия границы меню*/
 .menu-left-border{
-    z-index: -1; 
+    z-index: -1;
     right: 0;
-    position:absolute; 
-    width: 3px; 
+    position:absolute;
+    width: 3px;
     background: #f0f0f0;
 }
+/* Надпись Сибгиу в меню*/
+.sibsiu {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin-left: 14px;
+    font-family: "Acrom-Bold", sans-serif;
+    color: #007bc6;
+    font-size: 44rem;
+    opacity: 0.15;
+}
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -419,7 +461,7 @@ li {list-style-type: none;}
 /* основной контент*/
 main .notflow p {
     line-height: 20px;
-    margin: 0px;
+    margin: 0;
 }
 /* светлый текст авторы, даты публикации*/
 .lightGrey {
@@ -430,7 +472,6 @@ main .notflow p {
 .lightGrey-2 {
     color:#f0f0f0;
 }
-
 
 /* обёртка на ссылку ВСЕ ...  страницы 2 уровня*/
 .allpubs {
@@ -443,8 +484,8 @@ main .notflow p {
 .text2 {
     padding-bottom: 8px;
     padding-top: 5px;
-    margin-top: 0px;
-    margin-bottom: 0px;
+    margin-top: 0;
+    margin-bottom: 0;
 }
 /* контейенер для div->img как в Museum Список книг или переодических изданий*/
 .imgBox1{
@@ -453,7 +494,7 @@ main .notflow p {
     background: #f5f2f0;
     float: left;
     margin-right: 15px;
-    margin-bottom:20px; 
+    margin-bottom:20px;
 }
 .imgBox1 img {
     width: 100%;
@@ -468,12 +509,11 @@ main .notflow p {
     height: 200px;
     overflow: hidden;
 }
-
 .imgBox2 img {
 /*
-    width: 100%;
-    height: 100%;
-    */
+        width: 100%;
+        height: 100%;
+*/
 }
 /* контейенер для div->img как в History История успеха*/
 .imgBox3 {
@@ -486,13 +526,13 @@ main .notflow p {
 /*Классы добавились для контента истории*/
 /* Выравнивание ссылок в хронологии создания*/
 .histoChronics {
-     width:210px !important; 
-     padding-left: 10px; 
-     padding-top: 4px;
+    width:210px !important;
+    padding-left: 10px;
+    padding-top: 4px;
 }
 /* отмена нижнего отступа для красоты и равенства расстояний при расположении в 1 колонку*/
-.histoInsts  { 
-    margin-bottom: -18px !important; 
+.histoInsts  {
+    margin-bottom: -18px !important;
 }
 /* выравнивание воспоминаний*/
 .histoMemory{
@@ -500,10 +540,8 @@ main .notflow p {
 }
 /* история успеха контейнеры */
 .histoSuc {
-    margin-left: 16px;
-    margin-right: 16px;
-    padding-left:0px; 
-    padding-right: 0px; 
+    padding-left:0;
+    padding-right: 0;
     margin-bottom: 20px;
 }
 /* история успеха. меняем цвет нечетных контейнеров*/
@@ -512,27 +550,21 @@ main .notflow p {
 }
 /* история успеха годы */
 .histoAge ul {
-    padding-left: 25px;
-    padding-right: 25px;
     text-align: justify;
 }
 .histoAge ul::after {
-    width: 100%; 
-    display: inline-block; 
-    content: ""; 
+    width: 100%;
+    display: inline-block;
+    content: "";
 }
 .histoAge li {
     display: inline-block;
 }
 /* руководители */
 .histoHeads {
-    width: 136px; 
+    width: 136px;
     margin-left: 60px;
 }
-
-
-
-
 
 /* Адаптация под экраны */
 @media screen and (max-width: 1200px) {
@@ -540,20 +572,16 @@ main .notflow p {
         width:49.99999%; margin-top: 20px;
     }
     .quarter-to-2 {
-        /*content:"";*/
-        /*display:table;*/
         clear:both
     }
-
     .imgBox2 {
         height: 300px;
     }
-
     footer p {
         line-height: normal;
         text-align: left;
-        font-size: 14px;
-        margin: 0px;
+        font-size: 14rem;
+        margin: 0;
     }
     .histoHea .w3-quarter {
         width: 24.99999%;
@@ -561,8 +589,8 @@ main .notflow p {
 }
 @media screen and (min-width: 981px) {
     /* появление скролл эффекта */
-    #scroll_btn { 
-        display: block !important; 
+    #scroll_btn {
+        display: block !important;
     }
 }
 @media screen and (max-width: 980px) {
@@ -581,45 +609,36 @@ main .notflow p {
 }
 @media screen and (max-width: 900px) {
     main .w3-col{
-        width: 100% !important; 
-        display: block; 
+        width: 100% !important;
+        display: block;
     }
     .histoHea .w3-quarter {
         width: 49.99999%;
     }
 }
 @media screen and (max-width: 680px) {
-    
     main .w3-quarter {
-        width:99.99999%; 
+        width:99.99999%;
         margin-top: 20px;
     }
-    
-    .foofoofoo {    
-        width: 278px; 
-        margin: 0 auto; 
-    }
     footer .w3-quarter {
-        width:99.99999%;  
-        margin-top: -20px; 
+        width:99.99999%;
+        margin-top: -20px;
     }
-
     .footerbold {
-    margin-bottom: 12px;
-    margin-top: 36px;
+        margin-bottom: 12px;
+        margin-top: 36px;
     }
-
     .imgBox2 {
         height:350px;
     }
-
     .contacts {
-        margin-left: 0px;
+        margin-left: 0;
     }
 }
 @media screen and (max-width: 540px) {
     .histoHea .w3-quarter {
-        width: 99.99999%; 
+        width: 99.99999%;
         margin: 0 auto;
     }
     .histoHeads {
@@ -637,7 +656,7 @@ main .notflow p {
         display: none;
     }
     .header-line {
-        width:0px;
+        width:0;
         height: 4px;
         max-width: 220px;
     }
@@ -648,9 +667,7 @@ main .notflow p {
     }
     .header-svg {
         width:200px;
-        margin: 0 auto; 
-        margin-top: 16px;
-        margin-bottom: 14px;
+        margin: 16px auto 14px;
     }
     header p {
         font-size: 18px;
@@ -668,27 +685,21 @@ main .notflow p {
     }
     #mouse {
         position: relative;
-        opacity: 0.0; 
+        opacity: 0.0;
     }
     #scroll_btn {
         margin: auto;
         position: relative;
-        opacity: 0.0; 
+        opacity: 0.0;
         background: #494951;
         height: 10px;
         width: 2px;
     }
 }
 
-
-
-
-
-
-/*НОВЫЕ КЛАССЫ */
 .about {
     font-family: "OpenSans-Light", sans-serif;
-    font-size: 18px;
+    font-size: 18rem;
     line-height: 28px;
 }
 h2 {
@@ -699,7 +710,7 @@ h2 {
 h2:after {
     content:"";
     display: inline-block !important;
-    height: 0.5em;   
+    height: 0.5em;
     width: 100%;
     margin-right: -100%;
     margin-bottom: -13px;
@@ -709,14 +720,12 @@ h2:after {
     z-index: 0;
 }
 
-
-
 /* избавляемся от марджина для картинок в категории книги */
 .books .imgBox1 {
-    margin-bottom: 0px !important;
+    margin-bottom: 0 !important;
 }
 .book .imgBox1 {
-    margin-bottom: 0px !important;
+    margin-bottom: 0 !important;
 }
 /* туда-сюда универсальное для всех страниц должно быть, потом перместить в основные*/
 #pagination .tudasuda {
@@ -736,26 +745,16 @@ h2:after {
 }
 
 /* надстройка изображений для новостей и выставок */
-
-
 .entitylist .imgBox2 {
     height: 400px;
     max-width:800px;
     margin: 0 auto;
 }
-
-/*
-.new .imgBox2, .exhibition .imgBox2 {
-    max-width:200px;
-
-    float: left; 
-    margin: 10px 20px 10px 0;
-
+.entity-image {
+    height: 400px;
+    max-width:800px;
+    margin: 0 auto;
 }
-*/
-
-
-
 
 /*  download icon - delete after update*/
 .down-fold {
@@ -774,7 +773,7 @@ h2:after {
     width:75px;
     background:#007bc6;
     border-radius:5px;
-    font-size:40px;
+    font-size:40rem;
     line-height:120px;
     text-align:center;
     color:#fff;
@@ -800,7 +799,7 @@ h2:after {
     width: 100%;
     margin-bottom: 50px;
     height: 50px;
-    font-size: 18px;
+    font-size: 18rem;
     outline:none;
 
     border-top-width: 0;
@@ -815,13 +814,10 @@ h2:after {
 {
     display:inline-block;
     float: right;
-
     cursor: pointer;
-    background: transparent;
-    border: 0px;
+    border: 0;
     outline: none;
-    background-image: url(../images/search.png);
-    background-repeat: no-repeat;
+    background: transparent url(../images/search.png) no-repeat;
     height:32px;
     width: 32px;
     margin-right: 10px;
@@ -839,94 +835,58 @@ h2:after {
     text-align:right;
     margin-bottom: 15px;
     margin-top: 15px;
-    font-size: 16px;
+    font-size: 16rem;
 }
 
 .entitylist .textrow1 {
     border-bottom:  1px dashed #989797;
     margin-top: 15px;
 }
-
 .to-begin
 {
     font-family: "OpenSans-Regular", sans-serif;
     text-align:center;
-    font-size: 16px;
+    font-size: 16rem;
 }
-
 .book .imgBox1{
-     width: 408px;
-     height: 552px;
+    width: 204px;
+    height: 276px;
 }
-
 @media screen and (max-width: 680px){
     .book .imgBox1{
-    margin: 0 auto;
-    width: 272px;
-    height: 368px;
-    float: none;
+        margin: 0 auto;
+        width: 272px;
+        height: 368px;
+        float: none;
     }
 
 }
-
-
-
-.to-back
-{
-    font-family: "OpenSans-Regular", sans-serif;
-    text-align:right;
-    margin-top: 18px;
-    font-size: 16px;
-}
-
-.sibsiu{
-    margin-top: 30px;
-    margin-bottom: 30px;
-    margin-left: 14px;
-
-    font-family: "Acrom-Bold", sans-serif;
-    /*font-family: "MinionPro-Bold";*/
-    color: #007bc6;
-    font-size: 44px;
-    opacity: 0.15;
-}
-
-
 .my-margin
 {
     margin-top: 20px !important;
 }
-
-
-table th
+.entity table th
 {
     color: #fff;
     background: #007bc6;
-    border: 0px;
+    border: 0;
 }
-
-table td
+.entity table td
 {
     border-top: 1px solid #f0f0f0;
     border-bottom: 1px solid #f0f0f0;
-
 }
-
 .entitylist p, .entity p
 {
-    font-size: 16px;
+    font-size: 16rem;
     line-height: 26px!important;
 }
-
-
-#main, #main .lightGrey,#main div>p, h2, h1, .about{ 
-  /*  color: color; */
+#main, #main .lightGrey,#main div>p, h2, h1, .about{
+    /*  color: color; */
 }
-
 .second-line-margin
 {
     display: block;
-
     margin-left: 21px;
     margin-top: 5px;
 }
@@ -934,39 +894,32 @@ table td
 
 
 
+
+/* ссылка справа у заголовков верхнего уровня h1 */
 .h1-to-form {
     position: relative;
-    top:-88px;
-    /*float: right;*/
+    top:-94px;
     text-align: right;
+    margin-bottom: -47px;
 }
 .h1-to-form img {
+    border:1px solid transparent;
     width: 32px;
     height: 32px;
-    padding: 4px;
-    border: 1px solid transparent;
+    padding: 2px;
 }
 .h1-to-form img:hover {
     background: #f8f8f8;
     border:1px solid  #f0f0f0;
 }
-.h1-to-form button{
-    background: none;
-    cursor: pointer;
-    border: 1px solid  transparent;
-    width: 32px;
-    height: 32px;
-    padding: 0;
-}
-/*
-.h1-to-form button img{
-    margin-left: 0px;
-}
-*/
-.h1-to-form button:hover {
-    background: #f8f8f8;
-    border:1px solid  #f0f0f0;
-}
+
+
+
+
+
+
+
+
 
 .p-to-form {
     position: relative;
@@ -993,7 +946,6 @@ table td
     height: 32px;
     padding: 0;
 }
-
 .p-to-form button:hover {
     background: #f8f8f8;
     border:1px solid  #f0f0f0;
@@ -1001,160 +953,57 @@ table td
 
 
 
-                       /*   вход на сайт    */
-/* Оболочки */
-.log-outer {
-    position: relative;
-    width: 100%;
-    /*height: 100vh;*/
-    top: 40vh;
-}
 
-
-.log-inner {
-    max-width: 460px;
-    width: 100%;
-    margin: 0 auto;
-    width: 460px;
-    margin: auto;
-}
-
-.log-inner .input-container {
-    position: relative;
-    margin: 0 60px 25px 60px;
-}
-.log-inner .input-container input {
-    outline: none;
-    width: 100%;
-    height: 55px;
-    border: 0;
-    font-size: 18px;
-    color: #007bc6;
-    z-index: 1;
-    background: none;
-}
-/* трансформация надписи */
-.log-inner .input-container input:focus ~ label {
-    color: #BCBABA;
-    -webkit-transform: translate(-12%, -50%) scale(0.75);
-            transform: translate(-12%, -50%) scale(0.75);
-}
-.log-inner .input-container input:focus ~ .bar:before, .log-inner .input-container input:focus ~ .bar:after {
-    width: 50%;
-}
-.log-inner .input-container input:valid ~ label {
-    color: #BCBABA;
-    -webkit-transform: translate(-12%, -50%) scale(0.75);
-        transform: translate(-12%, -50%) scale(0.75);
-}
-
-/* надпись - введите пароль */
-.log-inner .input-container label {
-    position: absolute;
-    top:0;
-    left: 0;
-    color: #BCBABA;
-    font-size: 18px;
-    line-height: 60px;
-    -webkit-transition: 0.2s ease;
-    transition: 0.2s ease;
-    z-index: -1;
-    font-family: "OpenSans-Light", sans-serif;
-}
-
-/* линия */
-.log-inner .input-container .bar {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    background: #f0f0f0;
-    width: 100%;
-    height: 2px;
-}
-
-/* линия при клике */
-.log-inner .input-container .bar:before, .log-inner .input-container .bar:after {
-    content: '';
-    position: absolute;
-    background: #007bc6;
-    width: 0;
-    height: 2px;
-    -webkit-transition: .2s ease;
-    transition: .2s ease;
-}
-
-.log-inner .input-container .bar:before {
-    left: 50%;
-}
-.log-inner .input-container .bar:after {
-    right: 50%;
-}
-
-/* кнопка */
-.log-inner .button-container {
+/* The snackbar - position it at the bottom and in the middle of the screen */
+.login-snack-bar {
+    visibility: hidden;
+    min-width: 250px;
+    margin-left: -125px;
+    background-color: #333;
+    color: #fff;
     text-align: center;
-}
-.log-inner .button-container button {
-    outline: 0;
-    cursor: pointer;
-    position: relative;
-    display: inline-block;
-    background: 0;
-    width: 340px;
-    background: #007bc6;
-    border: 0 solid #007bc6;
-    padding: 10px 0;
-    font-size: 18px;
-    overflow: hidden;
-    -webkit-transition: .3s ease;
-    transition: .3s ease;
-    font-family: "OpenSans-Regular", sans-serif;
-}
-.log-inner .button-container button span {
-    position: relative;
+    border-radius: 2px;
+    padding: 16px;
+    position: fixed;
     z-index: 1;
-    color: #ddd;
-    -webkit-transition: .3s ease;
-    transition: .3s ease;
-}
-
-.log-inner .button-container button:before {
-    content: '';
-    position: absolute;
-    top: 50%;
     left: 50%;
-    display: block;
-    background: #007bc6;
-    width: 30px;
-    height: 30px;
-    border-radius: 100%;
-    margin: -15px 0 0 -15px;
-    opacity: 0;
-    -webkit-transition: .3s ease;
-    transition: .3s ease;
+    bottom: 30px;
+}
+/* Show the snackbar when clicking on a button (class added with JavaScript) */
+.login-snack-bar.show {
+    visibility: visible;
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+/* Animations to fade the snackbar in and out */
+@-webkit-keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+}
+@keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+}
+@-webkit-keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+}
+@keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
 }
 
-.log-inner .button-container button:hover, .log-inner .button-container button:active, .log-inner .button-container button:focus {
-    border-color: #494952;
-}
-.log-inner .button-container button:hover span, .log-inner .button-container button:active span, .log-inner .button-container button:focus span {
-    color: #494952;
-}
-.log-inner .button-container button:active span, .log-inner .button-container button:focus span {
-    color: #ffffff;
-}
-.log-inner .button-container button:active:before, .log-inner .button-container button:focus:before {
-    opacity: 1;
-    -webkit-transform: scale(10);
-    transform: scale(10);
-}
 
 
 
+
+
+
+
+/* выход с сайта */
 .button-container-logout {
     float: right;
 }
-
 .button-container-logout  button{
     outline: 0;
     cursor: pointer;
@@ -1164,7 +1013,7 @@ table td
     padding: 14px 0;
     font-size: 20px;
     color: #007bc6;
-    margin-top:0px;
+    margin-top:0;
     font-family: "OpenSans-Regular", sans-serif;
 }
 
@@ -1175,73 +1024,20 @@ table td
 
 
 
-
-
-/* The snackbar - position it at the bottom and in the middle of the screen */
-#loginsnackbar {
-    visibility: hidden; /* Hidden by default. Visible on click */
-    min-width: 250px; /* Set a default minimum width */
-    margin-left: -125px; /* Divide value of min-width by 2 */
-    background-color: #333; /* Black background color */
-    color: #fff; /* White text color */
-    text-align: center; /* Centered text */
-    border-radius: 2px; /* Rounded borders */
-    padding: 16px; /* Padding */
-    position: fixed; /* Sit on top of the screen */
-    z-index: 1; /* Add a z-index if needed */
-    left: 50%; /* Center the snackbar */
-    bottom: 30px; /* 30px from the bottom */
-}
-
-
-/* Show the snackbar when clicking on a button (class added with JavaScript) */
-#loginsnackbar.show {
-    visibility: visible; /* Show the snackbar */
-
-/* Add animation: Take 0.5 seconds to fade in and out the snackbar. 
-However, delay the fade out process for 2.5 seconds */
-    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
-    animation: fadein 0.5s, fadeout 0.5s 2.5s;
-}
-
-/* Animations to fade the snackbar in and out */
-@-webkit-keyframes fadein {
-    from {bottom: 0; opacity: 0;} 
-    to {bottom: 30px; opacity: 1;}
-}
-
-@keyframes fadein {
-    from {bottom: 0; opacity: 0;}
-    to {bottom: 30px; opacity: 1;}
-}
-
-@-webkit-keyframes fadeout {
-    from {bottom: 30px; opacity: 1;} 
-    to {bottom: 0; opacity: 0;}
-}
-
-@keyframes fadeout {
-    from {bottom: 30px; opacity: 1;}
-    to {bottom: 0; opacity: 0;}
-}
-
-
+/* элементы добавления, изменения, удаления */
 .edit-forms p {
-    margin-top: 15px; 
+    margin-top: 15px;
     margin-bottom: 0;
 }
-
 .edit-textarea {
-    width: 100%; 
-    margin-top:10px; 
+    width: 100%;
+    margin-top:10px;
     margin-bottom:10px;
 }
-
 .edit-textarea textarea{
     width: 100%;
     height: 250px;
 }
-
 .edit-textarea-name textarea{
     width: 100%;
     height: 32px;
@@ -1253,7 +1049,7 @@ However, delay the fade out process for 2.5 seconds */
 .entity-image-container {
     width: 300px;
     height: 220px;
-    margin: 10px;
+    margin: 10px 20px 10px 0;
     position: relative;
     float: left;
     overflow:hidden;
@@ -1285,14 +1081,12 @@ However, delay the fade out process for 2.5 seconds */
     background-color: #e0f9d4;
     width: 300px;
     height:220px;
-    margin: 10px;
+    margin: 10px 20px 10px 0;
     border: 3px dashed limegreen;
 }
-
 .entity-image-add input[type="file"]{
     display: none;
 }
-
 .entity-image-add label {
     display: block;
     position: absolute;
@@ -1303,21 +1097,18 @@ However, delay the fade out process for 2.5 seconds */
     cursor: pointer;
     background: url("../images/add.png") no-repeat center;
 }
-
 /* стили вредителя */
 .entity-image-edit {
     position: absolute;
-    background-color: #ffffcc;
+    background-color: #ffffff;
     width: 30px;
     height:30px;
-    opacity: 0.7;
+    opacity:0.9;
     right: 0;
 }
-
 .entity-image-edit input[type="file"]{
     display: none;
 }
-
 .entity-image-edit label {
     display: block;
     position: absolute;
@@ -1325,4 +1116,65 @@ However, delay the fade out process for 2.5 seconds */
     height: 100%;
     cursor: pointer;
     background: url("../images/edit.png") no-repeat center;
+}
+
+
+
+
+
+
+
+/* delete form */
+.delete {
+    margin: 0 auto;
+    font-size: 18rem;
+}
+.delete button {
+    color: white;
+    background-color: #f44336;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+}
+.delete .cancel-button {
+    background-color: #007bc6;
+}
+.delete .cancel-button,
+.delete .delete-button {
+    float: left;
+    width: 50%;
+    max-width: 500px;
+}
+.delete .container {
+    padding: 16px;
+    max-width: 600px;
+    margin: auto;
+    padding-top: 20%;
+}
+@media screen and (max-width: 600px) {
+    .delete .cancel-button, .delete .delete-button {
+        width: 100%;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+.books .p-to-form {
+    position: relative;
+    top:-48px !important;
+    float: right;
+}
+
+main .quarter-to-2 {
+    margin-left:-16px;
+    margin-right: -16px;
 }

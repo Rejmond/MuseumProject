@@ -1,9 +1,9 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<div id="main" class="edit-forms" data-location="exhibitions">
-    <h1 class="caption w3-container w3-xxlarge">День дарителя: {{ title|lower }}</h1>
-    <div class="w3-row textrow1 w3-container ">
+<div id="main" class="edit-forms museum-image" data-location="exhibitions">
+    <h1 class="caption w3-xxlarge">День дарителя: {{ title|lower }}</h1>
+    <div>
         <form method="post" enctype="multipart/form-data">
             {% if id %}
             <input type="hidden" name="id" value="{{ id }}">
@@ -13,7 +13,7 @@
 
             <p class="bold w3-large">Название подарка:</p>
             {% if errors.name %}
-            <div>
+            <div class="login-snack-bar">
                 Вы не указали название подарка
             </div>
             {% endif %}
@@ -21,7 +21,7 @@
 
             <p class="bold w3-large">Свеления о дарителе:</p>
             {% if errors.presenter %}
-            <div>
+            <div class="login-snack-bar">
                 Вы не указали сведения о дарителе
             </div>
             {% endif %}
@@ -30,7 +30,7 @@
             {% if not id %}
             <p class="bold w3-large">Изображение подарка:</p>
             {% if errors.image %}
-            <div>
+            <div class="login-snack-bar">
                 Вы не указали изображение подарка
             </div>
             {% endif %}
@@ -39,7 +39,7 @@
 
             <p class="bold w3-large">Краткое описание подарка:</p>
             {% if errors.content %}
-            <div>
+            <div class="login-snack-bar">
                 Вы не указали краткое описание подарка
             </div>
             {% endif %}
@@ -49,7 +49,7 @@
 
             <p class="bold w3-large">Подробное описание подарка:</p>
             {% if errors.fulltext %}
-            <div>
+            <div class="login-snack-bar">
                 Вы не указали подробное описание подарка
             </div>
             {% endif %}
@@ -57,7 +57,7 @@
                 <textarea name="fulltext" class="tiny">{{ params.fulltext|raw }}</textarea>
             </div>
 
-            <div class="button-container-logout w3-container">
+            <div class="button-container-logout">
                 <button type="submit" name="cancel">Отмена</button>
                 <button type="submit" name="accept">Подтвердить</button>
             </div>
