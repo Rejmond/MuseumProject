@@ -136,7 +136,32 @@ $(document).ready(function() {
         imageTransfiguration();
         tinyImgSize();
     });
+
+
+    snackBarFunction();
+
 });
+
+function snackBarFunction() {
+    $('.login-snack-bar').each(function() {
+        var x = $(".login-snack-bar");
+        x.addClass("show");
+        setTimeout(function(){$('.login-snack-bar').removeClass("show")},3000);
+
+
+
+    /*
+    }).each(function () {
+        if (this.complete) {
+            $(this).trigger('load');
+        }
+    });
+    */
+
+
+    });
+}
+
 
 function tinyImgSize() {
     $('.post-tiny img').each(function () {

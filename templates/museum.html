@@ -1,13 +1,13 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<div id="main" class="museum" data-location="museum">
-    <h1 class="caption w3-container">МУЗЕЙ<span class="lightGrey-2"> / MUSEUM</span></h1>
-    <p class="about w3-container">
+<div id="main" class="museum museum-image" data-location="museum">
+    <h1 class="caption">МУЗЕЙ<span class="lightGrey-2"> / MUSEUM</span></h1>
+    <p class="about">
         {{ about }}
     </p>
-    <div class="allpubs w3-container"><a href="{{ wwwroot }}/entity.php?context=about#main">ПОДРОБНЕЕ</a></div>
-    <h2 class="bold w3-container">Новости музея</h2>
+    <div class="allpubs"><a href="{{ wwwroot }}/entity.php?context=about#main">ПОДРОБНЕЕ</a></div>
+    <h2 class="bold">Новости музея</h2>
     <div class="w3-row">
         <div class="quarter-to-2">
         {% for new in news|slice(0, 2) %}
@@ -38,24 +38,24 @@
         {% endfor %}
         </div>
     </div>
-    <div class="allpubs w3-container"><a href="{{ wwwroot }}/entities.php?context=news#main">ВСЕ НОВОСТИ</a></div>
+    <div class="allpubs"><a href="{{ wwwroot }}/entities.php?context=news#main">ВСЕ НОВОСТИ</a></div>
 
-    <h2 class="bold w3-container">Экспозиция</h2>
+    <h2 class="bold">Экспозиция</h2>
     <div class="w3-row">
-        <div class="w3-container w3-half histoInsts">
+        <div class="w3-half histoInsts">
             <a><p class="bold w3-large">- От СИЧМ к СибГИУ: 80 лет в истории</p></a>
             <a><p class="bold w3-large">- История и развитие факультетов СибГИУ </p></a>
             <a><p class="bold w3-large">- СМИ в годы Великой Отечественной войны</p></a>
         </div>
-        <div class="w3-container w3-half histoInsts w3-margin-bottom">
+        <div class="w3-half histoInsts w3-margin-bottom">
             <a><p class="bold w3-large">- Студенческие строительные отряды СМИ </p></a>
             <a><p class="bold w3-large">- Ученые, профессора, члены академий вуза  </p></a>
             <a><p class="bold w3-large">- Знаменитые выпускники вуза</p></a>
         </div>
     </div>
-    <div class="allpubs w3-container"><a>ВСЕ ТЕМАТИКИ</a></div>
+    <div class="allpubs"><a>ВСЕ ТЕМАТИКИ</a></div>
 
-    <h2 class="bold w3-container">Тематические выставки</h2>
+    <h2 class="bold">Тематические выставки</h2>
     <div class="w3-row">
         <div class="quarter-to-2">
             {% for exhibition in exhibitions|slice(0, 2) %}
@@ -86,11 +86,11 @@
             {% endfor %}
         </div>
     </div>
-    <div class="allpubs w3-container"><a href="{{ wwwroot }}/entities.php?context=exhibitions#main">ВСЕ ВЫСТАВКИ</a></div>
+    <div class="allpubs"><a href="{{ wwwroot }}/entities.php?context=exhibitions#main">ВСЕ ВЫСТАВКИ</a></div>
 
-    <h2 class="bold w3-container">Календарь знаменательных дат</h2>
+    <h2 class="bold">Календарь знаменательных дат</h2>
 
-    <h2 class="bold w3-container">День дарителя</h2>
+    <h2 class="bold">День дарителя</h2>
     <div class="w3-row">
         <div class="quarter-to-2">
             {% for present in presents|slice(0, 2) %}
@@ -121,15 +121,15 @@
             {% endfor %}
         </div>
     </div>
-    <div class="allpubs w3-container"><a href="{{ wwwroot }}/entities.php?context=presents#main">ВСЕ ПОДАРКИ</a></div>
+    <div class="allpubs"><a href="{{ wwwroot }}/entities.php?context=presents#main">ВСЕ ПОДАРКИ</a></div>
 
-    <h2 class="bold w3-container">Геологический музей</h2>
+    <h2 class="bold">Геологический музей</h2>
     <div class="w3-row">
-        <p class="w3-container">
+        <p>
             {{ geologic }}
         </p>
     </div>
-    <div class="allpubs w3-container"><a  href="{{ wwwroot }}/entity.php?context=geologic#main">ПОДРОБНЕЕ</a></div>
+    <div class="allpubs"><a  href="{{ wwwroot }}/entity.php?context=geologic#main">ПОДРОБНЕЕ</a></div>
 
 </div>
 {% endblock %}

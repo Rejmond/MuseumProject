@@ -1,18 +1,16 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<div id="main" class="museumabout" data-location="museumabout">
-    <div class="w3-container w3-padding-0">
-        <h1 class="caption w3-container w3-xxlarge">О музее</h1>
-        {% if admin %}
-        <div class="h1-to-form w3-container">
-            <a href="{{ wwwroot }}/admin/edit.php?id={{ entity.id }}#main"><img src="{{ wwwroot }}/images/edit.png"/></a>
-        </div>
-        {% endif %}
+<div id="main" class="museumabout entity museum-image" data-location="museumabout">
+    <h1 class="caption w3-xxlarge">О музее</h1>
+    {% if admin %}
+    <div class="h1-to-form">
+        <a href="{{ wwwroot }}/admin/edit.php?id={{ entity.id }}#main"><img src="{{ wwwroot }}/images/edit.png"/></a>
     </div>
-    <div class="post-tiny w3-container">
+    {% endif %}
+    <div class="post-tiny">
         {{ entity.params.fulltext|raw }}
     </div>
-    <div class="to-begin w3-container"><a href="{{ wwwroot }}/index.php#main">В начало</a></div>
+    <div class="to-begin"><a href="{{ wwwroot }}/index.php#main">В начало</a></div>
 </div>
 {% endblock %}
