@@ -147,18 +147,6 @@ function snackBarFunction() {
         var x = $(".login-snack-bar");
         x.addClass("show");
         setTimeout(function(){$('.login-snack-bar').removeClass("show")},3000);
-
-
-
-    /*
-    }).each(function () {
-        if (this.complete) {
-            $(this).trigger('load');
-        }
-    });
-    */
-
-
     });
 }
 
