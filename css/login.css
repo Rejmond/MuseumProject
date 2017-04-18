@@ -1,0 +1,141 @@
+/*   вход на сайт    */
+main {
+    min-height: 0;
+    height: 0;
+}
+#openNav {
+    display: none;
+}
+.login-form {
+    position: relative;
+    width: 100%;
+    top: 40vh;
+}
+.login-form .log-inner {
+    max-width: 460px;
+    margin: auto;
+}
+.login-form .input-container {
+    position: relative;
+    margin: 0 60px 25px 60px;
+}
+.login-form .input-container input {
+    outline: none;
+    width: 100%;
+    height: 55px;
+    border: 0;
+    font-size: 18px;
+    color: #007bc6;
+    z-index: 1;
+    background: none;
+}
+/* трансформация надписи */
+.login-form .input-container input:focus ~ label,
+.login-form .input-container input:valid ~ label {
+    color: #bcbaba;
+    -webkit-transform: translate(-12%, -50%) scale(0.75);
+    transform: translate(-12%, -50%) scale(0.75);
+}
+.login-form .input-container input:focus ~ .bar:before,
+.login-form .input-container input:focus ~ .bar:after {
+    width: 50%;
+}
+/* надпись - введите пароль */
+.login-form .input-container label {
+    position: absolute;
+    top:0;
+    left: 0;
+    color: #bcbaba;
+    font-size: 18px;
+    line-height: 60px;
+    -webkit-transition: 0.2s ease;
+    transition: 0.2s ease;
+    z-index: -1;
+    font-family: "OpenSans-Light", sans-serif;
+}
+/* линия */
+.login-form .input-container .bar {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background: #f0f0f0;
+    width: 100%;
+    height: 2px;
+}
+/* линия при клике */
+.login-form .input-container .bar:before,
+.login-form .input-container .bar:after {
+    content: '';
+    position: absolute;
+    background: #007bc6;
+    width: 0;
+    height: 2px;
+    -webkit-transition: .2s ease;
+    transition: .2s ease;
+}
+.login-form .input-container .bar:before {
+    left: 50%;
+}
+.login-form .input-container .bar:after {
+    right: 50%;
+}
+/* кнопка */
+.login-form .button-container {
+    text-align: center;
+}
+.login-form button {
+    outline: 0;
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+    background: 0;
+    width: 340px;
+    background: #007bc6;
+    border: 0;
+    padding: 10px 0;
+    font-size: 18px;
+    overflow: hidden;
+    -webkit-transition: .3s ease;
+    transition: .3s ease;
+    font-family: "OpenSans-Regular", sans-serif;
+}
+.login-form button span {
+    position: relative;
+    z-index: 1;
+    color: #ddd;
+    -webkit-transition: .3s ease;
+    transition: .3s ease;
+}
+.login-form button:before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: block;
+    background: #007bc6;
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    margin: -15px 0 0 -15px;
+    opacity: 0;
+    -webkit-transition: .3s ease;
+    transition: .3s ease;
+}
+.login-form button:hover,
+.login-form button:active,
+.login-form button:focus,
+.login-form button:hover span,
+.login-form button:active span,
+.login-form button:focus span {
+    border-color: #494952;
+}
+.login-form button:active span,
+.login-form button:focus span {
+    color: #ffffff;
+}
+.login-form .button:active:before,
+.login-form button:focus:before {
+    opacity: 1;
+    -webkit-transform: scale(10);
+    transform: scale(10);
+}

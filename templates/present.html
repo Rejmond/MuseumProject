@@ -1,9 +1,9 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<div id="main" class="entity" data-location="presents">
-    <h1 class="caption w3-container w3-xxlarge">Информация о подарке</h1>
-    <div class="w3-row textrow1 w3-container ">
+<div id="main" class="w3-container entity museum-image" data-location="presents">
+    <h1 class="caption w3-xxlarge">Информация о подарке</h1>
+    <div class="w3-row">
         <p class="bold w3-large w3-margin-0">
             {{ entity.params.name|raw }}
         </p>
@@ -14,11 +14,11 @@
         </div>
         {% endif %}
     </div>
-    <div class="post-tiny w3-container">
+    <div class="post-tiny">
         {{ entity.params.fulltext|raw }}
     </div>
     {% if entity.files.image %}
-    <div class="imgBox2 image-proportional-resizing">
+    <div class="imgBox2 entity-image">
         {% if admin %}
         <div class="entity-image-edit">
             <form method="post" enctype="multipart/form-data" action="{{ wwwroot }}/admin/addfile.php">
@@ -31,11 +31,12 @@
             </form>
         </div>
         {% endif %}
-        <div class="inner"><img src="{{ wwwroot }}/file.php?id={{ entity.files.image.id }}"></div>
+        <div class="">
+        <img src="{{ wwwroot }}/file.php?id={{ entity.files.image.id }}">
+        </div>
     </div>
     <p class="text2" style="text-align: center;">Даритель: {{ entity.params.presenter }}</p>
     {% endif %}
-
     {% include 'images.html' with {'images': entity.files.photos } %}
 
     <div class="to-back"><a href="{{ returnurl }}">Назад</a></div>

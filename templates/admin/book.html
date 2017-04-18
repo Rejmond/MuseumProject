@@ -1,9 +1,9 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<div id="main" class="edit-forms" data-location="books">
-    <h1 class="caption w3-container w3-xxlarge">Книги: {{ title|lower }}</h1>
-    <div class="w3-row textrow1 w3-container ">
+<div id="main" class="edit-forms history-image" data-location="books">
+    <h1 class="caption w3-xxlarge">Книги: {{ title|lower }}</h1>
+    <div >
         <form method="post" enctype="multipart/form-data">
             {% if id %}
             <input type="hidden" name="id" value="{{ id }}">
@@ -13,7 +13,7 @@
 
             <p class="bold w3-large">Название книги:</p>
             {% if errors.name %}
-            <div>
+            <div  class="login-snack-bar">
                 Вы не указали название книги
             </div>
             {% endif %}
@@ -22,7 +22,7 @@
             {% if not id %}
             <p class="bold w3-large">Обложка книги:</p>
             {% if errors.image %}
-            <div>
+            <div  class="login-snack-bar">
                 Вы не указали обложку книги
             </div>
             {% endif %}
@@ -31,7 +31,7 @@
 
             <p class="bold w3-large">Аннотация книги:</p>
             {% if errors.content %}
-            <div>
+            <div  class="login-snack-bar">
                 Вы не указали аннотацию книги
             </div>
             {% endif %}
@@ -41,7 +41,7 @@
 
             <p class="bold w3-large">Описание кнги:</p>
             {% if errors.description %}
-            <div>
+            <div  class="login-snack-bar">
                 Вы не указали описание книги
             </div>
             {% endif %}
@@ -49,7 +49,7 @@
                 <textarea name="description">{{ params.description|raw }}</textarea>
             </div>
 
-            <div class="button-container-logout w3-container">
+            <div class="button-container-logout">
                 <button type="submit" name="cancel">Отмена</button>
                 <button type="submit" name="accept">Подтвердить</button>
             </div>

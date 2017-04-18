@@ -5,20 +5,15 @@
 
 {% block styles %}
 {{ parent() }}
-<style type="text/css">
-    main {
-        min-height: 0;
-        height: 0;
-    }
-</style>
+<link rel="stylesheet" href="{{ wwwroot }}/css/login.css">
 {% endblock %}
 
 {% block content %}
-<div class="log-outer">
+<div class="login-form">
     <div class="log-inner">
         <form method="post">
             {% if error|length > 0 %}
-            <div id="loginsnackbar">
+            <div class="login-snack-bar">
                 {{ error }}
             </div>
             {% endif %}
@@ -33,24 +28,6 @@
         </form>
     </div>
 </div>
-
-
-<script type="text/javascript">
-
-    snackbarFunction();
-
-    function snackbarFunction() {
-        // Get the snackbar DIV
-        var x = document.getElementById("loginsnackbar");
-        // Add the "show" class to DIV
-        x.className = "show";
-
-        // After 3 seconds, remove the show class from DIV
-        setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
-    }
-
-</script>
 {% endblock %}
-
 {% block footer%}
 {% endblock %}
