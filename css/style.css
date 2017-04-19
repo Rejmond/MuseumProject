@@ -1165,6 +1165,10 @@ main .quarter-to-2 {
     margin-left:-16px;
     margin-right: -16px;
 }
+
+.to-begin, .to-back {
+    padding-bottom: 40px;
+}
 /*
 .book .imgBox1{
     width: 204px;
