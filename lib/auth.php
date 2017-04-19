@@ -14,7 +14,7 @@ class User {
     
     public function authorise($password) {
         global $CONFIG;
-        if ($password == $CONFIG->password) {
+        if (strcmp($password, $CONFIG->password) == 0) {
             $this->admin = true;
             $_SESSION['admin'] = true;
             return true;

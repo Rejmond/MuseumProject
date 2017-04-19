@@ -196,3 +196,18 @@ function pagination($baseurl, $totalcount, $page, $perpage)
 
     return $result;
 }
+
+function get_entities($context, $words = 15, $limit = 4, $order = array('param' => 'date', 'order' => 'DESC')) {
+    $entities = ContentManager::get_entities($context, array(), $order, 0, $limit);
+    $result = array();
+    for ($i = 0; $i < count($entities); $i++) {
+        $result[$i] = EntityManager::get_object($entities[$i]['id']);
+        if ($words) {
+            $newcontent = limit_words($result[$i]['content'], $words);
+            if ($result[$i]['content'] != $newcontent) {
+                $result[$i]['content'] = "$newcontent...";
+            }
+        }
+    }
+    return $result;
+}

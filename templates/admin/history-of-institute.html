@@ -11,23 +11,21 @@
             <input type="hidden" name="context" value="{{ context }}">
             {% endif %}
 
-
             <p class="bold w3-large">Название института:</p>
-            {% if errors.name %}
+            {% if errors.content %}
             <div class="login-snack-bar">
                 Вы не указали название института
             </div>
             {% endif %}
-            <input type="text" name="name" value="{{ params.name|raw }}">
+            <input type="text" name="content" value="{{ content|raw }}">
 
-            <p class="bold w3-large">Ссылка в раздел института на сайте СибГИУ:</p>
-            {% if errors.content %}
+            <p class="bold w3-large">Гиперссылка в раздел института:</p>
+            {% if errors.link %}
             <div class="login-snack-bar">
-                Вы не указали ссылку
+                Вы не указали гиперссылку
             </div>
             {% endif %}
-            <input type="text" name="name" value="{{ params.name|raw }}">
-
+            <input type="text" name="link" value="{{ params.link|raw }}">
 
             <div class="button-container-logout">
                 <button type="submit" name="cancel">Отмена</button>

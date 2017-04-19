@@ -184,6 +184,18 @@ $CONFIG->entities = array(
             ),
         )
     ),
+    'history-of-institute' => array(
+        'entity_template' => 'history-of-institute.html',
+        'entities_template' => 'history-of-institute.html',
+        'content_type' => PARAM_NOTAGS,
+        'params' => array(
+            'link' => array(
+                'required' => true,
+                'type' => PARAM_NOTAGS,
+            ),
+        ),
+        'attachments' => array(),
+    ),
 );
 
 require_once($CONFIG->dirroot . '/Twig/Autoloader.php');
