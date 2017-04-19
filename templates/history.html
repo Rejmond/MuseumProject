@@ -150,11 +150,11 @@
     </div>
     <div class="allpubs"><a>ВСЕ ВОСПОМИНАНИЯ</a></div>
 
-    <h2 class="sub-caption bold"><span>История институтов</span></h2>
+    <h2 class="sub-caption bold" id="history-of-our-university"><span>История институтов</span></h2>
     <div class="w3-row w3-large bold">
         <div class="w3-half histoInsts ">
             <!--
-            {% for success in successes|slice(0, 6) %}
+            {% for histinst in histinsts|slice(0, 6) %}
                 <a>
                     <p>
 
@@ -177,7 +177,7 @@
             <a><p>- Институт дополнительного профессионального образования</p></a>
         </div>
     </div>
-    <div class="allpubs" style="color: red;"><a href="{{ wwwroot }}/entities.php?context=history-of-institute#main"> Подробнее для редактирования</a></div>
+    <div class="allpubs"><a style="color: red;" href="{{ wwwroot }}/entities.php?context=history-of-institute#main"> Подробнее для редактирования</a></div>
 
     <h2 class="sub-caption bold"><span>История успеха</span></h2>
     <div class="histoAge w3-large fowhite">
