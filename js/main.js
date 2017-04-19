@@ -163,15 +163,6 @@ function snackBarFunction() {
 }
 
 
-
-/*
-.login-snack-bar.show {
-    visibility: visible;
-    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
-    animation: fadein 0.5s, fadeout 0.5s 2.5s;
-}
-*/
-
 function tinyImgSize() {
     $('.post-tiny img').each(function () {
         if ($(this).width() >= $('.post-tiny').width()) {
