@@ -58,8 +58,11 @@ $(document).ready(function() {
         }*/
         $('#' + currentPage).addClass('sub-menu').find('span').css('color', '#494952');
     }
-    var museum =  ["museum", "museumabout", "news", "exhibitions", "presents", "geologic"];
-    var history = ["history", "history-about", "periods", "books"];
+    var museum =  ["museum", "museumabout", "news", "exposition", "exhibitions", "calendar", "presents", "geologic"];
+    var history = ["history", "history-about", "periods", "books", "magazines", "leaders", "memories", "history-of-institute", "history-of-success"];
+    var projects;
+    /*var student-groups;*/
+
     if ($.inArray(currentPage, museum) >= 0) {
         $('#museum').addClass('active');
         $('#museumnav').show();
@@ -68,7 +71,14 @@ $(document).ready(function() {
         $('#history').addClass('active');
         $('#historynav').show();
     }
-
+    if ($.inArray(currentPage, projects) >= 0) {
+        $('#projects').addClass('active');
+    }
+    /*
+    if ($.inArray(currentPage, student-groups) >= 0) {
+        $('#student-groups').addClass('active');
+    }
+    */
     $('#mouse').delay(3000).animate(
         {
             opacity: 0.5
@@ -142,11 +152,23 @@ $(document).ready(function() {
 
 });
 
+
 function snackBarFunction() {
-    $('.login-snack-bar').each(function() {
+    var displaySnack = -20;
+    $('.login-snack-bar').each(function(i) {
+        displaySnack += 55;
+        /*$(this).attr('id', "idPosSnack"+(i+1));*/
+        $(this).css({ bottom: displaySnack, visibility: "visible", opacity: 1 });
+        /*
         var x = $(".login-snack-bar");
         x.addClass("show");
-        setTimeout(function(){$('.login-snack-bar').removeClass("show")},3000);
+        /*
+        $(".login-snack-bar").css({visibility: "visible", opacity: 0})
+           /*.animate({opacity: 1}, 500, 'fadein')
+            .delay(2500)
+            .animate({bottom: 0, opacity: 0}, 500, 'fadeout');*/
+        setTimeout(function(){$('.login-snack-bar').css({ opacity: 0 })},4000);    //removeClass("show")},3000);
+
     });
 }
 
