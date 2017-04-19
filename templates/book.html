@@ -1,12 +1,12 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<div id="main" class="book history-image" data-location="books">
+<div id="main" class="book entity history-image" data-location="books">
     <h1 class="caption w3-xxlarge">Описание публикации</h1>
     <div>
-        <div class="imgBox1">
+        <div class="imgBox1 image-proportional-resizing">
             {% if entity.files.image %}
-            <a href="{{ wwwroot }}/file.php?id={{ entity.files.image.id }}" data-fancybox="group" data-type="image">
+            <a href="{{ wwwroot }}/file.php?id={{ entity.files.image.id }}" data-fancybox="images" data-type="image">
                 <div>
                     <img src="{{ wwwroot }}/file.php?id={{ entity.files.image.id }}">
                 </div>

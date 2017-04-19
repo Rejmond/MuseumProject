@@ -848,19 +848,7 @@ h2:after {
     text-align:center;
     font-size: 16rem;
 }
-.book .imgBox1{
-    width: 204px;
-    height: 276px;
-}
-@media screen and (max-width: 680px){
-    .book .imgBox1{
-        margin: 0 auto;
-        width: 272px;
-        height: 368px;
-        float: none;
-    }
 
-}
 .my-margin
 {
     margin-top: 20px !important;
@@ -1177,3 +1165,17 @@ main .quarter-to-2 {
     margin-left:-16px;
     margin-right: -16px;
 }
+/*
+.book .imgBox1{
+    width: 204px;
+    height: 276px;
+}
+@media screen and (max-width: 680px){
+    .book .imgBox1{
+        margin: auto;
+        width: 272px;
+        height: 368px;
+        float: none;
+    }
+
+}*/
