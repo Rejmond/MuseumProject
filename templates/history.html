@@ -151,23 +151,33 @@
     <div class="allpubs"><a>ВСЕ ВОСПОМИНАНИЯ</a></div>
 
     <h2 class="sub-caption bold"><span>История институтов</span></h2>
-    <div class="w3-half histoInsts">
-        <a><p class="bold w3-large">- Институт металлургии и материаловедения</p></a>
-        <a><p class="bold w3-large">- Институт экономики и менеджмента</p></a>
-        <a><p class="bold w3-large">- Архитектурно-строительный институт</p></a>
-        <a><p class="bold w3-large">- Институт горного дела и геосистем</p></a>
-        <a><p class="bold w3-large">- Институт машиностроения и транспорта</p></a>
-        <a><p class="bold w3-large">- Институт информ. технологий и автомат. систем</p></a>
+    <div class="w3-row w3-large bold">
+        <div class="w3-half histoInsts ">
+            <!--
+            {% for success in successes|slice(0, 6) %}
+                <a>
+                    <p>
+
+                    </p>
+                </a>
+            {% endfor %}
+            -->
+            <a><p>- Институт металлургии и материаловедения</p></a>
+            <a><p>- Институт экономики и менеджмента</p></a>
+            <a><p>- Архитектурно-строительный институт</p></a>
+            <a><p>- Институт горного дела и геосистем</p></a>
+            <a><p>- Институт машиностроения и транспорта</p></a>
+            <a><p>- Институт информ. технологий и автомат. систем</p></a>
+        </div>
+        <div class="w3-half histoInsts w3-large bold">
+            <a><p>- Институт фундаментального образования</p></a>
+            <a><p>- Институт физической культуры, здоровья и спорта</p></a>
+            <a><p>- Институт открытого образования</p></a>
+            <a><p>- Институт планирования карьеры</p></a>
+            <a><p>- Институт дополнительного профессионального образования</p></a>
+        </div>
     </div>
-    <div class="w3-half histoInsts">
-        <a><p class="bold w3-large">- Институт фундаментального образования</p></a>
-        <a><p class="bold w3-large">- Институт физической культуры, здоровья и спорта</p></a>
-        <a><p class="bold w3-large">- Институт открытого образования</p></a>
-        <a><p class="bold w3-large">- Институт планирования карьеры</p></a>
-        <a><p class="bold w3-large">- Прокопьевский филиал СибГИУ </p></a>
-        <a><p class="bold w3-large">- Институт дополнительного профессионального образования</p></a>
-    </div>
-    <div class="allpubs"></div>
+    <div class="allpubs" style="color: red;"><a href="{{ wwwroot }}/entities.php?context=history-of-institute#main"> Подробнее для редактирования</a></div>
 
     <h2 class="sub-caption bold"><span>История успеха</span></h2>
     <div class="histoAge w3-large fowhite">

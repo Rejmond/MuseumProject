@@ -58,8 +58,11 @@ $(document).ready(function() {
         }*/
         $('#' + currentPage).addClass('sub-menu').find('span').css('color', '#494952');
     }
-    var museum =  ["museum", "museumabout", "news", "exhibitions", "presents", "geologic"];
-    var history = ["history", "history-about", "periods", "books"];
+    var museum =  ["museum", "museumabout", "news", "exposition", "exhibitions", "calendar", "presents", "geologic"];
+    var history = ["history", "history-about", "periods", "books", "magazines", "leaders", "memories", "history-of-institute", "history-of-success"];
+    var projects;
+    /*var student-groups;*/
+
     if ($.inArray(currentPage, museum) >= 0) {
         $('#museum').addClass('active');
         $('#museumnav').show();
@@ -68,7 +71,14 @@ $(document).ready(function() {
         $('#history').addClass('active');
         $('#historynav').show();
     }
-
+    if ($.inArray(currentPage, projects) >= 0) {
+        $('#projects').addClass('active');
+    }
+    /*
+    if ($.inArray(currentPage, student-groups) >= 0) {
+        $('#student-groups').addClass('active');
+    }
+    */
     $('#mouse').delay(3000).animate(
         {
             opacity: 0.5
