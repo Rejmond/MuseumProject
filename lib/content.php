@@ -62,11 +62,11 @@ class ContentManager
         if ($orderby) {
             $paramname = isset($orderby['param']) ? $orderby['param'] : 'date';
             $order = isset($orderby['order']) && $orderby['order'] == 'DESC' ? 'DESC' : 'ASC';
-            if ($paramname != 'date') {
+            if ($paramname != 'date' && $paramname != 'content') {
                 $sql .= "JOIN params p ON (e.id = p.entity AND p.name = {$DB->quote($paramname)}) ";
                 $sql .= "ORDER BY value $order ";
             } else {
-                $sql .= "ORDER BY date $order ";
+                $sql .= "ORDER BY $paramname $order ";
             }
         }
         if ($limit) {
