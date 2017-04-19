@@ -142,14 +142,35 @@ $(document).ready(function() {
 
 });
 
+
 function snackBarFunction() {
-    $('.login-snack-bar').each(function() {
+    var displaySnack = -20;
+    $('.login-snack-bar').each(function(i) {
+        displaySnack += 55;
+        /*$(this).attr('id', "idPosSnack"+(i+1));*/
+        $(this).css({ bottom: displaySnack, visibility: "visible", opacity: 1 });
+        /*
         var x = $(".login-snack-bar");
         x.addClass("show");
-        setTimeout(function(){$('.login-snack-bar').removeClass("show")},3000);
+        /*
+        $(".login-snack-bar").css({visibility: "visible", opacity: 0})
+           /*.animate({opacity: 1}, 500, 'fadein')
+            .delay(2500)
+            .animate({bottom: 0, opacity: 0}, 500, 'fadeout');*/
+        setTimeout(function(){$('.login-snack-bar').css({ opacity: 0 })},4000);    //removeClass("show")},3000);
+
     });
 }
 
+
+
+/*
+.login-snack-bar.show {
+    visibility: visible;
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+*/
 
 function tinyImgSize() {
     $('.post-tiny img').each(function () {
