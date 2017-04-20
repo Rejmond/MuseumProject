@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div id="main" class="book" data-location="books">
+
+<h1 class="caption w3-container w3-xxlarge">Описание публикации</h1>
+    <div class="w3-row textrow1 w3-container ">
+        <div class="imgBox1">
+            <img src="images/1-4.jpg">
+        </div>
+        <div class="notflow//">
+            <p class="bold w3-large w3-padding-top w3-margin-0">
+                Сибирский государственный индустриальный университет 1930 - 2010
+            </p>
+            {% if admin %}
+            <div class="p-to-form">
+                <a href="{{ wwwroot }}/admin/edit.php?id={{ entity.id }}&returnurl={{ returnurl|url_encode }}#main"><img src="{{ wwwroot }}/images/edit.png" /></a>
+                <a href="{{ wwwroot }}/admin/delete.php?id={{ entity.id }}&returnurl={{ returnurl|url_encode }}#main"><img src="{{ wwwroot }}/images/delete.png" /></a>
+            </div>
+            {% endif %}
+            <p class="lightGrey text2"></p>
+            <p>
+                Книга посвящена 80-летию ГОУ ВПО «Сибирский государственный индустриальный университет». Она представляет собой научно-историческое издание, являющееся результатом коллективного труда ученых, преподавателей, руководителей служб, сотрудников. Использованы архивные материалы музея истории СибГИУ, воспоминания выпускников университета, фотографии из архива отдела телевизионных и мультимедийных технологий СибГИУ, отдела краеведения МУ-ЦБС им. Гоголя г. Новокузнецка. Книга адресована широкому кругу читателей.
+            </p>
+            <p class="bold w3-margin-0">Описание:</p>
+           <p class="w3-margin-0">
+                Сибирский государственный индустриальный университет 1930 - 2010 / ред.кол. С. Мочалов и др. – Кемерово: Кузбассвузиздат, 2010. – 400 c.: ил.
+            </p>
+        </div>
+    </div>
+    <div class="w3-container w3-responsive">
+        <table class="my-margin w3-table w3-bordered ">
+            <tr>
+                <th>Название</th>
+                <th>Формат</th>
+                <th>Размер</th>
+                <th>Ссылка</th>
+            </tr>
+            <tr>
+                <td>Сибирский государственный индустриальный университет 1930 - 2010 / ред.кол. С. Мочалов и др.</td>
+                <td>.pdf</td>
+                <td>15.0MB</td>
+                <td><a>Скачать</a></td>
+            </tr>
+        </table>
+    </div>
+    <div class="to-back"><a href="{{ returnurl }}">Назад</a></div>
+</div>
+{% endblock %}
