@@ -14,6 +14,9 @@ switch ($context) {
     case 'periods':
         $order = array('param' => 'order', 'order' => 'ASC');
         break;
+    case 'leaders':
+        $order = array('param' => 'order', 'order' => 'ASC');
+        break;
 }
 
 $offset = $pagination = null;

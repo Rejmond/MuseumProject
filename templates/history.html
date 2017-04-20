@@ -82,40 +82,21 @@
     </div>
     <div class="allpubs"><a href="books.html#main">ВСЕ ГАЗЕТЫ</a></div>
 
-    <h2 class="sub-caption bold"><span>Руководители</span></h2>
-    <div class="w3-row histoHea">
+    <h2 class="bold">Руководители</h2>
+    <div class="w3-row leaders">
+        {% for leader in leaders %}
         <div class="w3-quarter quarttohalf w3-center">
-            <div class="histoHeads">
-                <div class="imgBox1"><img src="images/3-1.png"></div>
-                <a><p class="bold w3-large">Болтенко Петр Семенович</p></a>
+            <div class="history-leader">
+                <div class="imgBox1"><img src="{{ wwwroot }}/file.php?id={{ leader.files.image.id }}"></div>
+                <a  href="{{ wwwroot }}/entity.php?id={{ leader.id }}&returnurl={{ returnurl|url_encode }}#main"><p class="bold w3-large">Вяткин <br> Ефим Кириллович</p></a>
                 <p></p>
             </div>
         </div>
-        <div class="w3-quarter quarttohalf w3-center">
-            <div class="histoHeads">
-                <div class="imgBox1"><img src="images/3-2.png"></div>
-                <a><p class="bold w3-large">Дехтярь <br> Арон Яковлевич</p></a>
-                <p></p>
-            </div>
-        </div>
-        <div class="w3-quarter quarttohalf w3-center">
-            <div class="histoHeads">
-                <div class="imgBox1"><img src="images/3-3.png"></div>
-                <a><p class="bold w3-large">Горшенин Дмитрий Гаврилович</p></a>
-                <p></p>
-            </div>
-        </div>
-        <div class="w3-quarter quarttohalf w3-center">
-            <div class="histoHeads">
-                <div class="imgBox1"><img src="images/3-4.png"></div>
-                <a><p class="bold w3-large">Вяткин <br> Ефим Кириллович</p></a>
-                <p></p>
-            </div>
-        </div>
+        {% endfor %}
     </div>
-    <div class="allpubs"><a>ВСЕ РУКОВОДИТЕЛИ</a></div>
+    <div class="allpubs"><a href="{{ wwwroot }}/entities.php?context=leaders#main">ВСЕ РУКОВОДИТЕЛИ</a></div>
 
-    <h2 class="sub-caption bold"><span>Воспоминания</span></h2>
+    <h2 class="bold">Воспоминания</h2>
     <div class="w3-row textrow1">
         <div class="w3-half histoMemory">
             <div class="notflow">

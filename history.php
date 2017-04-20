@@ -8,6 +8,7 @@ $model['returnurl'] = "{$model['current_url']}#main";
 $model['about'] = ContentManager::get_entity_by_context('about-history')['content'];
 $model['periods'] = get_entities('periods', 100, 4, array('param' => 'order', 'order' => 'ASC'));
 $model['books'] = get_entities('books', 30);
+$model['leaders'] = get_entities('leaders', 100, 4, array('param' => 'order', 'order' => 'ASC'));
 $model['history_of_institute'] = get_entities('history-of-institute', null, null, array('param' => 'content', 'order' => 'ASC'));
 
 echo $Twig->render('history.html', $model);
