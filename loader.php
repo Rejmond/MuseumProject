@@ -74,6 +74,29 @@ $CONFIG->entities = array(
             ),
         )
     ),
+    'calendar' => array(
+        'entity_template' => 'date.html',
+        'entities_template' => 'dates.html',
+        'content_type' => PARAM_RAW,
+        'params' => array(
+            'name' => array(
+                'required' => true,
+                'type' => PARAM_NOTAGS,
+            ),
+            'date' => array(
+                'required' => true,
+                'type' => PARAM_DATE,
+            ),
+        ),
+        'attachments' => array(
+            'photos' => array(
+                'required' => false,
+                'image' => true,
+                'size' => array(1200, 800),
+                'list' => true,
+            ),
+        )
+    ),
     'presents' => array(
         'entity_template' => 'present.html',
         'entities_template' => 'presents.html',

@@ -89,6 +89,10 @@
     <div class="allpubs"><a href="{{ wwwroot }}/entities.php?context=exhibitions#main">ВСЕ ВЫСТАВКИ</a></div>
 
     <h2 class="bold">Календарь знаменательных дат</h2>
+    {% for date in calendar %}
+    <div>{{ date.params.name }} - {{ date.params.date }}</div>
+    {% endfor %}
+    <div class="allpubs"><a href="{{ wwwroot }}/entities.php?context=calendar#main">ВСЕ ЗНАМЕНАТЕЛЬНЫЕ ДАТЫ</a></div>
 
     <h2 class="bold">День дарителя</h2>
     <div class="w3-row">

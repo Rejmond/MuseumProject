@@ -137,9 +137,9 @@ function clean_param($param, $type)
             return is_numeric($param) ? (float)$param : '';
 
         case PARAM_DATE:
-            $date = DateTime::createFromFormat('d.m.Y', $param);
+            $date = DateTime::createFromFormat('Y-m-d', $param);
             $errors = DateTime::getLastErrors();
-            $timestamp = $date->getTimestamp();
+            $timestamp = $date ? $date->getTimestamp() : 0;
             return empty($errors['warning_count']) && $timestamp > 0 ? $timestamp : '';
 
         default:
