@@ -22,18 +22,6 @@ $CONFIG->entities = array(
         ),
         'attachments' => array(),
     ),
-    'geologic' => array(
-        'entity_template' => 'geologic.html',
-        'entities_template' => false,
-        'content_type' => PARAM_NOTAGS,
-        'params' => array(
-            'fulltext' => array(
-                'required' => true,
-                'type'     => PARAM_RAW,
-            ),
-        ),
-        'attachments' => array(),
-    ),
     'news' => array(
         'entity_template' => 'new.html',
         'entities_template' => 'news.html',
@@ -119,6 +107,18 @@ $CONFIG->entities = array(
                 'list' => true,
             ),
         )
+    ),
+    'geologic' => array(
+        'entity_template' => 'geologic.html',
+        'entities_template' => false,
+        'content_type' => PARAM_NOTAGS,
+        'params' => array(
+            'fulltext' => array(
+                'required' => true,
+                'type'     => PARAM_RAW,
+            ),
+        ),
+        'attachments' => array(),
     ),
     /*                                                     */
     /*                   history entities                  */
@@ -268,6 +268,60 @@ $CONFIG->entities = array(
             ),
         ),
         'attachments' => array(),
+    ),
+    /*                                                     */
+    /*                        projects                     */
+    /*                                                     */
+    'projects' => array(
+        'entity_template' => 'project.html',
+        'entities_template' => 'projects.html',
+        'content_type' => PARAM_NOTAGS,
+        'perpage' => 5,
+        'params' => array(
+            'name' => array(
+                'required' => true,
+                'type' => PARAM_NOTAGS,
+            ),
+            'fulltext' => array(
+                'required' => true,
+                'type' => PARAM_RAW,
+            ),
+        ),
+        'attachments' => array(
+            'photos' => array(
+                'required' => false,
+                'image' => true,
+                'size' => array(1200, 800),
+                'list' => true,
+            ),
+        )
+    ),
+    /*                                                     */
+    /*                     student-groups                  */
+    /*                                                     */
+    'student-groups' => array(
+        'entity_template' => 'student-group.html',
+        'entities_template' => 'student-groups.html',
+        'content_type' => PARAM_NOTAGS,
+        'perpage' => 5,
+        'params' => array(
+            'name' => array(
+                'required' => true,
+                'type' => PARAM_NOTAGS,
+            ),
+            'fulltext' => array(
+                'required' => true,
+                'type' => PARAM_RAW,
+            ),
+        ),
+        'attachments' => array(
+            'photos' => array(
+                'required' => false,
+                'image' => true,
+                'size' => array(1200, 800),
+                'list' => true,
+            ),
+        )
     ),
 );
 

@@ -12,8 +12,6 @@ $page = optional_param('page', 0);
 $order = array('param' => 'date', 'order' => 'DESC');
 switch ($context) {
     case 'periods':
-        $order = array('param' => 'order', 'order' => 'ASC');
-        break;
     case 'leaders':
         $order = array('param' => 'order', 'order' => 'ASC');
         break;

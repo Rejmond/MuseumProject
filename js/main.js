@@ -49,20 +49,11 @@ $(document).ready(function() {
     $(".header-line").delay(2000).animate({width: 340}, 1500, 'easeOutQuad');
 
     var currentPage = $("#main").data("location");
-    if (currentPage != "museum" && currentPage != "history") {
-        /*switch (currentPage) {
-            case "new":
-            case "exhibition":
-                currentPage += 's';
-                break;
-        }*/
+    if (currentPage != "museum" && currentPage != "history" && currentPage != "projects" && currentPage != "student-groups") {
         $('#' + currentPage).addClass('sub-menu').find('span').css('color', '#494952');
     }
     var museum =  ["museum", "museumabout", "news", "exposition", "exhibitions", "calendar", "presents", "geologic"];
     var history = ["history", "history-about", "periods", "books", "magazines", "leaders", "memories", "history-of-institute", "history-of-success"];
-    var projects;
-    /*var student-groups;*/
-
     if ($.inArray(currentPage, museum) >= 0) {
         $('#museum').addClass('active');
         $('#museumnav').show();
@@ -71,8 +62,11 @@ $(document).ready(function() {
         $('#history').addClass('active');
         $('#historynav').show();
     }
-    if ($.inArray(currentPage, projects) >= 0) {
+    if (currentPage == "projects") {
         $('#projects').addClass('active');
+    }
+    if (currentPage == "student-groups") {
+        $('#student-groups').addClass('active');
     }
     /*
     if ($.inArray(currentPage, student-groups) >= 0) {

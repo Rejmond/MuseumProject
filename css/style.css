@@ -1191,7 +1191,7 @@ main .quarter-to-2 {
     margin-right: -16px;
 }
 
-.to-begin, .to-back {
+.to-begin, .to-back, .button-container-logout {
     padding-bottom: 40px;
 }
 /*
