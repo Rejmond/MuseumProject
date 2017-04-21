@@ -1,25 +1,18 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<div id="main" class="entitylist history-image" data-location="periods">
-    <h1 class="caption w3-xxlarge">Хронология создания и развития университета</h1>
+<div id="main" class="w3-container entitylist student-groups-image" data-location="student-groups">
+    <h1 class="caption w3-xxlarge">Студенческие отряды</h1>
     {% if admin %}
-    <div class="h1-to-form ">
-        <a href="{{ wwwroot }}/admin/add.php?context={{ context }}#main">
-            <img src="{{ wwwroot }}/images/add.png" />
-        </a>
+    <div class="h1-to-form">
+        <a href="{{ wwwroot }}/admin/add.php?context={{ context }}#main"><img src="{{ wwwroot }}/images/add.png" /></a>
     </div>
     {% endif %}
 
     {% for entity in entities %}
     <div class="w3-row textrow1">
         <a  href="{{ wwwroot }}/entity.php?id={{ entity.id }}&returnurl={{ returnurl|url_encode }}#main"><p class="bold w3-large w3-margin-0">
-            {{ entity.params.interval|raw }}
-            {% if admin %}
-            <span class="lightGrey text2">
-            (приоритет отображения: {{ entity.params.order }})
-            </span>
-            {% endif %}
+            {{ entity.params.name|raw }}
         </p></a>
         {% if admin %}
         <div class="p-to-form">
@@ -30,12 +23,15 @@
         <p>
             {{ entity.content|raw }}
         </p>
+        {% if entity.files.photos %}
+        <div class="imgBox2 image-proportional-resizing">
+            <div class="inner"><img src="{{ wwwroot }}/file.php?id={{ (entity.files.photos|last).id }}"></div>
+        </div>
+        {% endif %}
         <div class="more"><a href="{{ wwwroot }}/entity.php?id={{ entity.id }}&returnurl={{ returnurl|url_encode }}#main">Подробнее</a></div>
     </div>
     {% endfor %}
 
     {% include 'pagination.html' %}
-
-    <div class="to-begin"><a href="{{ wwwroot }}/history.php#main">В начало</a></div>
 </div>
 {% endblock %}
