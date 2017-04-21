@@ -14,7 +14,7 @@
     {% for entity in entities %}
     <div class="textrow1">
         <div class="w3-row">
-            <div class="imgBox1">
+            <div class="imgBox1 image-proportional-resizing">
                 {% if entity.files.image %}
                 <img src="{{ wwwroot }}/file.php?id={{ entity.files.image.id }}">
                 {% endif %}

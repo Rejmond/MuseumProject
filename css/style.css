@@ -499,8 +499,10 @@ main .notflow p {
     overflow: hidden;
 }
 .imgBox1 img {
+    /*
     width: 100%;
     height: 100%;
+*/
 }
 /* контейенер для div->img как в Museum Новости +inner классы*/
 .imgBox2 {

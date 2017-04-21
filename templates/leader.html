@@ -4,7 +4,6 @@
 <div id="main" class="leader entity history-image" data-location="leaders">
     <h1 class="caption w3-xxlarge">Описание руководителя</h1>
     <div>
-
         <div class="imgBox1 image-proportional-resizing">
             {% if admin %}
             <div class="entity-image-edit">
@@ -53,9 +52,9 @@
             </div>
         </div>
     </div>
-
+    <div class="test">
     {% include 'images.html' with {'images': entity.files.photos } %}
-
+    </div>
     <div class="to-back"><a href="{{ returnurl }}">Назад</a></div>
 </div>
 {% endblock %}

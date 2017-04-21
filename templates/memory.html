@@ -4,7 +4,7 @@
 <div id="main" class="memory entity history-image" data-location="memories">
     <h1 class="caption w3-xxlarge">Воспоминание</h1>
     <div>
-        <div class="imgBox1 image-proportional-resizing">
+        <div class="imgBox1">
             {% if admin %}
             <div class="entity-image-edit">
                 <form method="post" enctype="multipart/form-data" action="{{ wwwroot }}/admin/addfile.php">
@@ -18,11 +18,13 @@
             </div>
             {% endif %}
             {% if entity.files.image %}
-            <a href="{{ wwwroot }}/file.php?id={{ entity.files.image.id }}" data-fancybox="images" data-type="image">
-                <div>
-                    <img src="{{ wwwroot }}/file.php?id={{ entity.files.image.id }}">
-                </div>
-            </a>
+            <div class="imgBox1 image-proportional-resizing">
+                <a href="{{ wwwroot }}/file.php?id={{ entity.files.image.id }}" data-fancybox="images" data-type="image">
+                    <div>
+                        <img src="{{ wwwroot }}/file.php?id={{ entity.files.image.id }}">
+                    </div>
+                </a>
+            </div>
             {% endif %}
         </div>
         <div class="notflow//">
