@@ -499,8 +499,10 @@ main .notflow p {
     overflow: hidden;
 }
 .imgBox1 img {
+    /*
     width: 100%;
     height: 100%;
+*/
 }
 /* контейенер для div->img как в Museum Новости +inner классы*/
 .imgBox2 {
@@ -563,9 +565,9 @@ main .notflow p {
     display: inline-block;
 }
 /* руководители */
-.histoHeads {
+.history .history-leader {
     width: 136px;
-    margin-left: 60px;
+    margin: auto;
 }
 
 /* Адаптация под экраны */
@@ -585,7 +587,7 @@ main .notflow p {
         font-size: 14rem;
         margin: 0;
     }
-    .histoHea .w3-quarter {
+    .history .leaders .w3-quarter {
         width: 24.99999%;
     }
 }
@@ -614,8 +616,9 @@ main .notflow p {
         width: 100% !important;
         display: block;
     }
-    .histoHea .w3-quarter {
+    .history .leaders .w3-quarter {
         width: 49.99999%;
+        margin: auto;
     }
 }
 @media screen and (max-width: 680px) {
@@ -639,11 +642,8 @@ main .notflow p {
     }
 }
 @media screen and (max-width: 540px) {
-    .histoHea .w3-quarter {
+    .history .leaders .w3-quarter {
         width: 99.99999%;
-        margin: 0 auto;
-    }
-    .histoHeads {
         margin: 0 auto;
     }
     .imgBox2 {

@@ -15,15 +15,17 @@
     <div class="w3-row textrow1">
         <a  href="{{ wwwroot }}/entity.php?id={{ entity.id }}&returnurl={{ returnurl|url_encode }}#main"><p class="bold w3-large w3-margin-0">
             {{ entity.params.interval|raw }}
+            {% if admin %}
+            <span class="lightGrey text2">
+            (Приоритет отображения: {{ entity.params.order }})
+            </span>
+            {% endif %}
         </p></a>
         {% if admin %}
         <div class="p-to-form">
             <a href="{{ wwwroot }}/admin/edit.php?id={{ entity.id }}&returnurl={{ returnurl|url_encode }}#main"><img src="{{ wwwroot }}/images/edit.png" /></a>
             <a href="{{ wwwroot }}/admin/delete.php?id={{ entity.id }}&returnurl={{ returnurl|url_encode }}#main"><img src="{{ wwwroot }}/images/delete.png" /></a>
         </div>
-        <p class="lightGrey text2 date">
-            Приоритет отображения: {{ entity.params.order }}
-        </p>
         {% endif %}
         <p>
             {{ entity.content|raw }}

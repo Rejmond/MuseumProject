@@ -184,6 +184,79 @@ $CONFIG->entities = array(
             ),
         )
     ),
+    'leaders' => array(
+        'entity_template' => 'leader.html',
+        'entities_template' => 'leaders.html',
+        'content_type' => PARAM_NOTAGS,
+        'perpage' => 10,
+        'params' => array(
+            'name' => array(
+                'required' => true,
+                'type' => PARAM_NOTAGS,
+            ),
+            'interval' => array(
+                'required' => true,
+                'type' => PARAM_NOTAGS,
+            ),
+            'fulltext' => array(
+                'required' => true,
+                'type' => PARAM_RAW,
+            ),
+            'order' => array(
+                'required' => true,
+                'type' => PARAM_INT,
+            ),
+        ),
+        'attachments' => array(
+            'image' => array(
+                'required' => true,
+                'image' => true,
+                'size' => array(1200, 800),
+                'list' => false,
+            ),
+            'photos' => array(
+                'required' => false,
+                'image' => true,
+                'size' => array(1200, 800),
+                'list' => true,
+            ),
+        )
+    ),
+    'memories' => array(
+        'entity_template' => 'memory.html',
+        'entities_template' => 'memories.html',
+        'content_type' => PARAM_NOTAGS,
+        'perpage' => 10,
+        'params' => array(
+            'name' => array(
+                'required' => true,
+                'type' => PARAM_NOTAGS,
+            ),
+            'fulltext' => array(
+                'required' => true,
+                'type' => PARAM_RAW,
+            ),
+        ),
+        'attachments' => array(
+            'image' => array(
+                'required' => false,
+                'image' => true,
+                'size' => array(1200, 800),
+                'list' => false,
+            ),
+            'files' => array(
+                'required' => false,
+                'image' => false,
+                'list' => true,
+            ),
+            'photos' => array(
+                'required' => false,
+                'image' => true,
+                'size' => array(1200, 800),
+                'list' => true,
+            ),
+        ),
+    ),
     'history-of-institute' => array(
         'entity_template' => 'history-of-institute.html',
         'entities_template' => 'history-of-institute.html',

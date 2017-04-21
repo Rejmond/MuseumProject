@@ -1,8 +1,8 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<div id="main" class="books entitylist history-image" data-location="books">
-    <h1 class="caption w3-xxlarge">Книги</h1>
+<div id="main" class="leaders entitylist history-image" data-location="leaders">
+    <h1 class="caption w3-xxlarge">Руководители</h1>
     {% if admin %}
     <div class="h1-to-form">
         <a href="{{ wwwroot }}/admin/add.php?context={{ context }}#main">
@@ -21,8 +21,13 @@
             </div>
             <div >
                 <a href="{{ wwwroot }}/entity.php?id={{ entity.id }}&returnurl={{ returnurl|url_encode }}#main">
-                    <p class="bold w3-large w3-padding-top">
-                        {{ entity.params.name }}
+                    <p class="bold w3-large w3-margin-0">
+                        {{ entity.params.name|raw }}
+                        {% if admin %}
+                        <span class="lightGrey text2">
+                        (приоритет отображения: {{ entity.params.order }})
+                        </span>
+                        {% endif %}
                     </p>
                 </a>
                 {% if admin %}
@@ -31,6 +36,9 @@
                     <a href="{{ wwwroot }}/admin/delete.php?id={{ entity.id }}&returnurl={{ returnurl|url_encode }}#main"><img src="{{ wwwroot }}/images/delete.png" /></a>
                 </div>
                 {% endif %}
+                <p class="lightGrey text2">
+                    Годы руководства: {{ entity.params.interval|raw }}
+                </p>
                 <p>
                     {{ entity.content }}
                 </p>
@@ -42,8 +50,8 @@
             </a>
         </div>
     </div>
-    {% endfor %}
 
+    {% endfor %}
     {% include 'pagination.html' %}
     <div class="to-begin"><a href="{{ wwwroot }}/history.php#main">В начало</a></div>
 </div>

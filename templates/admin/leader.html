@@ -1,0 +1,75 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div id="main" class="edit-forms history-image" data-location="leaders">
+    <h1 class="caption w3-xxlarge">Руководитель: {{ title|lower }}</h1>
+    <div>
+        <form method="post" enctype="multipart/form-data">
+            {% if id %}
+            <input type="hidden" name="id" value="{{ id }}">
+            {% else %}
+            <input type="hidden" name="context" value="{{ context }}">
+            {% endif %}
+
+            <p class="bold w3-large">ФИО руководителя:</p>
+            {% if errors.name %}
+            <div class="login-snack-bar">
+                Вы не указали ФИО руководителя
+            </div>
+            {% endif %}
+            <input type="text" name="name" value="{{ params.name|raw }}">
+
+            <p class="bold w3-large">Порядок отображения:</p>
+            {% if errors.order %}
+            <div class="login-snack-bar">
+                Вы не указали номер порядка отображения
+            </div>
+            {% endif %}
+            <input type="number" name="order" value="{{ params.order|raw }}">
+
+            <p class="bold w3-large">Годы руководства:</p>
+            {% if errors.interval %}
+            <div class="login-snack-bar">
+                Вы не указали период руководства
+            </div>
+            {% endif %}
+            <input type="text" name="interval" value="{{ params.interval|raw }}">
+
+            {% if not id %}
+            <p class="bold w3-large">Фотография героя:</p>
+            {% if errors.image %}
+            <div class="login-snack-bar">
+                Вы не указали фотографию руководителя
+            </div>
+            {% endif %}
+            <input type="file" name="image">
+            {% endif %}
+
+            <p class="bold w3-large">Краткое описание руководителя:</p>
+            {% if errors.content %}
+            <div class="login-snack-bar">
+                Вы не указали краткое описание руководителя
+            </div>
+            {% endif %}
+            <div class="edit-textarea">
+                <textarea name="content">{{ content|raw }}</textarea>
+            </div>
+
+            <p class="bold w3-large">Подробное описание руководителя:</p>
+            {% if errors.fulltext %}
+            <div class="login-snack-bar">
+                Вы не указали подробное описание руководителя
+            </div>
+            {% endif %}
+            <div class="edit-textarea">
+                <textarea name="fulltext" class="tiny">{{ params.fulltext|raw }}</textarea>
+            </div>
+
+            <div class="button-container-logout">
+                <button type="submit" name="cancel">Отмена</button>
+                <button type="submit" name="accept">Подтвердить</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
