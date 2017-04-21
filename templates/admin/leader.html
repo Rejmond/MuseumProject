@@ -11,10 +11,10 @@
             <input type="hidden" name="context" value="{{ context }}">
             {% endif %}
 
-            <p class="bold w3-large">ФИО руководителя:</p>
+            <p class="bold w3-large">Ф.И.О. руководителя:</p>
             {% if errors.name %}
             <div class="login-snack-bar">
-                Вы не указали ФИО руководителя
+                Вы не указали Ф.И.О. руководителя
             </div>
             {% endif %}
             <input type="text" name="name" value="{{ params.name|raw }}">
@@ -36,7 +36,7 @@
             <input type="text" name="interval" value="{{ params.interval|raw }}">
 
             {% if not id %}
-            <p class="bold w3-large">Фотография героя:</p>
+            <p class="bold w3-large">Фотография:</p>
             {% if errors.image %}
             <div class="login-snack-bar">
                 Вы не указали фотографию руководителя
@@ -45,20 +45,20 @@
             <input type="file" name="image">
             {% endif %}
 
-            <p class="bold w3-large">Краткое описание руководителя:</p>
+            <p class="bold w3-large">Краткое описание:</p>
             {% if errors.content %}
             <div class="login-snack-bar">
-                Вы не указали краткое описание руководителя
+                Вы не указали краткое описание
             </div>
             {% endif %}
             <div class="edit-textarea">
                 <textarea name="content">{{ content|raw }}</textarea>
             </div>
 
-            <p class="bold w3-large">Подробное описание руководителя:</p>
+            <p class="bold w3-large">Подробное описание:</p>
             {% if errors.fulltext %}
             <div class="login-snack-bar">
-                Вы не указали подробное описание руководителя
+                Вы не указали подробное описание
             </div>
             {% endif %}
             <div class="edit-textarea">

@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div id="main" class="w3-container entity projects-image" data-location="projects">
+    <h1 class="caption w3-xxlarge">Информация о проекте</h1>
+    <div>
+        <p class="bold w3-large w3-margin-0">
+            {{ entity.params.name|raw }}
+        </p>
+        {% if admin %}
+        <div class="p-to-form">
+            <a href="{{ wwwroot }}/admin/edit.php?id={{ entity.id }}#main"><img src="{{ wwwroot }}/images/edit.png" /></a>
+            <a href="{{ wwwroot }}/admin/delete.php?id={{ entity.id }}#main"><img src="{{ wwwroot }}/images/delete.png" /></a>
+        </div>
+        {% endif %}
+    </div>
+    <div class="post-tiny">
+        {{ entity.params.fulltext|raw }}
+    </div>
+
+    {% include 'images.html' with {'images': entity.files.photos } %}
+
+    <div class="to-back"><a href="{{ returnurl }}">Назад</a></div>
+</div>
+{% endblock %}

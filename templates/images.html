@@ -1,7 +1,7 @@
 <div id="images">
     <div style="display: inline-block">
         {% for image in images %}
-        <div class="imgBox2 entity-image-container image-proportional-resizing">
+        <div class="entity-image-container image-proportional-resizing">
             {% if admin %}
             <form class="delete-image" method="post" action="{{ wwwroot }}/admin/delfile.php">
                 <input type="hidden" name="id" value="{{ image.id }}">
@@ -9,7 +9,7 @@
             </form>
             {% endif %}
             <a href="{{ wwwroot }}/file.php?id={{ image.id }}" data-fancybox="group" data-type="image">
-                <div>
+                <div class="imgBox2">
                     <img src="{{ wwwroot }}/file.php?id={{ image.id }}">
                 </div>
             </a>

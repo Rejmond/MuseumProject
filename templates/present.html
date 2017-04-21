@@ -18,7 +18,7 @@
         {{ entity.params.fulltext|raw }}
     </div>
     {% if entity.files.image %}
-    <div class="imgBox2 entity-image">
+    <div class="imgBox2 entity-image image-proportional-resizing">
         {% if admin %}
         <div class="entity-image-edit">
             <form method="post" enctype="multipart/form-data" action="{{ wwwroot }}/admin/addfile.php">
@@ -31,9 +31,8 @@
             </form>
         </div>
         {% endif %}
-        <div class="">
         <img src="{{ wwwroot }}/file.php?id={{ entity.files.image.id }}">
-        </div>
+
     </div>
     <p class="text2" style="text-align: center;">Даритель: {{ entity.params.presenter }}</p>
     {% endif %}

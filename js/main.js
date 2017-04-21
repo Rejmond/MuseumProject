@@ -49,20 +49,11 @@ $(document).ready(function() {
     $(".header-line").delay(2000).animate({width: 340}, 1500, 'easeOutQuad');
 
     var currentPage = $("#main").data("location");
-    if (currentPage != "museum" && currentPage != "history") {
-        /*switch (currentPage) {
-            case "new":
-            case "exhibition":
-                currentPage += 's';
-                break;
-        }*/
+    if (currentPage != "museum" && currentPage != "history" && currentPage != "projects" && currentPage != "student-groups") {
         $('#' + currentPage).addClass('sub-menu').find('span').css('color', '#494952');
     }
     var museum =  ["museum", "museumabout", "news", "exposition", "exhibitions", "calendar", "presents", "geologic"];
     var history = ["history", "history-about", "periods", "books", "magazines", "leaders", "memories", "history-of-institute", "history-of-success"];
-    var projects;
-    /*var student-groups;*/
-
     if ($.inArray(currentPage, museum) >= 0) {
         $('#museum').addClass('active');
         $('#museumnav').show();
@@ -71,8 +62,11 @@ $(document).ready(function() {
         $('#history').addClass('active');
         $('#historynav').show();
     }
-    if ($.inArray(currentPage, projects) >= 0) {
+    if (currentPage == "projects") {
         $('#projects').addClass('active');
+    }
+    if (currentPage == "student-groups") {
+        $('#student-groups').addClass('active');
     }
     /*
     if ($.inArray(currentPage, student-groups) >= 0) {
@@ -183,9 +177,9 @@ function tinyImgSize() {
 
 function imageTransfiguration() {
     $('.image-proportional-resizing img').one('load', function() { // вызываем один раз после загрузки картинки
-        var imgBox = $('.image-proportional-resizing'),
-            maxWidth = imgBox.width(),
-            maxHeight = imgBox.height(),
+        var /*imgBox = $('.image-proportional-resizing'),*/
+            maxWidth = $(this).closest('.image-proportional-resizing').width(),
+            maxHeight = $(this).closest('.image-proportional-resizing').height(),
             ratio = 0,
             width = $(this).width(),
             height = $(this).height();
@@ -202,10 +196,10 @@ function imageTransfiguration() {
             $(this).css("width", width * ratio);
             width = width * ratio;
         }
-        var imgPos = $(this, imgBox);
+        var imgPos = $(this, $(this).closest('.image-proportional-resizing'));
         imgPos.css({
-            marginLeft: (imgBox.width() - imgPos.width()) / 2,
-            marginTop: (imgBox.height() - imgPos.height()) / 2
+            marginLeft: ($(this).parent().width() - imgPos.width()) / 2,
+            marginTop: ($(this).parent().height() - imgPos.height()) / 2
         })
     }).each(function () { // так как подписка на событие загрузки картинки могла быть уже после самой загрузки
         if (this.complete) { // проверяем для каждого элемента, не был ли он уже загружен
