@@ -98,38 +98,37 @@
 
     <h2 class="bold">Воспоминания</h2>
     <div class="w3-row textrow1">
-        <div class="w3-half histoMemory">
+        {% for memory in memories|slice(0, 2) %}
+        <div class="w3-half">
+            <div class="imgBox1">
+                {% if memory.files.image %}
+                <img src="{{ wwwroot }}/file.php?id={{ memory.files.image.id }}">
+                {% endif %}
+            </div>
             <div class="notflow">
-                <a><p class="bold w3-large">Интервью с Анохиной Надеждой Константиновной</p></a>
-                <p class="lightGrey text2">17.12.2016</p>
-                <p>Тарбокова Наташа и Володя Львиц они сейчас живут в Германии. Вот, а вторая пара Шабалина Света и Анатолий Жирнов. Анатолий защитил и они уехали в Тюмень, если я не путаю. Он защитил докторскую диссертацию, но к сожалению, уже лет 8 его нет с нами. А окончила Сибирский Металлургический институт в 1974 году. Окончила с отличием. Диплом защищала на английском</p>
+                <a href="{{ wwwroot }}/entity.php?id={{ memory.id }}&returnurl={{ returnurl|url_encode }}#main"><p class="bold w3-large">{{ memory.params.name }}</p></a>
+                <p class="lightGrey text2"></p>
+                <p>{{ memory.content }}</p>
             </div>
         </div>
-        <div class=" w3-half histoMemory">
-            <div class="notflow">
-                <a><p class="bold w3-large">Интервью с Анохиной Надеждой Константиновной</p></a>
-                <p class="lightGrey text2">17.12.2016</p>
-                <p>Тарбокова Наташа и Володя Львиц они сейчас живут в Германии. Вот, а вторая пара Шабалина Света и Анатолий Жирнов. Анатолий защитил и они уехали в Тюмень, если я не путаю. Он защитил докторскую диссертацию, но к сожалению, уже лет 8 его нет с нами. А окончила Сибирский Металлургический институт в 1974 году. Окончила с отличием. Диплом защищала на английском</p>
-            </div>
-        </div>
+        {% endfor %}
     </div>
     <div class="w3-row textrow1">
-        <div class="w3-half histoMemory">
+        {% for memory in memories|slice(2, 2) %}
+        <div class="w3-half">
+            <div class="imgBox1">
+                {% if memory.files.image %}
+                <img src="{{ wwwroot }}/file.php?id={{ memory.files.image.id }}">
+                {% endif %}
+            </div>
             <div class="notflow">
-                <a><p class="bold w3-large">Интервью с Анохиной Надеждой Константиновной</p></a>
-                <p class="lightGrey text2">17.12.2016</p>
-                <p>Тарбокова Наташа и Володя Львиц они сейчас живут в Германии. Вот, а вторая пара Шабалина Света и Анатолий Жирнов. Анатолий защитил и они уехали в Тюмень, если я не путаю. Он защитил докторскую диссертацию, но к сожалению, уже лет 8 его нет с нами. А окончила Сибирский Металлургический институт в 1974 году. Окончила с отличием. Диплом защищала на английском</p>
+                <a href="{{ wwwroot }}/entity.php?id={{ memory.id }}&returnurl={{ returnurl|url_encode }}#main"><p class="bold w3-large">{{ memory.params.name }}</p></a>
+                <p>{{ memory.content }}</p>
             </div>
         </div>
-        <div class="w3-half histoMemory">
-            <div class="notflow">
-                <a><p class="bold w3-large">Интервью с Анохиной Надеждой Константиновной</p></a>
-                <p class="lightGrey text2">17.12.2016</p>
-                <p>Тарбокова Наташа и Володя Львиц они сейчас живут в Германии. Вот, а вторая пара Шабалина Света и Анатолий Жирнов. Анатолий защитил и они уехали в Тюмень, если я не путаю. Он защитил докторскую диссертацию, но к сожалению, уже лет 8 его нет с нами. А окончила Сибирский Металлургический институт в 1974 году. Окончила с отличием. Диплом защищала на английском</p>
-            </div>
-        </div>
+        {% endfor %}
     </div>
-    <div class="allpubs"><a>ВСЕ ВОСПОМИНАНИЯ</a></div>
+    <div class="allpubs"><a href="{{ wwwroot }}/entities.php?context=memories#main">ВСЕ ВОСПОМИНАНИЯ</a></div>
 
     <h2 class="sub-caption bold" id="history-of-our-university"><span>История институтов</span></h2>
     <div class="w3-row w3-large bold">
@@ -150,7 +149,7 @@
         </div>
     </div>
     {% if admin %}
-    <div class="allpubs"><a href="{{ wwwroot }}/entities.php?context=history-of-institute#main">РЕДАКТИРОВАТЬ</a></div>
+    <div class="allpubs"><a href="{{ wwwroot }}/entities.php?context=history-of-institute#main">РЕДАКТИРОВАНИЕ</a></div>
     {% endif %}
 
     <h2 class="sub-caption bold"><span>История успеха</span></h2>
