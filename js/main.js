@@ -183,9 +183,9 @@ function tinyImgSize() {
 
 function imageTransfiguration() {
     $('.image-proportional-resizing img').one('load', function() { // вызываем один раз после загрузки картинки
-        var imgBox = $('.image-proportional-resizing'),
-            maxWidth = imgBox.width(),
-            maxHeight = imgBox.height(),
+        var /*imgBox = $('.image-proportional-resizing'),*/
+            maxWidth = $(this).closest('.image-proportional-resizing').width(),
+            maxHeight = $(this).closest('.image-proportional-resizing').height(),
             ratio = 0,
             width = $(this).width(),
             height = $(this).height();
@@ -202,10 +202,10 @@ function imageTransfiguration() {
             $(this).css("width", width * ratio);
             width = width * ratio;
         }
-        var imgPos = $(this, imgBox);
+        var imgPos = $(this, $(this).closest('.image-proportional-resizing'));
         imgPos.css({
-            marginLeft: (imgBox.width() - imgPos.width()) / 2,
-            marginTop: (imgBox.height() - imgPos.height()) / 2
+            marginLeft: ($(this).parent().width() - imgPos.width()) / 2,
+            marginTop: ($(this).parent().height() - imgPos.height()) / 2
         })
     }).each(function () { // так как подписка на событие загрузки картинки могла быть уже после самой загрузки
         if (this.complete) { // проверяем для каждого элемента, не был ли он уже загружен

@@ -86,8 +86,8 @@
     <div class="w3-row leaders">
         {% for leader in leaders %}
         <div class="w3-quarter quarttohalf w3-center">
-            <div class="history-leader image-proportional-resizing">
-                <div class="imgBox1"><img src="{{ wwwroot }}/file.php?id={{ leader.files.image.id }}"></div>
+            <div class="history-leader">
+                <div class="imgBox1 image-proportional-resizing"><img src="{{ wwwroot }}/file.php?id={{ leader.files.image.id }}"></div>
                 <a  href="{{ wwwroot }}/entity.php?id={{ leader.id }}&returnurl={{ returnurl|url_encode }}#main"><p class="bold w3-large">Вяткин <br> Ефим Кириллович</p></a>
                 <p></p>
             </div>

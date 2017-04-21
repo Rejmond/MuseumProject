@@ -30,7 +30,7 @@
         </p>
         {% if entity.files.photos %}
         <div class="imgBox2 image-proportional-resizing">
-            <div class="inner"><img src="{{ wwwroot }}/file.php?id={{ (entity.files.photos|last).id }}"></div>
+            <img src="{{ wwwroot }}/file.php?id={{ (entity.files.photos|last).id }}">
         </div>
         {% endif %}
         <div class="more"><a href="{{ wwwroot }}/entity.php?id={{ entity.id }}&returnurl={{ returnurl|url_encode }}#main">Подробнее</a></div>
