@@ -1,8 +1,8 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<div id="main" class="edit-forms history-image" data-location="leaders">
-    <h1 class="caption w3-xxlarge">Руководители: {{ title|lower }}</h1>
+<div id="main" class="edit-forms museum-image" data-location="exposition">
+    <h1 class="caption w3-xxlarge">Экспозиции: {{ title|lower }}</h1>
     <div>
         <form method="post" enctype="multipart/form-data">
             {% if id %}
@@ -11,10 +11,10 @@
             <input type="hidden" name="context" value="{{ context }}">
             {% endif %}
 
-            <p class="bold w3-large">Ф.И.О. руководителя:</p>
+            <p class="bold w3-large">Ф.И.О. ученого:</p>
             {% if errors.name %}
             <div class="login-snack-bar">
-                Вы не указали Ф.И.О. руководителя
+                Вы не указали Ф.И.О. ученого
             </div>
             {% endif %}
             <input type="text" name="name" value="{{ params.name|raw }}">
@@ -27,19 +27,11 @@
             {% endif %}
             <input type="number" name="order" value="{{ params.order|raw }}">
 
-            <p class="bold w3-large">Годы руководства:</p>
-            {% if errors.interval %}
-            <div class="login-snack-bar">
-                Вы не указали период руководства
-            </div>
-            {% endif %}
-            <input type="text" name="interval" value="{{ params.interval|raw }}">
-
             {% if not id %}
             <p class="bold w3-large">Фотография:</p>
             {% if errors.image %}
             <div class="login-snack-bar">
-                Вы не указали фотографию руководителя
+                Вы не указали фотографию ученого
             </div>
             {% endif %}
             <input type="file" name="image">

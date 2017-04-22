@@ -46,6 +46,93 @@ $CONFIG->entities = array(
             ),
         )
     ),
+    'exposition' => array(
+        'entity_template' => 'exposition.html',
+        'entities_template' => 'expositions.html',
+        'content_type' => PARAM_RAW,
+        'params' => array(
+            'name' => array(
+                'required' => true,
+                'type' => PARAM_NOTAGS,
+            ),
+        ),
+        'attachments' => array(
+            'photos' => array(
+                'required' => false,
+                'image' => true,
+                'size' => array(1200, 800),
+                'list' => true,
+            ),
+        )
+    ),
+    'exposition-scientists' => array(
+        'entity_template' => 'exposition-scientist.html',
+        'entities_template' => 'exposition-scientists.html',
+        'content_type' => PARAM_NOTAGS,
+        'perpage' => 10,
+        'params' => array(
+            'name' => array(
+                'required' => true,
+                'type' => PARAM_NOTAGS,
+            ),
+            'fulltext' => array(
+                'required' => true,
+                'type' => PARAM_RAW,
+            ),
+            'order' => array(
+                'required' => true,
+                'type' => PARAM_INT,
+            ),
+        ),
+        'attachments' => array(
+            'image' => array(
+                'required' => false,
+                'image' => true,
+                'size' => array(1200, 800),
+                'list' => false,
+            ),
+            'photos' => array(
+                'required' => false,
+                'image' => true,
+                'size' => array(1200, 800),
+                'list' => true,
+            ),
+        )
+    ),
+    'exposition-graduates' => array(
+        'entity_template' => 'exposition-graduate.html',
+        'entities_template' => 'exposition-graduates.html',
+        'content_type' => PARAM_NOTAGS,
+        'perpage' => 10,
+        'params' => array(
+            'name' => array(
+                'required' => true,
+                'type' => PARAM_NOTAGS,
+            ),
+            'fulltext' => array(
+                'required' => true,
+                'type' => PARAM_RAW,
+            ),
+            'order' => array(
+                'required' => true,
+                'type' => PARAM_INT,
+            ),
+        ),
+        'attachments' => array(
+            'image' => array(
+                'required' => false,
+                'image' => true,
+                'size' => array(1200, 800),
+                'list' => false,
+            ),
+            'photos' => array(
+                'required' => false,
+                'image' => true,
+                'size' => array(1200, 800),
+                'list' => true,
+            ),
+        )
+    ),
     'exhibitions' => array(
         'entity_template' => 'exhibition.html',
         'entities_template' => 'exhibitions.html',
@@ -63,6 +150,29 @@ $CONFIG->entities = array(
             'fulltext' => array(
                 'required' => true,
                 'type' => PARAM_RAW,
+            ),
+        ),
+        'attachments' => array(
+            'photos' => array(
+                'required' => false,
+                'image' => true,
+                'size' => array(1200, 800),
+                'list' => true,
+            ),
+        )
+    ),
+    'calendar' => array(
+        'entity_template' => 'date.html',
+        'entities_template' => 'dates.html',
+        'content_type' => PARAM_RAW,
+        'params' => array(
+            'name' => array(
+                'required' => true,
+                'type' => PARAM_NOTAGS,
+            ),
+            'date' => array(
+                'required' => true,
+                'type' => PARAM_DATE,
             ),
         ),
         'attachments' => array(
@@ -95,7 +205,7 @@ $CONFIG->entities = array(
         ),
         'attachments' => array(
             'image' => array(
-                'required' => true,
+                'required' => false,
                 'image' => true,
                 'size' => array(1200, 800),
                 'list' => false,
@@ -191,7 +301,7 @@ $CONFIG->entities = array(
         'perpage' => 10,
         'params' => array(
             'name' => array(
-                'required' => true,
+                'required' => false,
                 'type' => PARAM_NOTAGS,
             ),
             'interval' => array(

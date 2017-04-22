@@ -42,18 +42,29 @@
 
     <h2 class="bold">Экспозиция</h2>
     <div class="w3-row">
+        {% set separator = (expositions|length / 2)|round(0, 'ceil') %}
         <div class="w3-half histoInsts">
-            <a><p class="bold w3-large">- От СИЧМ к СибГИУ: 80 лет в истории</p></a>
-            <a><p class="bold w3-large">- История и развитие факультетов СибГИУ </p></a>
-            <a><p class="bold w3-large">- СМИ в годы Великой Отечественной войны</p></a>
+            <a href="{{ wwwroot }}/entities.php?context=exposition-scientists#main">
+                <p class="bold w3-large">-&nbsp;Ученые, профессора, члены академий вуза</p>
+            </a>
+            {% for exposition in expositions[:separator] %}
+            <a href="{{ wwwroot }}/entity.php?id={{ exposition.id }}&returnurl={{ returnurl|url_encode }}#main">
+                <p class="bold w3-large">-&nbsp;{{ exposition.params.name|raw }}</p>
+            </a>
+            {% endfor %}
         </div>
         <div class="w3-half histoInsts w3-margin-bottom">
-            <a><p class="bold w3-large">- Студенческие строительные отряды СМИ </p></a>
-            <a><p class="bold w3-large">- Ученые, профессора, члены академий вуза  </p></a>
-            <a><p class="bold w3-large">- Знаменитые выпускники вуза</p></a>
+            <a href="{{ wwwroot }}/entities.php?context=exposition-graduates#main">
+                <p class="bold w3-large">-&nbsp;Знаменитые выпускники вуза</p>
+            </a>
+            {% for exposition in expositions[separator:] %}
+            <a href="{{ wwwroot }}/entity.php?id={{ exposition.id }}&returnurl={{ returnurl|url_encode }}#main">
+                <p class="bold w3-large">-&nbsp;{{ exposition.params.name|raw }}</p>
+            </a>
+            {% endfor %}
         </div>
     </div>
-    <div class="allpubs"><a>ВСЕ ТЕМАТИКИ</a></div>
+    <div class="allpubs"><a href="{{ wwwroot }}/entities.php?context=exposition#main">ВСЕ ЭКСПОЗИЦИИ</a></div>
 
     <h2 class="bold">Тематические выставки</h2>
     <div class="w3-row">
@@ -89,6 +100,10 @@
     <div class="allpubs"><a href="{{ wwwroot }}/entities.php?context=exhibitions#main">ВСЕ ВЫСТАВКИ</a></div>
 
     <h2 class="bold">Календарь знаменательных дат</h2>
+    {% for date in calendar %}
+    <div>{{ date.params.name }} - {{ date.params.date }}</div>
+    {% endfor %}
+    <div class="allpubs"><a href="{{ wwwroot }}/entities.php?context=calendar#main">ВСЕ ЗНАМЕНАТЕЛЬНЫЕ ДАТЫ</a></div>
 
     <h2 class="bold">День дарителя</h2>
     <div class="w3-row">

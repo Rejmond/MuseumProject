@@ -50,6 +50,12 @@ $(document).ready(function() {
 
     var currentPage = $("#main").data("location");
     if (currentPage != "museum" && currentPage != "history" && currentPage != "projects" && currentPage != "student-groups") {
+        switch (currentPage) {
+            case 'exposition-scientists':
+            case 'exposition-graduates':
+                currentPage = 'exposition';
+                break;
+        }
         $('#' + currentPage).addClass('sub-menu').find('span').css('color', '#494952');
     }
     var museum =  ["museum", "museumabout", "news", "exposition", "exhibitions", "calendar", "presents", "geologic"];
