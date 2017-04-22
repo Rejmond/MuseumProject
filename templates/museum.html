@@ -15,9 +15,11 @@
                 <div class="imgBox2 image-proportional-resizing">
                     {% if new.files.photos %}
                     <img src="{{ wwwroot }}/file.php?id={{ (new.files.photos|last).id }}">
+                    {% else %}
+                    <div class="placeholder-news"></div>
                     {% endif %}
                 </div>
-                <a href="{{ wwwroot }}/entity.php?id={{ new.id }}&returnurl={{ returnurl|url_encode }}#main"><p class="bold w3-large">{{ new.params.name }}</p></a>
+                <a href="{{ wwwroot }}/entity.php?id={{ new.id }}&returnurl={{ returnurl|url_encode }}#main"><p class="bold w3-large w3-margin-0">{{ new.params.name }}</p></a>
                 <p class="lightGrey text2">{{ new.date|raw|date("d.m.Y H:i") }}</p>
                 <p>{{ new.content }}</p>
             </div>
@@ -26,12 +28,14 @@
         <div class="quarter-to-2">
         {% for new in news|slice(2, 2) %}
             <div class="w3-quarter w3-container quarttohalf">
-                <div class="imgBox2 image-proportional-resizing">
+                <div class="imgBox2 image-proportional-resizing placeholder-news">
                     {% if new.files.photos %}
                     <img src="{{ wwwroot }}/file.php?id={{ (new.files.photos|last).id }}">
+                    {% else %}
+                    <div class="placeholder-news"></div>
                     {% endif %}
                 </div>
-                <a href="{{ wwwroot }}/entity.php?id={{ new.id }}&returnurl={{ returnurl|url_encode }}#main"><p class="bold w3-large">{{ new.params.name }}</p></a>
+                <a href="{{ wwwroot }}/entity.php?id={{ new.id }}&returnurl={{ returnurl|url_encode }}#main"><p class="bold w3-large w3-margin-0">{{ new.params.name }}</p></a>
                 <p class="lightGrey text2">{{ new.date|raw|date("d.m.Y H:i") }}</p>
                 <p>{{ new.content }}</p>
             </div>
@@ -63,9 +67,11 @@
                 <div class="imgBox2 image-proportional-resizing">
                     {% if exhibition.files.photos %}
                     <img src="{{ wwwroot }}/file.php?id={{ (exhibition.files.photos|last).id }}">
+                    {% else %}
+                    <div class="placeholder-exhibition"></div>
                     {% endif %}
                 </div>
-                <a href="{{ wwwroot }}/entity.php?id={{ exhibition.id }}&returnurl={{ returnurl|url_encode }}#main"><p class="bold w3-large">{{ exhibition.params.name }}</p></a>
+                <a href="{{ wwwroot }}/entity.php?id={{ exhibition.id }}&returnurl={{ returnurl|url_encode }}#main"><p class="bold w3-large w3-margin-0">{{ exhibition.params.name }}</p></a>
                 <p class="lightGrey text2">{{ exhibition.params.interval }}</p>
                 <p>{{ exhibition.content }}</p>
             </div>
@@ -74,12 +80,14 @@
         <div class="quarter-to-2">
             {% for exhibition in exhibitions|slice(2, 2) %}
             <div class="w3-quarter w3-container quarttohalf">
-                <div class="imgBox2 image-proportional-resizing">
+                <div class="imgBox2 image-proportional-resizing placeholder-exhibition">
                     {% if exhibition.files.photos %}
                     <img src="{{ wwwroot }}/file.php?id={{ (exhibition.files.photos|last).id }}">
+                    {% else %}
+                    <div class="placeholder-exhibition"></div>
                     {% endif %}
                 </div>
-                <a href="{{ wwwroot }}/entity.php?id={{ exhibition.id }}&returnurl={{ returnurl|url_encode }}#main"><p class="bold w3-large">{{ exhibition.params.name }}</p></a>
+                <a href="{{ wwwroot }}/entity.php?id={{ exhibition.id }}&returnurl={{ returnurl|url_encode }}#main"><p class="bold w3-large w3-margin-0">{{ exhibition.params.name }}</p></a>
                 <p class="lightGrey text2">{{ exhibition.params.interval }}</p>
                 <p>{{ exhibition.content }}</p>
             </div>
@@ -89,9 +97,48 @@
     <div class="allpubs"><a href="{{ wwwroot }}/entities.php?context=exhibitions#main">ВСЕ ВЫСТАВКИ</a></div>
 
     <h2 class="bold">Календарь знаменательных дат</h2>
+    <section class="cd-horizontal-timeline">
+        <div class="timeline">
+            <div class="events-wrapper">
+                <div class="events">
+                    <ol>
+                        {% for date in calendar %}
+                            <li><a href="#0" data-date=" {{ date.params.date|date('d/m/Y') }} ">
+                                {{ date.params.date|date('d.m.Y') }}
+                            </a></li>
+                        {% endfor %}
+                    </ol>
+
+                    <span class="filling-line" aria-hidden="true"></span>
+                </div> <!-- .events -->
+            </div> <!-- .events-wrapper -->
+
+            <ul class="cd-timeline-navigation">
+                <li><a href="#0" class="prev inactive">Prev</a></li>
+                <li><a href="#0" class="next">Next</a></li>
+            </ul> <!-- .cd-timeline-navigation -->
+        </div> <!-- .timeline -->
+
+        <div class="events-content">
+            <ol>
+                {% for date in calendar %}
+                <li data-date=" {{ date.params.date|date('d/m/Y') }} ">
+                    <a href="{{ wwwroot }}/entity.php?id={{ date.id }}&returnurl={{ returnurl|url_encode }}#main">
+                        <p class="bold w3-large w3-margin-0"> {{ date.params.name }} </p>
+                    </a>
+                    <p> {{ date.content }}</p>
+                </li>
+                {% endfor %}
+            </ol>
+        </div> <!-- .events-content -->
+    </section>
+
+
     {% for date in calendar %}
-    <div>{{ date.params.name }} - {{ date.params.date }}</div>
+        {{ date.params.date|date('d.m.Y') }}
     {% endfor %}
+
+
     <div class="allpubs"><a href="{{ wwwroot }}/entities.php?context=calendar#main">ВСЕ ЗНАМЕНАТЕЛЬНЫЕ ДАТЫ</a></div>
 
     <h2 class="bold">День дарителя</h2>
@@ -102,9 +149,11 @@
                 <div class="imgBox2 image-proportional-resizing">
                     {% if present.files.image %}
                     <img src="{{ wwwroot }}/file.php?id={{ (present.files.image).id }}">
+                    {% else %}
+                    <div class="placeholder-gift"></div>
                     {% endif %}
                 </div>
-                <a href="{{ wwwroot }}/entity.php?id={{ present.id }}&returnurl={{ returnurl|url_encode }}#main"><p class="bold w3-large">{{ present.params.name }}</p></a>
+                <a href="{{ wwwroot }}/entity.php?id={{ present.id }}&returnurl={{ returnurl|url_encode }}#main"><p class="bold w3-large w3-margin-0">{{ present.params.name }}</p></a>
                 <p class="lightGrey text2">Даритель: {{ present.params.presenter }}</p>
                 <p>{{ present.content }}</p>
             </div>
@@ -116,9 +165,11 @@
                 <div class="imgBox2">
                     {% if present.files.image %}
                     <img src="{{ wwwroot }}/file.php?id={{ (present.files.image).id }}">
+                    {% else %}
+                    <div class="placeholder-gift"></div>
                     {% endif %}
                 </div>
-                <a href="{{ wwwroot }}/entity.php?id={{ present.id }}&returnurl={{ returnurl|url_encode }}#main"><p class="bold w3-large">{{ present.params.name }}</p></a>
+                <a href="{{ wwwroot }}/entity.php?id={{ present.id }}&returnurl={{ returnurl|url_encode }}#main"><p class="bold w3-large w3-margin-0">{{ present.params.name }}</p></a>
                 <p class="lightGrey text2">Даритель: {{ present.params.presenter }}</p>
                 <p>{{ present.content }}</p>
             </div>
