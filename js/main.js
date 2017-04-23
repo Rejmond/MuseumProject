@@ -256,7 +256,6 @@ function w3_open() {
 }
 
 function w3_close() {
-    alert("close");
     $('#openNav').css({display: 'inline-block'});
     $('#main').css({marginLeft: '0%'});
     $('.mynav').animate({left: -300}, 350, 'easeInCubic',
