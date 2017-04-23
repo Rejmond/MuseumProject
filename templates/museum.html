@@ -114,16 +114,14 @@
                 <div class="events">
                     <ol>
                         {% for date in calendar %}
-                            <li><a href="#0" data-date=" {{ date.params.date|date('d/m/Y') }} ">
-                                {{ date.params.date|date('d.m.Y') }}
+                            <li><a href="#0" data-date="{{ date.params.timestamp|date('d/m/Y') }}">
+                                {{ date.params.timestamp|date('d.m.Y') }}
                             </a></li>
                         {% endfor %}
                     </ol>
-
                     <span class="filling-line" aria-hidden="true"></span>
                 </div> <!-- .events -->
             </div> <!-- .events-wrapper -->
-
             <ul class="cd-timeline-navigation">
                 <li><a href="#0" class="prev inactive">Prev</a></li>
                 <li><a href="#0" class="next">Next</a></li>
@@ -133,9 +131,9 @@
         <div class="events-content">
             <ol>
                 {% for date in calendar %}
-                <li data-date=" {{ date.params.date|date('d/m/Y') }} ">
+                <li data-date="{{ date.params.timestamp|date('d/m/Y') }}">
                     <a href="{{ wwwroot }}/entity.php?id={{ date.id }}&returnurl={{ returnurl|url_encode }}#main">
-                        <p class="bold w3-large w3-margin-0"> {{ date.params.name }} </p>
+                        <p class="bold w3-large w3-margin-0">{{ date.params.name }}</p>
                     </a>
                     <p> {{ date.content }}</p>
                 </li>
@@ -143,13 +141,6 @@
             </ol>
         </div> <!-- .events-content -->
     </section>
-
-
-    {% for date in calendar %}
-        {{ date.params.date|date('d.m.Y') }}
-    {% endfor %}
-
-
     <div class="allpubs"><a href="{{ wwwroot }}/entities.php?context=calendar#main">ВСЕ ЗНАМЕНАТЕЛЬНЫЕ ДАТЫ</a></div>
 
     <h2 class="bold">День дарителя</h2>
@@ -173,7 +164,7 @@
         <div class="quarter-to-2">
             {% for present in presents|slice(2, 2) %}
             <div class="w3-quarter w3-container quarttohalf">
-                <div class="imgBox2">
+                <div class="imgBox2 image-proportional-resizing">
                     {% if present.files.image %}
                     <img src="{{ wwwroot }}/file.php?id={{ (present.files.image).id }}">
                     {% else %}

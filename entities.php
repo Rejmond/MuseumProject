@@ -13,10 +13,10 @@ $order = array('param' => 'date', 'order' => 'DESC');
 switch ($context) {
     case 'periods':
     case 'leaders':
-        $order = array('param' => 'order', 'order' => 'ASC');
+        $order = array('param' => 'order', 'order' => 'ASC', 'cast' => 'INT');
         break;
     case 'calendar':
-        $order = array('param' => 'date', 'order' => 'ASC');
+        $order = array('param' => 'timestamp', 'order' => 'ASC', 'cast' => 'INT');
         break;
 }
 

@@ -32,7 +32,7 @@
                 <form method="post" enctype="multipart/form-data" action="{{ wwwroot }}/admin/addfile.php">
                     <input type="hidden" name="id" value="{{ entity.id }}">
                     <input type="hidden" name="filearea" value="image">
-                    <input type="hidden" name="returnurl" value="{{ returnurl }}">
+                    <input type="hidden" name="returnurl" value="{{ current_url }}#main">
                     <label>
                         <input type="file" name="file" onchange="this.form.submit()">
                     </label>

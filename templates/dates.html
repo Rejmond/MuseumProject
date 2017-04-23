@@ -21,7 +21,10 @@
         </div>
         {% endif %}
         <p class="lightGrey text2 date">
-            {{ entity.params.date }}
+            {{ entity.params.timestamp|date('d.m.Y') }}
+        </p>
+        <p>
+            {{ entity.content|raw }}
         </p>
         <div class="more"><a href="{{ wwwroot }}/entity.php?id={{ entity.id }}&returnurl={{ returnurl|url_encode }}#main">Подробнее</a></div>
     </div>

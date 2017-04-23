@@ -13,10 +13,10 @@
             <a href="{{ wwwroot }}/admin/delete.php?id={{ entity.id }}#main"><img src="{{ wwwroot }}/images/delete.png" /></a>
         </div>
         {% endif %}
-        <p class="lightGrey text2">{{ entity.params.date }}</p>
+        <p class="lightGrey text2">{{ entity.params.timestamp|date('d.m.Y') }}</p>
     </div>
     <div class="post-tiny">
-        {{ entity.content|raw }}
+        {{ entity.params.fulltext|raw }}
     </div>
 
     {% include 'images.html' with {'images': entity.files.photos } %}

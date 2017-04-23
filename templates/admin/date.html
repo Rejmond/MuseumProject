@@ -1,10 +1,11 @@
 {% extends "layout.html" %}
+
 {% block styles %}
 {{ parent() }}
 <link rel="stylesheet" href="{{ wwwroot }}/js/jquery-ui.min.css">
 <script src="{{ wwwroot }}/js/jquery-ui.min.js"></script>
-
 {% endblock %}
+
 {% block content %}
 <div id="main" class="date edit-forms museum-image" data-location="calendar">
     <h1 class="caption w3-xxlarge">Календарь знаменательных дат: {{ title|lower }}</h1>
@@ -25,21 +26,31 @@
             <input type="text" name="name" value="{{ params.name|raw }}">
 
             <p class="bold w3-large">Дата события:</p>
-            {% if errors.date %}
+            {% if errors.timestamp %}
             <div class="login-snack-bar">
                 Вы не указали дату события
             </div>
             {% endif %}
-            <input type="text" id="datepicker" name="date" value="{{ params.date|raw }}">
+            <input type="text" id="datepicker" name="timestamp" value="{{ params.timestamp|date('Y-m-d') }}">
 
-            <p class="bold w3-large">Описание события:</p>
+            <p class="bold w3-large">Краткое описание события:</p>
             {% if errors.content %}
             <div class="login-snack-bar">
-                Вы не указали описание события
+                Вы не указали краткое описание события
             </div>
             {% endif %}
             <div class="edit-textarea">
-                <textarea name="content" class="tiny">{{ content|raw }}</textarea>
+                <textarea name="content">{{ content|raw }}</textarea>
+            </div>
+
+            <p class="bold w3-large">Подробное описание события:</p>
+            {% if errors.fulltext %}
+            <div class="login-snack-bar">
+                Вы не указали подробное описание события
+            </div>
+            {% endif %}
+            <div class="edit-textarea">
+                <textarea name="fulltext" class="tiny">{{ params.fulltext|raw }}</textarea>
             </div>
 
             <div class="button-container-logout">
@@ -61,5 +72,4 @@
         });
     });
 </script>
-
 {% endblock %}

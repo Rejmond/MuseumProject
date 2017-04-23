@@ -24,7 +24,6 @@
             <form method="post" enctype="multipart/form-data" action="{{ wwwroot }}/admin/addfile.php">
                 <input type="hidden" name="id" value="{{ entity.id }}">
                 <input type="hidden" name="filearea" value="image">
-                <input type="hidden" name="returnurl" value="{{ returnurl }}">
                 <label>
                     <input type="file" name="file" onchange="this.form.submit()">
                 </label>
@@ -32,10 +31,10 @@
         </div>
         {% endif %}
         <img src="{{ wwwroot }}/file.php?id={{ entity.files.image.id }}">
-
     </div>
     <p class="text2" style="text-align: center;">Даритель: {{ entity.params.presenter }}</p>
     {% endif %}
+
     {% include 'images.html' with {'images': entity.files.photos } %}
 
     <div class="to-back"><a href="{{ returnurl }}">Назад</a></div>

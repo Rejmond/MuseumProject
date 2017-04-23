@@ -17,6 +17,8 @@
             <div class="imgBox1 image-proportional-resizing">
                 {% if entity.files.image %}
                 <img src="{{ wwwroot }}/file.php?id={{ entity.files.image.id }}">
+                {% else %}
+                <div class="placeholder-person"></div>
                 {% endif %}
             </div>
             <div >

@@ -84,7 +84,13 @@
         {% for leader in leaders %}
         <div class="w3-quarter quarttohalf w3-center">
             <div class="history-leader">
-                <div class="imgBox1 image-proportional-resizing"><img src="{{ wwwroot }}/file.php?id={{ leader.files.image.id }}"></div>
+                <div class="imgBox1 image-proportional-resizing">
+                    {% if leader.files.image %}
+                    <img src="{{ wwwroot }}/file.php?id={{ leader.files.image.id }}">
+                    {% else %}
+                    <div class="placeholder-person"></div>
+                    {% endif %}
+                </div>
                 <a  href="{{ wwwroot }}/entity.php?id={{ leader.id }}&returnurl={{ returnurl|url_encode }}#main">
                     <p class="bold w3-large">{{ leader.params.name }}</p>
                 </a>
