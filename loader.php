@@ -384,6 +384,40 @@ $CONFIG->entities = array(
         ),
         'attachments' => array(),
     ),
+    'history-of-success' => array(
+        'entity_template' => 'story.html',
+        'entities_template' => 'stories.html',
+        'content_type' => PARAM_NOTAGS,
+        'perpage' => 10,
+        'params' => array(
+            'name' => array(
+                'required' => true,
+                'type' => PARAM_NOTAGS,
+            ),
+            'year' => array(
+                'required' => true,
+                'type' => PARAM_INT,
+            ),
+            'fulltext' => array(
+                'required' => true,
+                'type' => PARAM_RAW,
+            ),
+        ),
+        'attachments' => array(
+            'image' => array(
+                'required' => false,
+                'image' => true,
+                'size' => array(1200, 800),
+                'list' => false,
+            ),
+            'photos' => array(
+                'required' => false,
+                'image' => true,
+                'size' => array(1200, 800),
+                'list' => true,
+            ),
+        )
+    ),
     /*                                                     */
     /*                        projects                     */
     /*                                                     */

@@ -9,7 +9,9 @@ if (is_singleton_context($context)) {
 }
 $page = optional_param('page', 0);
 
+$conditions = array();
 $order = array('param' => 'date', 'order' => 'DESC');
+$perpage = isset($CONFIG->entities[$context]['perpage']) ? $CONFIG->entities[$context]['perpage'] : null;
 switch ($context) {
     case 'periods':
     case 'leaders':
@@ -18,10 +20,17 @@ switch ($context) {
     case 'calendar':
         $order = array('param' => 'timestamp', 'order' => 'ASC', 'cast' => 'INT');
         break;
+    case 'history-of-success':
+        $year = clean_param(optional_param('year', null), PARAM_INT);
+        if ($year) {
+            $conditions = array('year' => $year);
+            $perpage = null;
+        }
+        $order = array('param' => 'year', 'order' => 'DESC', 'cast' => 'INT');
+        break;
 }
 
 $offset = $pagination = null;
-$perpage = isset($CONFIG->entities[$context]['perpage']) ? $CONFIG->entities[$context]['perpage'] : null;
 if ($perpage !== null) {
     $total = $DB->count_records('entities', array('context' => $context));
     $lastpage = ceil($total / $perpage);
@@ -30,7 +39,7 @@ if ($perpage !== null) {
     $baseurl = "$CONFIG->wwwroot/entities.php?context=$context";
     $pagination = pagination($baseurl, $total, $page, $perpage);
 }
-$entities = ContentManager::get_entities($context, array(), $order, $offset, $perpage);
+$entities = ContentManager::get_entities($context, $conditions, $order, $offset, $perpage);
 
 $objects = array();
 for ($i = 0; $i < count($entities); $i++) {

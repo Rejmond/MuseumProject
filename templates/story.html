@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div id="main" class="story entity history-image" data-location="history-of-success">
+    <h1 class="caption w3-xxlarge">Информация о выпускнике</h1>
+    <div>
+        <div class="imgBox1 image-proportional-resizing">
+            {% if admin %}
+            <div class="entity-image-edit">
+                <form method="post" enctype="multipart/form-data" action="{{ wwwroot }}/admin/addfile.php">
+                    <input type="hidden" name="id" value="{{ entity.id }}">
+                    <input type="hidden" name="filearea" value="image">
+                    <label>
+                        <input type="file" name="file" onchange="this.form.submit()">
+                    </label>
+                </form>
+            </div>
+            {% endif %}
+            {% if entity.files.image %}
+            <a href="{{ wwwroot }}/file.php?id={{ entity.files.image.id }}" data-fancybox="images" data-type="image">
+                <div class="imgBox1">
+                    <img src="{{ wwwroot }}/file.php?id={{ entity.files.image.id }}">
+                </div>
+            </a>
+            {% else %}
+            <div class="placeholder-person"></div>
+            {% endif %}
+        </div>
+        <div class="notflow//">
+            <p class="bold w3-large w3-padding-top w3-margin-0">
+                {{ entity.params.name }}
+            </p>
+            {% if admin %}
+            <div class="p-to-form">
+                <a href="{{ wwwroot }}/admin/edit.php?id={{ entity.id }}#main"><img src="{{ wwwroot }}/images/edit.png" /></a>
+                <a href="{{ wwwroot }}/admin/delete.php?id={{ entity.id }}#main"><img src="{{ wwwroot }}/images/delete.png" /></a>
+            </div>
+            {% endif %}
+            <p class="lightGrey text2">
+                Год выпуска: {{ entity.params.year }}
+            </p>
+            <p>
+                {{ entity.params.fulltext|raw }}
+            </p>
+        </div>
+    </div>
+    <div class="test">
+    {% include 'images.html' with {'images': entity.files.photos } %}
+    </div>
+    <div class="to-back"><a href="{{ returnurl }}">Назад</a></div>
+</div>
+{% endblock %}

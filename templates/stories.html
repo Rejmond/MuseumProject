@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div id="main" class="stories entitylist history-image" data-location="history-of-success">
+    <h1 class="caption w3-xxlarge">История успеха</h1>
+    {% if admin %}
+    <div class="h1-to-form">
+        <a href="{{ wwwroot }}/admin/add.php?context={{ context }}#main">
+            <img src="{{ wwwroot }}/images/add.png" />
+        </a>
+    </div>
+    {% endif %}
+
+    {% for entity in entities %}
+    <div class="textrow1">
+        <div class="w3-row">
+            <div class="imgBox1 image-proportional-resizing">
+                {% if entity.files.image %}
+                <img src="{{ wwwroot }}/file.php?id={{ entity.files.image.id }}">
+                {% else %}
+                <div class="placeholder-person"></div>
+                {% endif %}
+            </div>
+            <div >
+                <a href="{{ wwwroot }}/entity.php?id={{ entity.id }}&returnurl={{ returnurl|url_encode }}#main">
+                    <p class="bold w3-large w3-margin-0">
+                        {{ entity.params.name }}
+                    </p>
+                </a>
+                {% if admin %}
+                <div class="p-to-form">
+                    <a href="{{ wwwroot }}/admin/edit.php?id={{ entity.id }}&returnurl={{ returnurl|url_encode }}#main"><img src="{{ wwwroot }}/images/edit.png" /></a>
+                    <a href="{{ wwwroot }}/admin/delete.php?id={{ entity.id }}&returnurl={{ returnurl|url_encode }}#main"><img src="{{ wwwroot }}/images/delete.png" /></a>
+                </div>
+                {% endif %}
+                <p class="lightGrey text2">
+                    Год выпуска: {{ entity.params.year }}
+                </p>
+                <p>
+                    {{ entity.content }}
+                </p>
+            </div>
+        </div>
+        <div class="more">
+            <a href="{{ wwwroot }}/entity.php?id={{ entity.id }}&returnurl={{ returnurl|url_encode }}#main">
+                Подробнее
+            </a>
+        </div>
+    </div>
+    {% endfor %}
+
+    {% include 'pagination.html' %}
+
+    <div class="to-begin"><a href="{{ wwwroot }}/history.php#main">В начало</a></div>
+</div>
+{% endblock %}

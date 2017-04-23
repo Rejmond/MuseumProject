@@ -31,7 +31,9 @@
                 {% endif %}
             </div>
             <div class="notflow">
-                <a href="{{ wwwroot }}/entity.php?id={{ book.id }}&returnurl={{ returnurl|url_encode }}#main"><p class="bold w3-large">{{ book.params.name }}</p></a>
+                <a href="{{ wwwroot }}/entity.php?id={{ book.id }}&returnurl={{ returnurl|url_encode }}#main">
+                    <p class="bold w3-large">{{ book.params.name }}</p>
+                </a>
                 <p class="lightGrey text2"></p>
                 <p>{{ book.content }}</p>
             </div>
@@ -49,7 +51,9 @@
                 {% endif %}
             </div>
             <div class="notflow">
-                <a href="{{ wwwroot }}/entity.php?id={{ book.id }}&returnurl={{ returnurl|url_encode }}#main"><p class="bold w3-large">{{ book.params.name }}</p></a>
+                <a href="{{ wwwroot }}/entity.php?id={{ book.id }}&returnurl={{ returnurl|url_encode }}#main">
+                    <p class="bold w3-large">{{ book.params.name }}</p>
+                </a>
                 <p class="lightGrey text2"></p>
                 <p>{{ book.content }}</p>
             </div>
@@ -113,7 +117,9 @@
                 {% endif %}
             </div>
             <div class="notflow">
-                <a href="{{ wwwroot }}/entity.php?id={{ memory.id }}&returnurl={{ returnurl|url_encode }}#main"><p class="bold w3-large">{{ memory.params.name }}</p></a>
+                <a href="{{ wwwroot }}/entity.php?id={{ memory.id }}&returnurl={{ returnurl|url_encode }}#main">
+                    <p class="bold w3-large">{{ memory.params.name }}</p>
+                </a>
                 <p class="lightGrey text2"></p>
                 <p>{{ memory.content }}</p>
             </div>
@@ -131,7 +137,9 @@
                 {% endif %}
             </div>
             <div class="notflow">
-                <a href="{{ wwwroot }}/entity.php?id={{ memory.id }}&returnurl={{ returnurl|url_encode }}#main"><p class="bold w3-large">{{ memory.params.name }}</p></a>
+                <a href="{{ wwwroot }}/entity.php?id={{ memory.id }}&returnurl={{ returnurl|url_encode }}#main">
+                    <p class="bold w3-large">{{ memory.params.name }}</p>
+                </a>
                 <p>{{ memory.content }}</p>
             </div>
         </div>
@@ -164,61 +172,33 @@
     <h2 class="bold">История успеха</h2>
     <div class="history-age w3-large">
         <ul>
-            <li>2005</li>
-            <li>2004</li>
-            <li>2003</li>
-            <li>2002</li>
-            <li>2001</li>
-            <li>2000</li>
-            <li>1999</li>
-            <li>1998</li>
-            <li>1997</li>
-            <li><span style="font-family:'OpenSans-bold'; color:#007bc6; ">1996</span></li>
-            <li>1995</li>
-            <li>1994</li>
-            <li>1993</li>
-            <li>1992</li>
-            <li>1991</li>
-            <li>1990</li>
+            {% for year in history_of_success_years %}
+            <li><span style="font-family:'OpenSans-bold'; color:#007bc6; ">
+                <a href="{{ wwwroot }}/entities.php?context=history-of-success&year={{ year.year }}#main">{{ year.year }}</a>
+            </span></li>
+            {% endfor %}
         </ul>
     </div>
+    {% for history in history_of_success %}
     <div class="w3-row history-success">
-        <div class="imgBox1 image-proportional-resizing"></div>
+        <div class="imgBox1 image-proportional-resizing">
+            {% if history.files.image %}
+            <img src="{{ wwwroot }}/file.php?id={{ history.files.image.id }}">
+            {% else %}
+            <div class="placeholder-person"></div>
+            {% endif %}
+        </div>
         <div class="notflow">
-            <a><p class="bold w3-large w3-padding-top">АЙЗАТУЛОВ РАФИК САБИРОВИЧ</p></a>
-            <p class="lightGrey w3-large">Профессор, доктор</p>
-            <p class="lightGrey text2">1996 год</p>
-            <p>В учебнике излагаются элементы теории множеств и вещественных чисел, числовые последовательности и теории пределов, аналитическая геометрия на плоскости и в пространстве, основы дифференциального и интегрального исчислений функций одной или нескольких переменных, элементы высшей алгебры, теория рядов и обыкновенные дифференциальные уравнения.</p>
+            <a href="{{ wwwroot }}/entity.php?id={{ history.id }}&returnurl={{ returnurl|url_encode }}#main">
+                <p class="bold w3-large w3-padding-top">{{ history.params.name }}</p>
+            </a>
+            <!--<p class="lightGrey w3-large">Профессор, доктор</p>-->
+            <p class="lightGrey text2">Год выпуска: {{ history.params.year }}</p>
+            <p>{{ history.content }}</p>
         </div>
     </div>
-    <div class="w3-row history-success">
-        <div class="imgBox1 image-proportional-resizing"></div>
-        <div class="notflow">
-            <a><p class="bold w3-large w3-padding-top">АЙЗАТУЛОВ РАФИК САБИРОВИЧ</p></a>
-            <p class="lightGrey w3-large">Профессор, доктор</p>
-            <p class="lightGrey text2">1996 год</p>
-            <p>В учебнике излагаются элементы теории множеств и вещественных чисел, числовые последовательности и теории пределов, аналитическая геометрия на плоскости и в пространстве, основы дифференциального и интегрального исчислений функций одной или нескольких переменных, элементы высшей алгебры, теория рядов и обыкновенные дифференциальные уравнения.</p>
-        </div>
-    </div>
-    <div class="w3-row history-success">
-        <div class="imgBox1 image-proportional-resizing"></div>
-        <div class="notflow">
-            <a><p class="bold w3-large w3-padding-top">АЙЗАТУЛОВ РАФИК САБИРОВИЧ</p></a>
-            <p class="lightGrey w3-large">Профессор, доктор</p>
-            <p class="lightGrey text2">1996 год</p>
-            <p>В учебнике излагаются элементы теории множеств и вещественных чисел, числовые последовательности и теории пределов, аналитическая геометрия на плоскости и в пространстве, основы дифференциального и интегрального исчислений функций одной или нескольких переменных, элементы высшей алгебры, теория рядов и обыкновенные дифференциальные уравнения.</p>
-        </div>
-    </div>
-    <div class="w3-row history-success">
-        <div class="imgBox1 image-proportional-resizing"></div>
-        <div class="notflow">
-            <a><p class="bold w3-large w3-padding-top">АЙЗАТУЛОВ РАФИК САБИРОВИЧ</p></a>
-            <p class="lightGrey w3-large">Профессор, доктор</p>
-            <p class="lightGrey text2">1996 год</p>
-            <p>В учебнике излагаются элементы теории множеств и вещественных чисел, числовые последовательности и теории пределов, аналитическая геометрия на плоскости и в пространстве, основы дифференциального и интегрального исчислений функций одной или нескольких переменных, элементы высшей алгебры, теория рядов и обыкновенные дифференциальные уравнения.</p>
-        </div>
-    </div>
-    <div class="allpubs"><a onclick="asd()">ВСЕ ВЫПУСКНИКИ</a></div>
+    {% endfor %}
+    <div class="allpubs"><a href="{{ wwwroot }}/entities.php?context=history-of-success#main">ВСЕ ВЫПУСКНИКИ</a></div>
 
 </div>
 {% endblock %}
