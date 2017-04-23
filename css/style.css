@@ -79,11 +79,42 @@
 
 
 
+/* изображения в разделах 1 уровня показываемые при отсутствии выбранных пользователями */
+[class *= placeholder] {
+    height: 100%;
+    background: no-repeat center center;
+    background-size: 90px 90px;
+}
+.placeholder-news {
+    background-image: url(../images/placeholder-news.png);
+}
+.placeholder-exhibition {
+    background-image: url(../images/placeholder-exhibition.png);
+}
+.placeholder-gift {
+    background-image: url(../images/placeholder-gift.png);
+}
+.placeholder-book {
+     background-image: url(../images/placeholder-book.png);
+}
+.placeholder-image {
+    background-image: url(../images/placeholder-image.png);
+}
+.placeholder-person {
+    background-image: url(../images/placeholder-person.png);
+}
+
+
+
+
+
+
+
+
+
 /* Общие стили */
 html {
     font-size: 1px;
-}
-body {
     color: #494952;
     font-family: "OpenSans-Regular", sans-serif;
 }
@@ -95,7 +126,7 @@ main {
     background: #fff;
     max-width: 1200px;
     margin: 0 auto;
-    padding-bottom: 60px;
+    padding-bottom: 60px !important;
     font-size: 14rem;
     min-height: 800px;
 }
@@ -391,6 +422,13 @@ ul > ul li a{
     font-family: 'OpenSans-Regular', sans-serif;
 }
 li {list-style-type: none;}
+/* выравнивание 2 строки в меню */
+.second-line-margin
+{
+    display: block;
+    margin-left: 21px;
+    margin-top: 5px;
+}
 /* большой экран меню */
 @media (min-width:1740px) {
     .hide-large, .hide-large2 {
@@ -498,70 +536,61 @@ main .notflow p {
     margin-bottom:20px;
     overflow: hidden;
 }
-.imgBox1 img {
-    /*
-    width: 100%;
-    height: 100%;
-*/
+.history-success .imgBox1{
+    margin-bottom:0;
 }
-/* контейенер для div->img как в Museum Новости +inner классы*/
+/* контейенер для div->img как в Museum Новости*/
 .imgBox2 {
     position: relative;
     width: 100%;
-    background: #f5f2f0;
+    background-color: #f5f2f0;
     margin-bottom: 15px;
     height: 200px;
     overflow: hidden;
 }
-.imgBox2 img {
-/*
-        width: 100%;
-        height: 100%;
-*/
-}
-/* контейенер для div->img как в History История успеха*/
-.imgBox3 {
-    width: 136px;
-    height: 184px;
-    background: #007bc6;
-    float: left;
-    margin-right: 15px;
-}
-/*Классы добавились для контента истории*/
+
+
+
+
+
+
+
+
+
 /* Выравнивание ссылок в хронологии создания*/
-.histoChronics {
+.history .history .history-chronics {
     width:210px !important;
     padding-left: 10px;
     padding-top: 4px;
 }
 /* отмена нижнего отступа для красоты и равенства расстояний при расположении в 1 колонку*/
-.histoInsts  {
+.history .histoInsts  {
     margin-bottom: -18px !important;
 }
 /* выравнивание воспоминаний*/
-.histoMemory{
+.history .histoMemory{
     margin-bottom: 32px;
 }
 /* история успеха контейнеры */
-.histoSuc {
+.history .history-success {
     padding-left:0;
     padding-right: 0;
     margin-bottom: 20px;
 }
 /* история успеха. меняем цвет нечетных контейнеров*/
-.histoSuc:nth-child(odd){
+.history .history-success:nth-child(odd){
     background: #f0f0f0;
 }
 /* история успеха годы */
-.histoAge ul {
+.history .history-age ul {
     text-align: justify;
 }
-.histoAge ul::after {
+.history .history-age ul::after {
     width: 100%;
     display: inline-block;
     content: "";
 }
-.histoAge li {
+.history .history-age li {
     display: inline-block;
 }
 /* руководители */
@@ -569,6 +598,13 @@ main .notflow p {
     width: 136px;
     margin: auto;
 }
+
+
+
+
+
+
+
 
 /* Адаптация под экраны */
 @media screen and (max-width: 1200px) {
@@ -662,11 +698,6 @@ main .notflow p {
         height: 4px;
         max-width: 220px;
     }
-    ._2line {
-        height: 6px;
-        margin-top:-5px;
-        width:200px;
-    }
     .header-svg {
         width:200px;
         margin: 16px auto 14px;
@@ -729,7 +760,6 @@ h2:after {
 .book .imgBox1 {
     margin-bottom: 0 !important;
 }
-/* туда-сюда универсальное для всех страниц должно быть, потом перместить в основные*/
 #pagination .tudasuda {
     margin-top: 18px;
     text-align: center;
@@ -757,45 +787,7 @@ h2:after {
     max-width:800px;
     margin: 0 auto;
 }
-
-/*  download icon - delete after update*/
-.down-fold {
-    display:inline-block;
-    position:relative;
-    width:75px;
-    height:100px;
-    text-decoration:none;
-    float: right;
-
-}
-.down-fold span {
-    box-sizing:border-box;
-    display:block;
-    height:100px;
-    width:75px;
-    background:#007bc6;
-    border-radius:5px;
-    font-size:40rem;
-    line-height:120px;
-    text-align:center;
-    color:#fff;
-    text-shadow:0 0 1 #444;
-}
-.down-fold span:after {
-    position:absolute;
-    content:'\00A0';
-    display:inline-block;
-    height:0;
-    width:0;
-    margin-top: 20px;
-    border-bottom:25px solid #005b96;
-    border-right:25px solid #fff;
-    border-top:5px solid #fff;
-    border-radius:5px;
-    right:-1px;
-    top:-25px;
-}
-
+/*
 .search-input input[type=text]
 {
     width: 100%;
@@ -830,7 +822,7 @@ h2:after {
 .search-input input::-ms-clear {
     display: none;
 }
-
+*/
 
 .more {
     font-family: "OpenSans-Regular", sans-serif;
@@ -839,52 +831,31 @@ h2:after {
     margin-top: 15px;
     font-size: 16rem;
 }
-
 .entitylist .textrow1 {
     border-bottom:  1px dashed #989797;
     margin-top: 15px;
 }
-.to-begin
-{
+.to-begin {
     font-family: "OpenSans-Regular", sans-serif;
     text-align:center;
     font-size: 16rem;
 }
-
-.my-margin
-{
+.table-margin {
     margin-top: 20px !important;
 }
-.entity table th
-{
+.entity table th {
     color: #fff;
     background: #007bc6;
     border: 0;
 }
-.entity table td
-{
+.entity table td {
     border-top: 1px solid #f0f0f0;
     border-bottom: 1px solid #f0f0f0;
 }
-.entitylist p, .entity p
-{
+.entitylist p, .entity p {
     font-size: 16rem;
     line-height: 26px!important;
 }
-#main, #main .lightGrey,#main div>p, h2, h1, .about{
-    /*  color: color; */
-}
-.second-line-margin
-{
-    display: block;
-    margin-left: 21px;
-    margin-top: 5px;
-}
-
-
-
-
-
 /* ссылка справа у заголовков верхнего уровня h1 */
 .h1-to-form {
     position: relative;
@@ -902,15 +873,7 @@ h2:after {
     background: #f8f8f8;
     border:1px solid  #f0f0f0;
 }
-
-
-
-
-
-
-
-
-
+/* ссылка справа у заголовков элементов */
 .p-to-form {
     position: relative;
     top:-28px;
@@ -920,26 +883,16 @@ h2:after {
     width: 32px;
     height: 32px;
     padding: 4px;
-
     border: 1px solid transparent;
-
 }
 .p-to-form img:hover {
     background: #f8f8f8;
     border:1px solid  #f0f0f0;
 }
-.p-to-form button{
-    background: none;
-    cursor: pointer;
-    border: 1px solid  transparent;
-    width: 32px;
-    height: 32px;
-    padding: 0;
-}
-.p-to-form button:hover {
-    background: #f8f8f8;
-    border:1px solid  #f0f0f0;
-}
+
+
+
+
 
 
 
@@ -963,10 +916,14 @@ h2:after {
 .login-snack-bar.show {
     visibility: visible;
     -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    -moz-animation: fadein 0.5s, fadeout 0.5s 2.5s;
     animation: fadein 0.5s, fadeout 0.5s 2.5s;
 }
-/* Animations to fade the snackbar in and out */
 @-webkit-keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+}
+@-moz-keyframes fadein {
     from {bottom: 0; opacity: 0;}
     to {bottom: 30px; opacity: 1;}
 }
@@ -975,6 +932,10 @@ h2:after {
     to {bottom: 30px; opacity: 1;}
 }
 @-webkit-keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+}
+@-moz-keyframes fadeout {
     from {bottom: 30px; opacity: 1;}
     to {bottom: 0; opacity: 0;}
 }
@@ -996,7 +957,6 @@ h2:after {
 .button-container-logout  button{
     outline: 0;
     cursor: pointer;
-    width: 120px;
     background: #fff;
     border: none;
     padding: 14px 0;
@@ -1018,10 +978,15 @@ h2:after {
     margin-top: 15px;
     margin-bottom: 0;
 }
-.edit-textarea {
+.edit-forms input {
     width: 100%;
     margin-top:10px;
     margin-bottom:10px;
+}
+.edit-textarea {
+     width: 100%;
+     margin-top:10px;
+     margin-bottom:10px;
 }
 .edit-textarea textarea{
     width: 100%;
@@ -1041,6 +1006,14 @@ h2:after {
     float: left;
     overflow:hidden;
 }
+
+
+
+
+
+
+
+
 .entity-image-add {
     position: relative;
     overflow: hidden;
@@ -1051,19 +1024,6 @@ h2:after {
     margin: 10px 20px 10px 0;
     border: 3px dashed limegreen;
 }
-.entity-image-add input[type="file"]{
-    display: none;
-}
-.entity-image-add label {
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    cursor: pointer;
-    background: url("../images/add.png") no-repeat center;
-}
 .entity-file-add {
     position: relative;
     overflow: hidden;
@@ -1071,55 +1031,50 @@ h2:after {
     height:32px;
     margin: -5px;
 }
-.entity-file-add input[type="file"]{
-    display: none;
-}
-.entity-file-add label {
-    display: block;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    cursor: pointer;
-    background: url("../images/add.png") no-repeat center;
-}
-/* стили вредителя */
-.entity-image-edit {
+.entity-image-edit,
+.entity-image-delete {
     position: absolute;
     background-color: #ffffff;
     width: 30px;
     height:30px;
-    opacity:0.9;
     right: 0;
+    z-index: 1;
 }
-.entity-image-edit input[type="file"]{
+.entity-image-add input[type="file"],
+.entity-file-add input[type="file"],
+.entity-image-edit input[type="file"],
+.entity-image-delete input[type="submit"]{
     display: none;
 }
-.entity-image-edit label {
+.entity-image-add label,
+.entity-file-add label,
+.entity-image-edit label,
+.entity-image-delete label {
     display: block;
     position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     cursor: pointer;
+    border: 1px solid transparent;
+}
+.entity-image-add label:hover,
+.entity-file-add label:hover,
+.entity-image-edit label:hover,
+.entity-image-delete label:hover {
+    background-color: #f8f8f8;
+    border:1px solid  #f0f0f0;
+}
+.entity-image-add label,
+.entity-file-add label {
+    background: url("../images/add.png") no-repeat center;
+}
+.entity-image-edit label {
     background: url("../images/edit.png") no-repeat center;
 }
-
-.delete-image {
-    position: absolute;
-    right: 0;
-}
-.delete-image input{
-    background-color: #f44336;
-    color: white;
-    padding: 12px 20px;
-    font-size: 18px;
-    font-family: "OpenSans-Bold", sans-serif;
-    border: none;
-    cursor: pointer;
-    width: 100%;
-    opacity: 0.7;
-}
-.delete-image input:hover{
-    opacity: 0.9;
+.entity-image-delete label {
+    background: url("../images/delete.png") no-repeat center;
 }
 
 
@@ -1171,44 +1126,15 @@ h2:after {
 
 
 
-.delete-file {
-    width: 30px;
-    height: 3px;
-    margin: 10px;
-    padding: 0;
-    cursor: pointer;
-}
-
-
 .books .p-to-form {
     position: relative;
     top:-48px !important;
     float: right;
 }
-
 main .quarter-to-2 {
     margin-left:-16px;
     margin-right: -16px;
 }
-
-.to-begin, .to-back, .button-container-logout {
-    padding-bottom: 40px;
-}
-/*
-.book .imgBox1{
-    width: 204px;
-    height: 276px;
-}
-@media screen and (max-width: 680px){
-    .book .imgBox1{
-        margin: auto;
-        width: 272px;
-        height: 368px;
-        float: none;
-    }
-
-}*/
-
 #images .imgBox2 {
     height: 220px;
 }

@@ -3,9 +3,11 @@
         {% for image in images %}
         <div class="entity-image-container image-proportional-resizing">
             {% if admin %}
-            <form class="delete-image" method="post" action="{{ wwwroot }}/admin/delfile.php">
+            <form class="entity-image-delete" method="post" action="{{ wwwroot }}/admin/delfile.php">
                 <input type="hidden" name="id" value="{{ image.id }}">
-                <input type="submit" name="del" value="X">
+                <label>
+                    <input type="submit" name="file">
+                </label>
             </form>
             {% endif %}
             <a href="{{ wwwroot }}/file.php?id={{ image.id }}" data-fancybox="group" data-type="image">
