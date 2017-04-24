@@ -8,44 +8,53 @@
     </p>
     <div class="allpubs"><a href="{{ wwwroot }}/entity.php?context=about-history#main">ПОДРОБНЕЕ</a></div>
 
-    <h2 class="sub-caption bold"><span>Хронология создания и развития университета</span></h2>
+    <h2 class="bold">Хронология создания и развития университета</h2>
     {% for period in periods %}
     <div class="w3-row">
-        <div class="w3-col s3 w3-center histoChronics"><a href="{{ wwwroot }}/entity.php?id={{ period.id }}&returnurl={{ returnurl|url_encode }}#main">
+        <div class="w3-col s3 w3-center history-chronics"><a href="{{ wwwroot }}/entity.php?id={{ period.id }}&returnurl={{ returnurl|url_encode }}#main">
             <p class="bold w3-large w3-margin-0">{{ period.params.interval }}</p>
         </a></div>
-        <div class="w3-col s9 w3-justify text2 fowhite"><p class="w3-margin-0">{{ period.content }}</p></div>
+        <div class="w3-col s9 w3-justify text2"><p class="w3-margin-0">{{ period.content }}</p></div>
     </div>
     {% endfor %}
     <div class="allpubs"><a href="{{ wwwroot }}/entities.php?context=periods#main">ВСЯ ХРОНОЛОГИЯ</a></div>
 
-    <h2 class="sub-caption bold"><span>Список книг</span></h2>
-    <div class="w3-row textrow1">
+    <h2 class="bold">Список книг</h2>
+    <div class="w3-row">
         {% for book in books|slice(0, 2) %}
         <div class="w3-half">
             <div class="imgBox1 image-proportional-resizing">
                 {% if book.files.image %}
                 <img src="{{ wwwroot }}/file.php?id={{ book.files.image.id }}">
+                {% else %}
+                <div class="placeholder-book"></div>
                 {% endif %}
             </div>
             <div class="notflow">
-                <a href="{{ wwwroot }}/entity.php?id={{ book.id }}&returnurl={{ returnurl|url_encode }}#main"><p class="bold w3-large">{{ book.params.name }}</p></a>
+                <a href="{{ wwwroot }}/entity.php?id={{ book.id }}&returnurl={{ returnurl|url_encode }}#main">
+                    <p class="bold w3-large">{{ book.params.name }}</p>
+                </a>
                 <p class="lightGrey text2"></p>
                 <p>{{ book.content }}</p>
             </div>
         </div>
         {% endfor %}
     </div>
-    <div class="w3-row textrow1">
+    <div class="w3-row">
         {% for book in books|slice(2, 2) %}
         <div class="w3-half">
             <div class="imgBox1 image-proportional-resizing">
                 {% if book.files.image %}
                 <img src="{{ wwwroot }}/file.php?id={{ book.files.image.id }}">
+                {% else %}
+                <div class="placeholder-book"></div>
                 {% endif %}
             </div>
             <div class="notflow">
-                <a href="{{ wwwroot }}/entity.php?id={{ book.id }}&returnurl={{ returnurl|url_encode }}#main"><p class="bold w3-large">{{ book.params.name }}</p></a>
+                <a href="{{ wwwroot }}/entity.php?id={{ book.id }}&returnurl={{ returnurl|url_encode }}#main">
+                    <p class="bold w3-large">{{ book.params.name }}</p>
+                </a>
+                <p class="lightGrey text2"></p>
                 <p>{{ book.content }}</p>
             </div>
         </div>
@@ -53,9 +62,9 @@
     </div>
     <div class="allpubs"><a href="{{ wwwroot }}/entities.php?context=books#main">ВСЕ ПУБЛИКАЦИИ</a></div>
 
-    <h2 class="sub-caption bold"><span>Университетские газеты</span></h2>
-    <div class="w3-row textrow1">
-        <div class="w3-third">
+    <h2 class="bold">Университетские газеты</h2>
+    <div class="w3-row">
+        <div class="w3-half">
             <div class="imgBox1 image-proportional-resizing"><!-- <img src="images/1-1.jpg"> --></div>
             <div class="notflow">
                 <a href="book.html#main"><p class="bold w3-large">Название газеты 1</p></a>
@@ -63,20 +72,12 @@
                 <p>Книга посвящена 80-летию ГОУ ВПО «Сибирский государственный индустриальный университет». Она представляет собой научно-историческое...</p>
             </div>
         </div>
-        <div class="w3-third">
+        <div class="w3-half">
             <div class="imgBox1 image-proportional-resizing"><!-- <img src="images/1-2.jpg"> --></div>
             <div class="notflow">
                 <a href="book-2.html#main"><p class="bold w3-large">Название газеты 2</p></a>
                 <p class="lightGrey text2"></p>
                 <p>Издание содержит информацию об истории создания и развития Си­бирского государственного индустриального университета, материалы по достижениям...</p>
-            </div>
-        </div>
-        <div class="w3-third">
-            <div class="imgBox1 image-proportional-resizing"><!-- <img src="images/1-3.jpg"> --></div>
-            <div class="notflow">
-                <a href="book.html#main"><p class="bold w3-large">Название газеты 3</p></a>
-                <p class="lightGrey text2"></p>
-                <p>В книге представлены в алфавитном порядке биографические сведения о 85-ти выдающихся металлургах – выпускниках Сибирского государственного...</p>
             </div>
         </div>
     </div>
@@ -87,8 +88,16 @@
         {% for leader in leaders %}
         <div class="w3-quarter quarttohalf w3-center">
             <div class="history-leader">
-                <div class="imgBox1 image-proportional-resizing"><img src="{{ wwwroot }}/file.php?id={{ leader.files.image.id }}"></div>
-                <a  href="{{ wwwroot }}/entity.php?id={{ leader.id }}&returnurl={{ returnurl|url_encode }}#main"><p class="bold w3-large">{{ leader.params.name }}</p></a>
+                <div class="imgBox1 image-proportional-resizing">
+                    {% if leader.files.image %}
+                    <img src="{{ wwwroot }}/file.php?id={{ leader.files.image.id }}">
+                    {% else %}
+                    <div class="placeholder-person"></div>
+                    {% endif %}
+                </div>
+                <a  href="{{ wwwroot }}/entity.php?id={{ leader.id }}&returnurl={{ returnurl|url_encode }}#main">
+                    <p class="bold w3-large">{{ leader.params.name }}</p>
+                </a>
                 <p></p>
             </div>
         </div>
@@ -97,32 +106,40 @@
     <div class="allpubs"><a href="{{ wwwroot }}/entities.php?context=leaders#main">ВСЕ РУКОВОДИТЕЛИ</a></div>
 
     <h2 class="bold">Воспоминания</h2>
-    <div class="w3-row textrow1">
+    <div class="w3-row">
         {% for memory in memories|slice(0, 2) %}
         <div class="w3-half">
             <div class="imgBox1 image-proportional-resizing">
                 {% if memory.files.image %}
                 <img src="{{ wwwroot }}/file.php?id={{ memory.files.image.id }}">
+                {% else %}
+                <div class="placeholder-person"></div>
                 {% endif %}
             </div>
             <div class="notflow">
-                <a href="{{ wwwroot }}/entity.php?id={{ memory.id }}&returnurl={{ returnurl|url_encode }}#main"><p class="bold w3-large">{{ memory.params.name }}</p></a>
+                <a href="{{ wwwroot }}/entity.php?id={{ memory.id }}&returnurl={{ returnurl|url_encode }}#main">
+                    <p class="bold w3-large">{{ memory.params.name }}</p>
+                </a>
                 <p class="lightGrey text2"></p>
                 <p>{{ memory.content }}</p>
             </div>
         </div>
         {% endfor %}
     </div>
-    <div class="w3-row textrow1">
+    <div class="w3-row">
         {% for memory in memories|slice(2, 2) %}
         <div class="w3-half">
             <div class="imgBox1">
                 {% if memory.files.image %}
                 <img src="{{ wwwroot }}/file.php?id={{ memory.files.image.id }}">
+                {% else %}
+                <div class="placeholder-person"></div>
                 {% endif %}
             </div>
             <div class="notflow">
-                <a href="{{ wwwroot }}/entity.php?id={{ memory.id }}&returnurl={{ returnurl|url_encode }}#main"><p class="bold w3-large">{{ memory.params.name }}</p></a>
+                <a href="{{ wwwroot }}/entity.php?id={{ memory.id }}&returnurl={{ returnurl|url_encode }}#main">
+                    <p class="bold w3-large">{{ memory.params.name }}</p>
+                </a>
                 <p>{{ memory.content }}</p>
             </div>
         </div>
@@ -130,7 +147,7 @@
     </div>
     <div class="allpubs"><a href="{{ wwwroot }}/entities.php?context=memories#main">ВСЕ ВОСПОМИНАНИЯ</a></div>
 
-    <h2 class="sub-caption bold" id="history-of-our-university"><span>История институтов</span></h2>
+    <h2 class="bold" id="history-of-our-university">История институтов</h2>
     <div class="w3-row w3-large bold">
         {% set separator = (history_of_institute|length / 2)|round(0, 'ceil') %}
         <div class="w3-half histoInsts ">
@@ -152,64 +169,36 @@
     <div class="allpubs"><a href="{{ wwwroot }}/entities.php?context=history-of-institute#main">РЕДАКТИРОВАНИЕ</a></div>
     {% endif %}
 
-    <h2 class="sub-caption bold"><span>История успеха</span></h2>
-    <div class="histoAge w3-large fowhite">
+    <h2 class="bold">История успеха</h2>
+    <div class="history-age w3-large">
         <ul>
-            <li>2005</li>
-            <li>2004</li>
-            <li>2003</li>
-            <li>2002</li>
-            <li>2001</li>
-            <li>2000</li>
-            <li>1999</li>
-            <li>1998</li>
-            <li>1997</li>
-            <li><span style="font-family:'OpenSans-bold'; color:#007bc6; ">1996</span></li>
-            <li>1995</li>
-            <li>1994</li>
-            <li>1993</li>
-            <li>1992</li>
-            <li>1991</li>
-            <li>1990</li>
+            {% for year in history_of_success_years %}
+            <li><span style="font-family:'OpenSans-bold'; color:#007bc6; ">
+                <a href="{{ wwwroot }}/entities.php?context=history-of-success&year={{ year.year }}#main">{{ year.year }}</a>
+            </span></li>
+            {% endfor %}
         </ul>
     </div>
-    <div class="w3-row textrow1 histoSuc">
-        <div class="imgBox3 image-proportional-resizing"></div>
+    {% for history in history_of_success %}
+    <div class="w3-row history-success">
+        <div class="imgBox1 image-proportional-resizing">
+            {% if history.files.image %}
+            <img src="{{ wwwroot }}/file.php?id={{ history.files.image.id }}">
+            {% else %}
+            <div class="placeholder-person"></div>
+            {% endif %}
+        </div>
         <div class="notflow">
-            <a><p class="bold w3-large w3-padding-top">АЙЗАТУЛОВ РАФИК САБИРОВИЧ</p></a>
-            <p class="lightGrey  w3-large">Профессор, доктор</p>
-            <p class="lightGrey text2">1996 год</p>
-            <p>В учебнике излагаются элементы теории множеств и вещественных чисел, числовые последовательности и теории пределов, аналитическая геометрия на плоскости и в пространстве, основы дифференциального и интегрального исчислений функций одной или нескольких переменных, элементы высшей алгебры, теория рядов и обыкновенные дифференциальные уравнения.</p>
+            <a href="{{ wwwroot }}/entity.php?id={{ history.id }}&returnurl={{ returnurl|url_encode }}#main">
+                <p class="bold w3-large w3-padding-top">{{ history.params.name }}</p>
+            </a>
+            <!--<p class="lightGrey w3-large">Профессор, доктор</p>-->
+            <p class="lightGrey text2">Год выпуска: {{ history.params.year }}</p>
+            <p>{{ history.content }}</p>
         </div>
     </div>
-    <div class="w3-row textrow1 histoSuc">
-        <div class="imgBox3 image-proportional-resizing"></div>
-        <div class="notflow">
-            <a><p class="bold w3-large w3-padding-top">АЙЗАТУЛОВ РАФИК САБИРОВИЧ</p></a>
-            <p class="lightGrey  w3-large">Профессор, доктор</p>
-            <p class="lightGrey text2">1996 год</p>
-            <p>В учебнике излагаются элементы теории множеств и вещественных чисел, числовые последовательности и теории пределов, аналитическая геометрия на плоскости и в пространстве, основы дифференциального и интегрального исчислений функций одной или нескольких переменных, элементы высшей алгебры, теория рядов и обыкновенные дифференциальные уравнения.</p>
-        </div>
-    </div>
-    <div class="w3-row textrow1 histoSuc">
-        <div class="imgBox3 image-proportional-resizing"></div>
-        <div class="notflow">
-            <a><p class="bold w3-large w3-padding-top">АЙЗАТУЛОВ РАФИК САБИРОВИЧ</p></a>
-            <p class="lightGrey  w3-large">Профессор, доктор</p>
-            <p class="lightGrey text2">1996 год</p>
-            <p>В учебнике излагаются элементы теории множеств и вещественных чисел, числовые последовательности и теории пределов, аналитическая геометрия на плоскости и в пространстве, основы дифференциального и интегрального исчислений функций одной или нескольких переменных, элементы высшей алгебры, теория рядов и обыкновенные дифференциальные уравнения.</p>
-        </div>
-    </div>
-    <div class="w3-row textrow1 histoSuc">
-        <div class="imgBox3 image-proportional-resizing"></div>
-        <div class="notflow">
-            <a><p class="bold w3-large w3-padding-top">АЙЗАТУЛОВ РАФИК САБИРОВИЧ</p></a>
-            <p class="lightGrey  w3-large">Профессор, доктор</p>
-            <p class="lightGrey text2">1996 год</p>
-            <p>В учебнике излагаются элементы теории множеств и вещественных чисел, числовые последовательности и теории пределов, аналитическая геометрия на плоскости и в пространстве, основы дифференциального и интегрального исчислений функций одной или нескольких переменных, элементы высшей алгебры, теория рядов и обыкновенные дифференциальные уравнения.</p>
-        </div>
-    </div>
-    <div class="KONEC allpubs"><a onclick="asd()">ВСЕ ВЫПУСКНИКИ</a></div>
+    {% endfor %}
+    <div class="allpubs"><a href="{{ wwwroot }}/entities.php?context=history-of-success#main">ВСЕ ВЫПУСКНИКИ</a></div>
 
 </div>
 {% endblock %}

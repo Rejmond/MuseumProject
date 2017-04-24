@@ -10,7 +10,6 @@
                 <form method="post" enctype="multipart/form-data" action="{{ wwwroot }}/admin/addfile.php">
                     <input type="hidden" name="id" value="{{ entity.id }}">
                     <input type="hidden" name="filearea" value="image">
-                    <input type="hidden" name="returnurl" value="{{ returnurl }}">
                     <label>
                         <input type="file" name="file" onchange="this.form.submit()">
                     </label>
@@ -25,9 +24,11 @@
                     </div>
                 </a>
             </div>
+            {% else %}
+            <div class="placeholder-person"></div>
             {% endif %}
         </div>
-        <div class="notflow//">
+        <div>
             <p class="bold w3-large w3-padding-top w3-margin-0">
                 {{ entity.params.name }}
             </p>
@@ -45,7 +46,7 @@
 
     <div class="w3-row"></div>
     <div class="w3-responsive">
-        <table class="my-margin w3-table w3-bordered ">
+        <table class="table-margin w3-table w3-bordered ">
             {% if admin or entity.files.files|length > 0 %}
             <tr>
                 <th>Название</th>

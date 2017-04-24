@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<div id="main" class="w3-container entitylist museum-image" data-location="calendar">
+<div id="main" class="entitylist museum-image" data-location="calendar">
     <h1 class="caption w3-xxlarge">Календарь знаменательных дат</h1>
     {% if admin %}
     <div class="h1-to-form">
@@ -21,7 +21,10 @@
         </div>
         {% endif %}
         <p class="lightGrey text2 date">
-            {{ entity.params.date }}
+            {{ entity.params.timestamp|date('d.m.Y') }}
+        </p>
+        <p>
+            {{ entity.content|raw }}
         </p>
         <div class="more"><a href="{{ wwwroot }}/entity.php?id={{ entity.id }}&returnurl={{ returnurl|url_encode }}#main">Подробнее</a></div>
     </div>

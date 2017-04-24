@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<div id="main" class="exposition-graduate entity museum-image" data-location="exposition">
+<div id="main" class="story entity history-image" data-location="history-of-success">
     <h1 class="caption w3-xxlarge">Информация о выпускнике</h1>
     <div>
         <div class="imgBox1 image-proportional-resizing">
@@ -29,11 +29,6 @@
         <div class="notflow//">
             <p class="bold w3-large w3-padding-top w3-margin-0">
                 {{ entity.params.name }}
-                {% if admin %}
-                <span class="lightGrey text2">
-                    (приоритет отображения: {{ entity.params.order }})
-                </span>
-                {% endif %}
             </p>
             {% if admin %}
             <div class="p-to-form">
@@ -41,6 +36,9 @@
                 <a href="{{ wwwroot }}/admin/delete.php?id={{ entity.id }}#main"><img src="{{ wwwroot }}/images/delete.png" /></a>
             </div>
             {% endif %}
+            <p class="lightGrey text2">
+                Год выпуска: {{ entity.params.year }}
+            </p>
             <p>
                 {{ entity.params.fulltext|raw }}
             </p>

@@ -164,15 +164,20 @@ $CONFIG->entities = array(
     'calendar' => array(
         'entity_template' => 'date.html',
         'entities_template' => 'dates.html',
-        'content_type' => PARAM_RAW,
+        'content_type' => PARAM_NOTAGS,
+        'perpage' => 10,
         'params' => array(
             'name' => array(
                 'required' => true,
                 'type' => PARAM_NOTAGS,
             ),
-            'date' => array(
+            'timestamp' => array(
                 'required' => true,
                 'type' => PARAM_DATE,
+            ),
+            'fulltext' => array(
+                'required' => true,
+                'type' => PARAM_RAW,
             ),
         ),
         'attachments' => array(
@@ -301,7 +306,7 @@ $CONFIG->entities = array(
         'perpage' => 10,
         'params' => array(
             'name' => array(
-                'required' => false,
+                'required' => true,
                 'type' => PARAM_NOTAGS,
             ),
             'interval' => array(
@@ -319,7 +324,7 @@ $CONFIG->entities = array(
         ),
         'attachments' => array(
             'image' => array(
-                'required' => true,
+                'required' => false,
                 'image' => true,
                 'size' => array(1200, 800),
                 'list' => false,
@@ -378,6 +383,40 @@ $CONFIG->entities = array(
             ),
         ),
         'attachments' => array(),
+    ),
+    'history-of-success' => array(
+        'entity_template' => 'story.html',
+        'entities_template' => 'stories.html',
+        'content_type' => PARAM_NOTAGS,
+        'perpage' => 10,
+        'params' => array(
+            'name' => array(
+                'required' => true,
+                'type' => PARAM_NOTAGS,
+            ),
+            'year' => array(
+                'required' => true,
+                'type' => PARAM_INT,
+            ),
+            'fulltext' => array(
+                'required' => true,
+                'type' => PARAM_RAW,
+            ),
+        ),
+        'attachments' => array(
+            'image' => array(
+                'required' => false,
+                'image' => true,
+                'size' => array(1200, 800),
+                'list' => false,
+            ),
+            'photos' => array(
+                'required' => false,
+                'image' => true,
+                'size' => array(1200, 800),
+                'list' => true,
+            ),
+        )
     ),
     /*                                                     */
     /*                        projects                     */

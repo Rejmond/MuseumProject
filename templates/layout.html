@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>{{ title }}</title>
+    <link rel="shortcut icon" href="{{ wwwroot }}/favicon.ico"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
@@ -11,10 +12,14 @@
     <script src="{{ wwwroot }}/js/jquery.scrollSpeed.js"></script>
     <script src="{{ wwwroot }}/js/main.js"></script>
     <script src="{{ wwwroot }}/js/jquery.fancybox.min.js"></script>
+    <script src="{{ wwwroot }}/js/timeline.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery-mobile/1.4.5/jquery.mobile.min.js'></script>
     {% block styles %}
+    <link rel="stylesheet" href="{{ wwwroot }}/css/reset.min.css">
     <link rel="stylesheet" href="{{ wwwroot }}/css/w3.css">
     <link rel="stylesheet" href="{{ wwwroot }}/css/style.css">
     <link rel="stylesheet" href="{{ wwwroot }}/css/jquery.fancybox.css">
+    <link rel="stylesheet" href="{{ wwwroot }}/css/timeline.css">
     {% endblock %}
 </head>
 <body>
