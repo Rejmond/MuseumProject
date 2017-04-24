@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div id="main" class="edit-forms history-image" data-location="papers">
+    <h1 class="caption w3-xxlarge">Университетская газета</h1>
+    <div>
+        <form method="post">
+            <input type="hidden" name="id" value="{{ id }}">
+
+            <p class="bold w3-large">Название газеты:</p>
+            {% if errors.name %}
+            <div class="login-snack-bar">
+                Вы не указали название газеты
+            </div>
+            {% endif %}
+            <input type="text" name="name" value="{{ params.name|raw }}">
+
+            <p class="bold w3-large">Краткое описание газеты:</p>
+            {% if errors.content %}
+            <div class="login-snack-bar">
+                Вы не указали краткое описание газеты
+            </div>
+            {% endif %}
+            <div class="edit-textarea">
+                <textarea name="content">{{ content|raw }}</textarea>
+            </div>
+
+            <p class="bold w3-large">Подробное описание газеты:</p>
+            {% if errors.fulltext %}
+            <div class="login-snack-bar">
+                Вы не указали подробное описание газеты
+            </div>
+            {% endif %}
+            <div class="edit-textarea">
+                <textarea name="fulltext" class="tiny">{{ params.fulltext|raw }}</textarea>
+            </div>
+
+            <div class="button-container-logout">
+                <button type="submit" name="cancel">Отмена</button>
+                <button type="submit" name="accept">Подтвердить</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
