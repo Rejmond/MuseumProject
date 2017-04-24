@@ -558,7 +558,7 @@ main .notflow p {
 
 
 /* Выравнивание ссылок в хронологии создания*/
-.history .history .history-chronics {
+.history .history-chronics {
     width:210px !important;
     padding-left: 10px;
     padding-top: 4px;
