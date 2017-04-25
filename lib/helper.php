@@ -97,7 +97,7 @@ function resize_image($filepath, $width, $height)
     $width_origin = $img->getWidth();
     $height_origin = $img->getHeight();
     if ($width_origin > $width && $height_origin > $height) {
-       /* $img->cropCenter("{$width}pr", "{$height}pr");*/
+        /*$img->cropCenter("{$width}pr", "{$height}pr");*/
         $img->resizeByHeight($height);
         $img->resizeByWidth($width);
     } else {
