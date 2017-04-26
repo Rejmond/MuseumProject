@@ -26,10 +26,16 @@ function is_singleton_context($context) {
 
 function get_base_model() {
     global $CONFIG, $USER;
+	
+    $protocol = 'http://';
+    if (isset($_SERVER['HTTPS']) && ($_SERVER['HTTPS']=='on')) {
+        $protocol .= 'https://';
+    }
+
     return array(
         'wwwroot'     => $CONFIG->wwwroot,
         'admin'       => $USER->is_admin(),
-        'current_url' => $CONFIG->wwwroot . $_SERVER['REQUEST_URI']
+        'current_url' => $protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']
     );
 }
 
@@ -97,7 +103,7 @@ function resize_image($filepath, $width, $height)
     $width_origin = $img->getWidth();
     $height_origin = $img->getHeight();
     if ($width_origin > $width && $height_origin > $height) {
-       /* $img->cropCenter("{$width}pr", "{$height}pr");*/
+        /*$img->cropCenter("{$width}pr", "{$height}pr");*/
         $img->resizeByHeight($height);
         $img->resizeByWidth($width);
     } else {
