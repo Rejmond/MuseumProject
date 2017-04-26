@@ -55,11 +55,15 @@ $(document).ready(function() {
             case 'exposition-graduates':
                 currentPage = 'exposition';
                 break;
+            case 'papers1':
+            case 'papers2':
+                currentPage = 'papers';
+                break;
         }
         $('#' + currentPage).addClass('sub-menu').find('span').css('color', '#494952');
     }
     var museum =  ["museum", "museumabout", "news", "exposition", "exhibitions", "calendar", "presents", "geologic"];
-    var history = ["history", "history-about", "periods", "books", "magazines", "leaders", "memories", "history-of-institute", "history-of-success"];
+    var history = ["history", "history-about", "periods", "books", "papers", "leaders", "memories", "history-of-institute", "history-of-success"];
     if ($.inArray(currentPage, museum) >= 0) {
         $('#museum').addClass('active');
         $('#museumnav').show();
@@ -91,6 +95,9 @@ $(document).ready(function() {
         autoresize_bottom_margin: 20,
         content_style: "body {margin: 14px; font-family: OpenSans-Regular, sans-serif !important}",
         language: 'ru', file_browser_callback: RoxyFileBrowser,
+        relative_urls : false,
+        remove_script_host :false,
+        convert_urls : true,
         style_formats: [
             {title: 'Цвет текста', items: [
                 {title: 'Основной', inline: 'span', styles:{'color': '#494952'}},

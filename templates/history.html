@@ -62,26 +62,37 @@
     </div>
     <div class="allpubs"><a href="{{ wwwroot }}/entities.php?context=books#main">ВСЕ ПУБЛИКАЦИИ</a></div>
 
-    <h2 class="bold">Университетские газеты</h2>
+    <h2 class="bold" id="papers-anchor">Университетские газеты</h2>
     <div class="w3-row">
         <div class="w3-half">
-            <div class="imgBox1 image-proportional-resizing"><!-- <img src="images/1-1.jpg"> --></div>
+            <div class="imgBox1 image-proportional-resizing">
+                {% if paper1.files.image %}
+                <img src="{{ wwwroot }}/file.php?id={{ paper1.files.image.id }}">
+                {% else %}
+                <div class="placeholder-news"></div>
+                {% endif %}
+            </div>
             <div class="notflow">
-                <a href="book.html#main"><p class="bold w3-large">Название газеты 1</p></a>
+                <a href="{{ wwwroot }}/papers.php?paper=paper1#main"><p class="bold w3-large">{{ paper1.params.name }}</p></a>
                 <p class="lightGrey text2"></p>
-                <p>Книга посвящена 80-летию ГОУ ВПО «Сибирский государственный индустриальный университет». Она представляет собой научно-историческое...</p>
+                <p>{{ paper1.content }}</p>
             </div>
         </div>
         <div class="w3-half">
-            <div class="imgBox1 image-proportional-resizing"><!-- <img src="images/1-2.jpg"> --></div>
+            <div class="imgBox1 image-proportional-resizing">
+                {% if paper2.files.image %}
+                <img src="{{ wwwroot }}/file.php?id={{ paper2.files.image.id }}">
+                {% else %}
+                <div class="placeholder-news"></div>
+                {% endif %}
+            </div>
             <div class="notflow">
-                <a href="book-2.html#main"><p class="bold w3-large">Название газеты 2</p></a>
+                <a href="{{ wwwroot }}/papers.php?paper=paper2#main"><p class="bold w3-large">{{ paper2.params.name }}</p></a>
                 <p class="lightGrey text2"></p>
-                <p>Издание содержит информацию об истории создания и развития Си­бирского государственного индустриального университета, материалы по достижениям...</p>
+                <p>{{ paper2.content }}</p>
             </div>
         </div>
     </div>
-    <div class="allpubs"><a href="books.html#main">ВСЕ ГАЗЕТЫ</a></div>
 
     <h2 class="bold">Руководители</h2>
     <div class="w3-row leaders">

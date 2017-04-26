@@ -299,6 +299,96 @@ $CONFIG->entities = array(
             ),
         )
     ),
+    'paper1' => array(
+        'entity_template' => 'paper-info.html',
+        'entities_template' => false,
+        'content_type' => PARAM_NOTAGS,
+        'params' => array(
+            'name' => array(
+                'required' => true,
+                'type' => PARAM_NOTAGS,
+            ),
+            'fulltext' => array(
+                'required' => true,
+                'type' => PARAM_RAW,
+            ),
+        ),
+        'attachments' => array(
+            'image' => array(
+                'required' => false,
+                'image' => true,
+                'size' => array(1200, 800),
+                'list' => false,
+            ),
+        )
+    ),
+    'papers1' => array(
+        'entity_template' => 'paper.html',
+        'entities_template' => 'paper.html',
+        'content_type' => PARAM_NOTAGS,
+        'params' => array(
+            'year' => array(
+                'required' => true,
+                'type' => PARAM_INT,
+            ),
+            'number' => array(
+                'required' => true,
+                'type' => PARAM_INT,
+            ),
+        ),
+        'attachments' => array(
+            'file' => array(
+                'required' => true,
+                'image' => false,
+                'list' => false,
+            ),
+        ),
+    ),
+    'paper2' => array(
+        'entity_template' => 'paper-info.html',
+        'entities_template' => false,
+        'content_type' => PARAM_NOTAGS,
+        'params' => array(
+            'name' => array(
+                'required' => true,
+                'type' => PARAM_NOTAGS,
+            ),
+            'fulltext' => array(
+                'required' => true,
+                'type' => PARAM_RAW,
+            ),
+        ),
+        'attachments' => array(
+            'image' => array(
+                'required' => false,
+                'image' => true,
+                'size' => array(1200, 800),
+                'list' => false,
+            ),
+        )
+    ),
+    'papers2' => array(
+        'entity_template' => 'paper.html',
+        'entities_template' => 'paper.html',
+        'content_type' => PARAM_NOTAGS,
+        'params' => array(
+            'year' => array(
+                'required' => true,
+                'type' => PARAM_INT,
+            ),
+            'number' => array(
+                'required' => true,
+                'type' => PARAM_INT,
+            ),
+        ),
+        'attachments' => array(
+            'file' => array(
+                'required' => true,
+                'image' => false,
+                'list' => false,
+            ),
+        ),
+    ),
     'leaders' => array(
         'entity_template' => 'leader.html',
         'entities_template' => 'leaders.html',

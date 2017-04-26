@@ -14,7 +14,9 @@ if ($cancel !== false) {
 }
 
 $object = EntityManager::get_object($entity_id);
-if (!$object) die(); // Записи не существует
+if (!$object) {
+    redirect("$CONFIG->wwwroot/index.php#main");
+}
 
 if (post_data_submitted() && $accept !== false) {
     $result = EntityManager::delete_object_from_submit();

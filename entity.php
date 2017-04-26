@@ -11,7 +11,9 @@ if ($context) {
 }
 
 $object = EntityManager::get_object($entity_id);
-if (!$object) die();
+if (!$object) {
+    redirect("$CONFIG->wwwroot/index.php#main");
+}
 
 $model = get_base_model();
 $model['title'] = 'Информация об элементе';

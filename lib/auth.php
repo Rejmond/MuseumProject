@@ -7,7 +7,7 @@ class User {
     private $admin;
         
     public function __construct() {
-        if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {
+        if (isset($_SESSION['admin']) && $_SESSION['admin'] === true) {
             $this->admin = true;
         }
     }
