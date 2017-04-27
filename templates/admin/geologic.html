@@ -4,7 +4,7 @@
 <div id="main" class="geologic edit-forms museum-image" data-location="geologic">
     <h1 class="caption w3-xxlarge">Геологический музей</h1>
     <div>
-        <form method="post">
+        <form method="post" autocomplete="off">
             <input type="hidden" name="id" value="{{ id }}">
             <p class="bold w3-large">Краткое описание музея:</p>
             {% if errors.content %}

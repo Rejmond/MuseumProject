@@ -21,7 +21,9 @@ if ($cancel !== false) {
 }
 
 $object = EntityManager::get_object($entity_id);
-if (!$object) die(); // Записи не существует
+if (!$object) {
+    redirect("$CONFIG->wwwroot/index.php#main");
+}
 
 $model = get_base_model();
 $model['title'] = 'Редактирование элемента';

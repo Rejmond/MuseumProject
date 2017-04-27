@@ -27,7 +27,7 @@ verifyAction('RENAMEFILE');
 checkAccess('RENAMEFILE');
 
 $path = trim(empty($_POST['f'])?'':$_POST['f']);
-$name = trim(empty($_POST['n'])?'':$_POST['n']);
+$name = roxy_translit(trim(empty($_POST['n'])?'':$_POST['n']));
 verifyPath($path);
 
 if(is_file(fixPath($path))){

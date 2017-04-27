@@ -4,7 +4,7 @@
 <div id="main" class="new edit-forms projects-image" data-location="projects">
     <h1 class="caption w3-xxlarge">Проекты: {{ title|lower }}</h1>
     <div>
-        <form method="post">
+        <form method="post" autocomplete="off">
             {% if id %}
             <input type="hidden" name="id" value="{{ id }}">
             {% else %}

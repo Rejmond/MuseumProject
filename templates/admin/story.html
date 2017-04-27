@@ -4,7 +4,7 @@
 <div id="main" class="edit-forms history-image" data-location="history-of-success">
     <h1 class="caption w3-xxlarge">История успеха: {{ title|lower }}</h1>
     <div>
-        <form method="post" enctype="multipart/form-data">
+        <form method="post" enctype="multipart/form-data" autocomplete="off">
             {% if id %}
             <input type="hidden" name="id" value="{{ id }}">
             {% else %}

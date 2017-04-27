@@ -26,16 +26,6 @@ include 'functions.inc.php';
 verifyAction('UPLOAD');
 checkAccess('UPLOAD');
 
-
-function translit($s) { // добавили транслитерацию (также строка 55)
-  $s = function_exists('mb_strtolower') ? mb_strtolower($s) : strtolower($s); // переводим строку в нижний регистр (иногда надо задать локаль)
-  $s = strtr($s, array('а'=>'a','б'=>'b','в'=>'v','г'=>'g','д'=>'d','е'=>'e','ё'=>'e','ж'=>'j','з'=>'z', 
-      'и'=>'i','й'=>'y','к'=>'k','л'=>'l','м'=>'m','н'=>'n','о'=>'o','п'=>'p','р'=>'r','с'=>'s','т'=>'t',
-      'у'=>'u','ф'=>'f','х'=>'h','ц'=>'c','ч'=>'ch','ш'=>'sh','щ'=>'shch','ы'=>'y','э'=>'e','ю'=>'yu','я'=>'ya',
-      'ъ'=>'','ь'=>''));
-  return $s; // возвращаем результат
-}
-
 $isAjax = (isset($_POST['method']) && $_POST['method'] == 'ajax');
 $path = trim(empty($_POST['d'])?getFilesPath():$_POST['d']);
 verifyPath($path);
@@ -46,13 +36,13 @@ if(is_dir(fixPath($path))){
     foreach($_FILES['files']['tmp_name'] as $k=>$v){
       $filename = $_FILES['files']['name'][$k];
       $filename = RoxyFile::MakeUniqueFilename(fixPath($path), $filename);
-      $filePath = fixPath($path).'/'.$filename;
+      $filePath = roxy_translit(fixPath($path).'/'.$filename);
       $isUploaded = true;
       if(!RoxyFile::CanUploadFile($filename)){
         $errorsExt[] = $filename;
         $isUploaded = false;
       }
-      elseif(!move_uploaded_file($v, translit($filePath))){
+      elseif(!move_uploaded_file($v, $filePath)){
          $errors[] = $filename; 
          $isUploaded = false;
       }
