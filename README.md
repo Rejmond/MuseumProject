@@ -1,5 +1,5 @@
 # MuseumProject
-
+![A cute kitten](https://github.com/MarkDvoryanchikov/MuseumProject/blob/mark_Art/README-images/head.JPG)
 ## Разделы
 ### Музей
 - [x] О музее
