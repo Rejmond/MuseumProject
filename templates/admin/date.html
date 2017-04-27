@@ -10,7 +10,7 @@
 <div id="main" class="date edit-forms museum-image" data-location="calendar">
     <h1 class="caption w3-xxlarge">Календарь знаменательных дат: {{ title|lower }}</h1>
     <div>
-        <form method="post">
+        <form method="post" autocomplete="off">
             {% if id %}
             <input type="hidden" name="id" value="{{ id }}">
             {% else %}

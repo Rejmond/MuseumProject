@@ -60,7 +60,7 @@ $(document).ready(function() {
                 currentPage = 'papers';
                 break;
         }
-        $('#' + currentPage).addClass('sub-menu').find('span').css('color', '#494952');
+        $('#' + currentPage).addClass('sub-menu').find('span:not(.second-line-margin)').css('color', '#494952');
     }
     var museum =  ["museum", "museumabout", "news", "exposition", "exhibitions", "calendar", "presents", "geologic"];
     var history = ["history", "history-about", "periods", "books", "papers", "leaders", "memories", "history-of-institute", "history-of-success"];
@@ -78,11 +78,7 @@ $(document).ready(function() {
     if (currentPage == "student-groups") {
         $('#student-groups').addClass('active');
     }
-    /*
-    if ($.inArray(currentPage, student-groups) >= 0) {
-        $('#student-groups').addClass('active');
-    }
-    */
+
     $('#mouse').delay(3000).animate(
         {
             opacity: 0.5
@@ -144,6 +140,7 @@ $(document).ready(function() {
             $(".mynav").css({marginLeft: 0});
         }
     }).resize();
+
     $(window).scroll(function () {
         changePosition();
     });
@@ -153,28 +150,20 @@ $(document).ready(function() {
         imageTransfiguration();
         tinyImgSize();
     });
-
-
     snackBarFunction();
-
+    changePosition();
 });
 
 
 function snackBarFunction() {
     var displaySnack = -20;
-    $('.login-snack-bar').each(function(i) {
+    $($('.login-snack-bar').get().reverse()).each(function(i) {
         displaySnack += 55;
-        /*$(this).attr('id', "idPosSnack"+(i+1));*/
-        $(this).css({ bottom: displaySnack, visibility: "visible", opacity: 1 });
-        /*
-        var x = $(".login-snack-bar");
-        x.addClass("show");
-        /*
-        $(".login-snack-bar").css({visibility: "visible", opacity: 0})
-           /*.animate({opacity: 1}, 500, 'fadein')
-            .delay(2500)
-            .animate({bottom: 0, opacity: 0}, 500, 'fadeout');*/
-        setTimeout(function(){$('.login-snack-bar').css({ opacity: 0 })},4000);    //removeClass("show")},3000);
+        $(this).css({ bottom: 0, visibility: "visible", opacity: 0})
+            .animate({ opacity: 1, bottom: displaySnack}, 500)
+            .delay(4000)
+            .animate({ bottom: 0, opacity: 0}, 500);
+        setTimeout(function(){$('.login-snack-bar').css({ opacity: 0 })},5000);    //removeClass("show")},3000);
 
     });
 }
@@ -229,7 +218,7 @@ function changePosition() {
     }
     var hHeight = $('header').outerHeight(),
         scroll_top = $(this).scrollTop(), // get scroll position top
-        height_element_parent = $("main").outerHeight(), //get high parent element
+        height_element_parent = $("#main").outerHeight(), //get high parent element
         position_fixed_max = height_element_parent; //- height_element; // get the maximum position of the elemen
     if (scroll_top < hHeight) {
         $(target).css("position", "absolute");
@@ -244,7 +233,7 @@ function changePosition() {
         else {
             $(target).css("position", "absolute");
 
-            if ($('main').height() <= $(window).height()) {
+            if ($('#main').height() <= $(window).height()) {
                 position_fixed = hHeight;
                 $('.mynav').css('height', height_element_parent);
             }
@@ -256,7 +245,6 @@ function changePosition() {
     }
     $(target).css("top", position_fixed);
 }
-
 function w3_open() {
     $(".mynav").css({display: 'block', left: -300}).animate({left: 0}, 350, 'easeOutCubic');
     $('#openNav').css({display: 'none'});

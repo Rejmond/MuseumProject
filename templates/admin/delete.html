@@ -3,7 +3,7 @@
 {% block content %}
 <div id="main" class="delete" data-location="{{ context }}">
     <div class="container">
-        <form method="post">
+        <form method="post" autocomplete="off">
             <input type="hidden" value="{{ id }}" name="id">
             <p class="w3-container">Вы уверены, что хотите удалить объект с ID равным "{{ id }}"?</p>
             <div class="clearfix">
