@@ -161,39 +161,103 @@ function imageTransfiguration() {
     });
 }
 
+// function ChangePosition()
+// {
+
+//     var burger = $('#openNav').css('display');
+//     var id = 0;
+
+//     if (burger=='none')
+//     {
+//         id = 1;
+//         var target = $('.mynav');
+//     }
+//     else 
+//     {
+//         id = 2 ;
+//         var target = $('#openNav');
+//     }
+
+//     var hHeight = $('header').outerHeight();
+
+//     var scroll_top = $(this).scrollTop(); // get scroll position top
+
+//     var height_element_parent =  $("main").outerHeight(); //get high parent element
+
+//     var height_element = $(target).outerHeight(); //get high of elemeneto
+
+//     var position_fixed_max = height_element_parent; //- height_element; // get the maximum position of the elemen
+
+//     if (scroll_top < hHeight)
+//     {
+//          $(target).css("position","absolute");
+//          var position_fixed =  hHeight;
+
+//     }
+//     else
+//     {
+//         if (position_fixed_max > scroll_top)
+//         {
+//              $(target).css("position","fixed");
+//              $('.mynav').css('height',$(window).height());
+//              var position_fixed = 0;
+//         }
+//         else 
+//         {
+//             $(target).css("position","absolute");
+
+//             if ($('main').height()<=$(window).height())
+//             {
+//                 var position_fixed = hHeight;
+//                 $('.mynav').css('height',height_element_parent);
+//             }
+//             else
+//             {
+//                 var position_fixed = position_fixed_max;
+//                 $('.mynav').css('height',$(window).height());
+//             }
+//         }
+//     }
+
+//     $(target).css("top",position_fixed);
+// }
+
 function changePosition() {
     var target = $('#openNav'),
         burger = target.css('display');
     if (burger == 'none') {
         target = $('.mynav');
     }
+
     var hHeight = $('header').outerHeight(),
         scroll_top = $(this).scrollTop(),
-        height_element_parent = $("#main").outerHeight(),
+        height_element_parent = $("main").outerHeight(),
         position_fixed_max = height_element_parent;
+
     /*если значение отступа прокрутки сверху меньше высоты шапки*/
     if (scroll_top < hHeight) {
-        $(target).css("position", "absolute");
-        var position_fixed = hHeight;
+        // $(target).css("position", "absolute");
+        // var position_fixed = hHeight;
     }
     /*если значение отступа прокрутки сверху больше высоты шапки*/
     else {
+        
         /*если значение отступа прокрутки сверху меньше высоты main ВСЕГДА*/
         if (position_fixed_max-$(window).height() > scroll_top) {
             $(target).css("position", "fixed");
-            $('.mynav').css('height', $("main").height());
+            $(".mynav").css('height', $("main").height());
             position_fixed = 0;
         }
         else {
             $(target).css("position", "absolute");
 
-            if ($('#main').height() <= $(window).height()) {
+            if ($('main').height() <= $(window).height()) {
                 position_fixed = hHeight;
-                $('.mynav').css('height', height_element_parent);
+                $(".mynav").css('height', height_element_parent);
             }
             else {
-                position_fixed = position_fixed_max;
-                $('.mynav').css('height', auto);
+                position_fixed = position_fixed_max-$(window).height();
+                $(".mynav").css('height', $(window).height());
             }
         }
     }
