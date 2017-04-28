@@ -35,5 +35,5 @@ $template = 'admin/' . get_entity_template($context);
 if (file_exists("$CONFIG->dirroot/templates/$template")) {
     echo $Twig->render($template, $model);
 } else {
-    redirect("$CONFIG->wwwroot/index.php#main");
+    redirect("$CONFIG->wwwroot/museum.php#main");
 }

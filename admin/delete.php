@@ -15,7 +15,7 @@ if ($cancel !== false) {
 
 $object = EntityManager::get_object($entity_id);
 if (!$object) {
-    redirect("$CONFIG->wwwroot/index.php#main");
+    redirect("$CONFIG->wwwroot/museum.php#main");
 }
 
 if (post_data_submitted() && $accept !== false) {

@@ -12,7 +12,7 @@ if ($context) {
 
 $object = EntityManager::get_object($entity_id);
 if (!$object) {
-    redirect("$CONFIG->wwwroot/index.php#main");
+    redirect("$CONFIG->wwwroot/museum.php#main");
 }
 
 $model = get_base_model();
@@ -24,5 +24,5 @@ $template = get_entity_template($model['entity']['context']);
 if (file_exists("$CONFIG->dirroot/templates/$template")) {
     echo $Twig->render($template, $model);
 } else {
-    redirect("$CONFIG->wwwroot/index.php#main");
+    redirect("$CONFIG->wwwroot/museum.php#main");
 }

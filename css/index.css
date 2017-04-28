@@ -1,0 +1,107 @@
+/* Header стили */
+header {
+    background: #f0f0f0;
+    cursor: pointer;
+}
+/* SVG анимация */
+header .xPoTryMN_0 {
+    fill:#494951;
+    fill-opacity: 0.0;
+    stroke-dasharray:3456 3458;stroke-dashoffset:3457;
+    animation:xPoTryMN_draw 2s linear 0s forwards, KLxHEKXr_fill 500ms ease 2s forwards;
+}
+header .xPoTryMN_1 {
+    fill:#494951;
+    fill-opacity: 0.0;
+    stroke-dasharray:790 792;stroke-dashoffset:791;
+    animation:xPoTryMN_draw 1.5s linear 0.5s forwards, KLxHEKXr_fill 500ms ease 2s forwards;
+}
+header .xPoTryMN_2 {
+    fill:#494951;
+    fill-opacity: 0.0;
+    stroke-dasharray:93 95;stroke-dashoffset:94;
+    animation:xPoTryMN_draw 1s linear 0.5s forwards, KLxHEKXr_fill 500ms ease 2s forwards;
+}
+header .xPoTryMN_3 {
+    fill:#f0f0f0;
+    stroke-dasharray:51 53;stroke-dashoffset:52;
+    animation:xPoTryMN_draw 1s linear 1s forwards;
+}
+header .xPoTryMN_4 {
+    fill:#f0f0f0;
+    stroke-dasharray:176 178;stroke-dashoffset:177;
+    animation:xPoTryMN_draw 1s linear 0.75s forwards, KLxHEKXr_fill 500ms ease 4s forwards;
+}
+/* центрирующая обёртка под header */
+header .headArtemArt {
+    max-width: 1200px;
+    margin: 0 auto;
+    height: 100vh;
+}
+/* линии под/над svg */
+header .header-line {
+    margin: 0 auto;
+    width: 0;
+    height: 6px;
+    background: #494952;
+}
+/* svg Музей */
+header .header-svg {
+    width:340px;
+    margin: 30px auto 24px;
+}
+/* анимированный текст */
+header p {
+    font-size: 24px;
+    text-align: center;
+    font-family: "Acrom-Bold", sans-serif;
+    margin-bottom: -8px;
+    margin-top:-8px;
+}
+/* обёртка над текстом */
+header .header-text {
+    margin-bottom: 26px;
+    opacity: 0;
+}
+/* извращения артема */
+header .headArtemArt .w3-display-bottommiddle {
+    bottom: 25px;
+}
+header #mouse {
+    position: relative;
+    opacity: 0.0;
+}
+header #scroll_btn {
+    margin: auto;
+    position: relative;
+    opacity: 0.0;
+    background: #494951;
+    height: 10px;
+    width: 2px;
+}
+
+@media screen and (max-height: 640px) {
+    .header-line {
+        width:0;
+        height: 4px;
+        max-width: 220px;
+    }
+    .header-svg {
+        width:200px;
+        margin: 16px auto 14px;
+    }
+    header p {
+        font-size: 18px;
+        text-align: center;
+        font-family: "Acrom-Bold", sans-serif;
+        margin-bottom: -8px;
+        margin-top:-8px;
+    }
+    .header-text {
+        margin-bottom: 16px;
+        opacity: 0;
+    }
+    .headArtemArt .w3-display-bottommiddle {
+        bottom: 25px;
+    }
+}
