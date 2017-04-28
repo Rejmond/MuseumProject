@@ -4,7 +4,7 @@ require_once('config.php');
 
 $model = get_base_model();
 $model['title'] = 'О музее';
-$model['returnurl'] = "{$model['current_url']}#main";
+$model['returnurl'] = "{$model['current_url']}";
 $model['about'] = ContentManager::get_entity_by_context('about')['content'];
 $model['news'] = get_entities('news');
 $model['expositions'] = get_entities('exposition', null, 6);

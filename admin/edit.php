@@ -14,7 +14,7 @@ if ($context) {
 
 $accept = optional_param('accept', false);
 $cancel = optional_param('cancel', false);
-$returnurl = optional_param('returnurl', "{$CONFIG->wwwroot}/entity.php?id={$entity_id}#main");
+$returnurl = optional_param('returnurl', "{$CONFIG->wwwroot}/entity.php?id={$entity_id}");
 
 if ($cancel !== false) {
     redirect($returnurl);
@@ -22,7 +22,7 @@ if ($cancel !== false) {
 
 $object = EntityManager::get_object($entity_id);
 if (!$object) {
-    redirect("$CONFIG->wwwroot/index.php#main");
+    redirect("$CONFIG->wwwroot/museum.php");
 }
 
 $model = get_base_model();
@@ -45,5 +45,5 @@ $template = 'admin/' . get_entity_template($object['context']);
 if (file_exists("$CONFIG->dirroot/templates/$template")) {
     echo $Twig->render($template, $model);
 } else {
-    redirect("$CONFIG->wwwroot/museum.php#main");
+    redirect("$CONFIG->wwwroot/museum.php");
 }

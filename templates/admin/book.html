@@ -11,7 +11,7 @@
             <input type="hidden" name="context" value="{{ context }}">
             {% endif %}
 
-            <p class="bold w3-large">Название книги:</p>
+            <p class="bold w3-large">Название книги</p>
             {% if errors.name %}
             <div  class="login-snack-bar">
                 Вы не указали название книги
@@ -20,7 +20,7 @@
             <input type="text" name="name" value="{{ params.name|raw }}" autocomplete="off">
 
             {% if not id %}
-            <p class="bold w3-large">Обложка книги:</p>
+            <p class="bold w3-large">Обложка книги</p>
             {% if errors.image %}
             <div  class="login-snack-bar">
                 Вы не указали обложку книги
@@ -29,7 +29,7 @@
             <input type="file" name="image">
             {% endif %}
 
-            <p class="bold w3-large">Аннотация книги:</p>
+            <p class="bold w3-large">Аннотация книги</p>
             {% if errors.content %}
             <div  class="login-snack-bar">
                 Вы не указали аннотацию книги
@@ -39,7 +39,7 @@
                 <textarea name="content">{{ content|raw }}</textarea>
             </div>
 
-            <p class="bold w3-large">Описание книги:</p>
+            <p class="bold w3-large">Описание книги</p>
             {% if errors.description %}
             <div  class="login-snack-bar">
                 Вы не указали описание книги

@@ -11,7 +11,7 @@
             <input type="hidden" name="context" value="{{ context }}">
             {% endif %}
 
-            <p class="bold w3-large">Заголовок тематической выставки:</p>
+            <p class="bold w3-large">Заголовок тематической выставки</p>
             {% if errors.name %}
             <div class="login-snack-bar">
                 Вы не указали заголовок тематической выставки
@@ -19,7 +19,7 @@
             {% endif %}
             <input type="text" name="name" value="{{ params.name|raw }}">
 
-            <p class="bold w3-large">Время проведения тематической выставки:</p>
+            <p class="bold w3-large">Время проведения тематической выставки</p>
             {% if errors.interval %}
             <div class="login-snack-bar">
                 Вы не указали время проведения тематической выставки
@@ -27,7 +27,7 @@
             {% endif %}
             <input type="text" name="interval" value="{{ params.interval|raw }}">
 
-            <p class="bold w3-large">Краткое описание тематической выставки:</p>
+            <p class="bold w3-large">Краткое описание тематической выставки</p>
             {% if errors.content %}
             <div class="login-snack-bar">
                 Вы не указали краткое описание тематической выставки
@@ -37,7 +37,7 @@
                 <textarea name="content">{{ content|raw }}</textarea>
             </div>
 
-            <p class="bold w3-large">Подробное описание тематической выставки:</p>
+            <p class="bold w3-large">Подробное описание тематической выставки</p>
             {% if errors.fulltext %}
             <div class="login-snack-bar">
                 Вы не указали подробное описание тематической выставки

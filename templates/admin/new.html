@@ -12,7 +12,7 @@
             {% endif %}
 
 
-            <p class="bold w3-large">Заголовок новости:</p>
+            <p class="bold w3-large">Заголовок новости</p>
             {% if errors.name %}
             <div class="login-snack-bar">
                 Вы не указали заголовок новости
@@ -20,7 +20,7 @@
             {% endif %}
             <input type="text" name="name" value="{{ params.name|raw }}">
 
-            <p class="bold w3-large">Краткое описание новости:</p>
+            <p class="bold w3-large">Краткое описание новости</p>
             {% if errors.content %}
             <div class="login-snack-bar">
                 Вы не указали краткое описание новости
@@ -30,7 +30,7 @@
                 <textarea name="content">{{ content|raw }}</textarea>
             </div>
 
-            <p class="bold w3-large">Подробное описание новости:</p>
+            <p class="bold w3-large">Подробное описание новости</p>
             {% if errors.fulltext %}
             <div class="login-snack-bar">
                 Вы не указали подробное описание новости

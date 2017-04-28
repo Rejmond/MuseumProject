@@ -5,7 +5,7 @@
     <h1 class="caption w3-xxlarge">Знаменитые выпускники вуза</h1>
     {% if admin %}
     <div class="h1-to-form">
-        <a href="{{ wwwroot }}/admin/add.php?context={{ context }}#main">
+        <a href="{{ wwwroot }}/admin/add.php?context={{ context }}">
             <img src="{{ wwwroot }}/images/add.png" />
         </a>
     </div>
@@ -22,7 +22,7 @@
                 {% endif %}
             </div>
             <div >
-                <a href="{{ wwwroot }}/entity.php?id={{ entity.id }}&returnurl={{ returnurl|url_encode }}#main">
+                <a href="{{ wwwroot }}/entity.php?id={{ entity.id }}&returnurl={{ returnurl|url_encode }}">
                     <p class="bold w3-large w3-margin-0">
                         {{ entity.params.name|raw }}
                         {% if admin %}
@@ -34,8 +34,8 @@
                 </a>
                 {% if admin %}
                 <div class="p-to-form">
-                    <a href="{{ wwwroot }}/admin/edit.php?id={{ entity.id }}&returnurl={{ returnurl|url_encode }}#main"><img src="{{ wwwroot }}/images/edit.png" /></a>
-                    <a href="{{ wwwroot }}/admin/delete.php?id={{ entity.id }}&returnurl={{ returnurl|url_encode }}#main"><img src="{{ wwwroot }}/images/delete.png" /></a>
+                    <a href="{{ wwwroot }}/admin/edit.php?id={{ entity.id }}&returnurl={{ returnurl|url_encode }}"><img src="{{ wwwroot }}/images/edit.png" /></a>
+                    <a href="{{ wwwroot }}/admin/delete.php?id={{ entity.id }}&returnurl={{ returnurl|url_encode }}"><img src="{{ wwwroot }}/images/delete.png" /></a>
                 </div>
                 {% endif %}
                 <p>
@@ -44,7 +44,7 @@
             </div>
         </div>
         <div class="more">
-            <a href="{{ wwwroot }}/entity.php?id={{ entity.id }}&returnurl={{ returnurl|url_encode }}#main">
+            <a href="{{ wwwroot }}/entity.php?id={{ entity.id }}&returnurl={{ returnurl|url_encode }}">
                 Подробнее
             </a>
         </div>
@@ -53,6 +53,6 @@
 
     {% include 'pagination.html' %}
 
-    <div class="to-begin"><a href="{{ wwwroot }}/entities.php?context=exposition#main">К списку экспозиций</a></div>
+    <div class="to-begin"><a href="{{ wwwroot }}/entities.php?context=exposition">К списку экспозиций</a></div>
 </div>
 {% endblock %}

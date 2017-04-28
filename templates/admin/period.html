@@ -11,7 +11,7 @@
             <input type="hidden" name="context" value="{{ context }}">
             {% endif %}
 
-            <p class="bold w3-large">Временной интервал:</p>
+            <p class="bold w3-large">Временной интервал</p>
             {% if errors.interval %}
             <div class="login-snack-bar">
                 Вы не указали заголовок новости
@@ -19,7 +19,7 @@
             {% endif %}
             <input type="text" name="interval" value="{{ params.interval|raw }}">
 
-            <p class="bold w3-large">Порядок отображения:</p>
+            <p class="bold w3-large">Порядок отображения</p>
             {% if errors.order %}
             <div class="login-snack-bar">
                 Вы не указали номер порядка отображения
@@ -27,7 +27,7 @@
             {% endif %}
             <input type="number" name="order" value="{{ params.order|raw }}">
 
-            <p class="bold w3-large">Краткое описание промежутка времени:</p>
+            <p class="bold w3-large">Краткое описание промежутка времени</p>
             {% if errors.content %}
             <div class="login-snack-bar">
                 Вы не указали краткое описание промежутка времени
@@ -37,7 +37,7 @@
                 <textarea name="content">{{ content|raw }}</textarea>
             </div>
 
-            <p class="bold w3-large">Подробное описание промежутка времени:</p>
+            <p class="bold w3-large">Подробное описание промежутка времени</p>
             {% if errors.fulltext %}
             <div class="login-snack-bar">
                 Вы не указали подробное описание промежутка времени

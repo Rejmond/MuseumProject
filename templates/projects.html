@@ -5,19 +5,19 @@
     <h1 class="caption">ПРОЕКТЫ<span class="lightGrey-2"> / PROJECTS</span></h1>
     {% if admin %}
     <div class="h1-to-form">
-        <a href="{{ wwwroot }}/admin/add.php?context={{ context }}#main"><img src="{{ wwwroot }}/images/add.png" /></a>
+        <a href="{{ wwwroot }}/admin/add.php?context={{ context }}"><img src="{{ wwwroot }}/images/add.png" /></a>
     </div>
     {% endif %}
 
     {% for entity in entities %}
     <div class="w3-row textrow1">
-        <a  href="{{ wwwroot }}/entity.php?id={{ entity.id }}&returnurl={{ returnurl|url_encode }}#main"><p class="bold w3-large w3-margin-0">
+        <a  href="{{ wwwroot }}/entity.php?id={{ entity.id }}&returnurl={{ returnurl|url_encode }}"><p class="bold w3-large w3-margin-0">
             {{ entity.params.name|raw }}
         </p></a>
         {% if admin %}
         <div class="p-to-form">
-            <a href="{{ wwwroot }}/admin/edit.php?id={{ entity.id }}&returnurl={{ returnurl|url_encode }}#main"><img src="{{ wwwroot }}/images/edit.png" /></a>
-            <a href="{{ wwwroot }}/admin/delete.php?id={{ entity.id }}&returnurl={{ returnurl|url_encode }}#main"><img src="{{ wwwroot }}/images/delete.png" /></a>
+            <a href="{{ wwwroot }}/admin/edit.php?id={{ entity.id }}&returnurl={{ returnurl|url_encode }}"><img src="{{ wwwroot }}/images/edit.png" /></a>
+            <a href="{{ wwwroot }}/admin/delete.php?id={{ entity.id }}&returnurl={{ returnurl|url_encode }}"><img src="{{ wwwroot }}/images/delete.png" /></a>
         </div>
         {% endif %}
         <p>
@@ -28,7 +28,7 @@
             <img src="{{ wwwroot }}/file.php?id={{ (entity.files.photos|last).id }}">
         </div>
         {% endif %}
-        <div class="more"><a href="{{ wwwroot }}/entity.php?id={{ entity.id }}&returnurl={{ returnurl|url_encode }}#main">Подробнее</a></div>
+        <div class="more"><a href="{{ wwwroot }}/entity.php?id={{ entity.id }}&returnurl={{ returnurl|url_encode }}">Подробнее</a></div>
     </div>
     {% endfor %}
 

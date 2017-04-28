@@ -6,7 +6,7 @@
     <p class="about">
         {{ about }}
     </p>
-    <div class="allpubs"><a href="{{ wwwroot }}/entity.php?context=about#main">ПОДРОБНЕЕ</a></div>
+    <div class="allpubs"><a href="{{ wwwroot }}/entity.php?context=about">ПОДРОБНЕЕ</a></div>
     <h2 class="bold">Новости музея</h2>
     <div class="w3-row">
         <div class="quarter-to-2">
@@ -19,7 +19,7 @@
                     <div class="placeholder-news"></div>
                     {% endif %}
                 </div>
-                <a href="{{ wwwroot }}/entity.php?id={{ new.id }}&returnurl={{ returnurl|url_encode }}#main"><p class="bold w3-large w3-margin-0">{{ new.params.name }}</p></a>
+                <a href="{{ wwwroot }}/entity.php?id={{ new.id }}&returnurl={{ returnurl|url_encode }}"><p class="bold w3-large w3-margin-0">{{ new.params.name }}</p></a>
                 <p class="lightGrey text2">{{ new.date|raw|date("d.m.Y H:i") }}</p>
                 <p>{{ new.content }}</p>
             </div>
@@ -35,40 +35,40 @@
                     <div class="placeholder-news"></div>
                     {% endif %}
                 </div>
-                <a href="{{ wwwroot }}/entity.php?id={{ new.id }}&returnurl={{ returnurl|url_encode }}#main"><p class="bold w3-large w3-margin-0">{{ new.params.name }}</p></a>
+                <a href="{{ wwwroot }}/entity.php?id={{ new.id }}&returnurl={{ returnurl|url_encode }}"><p class="bold w3-large w3-margin-0">{{ new.params.name }}</p></a>
                 <p class="lightGrey text2">{{ new.date|raw|date("d.m.Y H:i") }}</p>
                 <p>{{ new.content }}</p>
             </div>
         {% endfor %}
         </div>
     </div>
-    <div class="allpubs"><a href="{{ wwwroot }}/entities.php?context=news#main">ВСЕ НОВОСТИ</a></div>
+    <div class="allpubs"><a href="{{ wwwroot }}/entities.php?context=news">ВСЕ НОВОСТИ</a></div>
 
     <h2 class="bold">Экспозиция</h2>
     <div class="w3-row">
         {% set separator = (expositions|length / 2)|round(0, 'ceil') %}
         <div class="w3-half histoInsts">
-            <a href="{{ wwwroot }}/entities.php?context=exposition-scientists#main">
+            <a href="{{ wwwroot }}/entities.php?context=exposition-scientists">
                 <p class="bold w3-large">-&nbsp;Ученые, профессора, члены академий вуза</p>
             </a>
             {% for exposition in expositions[:separator] %}
-            <a href="{{ wwwroot }}/entity.php?id={{ exposition.id }}&returnurl={{ returnurl|url_encode }}#main">
+            <a href="{{ wwwroot }}/entity.php?id={{ exposition.id }}&returnurl={{ returnurl|url_encode }}">
                 <p class="bold w3-large">-&nbsp;{{ exposition.params.name|raw }}</p>
             </a>
             {% endfor %}
         </div>
         <div class="w3-half histoInsts w3-margin-bottom">
-            <a href="{{ wwwroot }}/entities.php?context=exposition-graduates#main">
+            <a href="{{ wwwroot }}/entities.php?context=exposition-graduates">
                 <p class="bold w3-large">-&nbsp;Знаменитые выпускники вуза</p>
             </a>
             {% for exposition in expositions[separator:] %}
-            <a href="{{ wwwroot }}/entity.php?id={{ exposition.id }}&returnurl={{ returnurl|url_encode }}#main">
+            <a href="{{ wwwroot }}/entity.php?id={{ exposition.id }}&returnurl={{ returnurl|url_encode }}">
                 <p class="bold w3-large">-&nbsp;{{ exposition.params.name|raw }}</p>
             </a>
             {% endfor %}
         </div>
     </div>
-    <div class="allpubs"><a href="{{ wwwroot }}/entities.php?context=exposition#main">ВСЕ ЭКСПОЗИЦИИ</a></div>
+    <div class="allpubs"><a href="{{ wwwroot }}/entities.php?context=exposition">ВСЕ ЭКСПОЗИЦИИ</a></div>
 
     <h2 class="bold">Тематические выставки</h2>
     <div class="w3-row">
@@ -82,7 +82,7 @@
                     <div class="placeholder-exhibition"></div>
                     {% endif %}
                 </div>
-                <a href="{{ wwwroot }}/entity.php?id={{ exhibition.id }}&returnurl={{ returnurl|url_encode }}#main"><p class="bold w3-large w3-margin-0">{{ exhibition.params.name }}</p></a>
+                <a href="{{ wwwroot }}/entity.php?id={{ exhibition.id }}&returnurl={{ returnurl|url_encode }}"><p class="bold w3-large w3-margin-0">{{ exhibition.params.name }}</p></a>
                 <p class="lightGrey text2">{{ exhibition.params.interval }}</p>
                 <p>{{ exhibition.content }}</p>
             </div>
@@ -98,14 +98,14 @@
                     <div class="placeholder-exhibition"></div>
                     {% endif %}
                 </div>
-                <a href="{{ wwwroot }}/entity.php?id={{ exhibition.id }}&returnurl={{ returnurl|url_encode }}#main"><p class="bold w3-large w3-margin-0">{{ exhibition.params.name }}</p></a>
+                <a href="{{ wwwroot }}/entity.php?id={{ exhibition.id }}&returnurl={{ returnurl|url_encode }}"><p class="bold w3-large w3-margin-0">{{ exhibition.params.name }}</p></a>
                 <p class="lightGrey text2">{{ exhibition.params.interval }}</p>
                 <p>{{ exhibition.content }}</p>
             </div>
             {% endfor %}
         </div>
     </div>
-    <div class="allpubs"><a href="{{ wwwroot }}/entities.php?context=exhibitions#main">ВСЕ ВЫСТАВКИ</a></div>
+    <div class="allpubs"><a href="{{ wwwroot }}/entities.php?context=exhibitions">ВСЕ ВЫСТАВКИ</a></div>
 
     <h2 class="bold">Календарь знаменательных дат</h2>
     <section class="cd-horizontal-timeline">
@@ -132,7 +132,7 @@
             <ol>
                 {% for date in calendar %}
                 <li data-date="{{ date.params.timestamp|date('d/m/Y') }}">
-                    <a href="{{ wwwroot }}/entity.php?id={{ date.id }}&returnurl={{ returnurl|url_encode }}#main">
+                    <a href="{{ wwwroot }}/entity.php?id={{ date.id }}&returnurl={{ returnurl|url_encode }}">
                         <p class="bold w3-large w3-margin-0">{{ date.params.name }}</p>
                     </a>
                     <p> {{ date.content }}</p>
@@ -141,7 +141,7 @@
             </ol>
         </div> <!-- .events-content -->
     </section>
-    <div class="allpubs"><a href="{{ wwwroot }}/entities.php?context=calendar#main">ВСЕ ЗНАМЕНАТЕЛЬНЫЕ ДАТЫ</a></div>
+    <div class="allpubs"><a href="{{ wwwroot }}/entities.php?context=calendar">ВСЕ ЗНАМЕНАТЕЛЬНЫЕ ДАТЫ</a></div>
 
     <h2 class="bold">День дарителя</h2>
     <div class="w3-row">
@@ -155,7 +155,7 @@
                     <div class="placeholder-gift"></div>
                     {% endif %}
                 </div>
-                <a href="{{ wwwroot }}/entity.php?id={{ present.id }}&returnurl={{ returnurl|url_encode }}#main"><p class="bold w3-large w3-margin-0">{{ present.params.name }}</p></a>
+                <a href="{{ wwwroot }}/entity.php?id={{ present.id }}&returnurl={{ returnurl|url_encode }}"><p class="bold w3-large w3-margin-0">{{ present.params.name }}</p></a>
                 <p class="lightGrey text2">Даритель: {{ present.params.presenter }}</p>
                 <p>{{ present.content }}</p>
             </div>
@@ -171,14 +171,14 @@
                     <div class="placeholder-gift"></div>
                     {% endif %}
                 </div>
-                <a href="{{ wwwroot }}/entity.php?id={{ present.id }}&returnurl={{ returnurl|url_encode }}#main"><p class="bold w3-large w3-margin-0">{{ present.params.name }}</p></a>
+                <a href="{{ wwwroot }}/entity.php?id={{ present.id }}&returnurl={{ returnurl|url_encode }}"><p class="bold w3-large w3-margin-0">{{ present.params.name }}</p></a>
                 <p class="lightGrey text2">Даритель: {{ present.params.presenter }}</p>
                 <p>{{ present.content }}</p>
             </div>
             {% endfor %}
         </div>
     </div>
-    <div class="allpubs"><a href="{{ wwwroot }}/entities.php?context=presents#main">ВСЕ ПОДАРКИ</a></div>
+    <div class="allpubs"><a href="{{ wwwroot }}/entities.php?context=presents">ВСЕ ПОДАРКИ</a></div>
 
     <h2 class="bold">Геологический музей</h2>
     <div class="w3-row">
@@ -186,7 +186,7 @@
             {{ geologic }}
         </p>
     </div>
-    <div class="allpubs"><a  href="{{ wwwroot }}/entity.php?context=geologic#main">ПОДРОБНЕЕ</a></div>
+    <div class="allpubs"><a  href="{{ wwwroot }}/entity.php?context=geologic">ПОДРОБНЕЕ</a></div>
 
 </div>
 {% endblock %}

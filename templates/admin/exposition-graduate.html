@@ -11,7 +11,7 @@
             <input type="hidden" name="context" value="{{ context }}">
             {% endif %}
 
-            <p class="bold w3-large">Ф.И.О. выпускника:</p>
+            <p class="bold w3-large">Ф.И.О. выпускника</p>
             {% if errors.name %}
             <div class="login-snack-bar">
                 Вы не указали Ф.И.О. выпускника
@@ -19,7 +19,7 @@
             {% endif %}
             <input type="text" name="name" value="{{ params.name|raw }}">
 
-            <p class="bold w3-large">Порядок отображения:</p>
+            <p class="bold w3-large">Порядок отображения</p>
             {% if errors.order %}
             <div class="login-snack-bar">
                 Вы не указали номер порядка отображения
@@ -28,7 +28,7 @@
             <input type="number" name="order" value="{{ params.order|raw }}">
 
             {% if not id %}
-            <p class="bold w3-large">Фотография:</p>
+            <p class="bold w3-large">Фотография</p>
             {% if errors.image %}
             <div class="login-snack-bar">
                 Вы не указали фотографию выпускника
@@ -37,7 +37,7 @@
             <input type="file" name="image">
             {% endif %}
 
-            <p class="bold w3-large">Краткое описание:</p>
+            <p class="bold w3-large">Краткое описание</p>
             {% if errors.content %}
             <div class="login-snack-bar">
                 Вы не указали краткое описание
@@ -47,7 +47,7 @@
                 <textarea name="content">{{ content|raw }}</textarea>
             </div>
 
-            <p class="bold w3-large">Подробное описание:</p>
+            <p class="bold w3-large">Подробное описание</p>
             {% if errors.fulltext %}
             <div class="login-snack-bar">
                 Вы не указали подробное описание

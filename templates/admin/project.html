@@ -11,7 +11,7 @@
             <input type="hidden" name="context" value="{{ context }}">
             {% endif %}
 
-            <p class="bold w3-large">Название проекта:</p>
+            <p class="bold w3-large">Название проекта</p>
             {% if errors.name %}
             <div class="login-snack-bar">
                 Вы не указали название проекта
@@ -19,7 +19,7 @@
             {% endif %}
             <input type="text" name="name" value="{{ params.name|raw }}">
 
-            <p class="bold w3-large">Краткое описание проекта:</p>
+            <p class="bold w3-large">Краткое описание проекта</p>
             {% if errors.content %}
             <div class="login-snack-bar">
                 Вы не указали краткое описание проекта
@@ -29,7 +29,7 @@
                 <textarea name="content">{{ content|raw }}</textarea>
             </div>
 
-            <p class="bold w3-large">Подробное описание проекта:</p>
+            <p class="bold w3-large">Подробное описание проекта</p>
             {% if errors.fulltext %}
             <div class="login-snack-bar">
                 Вы не указали подробное описание проекта

@@ -10,18 +10,18 @@ $cancel = optional_param('cancel', false);
 $returnurl = optional_param('returnurl', false);
 
 if ($cancel !== false) {
-    redirect($returnurl ? $returnurl : "{$CONFIG->wwwroot}/entity.php?id={$entity_id}#main");
+    redirect($returnurl ? $returnurl : "{$CONFIG->wwwroot}/entity.php?id={$entity_id}");
 }
 
 $object = EntityManager::get_object($entity_id);
 if (!$object) {
-    redirect("$CONFIG->wwwroot/museum.php#main");
+    redirect("$CONFIG->wwwroot/museum.php");
 }
 
 if (post_data_submitted() && $accept !== false) {
     $result = EntityManager::delete_object_from_submit();
     if ($result) {
-        redirect($returnurl ? $returnurl : "{$CONFIG->wwwroot}/entities.php?context={$result['context']}#main");
+        redirect($returnurl ? $returnurl : "{$CONFIG->wwwroot}/entities.php?context={$result['context']}");
     }
 }
 

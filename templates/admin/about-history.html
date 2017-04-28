@@ -6,7 +6,7 @@
     <div>
         <form method="post" autocomplete="off">
             <input type="hidden" name="id" value="{{ id }}">
-            <p class="bold w3-large">Краткое описание:</p>
+            <p class="bold w3-large">Краткое описание</p>
             {% if errors.content %}
             <div  class="login-snack-bar">
                 Вы не указали краткое описание
@@ -15,7 +15,7 @@
             <div class="edit-textarea">
                 <textarea name="content">{{ content|raw }}</textarea>
             </div>
-            <p class="bold w3-large">Подробное описание:</p>
+            <p class="bold w3-large">Подробное описание</p>
             {% if errors.fulltext %}
             <div  class="login-snack-bar">
                 Вы не указали подробное описание

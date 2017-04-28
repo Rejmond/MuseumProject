@@ -33,7 +33,7 @@
             </p>
             {% if admin %}
             <div class="p-to-form">
-                <a href="{{ wwwroot }}/admin/edit.php?id={{ entity.id }}&returnurl={{ returnurl|url_encode }}#main"><img src="{{ wwwroot }}/images/edit.png" /></a>
+                <a href="{{ wwwroot }}/admin/edit.php?id={{ entity.id }}&returnurl={{ returnurl|url_encode }}"><img src="{{ wwwroot }}/images/edit.png" /></a>
             </div>
             {% endif %}
             <p>
@@ -47,7 +47,7 @@
         <ul>
             {% for year in papers_years %}
             <li><span {% if year.year == current_year %}style="font-family:'OpenSans-bold'; color:#007bc6;"{% endif %}>
-                <a href="{{ wwwroot }}/papers.php?paper={{ entity.context }}&year={{ year.year }}#main">{{ year.year }}</a>
+                <a href="{{ wwwroot }}/papers.php?paper={{ entity.context }}&year={{ year.year }}">{{ year.year }}</a>
             </span></li>
             {% endfor %}
         </ul>
@@ -73,7 +73,7 @@
             <td><a href="{{ wwwroot }}/file.php?id={{ paper.files.file.id }}">Скачать газету</a></td>
             <td style="width: 30px">
                 {% if admin %}
-                <a href="{{ wwwroot }}/admin/delete.php?id={{ paper.id }}&returnurl={{ returnurl|url_encode }}#main"><img src="{{ wwwroot }}/images/delete.png" /></a>
+                <a href="{{ wwwroot }}/admin/delete.php?id={{ paper.id }}&returnurl={{ returnurl|url_encode }}"><img src="{{ wwwroot }}/images/delete.png" /></a>
                 {% endif %}
             </td>
         </tr>
@@ -82,7 +82,7 @@
         {% if admin %}
         <tr>
             <td colspan="5">
-                <a href="{{ wwwroot }}/admin/add.php?context={{ papers_context }}&returnurl={{ returnurl|url_encode }}#main">
+                <a href="{{ wwwroot }}/admin/add.php?context={{ papers_context }}&returnurl={{ returnurl|url_encode }}">
                     <img src="{{ wwwroot }}/images/add.png" />
                 </a>
             </td>
@@ -91,6 +91,6 @@
         </table>
     </div>
 
-    <div class="to-begin"><a href="{{ wwwroot }}/history.php#main">В начало</a></div>
+    <div class="to-begin"><a href="{{ wwwroot }}/history.php">В начало</a></div>
 </div>
 {% endblock %}
