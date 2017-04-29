@@ -11,7 +11,7 @@
 
     {% for entity in entities %}
     <div class="w3-row ">
-        <a  href="{{ entity.params.link }}"><p class="bold w3-large w3-margin-0">
+        <a href="{{ entity.params.link }}" target="_blank"><p class="bold w3-large w3-margin-0">
             {{ entity.content|raw }}
         </p></a>
         {% if admin %}

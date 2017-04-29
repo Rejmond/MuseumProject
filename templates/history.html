@@ -163,7 +163,7 @@
         {% set separator = (history_of_institute|length / 2)|round(0, 'ceil') %}
         <div class="w3-half histoInsts ">
             {% for history in history_of_institute[:separator] %}
-            <a href="{{ history.params.link }}">
+            <a href="{{ history.params.link }}" target="_blank">
                 <p>-&nbsp;{{ history.content|raw }}</p>
             </a>
             {% endfor %}
