@@ -5,10 +5,10 @@
     <div class="container">
         <form method="post" autocomplete="off">
             <input type="hidden" value="{{ id }}" name="id">
-            <p class="w3-container">Вы уверены, что хотите удалить объект с ID равным "{{ id }}"?</p>
+            <p class="w3-container">Удалить объект с ID равным "{{ id }}"?</p>
             <div class="clearfix">
-                <button class="delete-button" type="submit" value="accept" name="accept">Удалить</button>
                 <button class="cancel-button" type="submit" value="cancel" name="cancel">Отмена</button>
+                <button class="delete-button" type="submit" value="accept" name="accept">Удалить</button>
             </div>
         </form>
     </div>

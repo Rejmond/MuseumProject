@@ -33,9 +33,10 @@ function get_base_model() {
     }
 
     return array(
-        'wwwroot'     => $CONFIG->wwwroot,
-        'admin'       => $USER->is_admin(),
-        'current_url' => $protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']
+        'wwwroot'      => $CONFIG->wwwroot,
+        'admin'        => $USER->is_admin(),
+        'current_url'  => $protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'],
+        'current_date' => time()
     );
 }
 
