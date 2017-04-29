@@ -1,9 +1,10 @@
-/* Header стили */
-header {
+body {
     background: #f0f0f0;
-    cursor: pointer;
 }
-/* SVG анимация */
+header {
+    cursor: pointer;
+    line-height: 1.5;
+}
 header .xPoTryMN_0 {
     fill:#494951;
     fill-opacity: 0.0;
@@ -32,11 +33,14 @@ header .xPoTryMN_4 {
     stroke-dasharray:176 178;stroke-dashoffset:177;
     animation:xPoTryMN_draw 1s linear 0.75s forwards, KLxHEKXr_fill 500ms ease 4s forwards;
 }
-/* центрирующая обёртка под header */
 header .headArtemArt {
+    display: flex;
     max-width: 1200px;
-    margin: 0 auto;
+    margin: auto;
     height: 100vh;
+}
+.header-display-middle {
+    margin: auto;
 }
 /* линии под/над svg */
 header .header-line {
@@ -63,10 +67,6 @@ header .header-text {
     margin-bottom: 26px;
     opacity: 0;
 }
-/* извращения артема */
-header .headArtemArt .w3-display-bottommiddle {
-    bottom: 25px;
-}
 header #mouse {
     position: relative;
     opacity: 0.0;
@@ -80,13 +80,13 @@ header #scroll_btn {
     width: 2px;
 }
 
-@media screen and (max-height: 640px) {
-    .header-line {
+@media screen and (max-height: 640px), screen and (max-width: 500px) {
+    header .header-line {
         width:0;
         height: 4px;
         max-width: 220px;
     }
-    .header-svg {
+    header .header-svg {
         width:200px;
         margin: 16px auto 14px;
     }
@@ -97,11 +97,41 @@ header #scroll_btn {
         margin-bottom: -8px;
         margin-top:-8px;
     }
-    .header-text {
+    header .header-text {
         margin-bottom: 16px;
         opacity: 0;
     }
-    .headArtemArt .w3-display-bottommiddle {
-        bottom: 25px;
+
+}
+
+
+@media screen and (max-height: 320px), screen and (max-width: 280px) {
+    header .header-line {
+        width:0;
+        height: 3px;
+        max-width: 140px;
     }
+    header .header-svg {
+        width:140px;
+        margin: 8px auto 6px;
+    }
+    header p {
+        font-size: 12px;
+        text-align: center;
+        font-family: "Acrom-Bold", sans-serif;
+        margin-bottom: -4px;
+        margin-top:-4px;
+    }
+    header .header-text {
+        margin-bottom: 12px;
+        opacity: 0;
+    }
+
+}
+a:link,
+a:active,
+a:hover,
+a:visited {
+    text-decoration: none;
+    color: #494952;
 }

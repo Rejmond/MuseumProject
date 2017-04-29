@@ -36,7 +36,12 @@
                 Вы не прикрепили файл с газетой
             </div>
             {% endif %}
-            <input type="file" name="file">
+            <div class="edit-file">
+                <input class="input-file" type="file" id="file" name="file">
+                <label class="forJsLabelFile" for="file">
+                    <span class="forJsFileName">Выберите файл</span>
+                </label>
+            </div>
             {% endif %}
 
             <div class="button-container-logout">

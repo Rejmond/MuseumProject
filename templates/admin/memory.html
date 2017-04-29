@@ -26,7 +26,12 @@
                 Вы не указали фотографию
             </div>
             {% endif %}
-            <input type="file" name="image">
+            <div class="edit-file">
+                <input class="input-file" type="file" id="file" name="image">
+                <label class="forJsLabelFile" for="file">
+                    <span class="forJsFileName">Выберите файл</span>
+                </label>
+            </div>
             {% endif %}
 
             <p class="bold w3-large">Краткое описание</p>

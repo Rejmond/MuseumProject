@@ -40,7 +40,7 @@ $(document).ready(function() {
     tinymce.init({
         selector: '.tiny', plugins: 'link image autoresize',
         autoresize_bottom_margin: 20,
-        content_style: "body {margin: 14px; font-family: OpenSans-Regular, sans-serif !important}",
+        content_style: "body {margin: 14px; font-family: OpenSans-Regular, sans-serif !important;}",
         language: 'ru', file_browser_callback: RoxyFileBrowser,
         relative_urls : false,
         remove_script_host :false,
@@ -51,10 +51,9 @@ $(document).ready(function() {
                 {title: 'Серый светлый', inline: 'span', styles:{'color': '#989797'}},
                 {title: 'Синий СибГИУ', inline: 'span', styles:{'color': '#007bc6'}}
             ]},
-            {title: 'Headers', items: [
-                {title: 'Header 3', block: 'h3', styles:{'color': '#ff0000', 'font-size': '32px' }},
-                {title: 'Header 4', format: 'h4'},
-                {title: 'Header 5', format: 'h5'}
+            {title: 'Заголовки', items: [
+                {title: 'Заголовок 1', block: 'h3', styles:{'font-size': '24px','font-family': 'OpenSans-Bold, sans-serif !important', 'color': '#494952' }},
+                {title: 'Заглоовок 2', block: 'h4', styles:{'font-size': '20px','font-family': 'OpenSans-Bold, sans-serif !important', 'color': '#494952' }},
             ]},
             {title: 'Inline', items: [
                 {title: 'Bold', icon: 'bold', format: 'bold'},
@@ -65,8 +64,12 @@ $(document).ready(function() {
                 {title: 'Subscript', icon: 'subscript', format: 'subscript'},
                 {title: 'Code', icon: 'code', format: 'code'}
             ]},
-            {title: 'Blocks', items: [
-                {title: 'Paragraph', format: 'p', styles:{'color': '#007bc6'}},
+            {title: 'Блоки текста', items: [
+                {title: 'Параграф', block: 'p', styles:{
+                    'color': '#494952',
+                    'font-size': '16px',
+                    'font-family': 'OpenSans-Regular, sans-serif !important'
+                    }},
                 {title: 'Blockquote', format: 'blockquote'},
                 {title: 'Div', format: 'div'},
                 {title: 'Pre', format: 'pre'}
@@ -90,7 +93,20 @@ $(document).ready(function() {
         else {
             $(".mynav").css({marginLeft: 0});
         }
+        miniFooter();
     }).resize();
+
+    $('.input-file').each(function() {
+        var $file = $(this),
+            $label = $file.next('.forJsLabelFile'),
+            labelVal = $label.html();
+        $file.on('change', function(e) { //при изменении значения input
+            var fileName = '';
+            if (e.target.value)
+                fileName = e.target.value.split('\\').pop(); // вырезаем имя из пути
+            $label.find('.forJsFileName').html(fileName);
+        });
+    });
 
     $(window).scroll(function () {
         changePosition();
@@ -100,11 +116,20 @@ $(document).ready(function() {
         changePosition();
         imageTransfiguration();
         tinyImgSize();
+        miniFooter();
     });
     snackBarFunction();
     changePosition();
+    miniFooter();
 });
 
+function miniFooter() {
+    var x = $(window).height();
+    $("main").css({'min-height': $("body").height() > x ?
+        '700px' :
+        x-$('footer').height()
+    });
+}
 
 function snackBarFunction() {
     var displaySnack = -20;
@@ -161,67 +186,6 @@ function imageTransfiguration() {
     });
 }
 
-// function ChangePosition()
-// {
-
-//     var burger = $('#openNav').css('display');
-//     var id = 0;
-
-//     if (burger=='none')
-//     {
-//         id = 1;
-//         var target = $('.mynav');
-//     }
-//     else 
-//     {
-//         id = 2 ;
-//         var target = $('#openNav');
-//     }
-
-//     var hHeight = $('header').outerHeight();
-
-//     var scroll_top = $(this).scrollTop(); // get scroll position top
-
-//     var height_element_parent =  $("main").outerHeight(); //get high parent element
-
-//     var height_element = $(target).outerHeight(); //get high of elemeneto
-
-//     var position_fixed_max = height_element_parent; //- height_element; // get the maximum position of the elemen
-
-//     if (scroll_top < hHeight)
-//     {
-//          $(target).css("position","absolute");
-//          var position_fixed =  hHeight;
-
-//     }
-//     else
-//     {
-//         if (position_fixed_max > scroll_top)
-//         {
-//              $(target).css("position","fixed");
-//              $('.mynav').css('height',$(window).height());
-//              var position_fixed = 0;
-//         }
-//         else 
-//         {
-//             $(target).css("position","absolute");
-
-//             if ($('main').height()<=$(window).height())
-//             {
-//                 var position_fixed = hHeight;
-//                 $('.mynav').css('height',height_element_parent);
-//             }
-//             else
-//             {
-//                 var position_fixed = position_fixed_max;
-//                 $('.mynav').css('height',$(window).height());
-//             }
-//         }
-//     }
-
-//     $(target).css("top",position_fixed);
-// }
-
 function changePosition() {
     var target = $('#openNav'),
         burger = target.css('display');
@@ -241,7 +205,7 @@ function changePosition() {
     }
     /*если значение отступа прокрутки сверху больше высоты шапки*/
     else {
-        
+
         /*если значение отступа прокрутки сверху меньше высоты main ВСЕГДА*/
         if (position_fixed_max-$(window).height() > scroll_top) {
             $(target).css("position", "fixed");
@@ -282,24 +246,6 @@ function scrollToTitle() {
     jQuery('body,html').animate({scrollTop: $("header").height()}, 750, 'easeOutQuart');
 }
 
-function loop() {
-    var pst = $("p:first");
-    var scrollPosition = pst.position();
-    var spTop = scrollPosition.top - 285;
-
-    $('#scroll_btn').css(
-        {
-            opacity: 0.5,
-            top: spTop
-        }).animate(
-            {
-                opacity: 0.0,
-                top: spTop + 15
-            }, 1000, 'easeOutQuad', function () {
-                loop();
-            });
-}
-
 function RoxyFileBrowser(field_name, url, type, win) {
     var roxyFileman = '../fileman/index.html';
     if (roxyFileman.indexOf("?") < 0) {
@@ -324,3 +270,4 @@ function RoxyFileBrowser(field_name, url, type, win) {
     }, {window: win, input: field_name});
     return false;
 }
+

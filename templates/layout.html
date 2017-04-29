@@ -61,8 +61,8 @@
 
     {% endblock %}
     <main class="w3-container">
-        <span class="w3-opennav w3-xxlarge w3-container w3-light-grey w3-opacity-min hide-large" onclick="w3_open(); $(window).scroll();" id="openNav">&#9776;</span>
         {% if admin %}
+        <span class="w3-opennav w3-xxlarge w3-container w3-light-grey w3-opacity-min hide-large" onclick="w3_open(); $(window).scroll();" id="openNav"><img style="width:36px; height: 36px;" src="{{ wwwroot }}/images/menu-three-horizontal-lines-symbol.svg"></span>
         <form method="post" action="{{ wwwroot }}/auth.php">
             <div class="button-container-logout">
                 <input type="hidden" name="returnurl" value="{{ current_url }}" />

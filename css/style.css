@@ -59,18 +59,21 @@
 
 
 /* Фоновые изображения, символизирующие 4 основные категории */
-.museum-image {
-    background: url(../images/museum_img.png) no-repeat 790px 55px;
+@media screen and (min-width: 940px) {
+    .museum-image {
+        background: url(../images/museum_img.png) no-repeat 790px 55px;
+    }
+    .history-image {
+        background: url(../images/history_img.png) no-repeat 790px 55px;
+    }
+    .projects-image {
+        background: url(../images/project_img.png) no-repeat 790px 55px;
+    }
+    .student-groups-image {
+        background: url(../images/student-group_img.png) no-repeat 790px 55px;
+    }
 }
-.history-image {
-    background: url(../images/history_img.png) no-repeat 790px 55px;
-}
-.projects-image {
-    background: url(../images/project_img.png) no-repeat 790px 55px;
-}
-.student-groups-image {
-    background: url(../images/student-group_img.png) no-repeat 790px 55px;
-}
+
 
 
 
@@ -120,6 +123,7 @@ html {
 }
 body {
     height: 100%;
+    position: relative;
 }
 main {
     background: #fff;
@@ -127,7 +131,7 @@ main {
     margin: 0 auto;
     padding-bottom: 60px !important;
     font-size: 14rem;
-    min-height: 800px;
+    min-height: 700px;
 }
 main a{
     color: #007bc6;
@@ -161,32 +165,29 @@ footer {
     max-width: 100%;
     margin: 0 auto;
     font-family: "OpenSans-Light", sans-serif;
-    z-index: 20000;
+    z-index: 20;
     flex: 0 0 auto;
+    bottom: 0;
 }
-footer a {
-    color: #bcbaba;
-}
-footer a:link{
-    color: #bcbaba;
+footer a,
+footer a:link,
+footer a:hover,
+footer a:visited,
+footer a:active {
     background-color: transparent;
     text-decoration: none;
 }
-footer a:visited{
+footer a,
+footer a:link,
+footer a:visited {
     color: #bcbaba;
-    background-color: transparent;
-    text-decoration: none;
 }
-footer a:hover{
+footer a:hover {
     color: #b8e4ff;
-    background-color: transparent;
-    text-decoration: none;
     cursor: pointer;
 }
-footer a:active{
+footer a:active {
     color: #007bc6;
-    background-color: transparent;
-    text-decoration: none;
 }
 h1 {
     font-family: "Acrom-Bold", sans-serif;
@@ -220,7 +221,9 @@ h2 {
 input:invalid {
     box-shadow: none;
 }
-
+.w3-large {
+    font-size: 18rem!important
+}
 
 
 
@@ -243,7 +246,7 @@ footer > div {
 footer p {
     line-height: 10px;
     text-align: left;
-    font-size: 14rem;
+    font-size: 14px !important;
 }
 footer span {
     white-space: nowrap;
@@ -267,7 +270,7 @@ footer .contacts {
 }
 footer .siu {
     font-family: 'MinionPro-Medium', sans-serif;
-    font-size: 14rem;
+    font-size: 14px;
     margin-top: 22px;
 }
 footer .siu-img {
@@ -292,7 +295,7 @@ footer .excursion {
     font-size: 18rem;
     background: white ;
     width: 220px;
-    line-height: 15px;
+    line-height: 15rem;
     height: 100vh;
     z-index: 1999;
     overflow: hidden;
@@ -302,8 +305,8 @@ footer .excursion {
 }
 /* выравнивание высоты ссылок */
 .mynav a{
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-top: 10rem;
+    margin-bottom: 10rem;
 }
 /* перекрытие стилей w3 */
 .mynav a:hover{
@@ -337,8 +340,8 @@ ul > ul li span:not(.second-line-margin){
 }
 ul > ul li a{
     max-width: 215px;
-    margin-top: 6px !important;
-    margin-bottom: 6px !important;
+    margin-top: 6rem !important;
+    margin-bottom: 6rem !important;
 }
 .sub-menu{
     font-family: 'OpenSans-Regular', sans-serif;
@@ -486,7 +489,8 @@ main .notflow p {
     padding-top: 4px;
 }
 /* отмена нижнего отступа для красоты и равенства расстояний при расположении в 1 колонку*/
-.history .histoInsts  {
+.history .histoInsts,
+.museum .histoInsts{
     margin-bottom: -18px !important;
 }
 /* выравнивание воспоминаний*/
@@ -507,15 +511,19 @@ main .notflow p {
 .history .history-age ul {
     text-align: justify;
 }
-.history .history-age ul::after {
+.history .history-age ul::after,
+.papers .history-age ul::after {
     width: 100%;
     display: inline-block;
     content: "";
 }
-.history .history-age li {
+.history .history-age li{
     display: inline-block;
 }
-/* руководители */
+.papers .history-age li {
+    display: inline-block;
+    margin-right: 16px;
+}
 .history .history-leader {
     width: 136px;
     margin: auto;
@@ -542,8 +550,8 @@ main .notflow p {
     footer p {
         line-height: normal;
         text-align: left;
-        font-size: 14rem;
-        margin: 0;
+        font-size: 14px;
+        margin: 4px;
     }
     .history .leaders .w3-quarter {
         width: 24.99999%;
@@ -570,6 +578,18 @@ main .notflow p {
     }
 }
 @media screen and (max-width: 900px) {
+    html {
+        font-size: 0.9px;
+    }
+    h1{
+        font-size: 42px;
+    }
+    .w3-xxlarge{
+        font-size: 32px !important;
+    }
+    h2{
+        font-size: 24px;
+    }
     main .w3-col{
         width: 100% !important;
         display: block;
@@ -584,9 +604,15 @@ main .notflow p {
         width:99.99999%;
         margin-top: 20px;
     }
+    footer .w3-row {
+        max-width: 280px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
     footer .w3-quarter {
         width:99.99999%;
-        margin-top: -20px;
+        padding-top: -20px;
     }
     .footerbold {
         margin-bottom: 12px;
@@ -612,7 +638,7 @@ main .notflow p {
 .about {
     font-family: "OpenSans-Light", sans-serif;
     font-size: 18rem;
-    line-height: 28px;
+    line-height: 28rem;
 }
 h2 {
     overflow: hidden;
@@ -792,12 +818,43 @@ h2:after {
 
 .edit-forms textarea {
     resize: none;
+    outline:none;
 }
-.edit-forms input, .edit-forms textarea {
+.edit-forms input,
+.edit-forms textarea,
+.edit-forms .edit-file {
     border: solid 1px #aeadad;
+    outline:none;
+    display:block;
+    padding:8px 16px;
+    border-radius:4px!important
+}
+.edit-forms input[type='file'] {
+    background: #b8e4ff;
+    display: none;
+}
+.edit-forms .edit-file {
+    margin-top:8px;
+    position: relative;
+    padding:8px 16px;
+    width: 100%;
+    height:40px;
+}
+.edit-forms .edit-file span {
+    padding:8px 16px;
+    line-height: 2.5;
+}
+.edit-forms .edit-file label {
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
 }
 .edit-forms input:focus, .edit-forms textarea:focus {
-    box-shadow: 1px 1px 1px 0 #b8e4ff;
+    outline:none;
 }
 
 /* элементы добавления, изменения, удаления */
@@ -980,4 +1037,29 @@ main .quarter-to-2 {
 
 .dates .to-begin {
     margin-top: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Tiny */
+.post-tiny h3 {
+    font-size: 24rem !important;
+    font-family: "OpenSans-Bold", sans-serif;
+}
+.post-tiny h4 {
+    font-size: 20rem !important;
+    font-family: "OpenSans-Bold", sans-serif;
+}
+.post-tiny p {
+    font-size: 16rem !important;
 }
