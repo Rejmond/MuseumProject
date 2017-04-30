@@ -33,7 +33,7 @@ for ($i = 0; $i < count($entities); $i++) {
 
 $model = get_base_model();
 $model['title'] = 'Университетские газеты';
-$model['returnurl'] = "{$model['current_url']}#main";
+$model['returnurl'] = "{$model['current_url']}";
 $model['entity'] = $object;
 $model['papers_years'] = $DB->get_records_sql($sql, $params);
 $model['papers'] = $objects;

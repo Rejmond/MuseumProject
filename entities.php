@@ -5,7 +5,7 @@ require_once('config.php');
 $context = required_param('context');
 validate_context($context);
 if (is_singleton_context($context)) {
-    redirect("$CONFIG->wwwroot/index.php#main");
+    redirect("$CONFIG->wwwroot/museum.php");
 }
 $page = optional_param('page', 0);
 
@@ -48,7 +48,7 @@ for ($i = 0; $i < count($entities); $i++) {
 
 $model = get_base_model();
 $model['title'] = 'Список элементов';
-$model['returnurl'] = "{$model['current_url']}#main";
+$model['returnurl'] = "{$model['current_url']}";
 $model['context'] = $context;
 $model['entities'] = $objects;
 $model['pages'] = $pagination;
@@ -57,5 +57,5 @@ $template = get_entities_template($context);
 if (file_exists("$CONFIG->dirroot/templates/$template")) {
     echo $Twig->render($template, $model);
 } else {
-    redirect("$CONFIG->wwwroot/index.php#main");
+    redirect("$CONFIG->wwwroot/museum.php");
 }

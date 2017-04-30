@@ -4,7 +4,7 @@ require_once('config.php');
 
 $auth = optional_param('auth', false);
 $logout = optional_param('logout', false);
-$returnurl = optional_param('returnurl', "$CONFIG->wwwroot/index.php#main");
+$returnurl = optional_param('returnurl', "$CONFIG->wwwroot/museum.php");
 
 if (post_data_submitted() && $logout !== false) {
     $USER->logout();

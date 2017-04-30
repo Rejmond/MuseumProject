@@ -2,7 +2,7 @@
 
 {% block content %}
 <div id="main" class="edit-forms history-image" data-location="books">
-    <h1 class="caption w3-xxlarge">Книги: {{ title|lower }}</h1>
+    <h1 class="caption w3-xxlarge">Список публикаций: {{ title|lower }}</h1>
     <div >
         <form method="post" enctype="multipart/form-data" autocomplete="off">
             {% if id %}
@@ -11,7 +11,7 @@
             <input type="hidden" name="context" value="{{ context }}">
             {% endif %}
 
-            <p class="bold w3-large">Название книги:</p>
+            <p class="bold w3-large">Название книги</p>
             {% if errors.name %}
             <div  class="login-snack-bar">
                 Вы не указали название книги
@@ -20,16 +20,21 @@
             <input type="text" name="name" value="{{ params.name|raw }}" autocomplete="off">
 
             {% if not id %}
-            <p class="bold w3-large">Обложка книги:</p>
+            <p class="bold w3-large">Обложка книги</p>
             {% if errors.image %}
             <div  class="login-snack-bar">
                 Вы не указали обложку книги
             </div>
             {% endif %}
-            <input type="file" name="image">
+            <div class="edit-file">
+                <input class="input-file" type="file" id="file" name="image">
+                <label class="forJsLabelFile" for="file">
+                    <span class="forJsFileName">Выберите файл</span>
+                </label>
+            </div>
             {% endif %}
 
-            <p class="bold w3-large">Аннотация книги:</p>
+            <p class="bold w3-large">Аннотация книги</p>
             {% if errors.content %}
             <div  class="login-snack-bar">
                 Вы не указали аннотацию книги
@@ -39,7 +44,7 @@
                 <textarea name="content">{{ content|raw }}</textarea>
             </div>
 
-            <p class="bold w3-large">Описание книги:</p>
+            <p class="bold w3-large">Описание книги</p>
             {% if errors.description %}
             <div  class="login-snack-bar">
                 Вы не указали описание книги

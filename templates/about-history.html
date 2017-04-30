@@ -1,18 +1,21 @@
 {% extends "layout.html" %}
 
+{% block title %}Становление{% endblock %}
+
 {% block content %}
 <div id="main" class="history-about history-image" data-location="history-about">
     <div>
         <h1 class="caption w3-xxlarge">Становление</h1>
         {% if admin %}
         <div class="h1-to-form">
-            <a href="{{ wwwroot }}/admin/edit.php?id={{ entity.id }}#main"><img src="{{ wwwroot }}/images/edit.png"/></a>
+            <a href="{{ wwwroot }}/admin/edit.php?id={{ entity.id }}"><img src="{{ wwwroot }}/images/edit.png"/></a>
         </div>
         {% endif %}
     </div>
     <div class="post-tiny">
         {{ entity.params.fulltext|raw }}
     </div>
-    <div class="to-begin"><a href="{{ wwwroot }}/history.php#main">В начало</a></div>
+    <div class="w3-row"></div>
+    <div class="to-begin"><a href="{{ wwwroot }}/history.php">В начало</a></div>
 </div>
 {% endblock %}

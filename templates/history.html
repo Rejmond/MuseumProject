@@ -5,19 +5,19 @@
     <h1 class="caption">ИСТОРИЯ<span class="lightGrey-2"> / HISTORY</span></h1>
     <p class="about">
         {{ about }}
-    </p>00vvv
-    <div class="allpubs"><a href="{{ wwwroot }}/entity.php?context=about-history#main">ПОДРОБНЕЕ</a></div>
+    </p>
+    <div class="allpubs"><a href="{{ wwwroot }}/entity.php?context=about-history">ПОДРОБНЕЕ</a></div>
 
     <h2 class="bold">Хронология создания и развития университета</h2>
     {% for period in periods %}
     <div class="w3-row">
-        <div class="w3-col s3 w3-center history-chronics"><a href="{{ wwwroot }}/entity.php?id={{ period.id }}&returnurl={{ returnurl|url_encode }}#main">
+        <div class="w3-col s3 w3-center history-chronics"><a href="{{ wwwroot }}/entity.php?id={{ period.id }}&returnurl={{ returnurl|url_encode }}">
             <p class="bold w3-large w3-margin-0">{{ period.params.interval }}</p>
         </a></div>
         <div class="w3-col s9 w3-justify text2"><p class="w3-margin-0">{{ period.content }}</p></div>
     </div>
     {% endfor %}
-    <div class="allpubs"><a href="{{ wwwroot }}/entities.php?context=periods#main">ВСЯ ХРОНОЛОГИЯ</a></div>
+    <div class="allpubs"><a href="{{ wwwroot }}/entities.php?context=periods">ВСЯ ХРОНОЛОГИЯ</a></div>
 
     <h2 class="bold">Список книг</h2>
     <div class="w3-row">
@@ -31,7 +31,7 @@
                 {% endif %}
             </div>
             <div class="notflow">
-                <a href="{{ wwwroot }}/entity.php?id={{ book.id }}&returnurl={{ returnurl|url_encode }}#main">
+                <a href="{{ wwwroot }}/entity.php?id={{ book.id }}&returnurl={{ returnurl|url_encode }}">
                     <p class="bold w3-large">{{ book.params.name }}</p>
                 </a>
                 <p class="lightGrey text2"></p>
@@ -51,7 +51,7 @@
                 {% endif %}
             </div>
             <div class="notflow">
-                <a href="{{ wwwroot }}/entity.php?id={{ book.id }}&returnurl={{ returnurl|url_encode }}#main">
+                <a href="{{ wwwroot }}/entity.php?id={{ book.id }}&returnurl={{ returnurl|url_encode }}">
                     <p class="bold w3-large">{{ book.params.name }}</p>
                 </a>
                 <p class="lightGrey text2"></p>
@@ -60,7 +60,7 @@
         </div>
         {% endfor %}
     </div>
-    <div class="allpubs"><a href="{{ wwwroot }}/entities.php?context=books#main">ВСЕ ПУБЛИКАЦИИ</a></div>
+    <div class="allpubs"><a href="{{ wwwroot }}/entities.php?context=books">ВСЕ ПУБЛИКАЦИИ</a></div>
 
     <h2 class="bold" id="papers-anchor">Университетские газеты</h2>
     <div class="w3-row">
@@ -73,7 +73,7 @@
                 {% endif %}
             </div>
             <div class="notflow">
-                <a href="{{ wwwroot }}/papers.php?paper=paper1#main"><p class="bold w3-large">{{ paper1.params.name }}</p></a>
+                <a href="{{ wwwroot }}/papers.php?paper=paper1"><p class="bold w3-large">{{ paper1.params.name }}</p></a>
                 <p class="lightGrey text2"></p>
                 <p>{{ paper1.content }}</p>
             </div>
@@ -87,7 +87,7 @@
                 {% endif %}
             </div>
             <div class="notflow">
-                <a href="{{ wwwroot }}/papers.php?paper=paper2#main"><p class="bold w3-large">{{ paper2.params.name }}</p></a>
+                <a href="{{ wwwroot }}/papers.php?paper=paper2"><p class="bold w3-large">{{ paper2.params.name }}</p></a>
                 <p class="lightGrey text2"></p>
                 <p>{{ paper2.content }}</p>
             </div>
@@ -106,7 +106,7 @@
                     <div class="placeholder-person"></div>
                     {% endif %}
                 </div>
-                <a  href="{{ wwwroot }}/entity.php?id={{ leader.id }}&returnurl={{ returnurl|url_encode }}#main">
+                <a  href="{{ wwwroot }}/entity.php?id={{ leader.id }}&returnurl={{ returnurl|url_encode }}">
                     <p class="bold w3-large">{{ leader.params.name }}</p>
                 </a>
                 <p></p>
@@ -114,7 +114,7 @@
         </div>
         {% endfor %}
     </div>
-    <div class="allpubs"><a href="{{ wwwroot }}/entities.php?context=leaders#main">ВСЕ РУКОВОДИТЕЛИ</a></div>
+    <div class="allpubs"><a href="{{ wwwroot }}/entities.php?context=leaders">ВСЕ РУКОВОДИТЕЛИ</a></div>
 
     <h2 class="bold">Воспоминания</h2>
     <div class="w3-row">
@@ -128,7 +128,7 @@
                 {% endif %}
             </div>
             <div class="notflow">
-                <a href="{{ wwwroot }}/entity.php?id={{ memory.id }}&returnurl={{ returnurl|url_encode }}#main">
+                <a href="{{ wwwroot }}/entity.php?id={{ memory.id }}&returnurl={{ returnurl|url_encode }}">
                     <p class="bold w3-large">{{ memory.params.name }}</p>
                 </a>
                 <p class="lightGrey text2"></p>
@@ -140,7 +140,7 @@
     <div class="w3-row">
         {% for memory in memories|slice(2, 2) %}
         <div class="w3-half">
-            <div class="imgBox1">
+            <div class="imgBox1 image-proportional-resizing">
                 {% if memory.files.image %}
                 <img src="{{ wwwroot }}/file.php?id={{ memory.files.image.id }}">
                 {% else %}
@@ -148,27 +148,28 @@
                 {% endif %}
             </div>
             <div class="notflow">
-                <a href="{{ wwwroot }}/entity.php?id={{ memory.id }}&returnurl={{ returnurl|url_encode }}#main">
+                <a href="{{ wwwroot }}/entity.php?id={{ memory.id }}&returnurl={{ returnurl|url_encode }}">
                     <p class="bold w3-large">{{ memory.params.name }}</p>
                 </a>
+                <p class="lightGrey text2"></p>
                 <p>{{ memory.content }}</p>
             </div>
         </div>
         {% endfor %}
     </div>
-    <div class="allpubs"><a href="{{ wwwroot }}/entities.php?context=memories#main">ВСЕ ВОСПОМИНАНИЯ</a></div>
+    <div class="allpubs"><a href="{{ wwwroot }}/entities.php?context=memories">ВСЕ ВОСПОМИНАНИЯ</a></div>
 
     <h2 class="bold" id="history-of-our-university">История институтов</h2>
     <div class="w3-row w3-large bold">
         {% set separator = (history_of_institute|length / 2)|round(0, 'ceil') %}
         <div class="w3-half histoInsts ">
             {% for history in history_of_institute[:separator] %}
-            <a href="{{ history.params.link }}">
+            <a href="{{ history.params.link }}" target="_blank">
                 <p>-&nbsp;{{ history.content|raw }}</p>
             </a>
             {% endfor %}
         </div>
-        <div class="w3-half histoInsts w3-large bold">
+        <div class="w3-half histoInsts">
             {% for history in history_of_institute[separator:] %}
             <a href="{{ history.params.link }}">
                 <p>-&nbsp;{{ history.content|raw }}</p>
@@ -177,15 +178,15 @@
         </div>
     </div>
     {% if admin %}
-    <div class="allpubs"><a href="{{ wwwroot }}/entities.php?context=history-of-institute#main">РЕДАКТИРОВАНИЕ</a></div>
+    <div class="allpubs"><a href="{{ wwwroot }}/entities.php?context=history-of-institute">РЕДАКТИРОВАНИЕ</a></div>
     {% endif %}
 
     <h2 class="bold">История успеха</h2>
     <div class="history-age w3-large">
         <ul>
             {% for year in history_of_success_years %}
-            <li><span style="font-family:'OpenSans-bold'; color:#007bc6; ">
-                <a href="{{ wwwroot }}/entities.php?context=history-of-success&year={{ year.year }}#main">{{ year.year }}</a>
+            <li><span style="font-family:'OpenSans-bold';">
+                <a href="{{ wwwroot }}/entities.php?context=history-of-success&year={{ year.year }}">{{ year.year }}</a>
             </span></li>
             {% endfor %}
         </ul>
@@ -200,7 +201,7 @@
             {% endif %}
         </div>
         <div class="notflow">
-            <a href="{{ wwwroot }}/entity.php?id={{ history.id }}&returnurl={{ returnurl|url_encode }}#main">
+            <a href="{{ wwwroot }}/entity.php?id={{ history.id }}&returnurl={{ returnurl|url_encode }}">
                 <p class="bold w3-large w3-padding-top">{{ history.params.name }}</p>
             </a>
             <!--<p class="lightGrey w3-large">Профессор, доктор</p>-->
@@ -209,7 +210,7 @@
         </div>
     </div>
     {% endfor %}
-    <div class="allpubs"><a href="{{ wwwroot }}/entities.php?context=history-of-success#main">ВСЕ ВЫПУСКНИКИ</a></div>
+    <div class="allpubs"><a href="{{ wwwroot }}/entities.php?context=history-of-success">ВСЕ ВЫПУСКНИКИ</a></div>
 
 </div>
 {% endblock %}

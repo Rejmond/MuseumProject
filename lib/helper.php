@@ -33,9 +33,10 @@ function get_base_model() {
     }
 
     return array(
-        'wwwroot'     => $CONFIG->wwwroot,
-        'admin'       => $USER->is_admin(),
-        'current_url' => $protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']
+        'wwwroot'      => $CONFIG->wwwroot,
+        'admin'        => $USER->is_admin(),
+        'current_url'  => $protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'],
+        'current_date' => time()
     );
 }
 
@@ -100,15 +101,17 @@ function resize_image($filepath, $width, $height)
 {
     AcImage::setRewrite(true);
     $img = AcImage::createImage($filepath);
-    $width_origin = $img->getWidth();
+    /*$width_origin = $img->getWidth();
     $height_origin = $img->getHeight();
     if ($width_origin > $width && $height_origin > $height) {
-        /*$img->cropCenter("{$width}pr", "{$height}pr");*/
+        $img->cropCenter("{$width}pr", "{$height}pr");
         $img->resizeByHeight($height);
         $img->resizeByWidth($width);
     } else {
         $img->cropCenter($width, $height);
-    }
+    }*/
+    $img->resizeByHeight($height);
+    $img->resizeByWidth($width);
     $img->save($filepath);
 }
 
@@ -167,7 +170,7 @@ function pagination($baseurl, $totalcount, $page, $perpage)
     $result['last'] = false; // если установлено, требуется второе "многоточие"
     if ($totalcount > $perpage) {
         if ($page > 0) {
-            $pageinfo = array('label' => '<', 'url' => $baseurl . $symbol . 'page=' . ($page - 1) . '#main');
+            $pageinfo = array('label' => '<', 'url' => $baseurl . $symbol . 'page=' . ($page - 1));
             $result['previous'] = $pageinfo;
         }
 
@@ -175,7 +178,7 @@ function pagination($baseurl, $totalcount, $page, $perpage)
 
         if ($page > round($maxdisplay / 3 * 2)) {
             $currpage = $page - round($maxdisplay / 3);
-            $pageinfo = array('label' => '1', 'url' => $baseurl . $symbol . 'page=0' . '#main');
+            $pageinfo = array('label' => '1', 'url' => $baseurl . $symbol . 'page=0');
             $result['first'] = $pageinfo;
         } else {
             $currpage = 0;
@@ -183,19 +186,19 @@ function pagination($baseurl, $totalcount, $page, $perpage)
 
         $displaycount = 0;
         while ($displaycount < $maxdisplay and $currpage < $lastpage) {
-            $pageinfo = array('label' => $currpage + 1, 'url' => $baseurl . $symbol . 'page=' . $currpage . '#main');
+            $pageinfo = array('label' => $currpage + 1, 'url' => $baseurl . $symbol . 'page=' . $currpage);
             $result['pages'][] = $pageinfo;
             $displaycount++;
             $currpage++;
         }
 
         if ($currpage < $lastpage) {
-            $pageinfo = array('label' => $lastpage, 'url' => $baseurl . $symbol . 'page=' . ($lastpage - 1) . '#main');
+            $pageinfo = array('label' => $lastpage, 'url' => $baseurl . $symbol . 'page=' . ($lastpage - 1));
             $result['last'] = $pageinfo;
         }
 
         if ($page + 1 != $lastpage) {
-            $pageinfo = array('label' => '>', 'url' => $baseurl . $symbol . 'page=' . ($page + 1) . '#main');
+            $pageinfo = array('label' => '>', 'url' => $baseurl . $symbol . 'page=' . ($page + 1));
             $result['next'] = $pageinfo;
         }
     }

@@ -11,7 +11,7 @@
             <input type="hidden" name="context" value="{{ context }}">
             {% endif %}
 
-            <p class="bold w3-large">Название института:</p>
+            <p class="bold w3-large">Название института</p>
             {% if errors.content %}
             <div class="login-snack-bar">
                 Вы не указали название института
@@ -19,7 +19,7 @@
             {% endif %}
             <input type="text" name="content" value="{{ content|raw }}">
 
-            <p class="bold w3-large">Гиперссылка в раздел института:</p>
+            <p class="bold w3-large">Гиперссылка в раздел института</p>
             {% if errors.link %}
             <div class="login-snack-bar">
                 Вы не указали гиперссылку

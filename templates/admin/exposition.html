@@ -2,7 +2,7 @@
 
 {% block content %}
 <div id="main" class="exposition edit-forms museum-image" data-location="exposition">
-    <h1 class="caption w3-xxlarge">Экспозиции: {{ title|lower }}</h1>
+    <h1 class="caption w3-xxlarge">Список экспозиций: {{ title|lower }}</h1>
     <div>
         <form method="post" autocomplete="off">
             {% if id %}
@@ -11,7 +11,7 @@
             <input type="hidden" name="context" value="{{ context }}">
             {% endif %}
 
-            <p class="bold w3-large">Название экспозиции:</p>
+            <p class="bold w3-large">Название экспозиции</p>
             {% if errors.name %}
             <div class="login-snack-bar">
                 Вы не указали название экспозиции
@@ -19,7 +19,7 @@
             {% endif %}
             <input type="text" name="name" value="{{ params.name|raw }}">
 
-            <p class="bold w3-large">Описание экспозиции:</p>
+            <p class="bold w3-large">Описание экспозиции</p>
             {% if errors.content %}
             <div class="login-snack-bar">
                 Вы не указали описание экспозиции

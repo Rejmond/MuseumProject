@@ -17,7 +17,7 @@
             <input type="hidden" name="context" value="{{ context }}">
             {% endif %}
 
-            <p class="bold w3-large">Название события:</p>
+            <p class="bold w3-large">Название события</p>
             {% if errors.name %}
             <div class="login-snack-bar">
                 Вы не указали название события
@@ -25,7 +25,7 @@
             {% endif %}
             <input type="text" name="name" value="{{ params.name|raw }}">
 
-            <p class="bold w3-large">Дата события:</p>
+            <p class="bold w3-large">Дата события</p>
             {% if errors.timestamp %}
             <div class="login-snack-bar">
                 Вы не указали дату события
@@ -33,7 +33,7 @@
             {% endif %}
             <input type="text" id="datepicker" name="timestamp" value="{{ params.timestamp|date('Y-m-d') }}">
 
-            <p class="bold w3-large">Краткое описание события:</p>
+            <p class="bold w3-large">Краткое описание события</p>
             {% if errors.content %}
             <div class="login-snack-bar">
                 Вы не указали краткое описание события
@@ -43,7 +43,7 @@
                 <textarea name="content">{{ content|raw }}</textarea>
             </div>
 
-            <p class="bold w3-large">Подробное описание события:</p>
+            <p class="bold w3-large">Подробное описание события</p>
             {% if errors.fulltext %}
             <div class="login-snack-bar">
                 Вы не указали подробное описание события

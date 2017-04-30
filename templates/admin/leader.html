@@ -2,7 +2,7 @@
 
 {% block content %}
 <div id="main" class="edit-forms history-image" data-location="leaders">
-    <h1 class="caption w3-xxlarge">Руководители: {{ title|lower }}</h1>
+    <h1 class="caption w3-xxlarge">Руководители университета: {{ title|lower }}</h1>
     <div>
         <form method="post" enctype="multipart/form-data" autocomplete="off">
             {% if id %}
@@ -11,7 +11,7 @@
             <input type="hidden" name="context" value="{{ context }}">
             {% endif %}
 
-            <p class="bold w3-large">Ф.И.О. руководителя:</p>
+            <p class="bold w3-large">Ф.И.О. руководителя</p>
             {% if errors.name %}
             <div class="login-snack-bar">
                 Вы не указали Ф.И.О. руководителя
@@ -19,7 +19,7 @@
             {% endif %}
             <input type="text" name="name" value="{{ params.name|raw }}">
 
-            <p class="bold w3-large">Порядок отображения:</p>
+            <p class="bold w3-large">Порядок отображения</p>
             {% if errors.order %}
             <div class="login-snack-bar">
                 Вы не указали номер порядка отображения
@@ -27,7 +27,7 @@
             {% endif %}
             <input type="number" name="order" value="{{ params.order|raw }}">
 
-            <p class="bold w3-large">Годы руководства:</p>
+            <p class="bold w3-large">Годы руководства</p>
             {% if errors.interval %}
             <div class="login-snack-bar">
                 Вы не указали период руководства
@@ -36,16 +36,21 @@
             <input type="text" name="interval" value="{{ params.interval|raw }}">
 
             {% if not id %}
-            <p class="bold w3-large">Фотография:</p>
+            <p class="bold w3-large">Фотография</p>
             {% if errors.image %}
             <div class="login-snack-bar">
                 Вы не указали фотографию руководителя
             </div>
             {% endif %}
-            <input type="file" name="image">
+            <div class="edit-file">
+                <input class="input-file" type="file" id="file" name="image">
+                <label class="forJsLabelFile" for="file">
+                    <span class="forJsFileName">Выберите файл</span>
+                </label>
+            </div>
             {% endif %}
 
-            <p class="bold w3-large">Краткое описание:</p>
+            <p class="bold w3-large">Краткое описание</p>
             {% if errors.content %}
             <div class="login-snack-bar">
                 Вы не указали краткое описание
@@ -55,7 +60,7 @@
                 <textarea name="content">{{ content|raw }}</textarea>
             </div>
 
-            <p class="bold w3-large">Подробное описание:</p>
+            <p class="bold w3-large">Подробное описание</p>
             {% if errors.fulltext %}
             <div class="login-snack-bar">
                 Вы не указали подробное описание

@@ -10,7 +10,7 @@ $params = array('paramname' => 'year', 'context' => 'history-of-success');
 
 $model = get_base_model();
 $model['title'] = 'История';
-$model['returnurl'] = "{$model['current_url']}#main";
+$model['returnurl'] = "{$model['current_url']}";
 $model['about'] = ContentManager::get_entity_by_context('about-history')['content'];
 $model['periods'] = get_entities('periods', 100, 4, array('param' => 'order', 'order' => 'ASC', 'cast' => 'INT'));
 $model['books'] = get_entities('books', 30);

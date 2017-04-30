@@ -11,7 +11,7 @@
             <input type="hidden" name="context" value="{{ context }}">
             {% endif %}
 
-            <p class="bold w3-large">Название подарка:</p>
+            <p class="bold w3-large">Название подарка</p>
             {% if errors.name %}
             <div class="login-snack-bar">
                 Вы не указали название подарка
@@ -19,7 +19,7 @@
             {% endif %}
             <input type="text" name="name" value="{{ params.name|raw }}">
 
-            <p class="bold w3-large">Сведения о дарителе:</p>
+            <p class="bold w3-large">Сведения о дарителе</p>
             {% if errors.presenter %}
             <div class="login-snack-bar">
                 Вы не указали сведения о дарителе
@@ -28,16 +28,21 @@
             <input type="text" name="presenter" value="{{ params.presenter|raw }}">
 
             {% if not id %}
-            <p class="bold w3-large">Изображение подарка:</p>
+            <p class="bold w3-large">Изображение подарка</p>
             {% if errors.image %}
             <div class="login-snack-bar">
                 Вы не указали изображение подарка
             </div>
             {% endif %}
-            <input type="file" name="image">
+            <div class="edit-file">
+                <input class="input-file" type="file" id="file" name="image">
+                <label class="forJsLabelFile" for="file">
+                    <span class="forJsFileName">Выберите файл</span>
+                </label>
+            </div>
             {% endif %}
 
-            <p class="bold w3-large">Краткое описание подарка:</p>
+            <p class="bold w3-large">Краткое описание подарка</p>
             {% if errors.content %}
             <div class="login-snack-bar">
                 Вы не указали краткое описание подарка
@@ -47,7 +52,7 @@
                 <textarea name="content">{{ content|raw }}</textarea>
             </div>
 
-            <p class="bold w3-large">Подробное описание подарка:</p>
+            <p class="bold w3-large">Подробное описание подарка</p>
             {% if errors.fulltext %}
             <div class="login-snack-bar">
                 Вы не указали подробное описание подарка

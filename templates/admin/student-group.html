@@ -11,7 +11,7 @@
             <input type="hidden" name="context" value="{{ context }}">
             {% endif %}
 
-            <p class="bold w3-large">Название студенческого отряда:</p>
+            <p class="bold w3-large">Название студенческого отряда</p>
             {% if errors.name %}
             <div class="login-snack-bar">
                 Вы не указали название студенческого отряда
@@ -19,7 +19,7 @@
             {% endif %}
             <input type="text" name="name" value="{{ params.name|raw }}">
 
-            <p class="bold w3-large">Краткое описание студенческого отряда:</p>
+            <p class="bold w3-large">Краткое описание студенческого отряда</p>
             {% if errors.content %}
             <div class="login-snack-bar">
                 Вы не указали краткое описание студенческого отряда
@@ -29,7 +29,7 @@
                 <textarea name="content">{{ content|raw }}</textarea>
             </div>
 
-            <p class="bold w3-large">Подробное описание студенческого отряда:</p>
+            <p class="bold w3-large">Подробное описание студенческого отряда</p>
             {% if errors.fulltext %}
             <div class="login-snack-bar">
                 Вы не указали подробное описание студенческого отряда

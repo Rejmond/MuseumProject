@@ -13,15 +13,7 @@
 
             <input type="hidden" name="content" value="paper">
 
-            <p class="bold w3-large">Год выпуска газеты:</p>
-            {% if errors.year %}
-            <div class="login-snack-bar">
-                Вы не указали год выпуска газеты
-            </div>
-            {% endif %}
-            <input type="number" name="year" value="{{ params.year|raw }}">
-
-            <p class="bold w3-large">Номер газеты:</p>
+            <p class="bold w3-large">Номер газеты</p>
             {% if errors.number %}
             <div class="login-snack-bar">
                 Вы не указали номер газеты
@@ -29,14 +21,27 @@
             {% endif %}
             <input type="number" name="number" value="{{ params.number|raw }}">
 
+            <p class="bold w3-large">Год выпуска газеты</p>
+            {% if errors.year %}
+            <div class="login-snack-bar">
+                Вы не указали год выпуска газеты
+            </div>
+            {% endif %}
+            <input type="number" name="year" value="{{ params.year|raw }}">
+
             {% if not id %}
-            <p class="bold w3-large">Файл с газетой:</p>
+            <p class="bold w3-large">Файл с газетой</p>
             {% if errors.file %}
             <div class="login-snack-bar">
                 Вы не прикрепили файл с газетой
             </div>
             {% endif %}
-            <input type="file" name="file">
+            <div class="edit-file">
+                <input class="input-file" type="file" id="file" name="file">
+                <label class="forJsLabelFile" for="file">
+                    <span class="forJsFileName">Выберите файл</span>
+                </label>
+            </div>
             {% endif %}
 
             <div class="button-container-logout">

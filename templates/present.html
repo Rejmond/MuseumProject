@@ -1,5 +1,7 @@
 {% extends "layout.html" %}
 
+{% block title %}Информация о подарке{% endblock %}
+
 {% block content %}
 <div id="main" class="entity museum-image" data-location="presents">
     <h1 class="caption w3-xxlarge">Информация о подарке</h1>
@@ -9,14 +11,15 @@
         </p>
         {% if admin %}
         <div class="p-to-form">
-            <a href="{{ wwwroot }}/admin/edit.php?id={{ entity.id }}#main"><img src="{{ wwwroot }}/images/edit.png" /></a>
-            <a href="{{ wwwroot }}/admin/delete.php?id={{ entity.id }}#main"><img src="{{ wwwroot }}/images/delete.png" /></a>
+            <a href="{{ wwwroot }}/admin/edit.php?id={{ entity.id }}"><img src="{{ wwwroot }}/images/edit.png" /></a>
+            <a href="{{ wwwroot }}/admin/delete.php?id={{ entity.id }}"><img src="{{ wwwroot }}/images/delete.png" /></a>
         </div>
         {% endif %}
     </div>
     <div class="post-tiny">
         {{ entity.params.fulltext|raw }}
     </div>
+    <div class="w3-row"></div>
     {% if entity.files.image %}
     <div class="imgBox2 entity-image image-proportional-resizing">
         {% if admin %}

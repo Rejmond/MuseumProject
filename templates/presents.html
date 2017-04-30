@@ -1,11 +1,13 @@
 {% extends "layout.html" %}
 
+{% block title %}День дарителя{% endblock %}
+
 {% block content %}
 <div id="main" class="entitylist museum-image" data-location="presents">
     <h1 class="caption w3-xxlarge">День дарителя</h1>
     {% if admin %}
     <div class="h1-to-form">
-        <a href="{{ wwwroot }}/admin/add.php?context={{ context }}#main">
+        <a href="{{ wwwroot }}/admin/add.php?context={{ context }}">
             <img src="{{ wwwroot }}/images/add.png" />
         </a>
     </div>
@@ -13,13 +15,13 @@
 
     {% for entity in entities %}
     <div class="w3-row textrow1">
-        <a  href="{{ wwwroot }}/entity.php?id={{ entity.id }}&returnurl={{ returnurl|url_encode }}#main"><p class="bold w3-large w3-margin-0">
+        <a  href="{{ wwwroot }}/entity.php?id={{ entity.id }}&returnurl={{ returnurl|url_encode }}"><p class="bold w3-large w3-margin-0">
             {{ entity.params.name|raw }}
         </p></a>
         {% if admin %}
         <div class="p-to-form">
-            <a href="{{ wwwroot }}/admin/edit.php?id={{ entity.id }}&returnurl={{ returnurl|url_encode }}#main"><img src="{{ wwwroot }}/images/edit.png" /></a>
-            <a href="{{ wwwroot }}/admin/delete.php?id={{ entity.id }}&returnurl={{ returnurl|url_encode }}#main"><img src="{{ wwwroot }}/images/delete.png" /></a>
+            <a href="{{ wwwroot }}/admin/edit.php?id={{ entity.id }}&returnurl={{ returnurl|url_encode }}"><img src="{{ wwwroot }}/images/edit.png" /></a>
+            <a href="{{ wwwroot }}/admin/delete.php?id={{ entity.id }}&returnurl={{ returnurl|url_encode }}"><img src="{{ wwwroot }}/images/delete.png" /></a>
         </div>
         {% endif %}
         <p>
@@ -32,7 +34,7 @@
                 <form method="post" enctype="multipart/form-data" action="{{ wwwroot }}/admin/addfile.php">
                     <input type="hidden" name="id" value="{{ entity.id }}">
                     <input type="hidden" name="filearea" value="image">
-                    <input type="hidden" name="returnurl" value="{{ current_url }}#main">
+                    <input type="hidden" name="returnurl" value="{{ current_url }}">
                     <label>
                         <input type="file" name="file" onchange="this.form.submit()">
                     </label>
@@ -43,12 +45,12 @@
         </div>
         <p class="text2" style="text-align: center;">Даритель: {{ entity.params.presenter }}</p>
         {% endif %}
-        <div class="more"><a href="{{ wwwroot }}/entity.php?id={{ entity.id }}&returnurl={{ returnurl|url_encode }}#main">Подробнее</a></div>
+        <div class="more"><a href="{{ wwwroot }}/entity.php?id={{ entity.id }}&returnurl={{ returnurl|url_encode }}">Подробнее</a></div>
     </div>
     {% endfor %}
 
     {% include 'pagination.html' %}
 
-    <div class="to-begin"><a href="{{ wwwroot }}/index.php#main">В начало</a></div>
+    <div class="to-begin"><a href="{{ wwwroot }}/museum.php">В начало</a></div>
 </div>
 {% endblock %}
