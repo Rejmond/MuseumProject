@@ -31,10 +31,15 @@
             <p class="bold w3-large">Фотография</p>
             {% if errors.image %}
             <div class="login-snack-bar">
-                Вы не указали фотографию ученого
+                Вы не указали фотографию выпускника
             </div>
             {% endif %}
-            <input type="file" name="image">
+            <div class="edit-file">
+                <input class="input-file" type="file" id="file" name="image">
+                <label class="forJsLabelFile" for="file">
+                    <span class="forJsFileName">Выберите файл</span>
+                </label>
+            </div>
             {% endif %}
 
             <p class="bold w3-large">Краткое описание</p>

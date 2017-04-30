@@ -140,7 +140,7 @@
     <div class="w3-row">
         {% for memory in memories|slice(2, 2) %}
         <div class="w3-half">
-            <div class="imgBox1">
+            <div class="imgBox1 image-proportional-resizing">
                 {% if memory.files.image %}
                 <img src="{{ wwwroot }}/file.php?id={{ memory.files.image.id }}">
                 {% else %}
@@ -151,6 +151,7 @@
                 <a href="{{ wwwroot }}/entity.php?id={{ memory.id }}&returnurl={{ returnurl|url_encode }}">
                     <p class="bold w3-large">{{ memory.params.name }}</p>
                 </a>
+                <p class="lightGrey text2"></p>
                 <p>{{ memory.content }}</p>
             </div>
         </div>

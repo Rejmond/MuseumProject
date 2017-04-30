@@ -101,15 +101,17 @@ function resize_image($filepath, $width, $height)
 {
     AcImage::setRewrite(true);
     $img = AcImage::createImage($filepath);
-    $width_origin = $img->getWidth();
+    /*$width_origin = $img->getWidth();
     $height_origin = $img->getHeight();
     if ($width_origin > $width && $height_origin > $height) {
-        /*$img->cropCenter("{$width}pr", "{$height}pr");*/
+        $img->cropCenter("{$width}pr", "{$height}pr");
         $img->resizeByHeight($height);
         $img->resizeByWidth($width);
     } else {
         $img->cropCenter($width, $height);
-    }
+    }*/
+    $img->resizeByHeight($height);
+    $img->resizeByWidth($width);
     $img->save($filepath);
 }
 

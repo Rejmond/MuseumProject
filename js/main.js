@@ -80,7 +80,12 @@ $(document).ready(function() {
                 {title: 'Right', icon: 'alignright', format: 'alignright'},
                 {title: 'Justify', icon: 'alignjustify', format: 'alignjustify'}
             ]}
-        ]
+        ],
+        setup: function(editor) {
+            editor.on('init', function(e) {
+                changePosition();
+            });
+        }
     });
 
     imageTransfiguration();
@@ -118,6 +123,7 @@ $(document).ready(function() {
         tinyImgSize();
         miniFooter();
     });
+
     snackBarFunction();
     changePosition();
     miniFooter();
@@ -143,7 +149,6 @@ function snackBarFunction() {
 
     });
 }
-
 
 function tinyImgSize() {
     $('.post-tiny img').each(function () {
@@ -227,6 +232,7 @@ function changePosition() {
     }
     $(target).css("top", position_fixed);
 }
+
 function w3_open() {
     $(".mynav").css({display: 'block', left: -300}).animate({left: 0}, 350, 'easeOutCubic');
     $('#openNav').css({display: 'none'});
@@ -270,4 +276,3 @@ function RoxyFileBrowser(field_name, url, type, win) {
     }, {window: win, input: field_name});
     return false;
 }
-

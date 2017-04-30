@@ -13,14 +13,6 @@
 
             <input type="hidden" name="content" value="paper">
 
-            <p class="bold w3-large">Год выпуска газеты</p>
-            {% if errors.year %}
-            <div class="login-snack-bar">
-                Вы не указали год выпуска газеты
-            </div>
-            {% endif %}
-            <input type="number" name="year" value="{{ params.year|raw }}">
-
             <p class="bold w3-large">Номер газеты</p>
             {% if errors.number %}
             <div class="login-snack-bar">
@@ -28,6 +20,14 @@
             </div>
             {% endif %}
             <input type="number" name="number" value="{{ params.number|raw }}">
+
+            <p class="bold w3-large">Год выпуска газеты</p>
+            {% if errors.year %}
+            <div class="login-snack-bar">
+                Вы не указали год выпуска газеты
+            </div>
+            {% endif %}
+            <input type="number" name="year" value="{{ params.year|raw }}">
 
             {% if not id %}
             <p class="bold w3-large">Файл с газетой</p>

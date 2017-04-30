@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <title>{{ title }}</title>
+    <title>{% block title %}{{ title }}{% endblock %}</title>
     <link rel="shortcut icon" href="{{ wwwroot }}/favicon.ico" type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -24,8 +24,7 @@
 </head>
 <body>
     {% block header %}
-    <header>
-    </header>
+    <header></header>
     <nav class="mynav w3-sidenav">
         <div class="menu-left-border"></div>
         <div class="sibsiu">СибГИУ</div>
@@ -58,8 +57,8 @@
             <li id="student-groups"><a href="{{ wwwroot }}/entities.php?context=student-groups">Студотряды</a></li>
         </ul>
     </nav>
-
     {% endblock %}
+
     <main class="w3-container">
         <span class="w3-opennav w3-xxlarge w3-container w3-light-grey w3-opacity-min hide-large" onclick="w3_open(); $(window).scroll();" id="openNav">
             <img style="width:36px; height: 36px;" src="{{ wwwroot }}/images/menu-three-horizontal-lines-symbol.svg">
@@ -75,6 +74,7 @@
         {% block content %}
         {% endblock %}
     </main>
+
     {% block footer %}
     <footer>
         <div>

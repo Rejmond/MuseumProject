@@ -1,5 +1,7 @@
 {% extends "layout.html" %}
 
+{% block title %}Информация об ученом{% endblock %}
+
 {% block content %}
 <div id="main" class="exposition-scientist entity museum-image" data-location="exposition">
     <h1 class="caption w3-xxlarge">Информация об ученом</h1>
@@ -26,7 +28,7 @@
             <div class="placeholder-person"></div>
             {% endif %}
         </div>
-        <div class="notflow">
+        <div>
             <p class="bold w3-large w3-padding-top w3-margin-0">
                 {{ entity.params.name }}
                 {% if admin %}
