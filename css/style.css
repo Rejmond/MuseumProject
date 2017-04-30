@@ -508,8 +508,8 @@ main .notflow p {
     background: #f0f0f0;
 }
 /* история успеха годы */
-.papers .history-age ul,
-.history .history-age ul {
+.history .history-age ul,
+.papers .history-age ul {
     text-align: justify;
 }
 .history .history-age ul::after,
@@ -518,11 +518,10 @@ main .notflow p {
     display: inline-block;
     content: "";
 }
-.papers .history-age li,
-.history .history-age li{
+.history .history-age li,
+.papers .history-age li {
     display: inline-block;
 }
-
 .history .history-leader {
     width: 136px;
     margin: auto;
@@ -838,7 +837,6 @@ h2:after {
     padding:8px 16px;
     width: 100%;
     height:40px;
-    background: #b8e4ff;
 }
 .edit-forms .edit-file span {
     padding:8px 16px;

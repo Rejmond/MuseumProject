@@ -163,7 +163,7 @@
         {% set separator = (history_of_institute|length / 2)|round(0, 'ceil') %}
         <div class="w3-half histoInsts ">
             {% for history in history_of_institute[:separator] %}
-            <a href="{{ history.params.link }}">
+            <a href="{{ history.params.link }}" target="_blank">
                 <p>-&nbsp;{{ history.content|raw }}</p>
             </a>
             {% endfor %}
@@ -184,7 +184,7 @@
     <div class="history-age w3-large">
         <ul>
             {% for year in history_of_success_years %}
-            <li><span style="font-family:'OpenSans-bold'; color:#007bc6; ">
+            <li><span style="font-family:'OpenSans-bold';">
                 <a href="{{ wwwroot }}/entities.php?context=history-of-success&year={{ year.year }}">{{ year.year }}</a>
             </span></li>
             {% endfor %}

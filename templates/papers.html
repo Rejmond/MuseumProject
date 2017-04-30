@@ -39,6 +39,7 @@
             <p>
                 {{ entity.params.fulltext|raw }}
             </p>
+            <div class="w3-row"></div>
         </div>
     </div>
 
@@ -46,8 +47,12 @@
     <div class="history-age w3-large">
         <ul>
             {% for year in papers_years %}
-            <li><span {% if year.year == current_year %}style="font-family:'OpenSans-bold'; color:#007bc6;"{% endif %}>
+            <li><span style="font-family:'OpenSans-bold';">
+                {% if year.year != current_year %}
                 <a href="{{ wwwroot }}/papers.php?paper={{ entity.context }}&year={{ year.year }}">{{ year.year }}</a>
+                {% else %}
+                <span>{{ year.year }}</span>
+                {% endif %}
             </span></li>
             {% endfor %}
         </ul>
