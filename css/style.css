@@ -474,7 +474,9 @@ main .notflow p {
     height: 200px;
     overflow: hidden;
 }
-
+.w3-half {
+    padding-right: 10px;
+}
 
 
 

@@ -59,7 +59,7 @@ header .header-svg {
     margin: 30px auto 24px;
 }
 /* анимированный текст */
-header p {
+header p, header .enter {
     font-size: 24px;
     text-align: center;
     font-family: "Acrom-Bold", sans-serif;
@@ -71,7 +71,12 @@ header .header-text {
     margin-bottom: 26px;
     opacity: 0;
 }
-
+header .enter {
+    margin-top: 26px;
+}
+header .header-text.enter span:hover {
+    text-decoration: underline;
+}
 
 @media screen and (max-height: 640px), screen and (max-width: 500px) {
     header .header-line {
@@ -84,7 +89,7 @@ header .header-text {
         margin: 16px auto 14px;
         height: 100px;
     }
-    header p {
+    header p, header .enter {
         font-size: 18px;
         text-align: center;
         font-family: "Acrom-Bold", sans-serif;
@@ -94,6 +99,9 @@ header .header-text {
     header .header-text {
         margin-bottom: 16px;
         opacity: 0;
+    }
+    header .enter {
+        margin-top: 16px;
     }
 
 }
@@ -110,7 +118,7 @@ header .header-text {
         margin: 8px auto 6px;
         height: 70px;
     }
-    header p {
+    header p, header .enter {
         font-size: 12px;
         text-align: center;
         font-family: "Acrom-Bold", sans-serif;
@@ -120,6 +128,9 @@ header .header-text {
     header .header-text {
         margin-bottom: 12px;
         opacity: 0;
+    }
+    header .enter {
+        margin-top: 12px;
     }
 
 }

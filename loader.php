@@ -20,7 +20,14 @@ $CONFIG->entities = array(
                 'type'     => PARAM_RAW,
             ),
         ),
-        'attachments' => array(),
+        'attachments' => array(
+            'photos' => array(
+                'required' => false,
+                'image' => true,
+                'size' => array(1200, 800),
+                'list' => true,
+            ),
+        ),
     ),
     'news' => array(
         'entity_template' => 'new.html',
@@ -233,7 +240,14 @@ $CONFIG->entities = array(
                 'type'     => PARAM_RAW,
             ),
         ),
-        'attachments' => array(),
+        'attachments' => array(
+            'photos' => array(
+                'required' => false,
+                'image' => true,
+                'size' => array(1200, 800),
+                'list' => true,
+            ),
+        ),
     ),
     /*                                                     */
     /*                   history entities                  */
@@ -248,7 +262,14 @@ $CONFIG->entities = array(
                 'type'     => PARAM_RAW,
             ),
         ),
-        'attachments' => array(),
+        'attachments' => array(
+            'photos' => array(
+                'required' => false,
+                'image' => true,
+                'size' => array(1200, 800),
+                'list' => true,
+            ),
+        ),
     ),
     'periods' => array(
         'entity_template' => 'period.html',
