@@ -52,6 +52,8 @@ jQuery(document).ready(function($){
                 updateOlderEvents($(this));
                 updateFilling($(this), timelineComponents['fillingLine'], timelineTotWidth);
                 updateVisibleContent($(this), timelineComponents['eventsContent']);
+                
+                updateArrows(timelineComponents);
             });
 
             //on swipe, show next/prev event content
@@ -100,7 +102,16 @@ jQuery(document).ready(function($){
             selectedDate.removeClass('selected');
             updateOlderEvents(newEvent);
             updateTimelinePosition(string, newEvent, timelineComponents, timelineTotWidth);
+
+            updateArrows(timelineComponents);
         }
+    }
+
+    //update navigation arrows visibility - asylum29
+    function updateArrows(timelineComponents) {
+        var selectedContent =  timelineComponents['eventsContent'].find('.selected');
+        (selectedContent.prev().length == 0) ? timelineComponents['timelineNavigation'].find('.prev').addClass('inactive') : timelineComponents['timelineNavigation'].find('.prev').removeClass('inactive');
+        (selectedContent.next().length == 0) ? timelineComponents['timelineNavigation'].find('.next').addClass('inactive') : timelineComponents['timelineNavigation'].find('.next').removeClass('inactive');
     }
 
     function updateTimelinePosition(string, event, timelineComponents, timelineTotWidth) {
@@ -122,9 +133,8 @@ jQuery(document).ready(function($){
         value = ( !(typeof totWidth === 'undefined') &&  value < totWidth ) ? totWidth : value; //do not translate more than timeline width
         setTransformValue(eventsWrapper, 'translateX', value+'px');
         //update navigation arrows visibility
-        console.log(value);
-        (value == 0 ) ? timelineComponents['timelineNavigation'].find('.prev').addClass('inactive') : timelineComponents['timelineNavigation'].find('.prev').removeClass('inactive');
-        (value == totWidth ) ? timelineComponents['timelineNavigation'].find('.next').addClass('inactive') : timelineComponents['timelineNavigation'].find('.next').removeClass('inactive');
+        //(value == 0 ) ? timelineComponents['timelineNavigation'].find('.prev').addClass('inactive') : timelineComponents['timelineNavigation'].find('.prev').removeClass('inactive');
+        //(value == totWidth ) ? timelineComponents['timelineNavigation'].find('.next').addClass('inactive') : timelineComponents['timelineNavigation'].find('.next').removeClass('inactive');
     }
 
     function updateFilling(selectedEvent, filling, totWidth) {

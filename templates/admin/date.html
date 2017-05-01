@@ -28,7 +28,11 @@
             <p class="bold w3-large">Дата события</p>
             {% if errors.timestamp %}
             <div class="login-snack-bar">
+                {% if errors.timestamp == 'required' %}
                 Вы не указали дату события
+                {% elseif errors.timestamp == 'unique' %}
+                Введенная дата события уже используется
+                {% endif %}
             </div>
             {% endif %}
             <input type="text" id="datepicker" name="timestamp" value="{{ params.timestamp|date('Y-m-d') }}">

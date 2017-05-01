@@ -6,6 +6,7 @@ define('MUSEUM_INTERNAL', true);
 define('PARAM_RAW',      'raw');
 define('PARAM_NOTAGS',   'tag');
 define('PARAM_DATE',     'date');
+define('PARAM_TIME',     'time');
 define('PARAM_INT',      'int');
 define('PARAM_FLOAT',    'float');
 
@@ -20,7 +21,14 @@ $CONFIG->entities = array(
                 'type'     => PARAM_RAW,
             ),
         ),
-        'attachments' => array(),
+        'attachments' => array(
+            'photos' => array(
+                'required' => false,
+                'image' => true,
+                'size' => array(1200, 800),
+                'list' => true,
+            ),
+        ),
     ),
     'news' => array(
         'entity_template' => 'new.html',
@@ -174,6 +182,7 @@ $CONFIG->entities = array(
             'timestamp' => array(
                 'required' => true,
                 'type' => PARAM_DATE,
+                'unique' => true,
             ),
             'fulltext' => array(
                 'required' => true,
@@ -233,7 +242,14 @@ $CONFIG->entities = array(
                 'type'     => PARAM_RAW,
             ),
         ),
-        'attachments' => array(),
+        'attachments' => array(
+            'photos' => array(
+                'required' => false,
+                'image' => true,
+                'size' => array(1200, 800),
+                'list' => true,
+            ),
+        ),
     ),
     /*                                                     */
     /*                   history entities                  */
@@ -248,7 +264,14 @@ $CONFIG->entities = array(
                 'type'     => PARAM_RAW,
             ),
         ),
-        'attachments' => array(),
+        'attachments' => array(
+            'photos' => array(
+                'required' => false,
+                'image' => true,
+                'size' => array(1200, 800),
+                'list' => true,
+            ),
+        ),
     ),
     'periods' => array(
         'entity_template' => 'period.html',

@@ -7,7 +7,7 @@ class EntityManager
 
     public static function add_object_from_submit()
     {
-        global $CONFIG;
+        global $CONFIG, $DB;
 
         if (post_data_submitted()) {
             $context = required_param('context');
@@ -32,8 +32,17 @@ class EntityManager
                 $values[$paramname] = optional_param($paramname, '');
                 $value = clean_param($values[$paramname], isset($options['type']) ? $options['type'] : PARAM_RAW);
                 $required = isset($options['required']) ? $options['required'] === true : false;
+                $unique = $required && isset($options['unique']) ? $options['unique'] === true : false;
+
+                $errorunique = false;
+                if ($unique) {
+                    $errorunique = $DB->count_records('params', array('name' => $paramname, 'value' => $value)) > 0;
+                }
+
                 if ($value === '' && $required) {
                     $errors[$paramname] = 'required';
+                } else if ($errorunique) {
+                    $errors[$paramname] = 'unique';
                 } else {
                     $params[$paramname] = $value;
                 }
@@ -78,7 +87,7 @@ class EntityManager
 
     public static function update_object_from_submit()
     {
-        global $CONFIG;
+        global $CONFIG, $DB;
 
         if (post_data_submitted()) {
             $entity_id = required_param('id');
@@ -104,8 +113,18 @@ class EntityManager
                 $values[$paramname] = optional_param($paramname, '');
                 $value = clean_param($values[$paramname], isset($options['type']) ? $options['type'] : PARAM_RAW);
                 $required = isset($options['required']) ? $options['required'] === true : false;
+                $unique = $required && isset($options['unique']) ? $options['unique'] === true : false;
+
+                $errorunique = false;
+                if ($unique) {
+                    $records = $DB->get_records('params', array('name' => $paramname, 'value' => $value));
+                    $errorunique = count($records) > 0 && $records[0]['entity'] != $entity_id;
+                }
+
                 if ($value === '' && $required) {
                     $errors[$paramname] = 'required';
+                } else if ($errorunique) {
+                    $errors[$paramname] = 'unique';
                 } else {
                     $params[$paramname] = $value;
                 }

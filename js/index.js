@@ -37,6 +37,7 @@ $(document).ready(function() {
             'stroke-dashoffset': 0
         }, 1000, 'linear');
 
-    $(".header-text").delay(2000).animate({opacity: 1}, 1500, 'easeInSine');
+    $(".header-text").not(".enter").delay(2000).animate({opacity: 0.9}, 1500, 'easeInSine');
+    $(".enter").delay(3500).animate({opacity: 1}, 500, 'easeInSine');
     $(".header-line").delay(2000).animate({width: 340}, 1500, 'easeOutQuad');
 });
