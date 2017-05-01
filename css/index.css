@@ -74,7 +74,7 @@ header .header-text {
 header .enter {
     margin-top: 26px;
 }
-header .header-text.enter span:hover {
+header .enter span:hover {
     text-decoration: underline;
 }
 
