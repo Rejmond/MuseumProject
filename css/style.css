@@ -1037,7 +1037,7 @@ main .quarter-to-2 {
     margin-left: 30px;
 }
 
-.dates .to-begin {
+.dates .to-begin, .papers .to-begin {
     margin-top: 20px;
 }
 
