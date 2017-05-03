@@ -1,5 +1,7 @@
 <?php
 
+session_name('MuseumSession');
+session_set_cookie_params(0, parse_url($CONFIG->wwwroot, PHP_URL_PATH).'/');
 session_start();
 
 define('MUSEUM_INTERNAL', true);
