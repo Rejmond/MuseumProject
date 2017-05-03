@@ -7,7 +7,8 @@
         {{ about }}
     </p>
     <div class="allpubs"><a href="{{ wwwroot }}/entity.php?context=about">ПОДРОБНЕЕ</a></div>
-    <h2 class="bold">Новости музея</h2>
+	
+    <h2 class="bold" id="news-anchor">Новости музея</h2>
     <div class="w3-row">
         <div class="quarter-to-2">
         {% for new in news|slice(0, 2) %}
@@ -19,7 +20,9 @@
                     <div class="placeholder-news"></div>
                     {% endif %}
                 </div>
-                <a href="{{ wwwroot }}/entity.php?id={{ new.id }}&returnurl={{ returnurl|url_encode }}"><p class="bold w3-large w3-margin-0">{{ new.params.name }}</p></a>
+                <a href="{{ wwwroot }}/entity.php?id={{ new.id }}&returnurl={{ (returnurl ~ '#news-anchor')|url_encode }}">
+                    <p class="bold w3-large w3-margin-0">{{ new.params.name }}</p>
+                </a>
                 <p class="lightGrey text2">{{ new.date|raw|date("d.m.Y H:i") }}</p>
                 <p>{{ new.content }}</p>
             </div>
@@ -35,7 +38,9 @@
                     <div class="placeholder-news"></div>
                     {% endif %}
                 </div>
-                <a href="{{ wwwroot }}/entity.php?id={{ new.id }}&returnurl={{ returnurl|url_encode }}"><p class="bold w3-large w3-margin-0">{{ new.params.name }}</p></a>
+                <a href="{{ wwwroot }}/entity.php?id={{ new.id }}&returnurl={{ (returnurl ~ '#news-anchor')|url_encode }}">
+                    <p class="bold w3-large w3-margin-0">{{ new.params.name }}</p>
+                </a>
                 <p class="lightGrey text2">{{ new.date|raw|date("d.m.Y H:i") }}</p>
                 <p>{{ new.content }}</p>
             </div>
@@ -44,7 +49,7 @@
     </div>
     <div class="allpubs"><a href="{{ wwwroot }}/entities.php?context=news">ВСЕ НОВОСТИ</a></div>
 
-    <h2 class="bold">Экспозиция</h2>
+    <h2 class="bold" id="expositions-anchor">Экспозиция</h2>
     <div class="w3-row">
         {% set separator = (expositions|length / 2)|round(0, 'ceil') %}
         <div class="w3-half histoInsts">
@@ -52,7 +57,7 @@
                 <p class="bold w3-large">-&nbsp;Ученые, профессора, члены академий вуза</p>
             </a>
             {% for exposition in expositions[:separator] %}
-            <a href="{{ wwwroot }}/entity.php?id={{ exposition.id }}&returnurl={{ returnurl|url_encode }}">
+            <a href="{{ wwwroot }}/entity.php?id={{ exposition.id }}&returnurl={{ (returnurl ~ '#expositions-anchor')|url_encode }}">
                 <p class="bold w3-large">-&nbsp;{{ exposition.params.name|raw }}</p>
             </a>
             {% endfor %}
@@ -62,7 +67,7 @@
                 <p class="bold w3-large">-&nbsp;Знаменитые выпускники вуза</p>
             </a>
             {% for exposition in expositions[separator:] %}
-            <a href="{{ wwwroot }}/entity.php?id={{ exposition.id }}&returnurl={{ returnurl|url_encode }}">
+            <a href="{{ wwwroot }}/entity.php?id={{ exposition.id }}&returnurl={{ (returnurl ~ '#expositions-anchor')|url_encode }}">
                 <p class="bold w3-large">-&nbsp;{{ exposition.params.name|raw }}</p>
             </a>
             {% endfor %}
@@ -70,7 +75,7 @@
     </div>
     <div class="allpubs"><a href="{{ wwwroot }}/entities.php?context=exposition">ВСЕ ЭКСПОЗИЦИИ</a></div>
 
-    <h2 class="bold">Тематические выставки</h2>
+    <h2 class="bold" id="exhibitions-anchor">Тематические выставки</h2>
     <div class="w3-row">
         <div class="quarter-to-2">
             {% for exhibition in exhibitions|slice(0, 2) %}
@@ -82,7 +87,9 @@
                     <div class="placeholder-exhibition"></div>
                     {% endif %}
                 </div>
-                <a href="{{ wwwroot }}/entity.php?id={{ exhibition.id }}&returnurl={{ returnurl|url_encode }}"><p class="bold w3-large w3-margin-0">{{ exhibition.params.name }}</p></a>
+                <a href="{{ wwwroot }}/entity.php?id={{ exhibition.id }}&returnurl={{ returnurl ~ '#exhibitions-anchor'|url_encode }}">
+                    <p class="bold w3-large w3-margin-0">{{ exhibition.params.name }}</p>
+                </a>
                 <p class="lightGrey text2">{{ exhibition.params.interval }}</p>
                 <p>{{ exhibition.content }}</p>
             </div>
@@ -98,7 +105,9 @@
                     <div class="placeholder-exhibition"></div>
                     {% endif %}
                 </div>
-                <a href="{{ wwwroot }}/entity.php?id={{ exhibition.id }}&returnurl={{ returnurl|url_encode }}"><p class="bold w3-large w3-margin-0">{{ exhibition.params.name }}</p></a>
+                <a href="{{ wwwroot }}/entity.php?id={{ exhibition.id }}&returnurl={{ returnurl ~ '#exhibitions-anchor'|url_encode }}">
+                    <p class="bold w3-large w3-margin-0">{{ exhibition.params.name }}</p>
+                </a>
                 <p class="lightGrey text2">{{ exhibition.params.interval }}</p>
                 <p>{{ exhibition.content }}</p>
             </div>
@@ -107,7 +116,7 @@
     </div>
     <div class="allpubs"><a href="{{ wwwroot }}/entities.php?context=exhibitions">ВСЕ ВЫСТАВКИ</a></div>
 
-    <h2 class="bold">Календарь знаменательных дат</h2>
+    <h2 class="bold" id="calendar-anchor">Календарь знаменательных дат</h2>
     <section class="cd-horizontal-timeline">
         <div class="timeline">
             <div class="events-wrapper">
@@ -132,7 +141,7 @@
             <ol>
                 {% for date in calendar %}
                 <li data-date="{{ date.params.timestamp|date('d/m/Y') }}">
-                    <a href="{{ wwwroot }}/entity.php?id={{ date.id }}&returnurl={{ returnurl|url_encode }}">
+                    <a href="{{ wwwroot }}/entity.php?id={{ date.id }}&returnurl={{ returnurl ~ '#calendar-anchor'|url_encode }}">
                         <p class="bold w3-large w3-margin-0">{{ date.params.name }}</p>
                     </a>
                     <p> {{ date.content }}</p>
@@ -143,7 +152,7 @@
     </section>
     <div class="allpubs"><a href="{{ wwwroot }}/entities.php?context=calendar">ВСЕ ЗНАМЕНАТЕЛЬНЫЕ ДАТЫ</a></div>
 
-    <h2 class="bold">День дарителя</h2>
+    <h2 class="bold" id="presents-anchor">День дарителя</h2>
     <div class="w3-row">
         <div class="quarter-to-2">
             {% for present in presents|slice(0, 2) %}
@@ -155,7 +164,9 @@
                     <div class="placeholder-gift"></div>
                     {% endif %}
                 </div>
-                <a href="{{ wwwroot }}/entity.php?id={{ present.id }}&returnurl={{ returnurl|url_encode }}"><p class="bold w3-large w3-margin-0">{{ present.params.name }}</p></a>
+                <a href="{{ wwwroot }}/entity.php?id={{ present.id }}&returnurl={{ returnurl ~ '#presents-anchor'|url_encode }}">
+                    <p class="bold w3-large w3-margin-0">{{ present.params.name }}</p>
+                </a>
                 <p class="lightGrey text2">Даритель: {{ present.params.presenter }}</p>
                 <p>{{ present.content }}</p>
             </div>
@@ -171,7 +182,9 @@
                     <div class="placeholder-gift"></div>
                     {% endif %}
                 </div>
-                <a href="{{ wwwroot }}/entity.php?id={{ present.id }}&returnurl={{ returnurl|url_encode }}"><p class="bold w3-large w3-margin-0">{{ present.params.name }}</p></a>
+                <a href="{{ wwwroot }}/entity.php?id={{ present.id }}&returnurl={{ returnurl ~ '#presents-anchor'|url_encode }}">
+                    <p class="bold w3-large w3-margin-0">{{ present.params.name }}</p>
+                </a>
                 <p class="lightGrey text2">Даритель: {{ present.params.presenter }}</p>
                 <p>{{ present.content }}</p>
             </div>
@@ -180,7 +193,7 @@
     </div>
     <div class="allpubs"><a href="{{ wwwroot }}/entities.php?context=presents">ВСЕ ПОДАРКИ</a></div>
 
-    <h2 class="bold">Геологический музей</h2>
+    <h2 class="bold" id="geologic-anchor">Геологический музей</h2>
     <div class="w3-row">
         <p>
             {{ geologic }}
