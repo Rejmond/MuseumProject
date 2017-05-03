@@ -149,7 +149,7 @@ function clean_param($param, $type)
             $date = DateTime::createFromFormat('Y-m-d', $param);
             $errors = DateTime::getLastErrors();
             $timestamp = $date ? $date->getTimestamp() : 0;
-            return empty($errors['warning_count']) && $timestamp > 0 ? strtotime("midnight", $timestamp) : '';
+            return empty($errors['warning_count']) && $timestamp > 0 ? strtotime('midnight', $timestamp) : '';
 
         case PARAM_TIME:
             $date = DateTime::createFromFormat('Y-m-d', $param);
