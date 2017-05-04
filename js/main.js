@@ -101,6 +101,19 @@ $(document).ready(function() {
         miniFooter();
     }).resize();
 
+    var clicks = 0;
+    $("#hello").on("click", function(){
+        clicks++;
+        var o = $("#hello");
+        if(clicks == 4) {
+            o.attr("src", o.attr("src").replace("/siu.png", "/siu1.png"));
+            setTimeout(function() { o.attr("src", o.attr("src").replace("/siu1.png", "/siu2.png")); }, 1000);
+            setTimeout(function() { o.attr("src", o.attr("src").replace("/siu2.png", "/siu3.png")); }, 2000);
+            setTimeout(function() { o.attr("src", o.attr("src").replace("/siu3.png", "/siu4.png")); }, 3000);
+            setTimeout(function() { o.attr("src", o.attr("src").replace("/siu4.png", "/siu.png")); clicks = 0; }, 4000);
+        }
+    });
+
     $('.input-file').each(function() {
         var $file = $(this),
             $label = $file.next('.forJsLabelFile'),
@@ -276,3 +289,5 @@ function RoxyFileBrowser(field_name, url, type, win) {
     }, {window: win, input: field_name});
     return false;
 }
+
+
