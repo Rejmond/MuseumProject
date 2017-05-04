@@ -530,8 +530,12 @@ main .notflow p {
     margin: auto;
 }
 
-
-
+.history .imgBox1 {
+    margin-bottom: 8px;
+}
+.history .w3-half {
+    margin-bottom: 20px;
+}
 
 
 
