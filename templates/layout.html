@@ -88,6 +88,9 @@
                     <a href="{{ wwwroot }}/entities.php?context=calendar"><p>Календарь знаменательных дат</p></a>
                     <a href="{{ wwwroot }}/entities.php?context=presents"><p>День дарителя</p></a>
                     <a href="{{ wwwroot }}/entity.php?context=geologic"><p>Геологический музей</p></a>
+                    <div class="footer-projects">
+                        <a href="{{ wwwroot }}/entities.php?context=projects"><p class="bold heads">Проекты</p></a>
+                    </div>
                 </div>
                 <div class="w3-quarter w3-justify w3-container">
                     <a href="{{ wwwroot }}/history.php"><p class="bold heads">История</p></a>
@@ -99,10 +102,17 @@
                     <a href="{{ wwwroot }}/entities.php?context=memories"><p>Воспоминания</p></a>
                     <a href="{{ wwwroot }}/history.php#history-of-our-university"><p>История институтов</p></a>
                     <a href="{{ wwwroot }}/entities.php?context=history-of-success"><p>История успеха</p></a>
+                    <div class="footer-studs">
+                        <a href="{{ wwwroot }}/entities.php?context=student-groups"><p class="bold heads">Студенческие отряды</p></a>
+                    </div>
                 </div>
                 <div class="w3-quarter w3-justify w3-container">
-                    <a href="{{ wwwroot }}/entities.php?context=projects"><p class="bold heads">Проекты</p></a>
-                    <a href="{{ wwwroot }}/entities.php?context=student-groups"><p class="bold heads">Студенческие отряды</p></a>
+                    <div class="footer-projects">
+                        <a href="{{ wwwroot }}/entities.php?context=projects"><p class="bold heads">Проекты</p></a>
+                    </div>
+                    <div class="footer-studs">
+                        <a href="{{ wwwroot }}/entities.php?context=student-groups"><p class="bold heads">Студенческие отряды</p></a>
+                    </div>
                 </div>
                 <div class="contacts w3-quarter w3-justify w3-container">
                     <p class="bold heads">Контакты</p>
@@ -116,8 +126,8 @@
                     <p class="heads white" style="word-spacing: 61px;">vk.com <span>/club137905709</span></p>
                 </div>
             </div>
-            <div class="siu ">СибГИУ</div>
-            <img class="siu-img" src="{{ wwwroot }}/images/siu.png">
+            <div class="siu">СибГИУ</div>
+            <img class="siu-img" id="hello" src="{{ wwwroot }}/images/siu.png">
         </div>
     </footer>
     {% endblock %}

@@ -256,9 +256,15 @@ footer span {
 footer .bold {
     color: white;
 }
+footer .w3-quarter:not(:last-child) .bold:hover {
+    color: #b8e4ff;
+}
 footer .heads {
     margin-bottom: 12px;
     margin-top: 28px;
+}
+footer .contacts .heads:not(:first-child) {
+    margin-top: 20px;
 }
 footer .quarttohalf .bold {
     margin-bottom: 0;
@@ -282,6 +288,10 @@ footer .siu-img {
 footer .excursion {
     color: #989797;
     font-family: "OpenSans-Bold", sans-serif;
+}
+footer .w3-quarter:nth-child(1) .footer-projects,
+footer .w3-quarter:nth-child(2) .footer-studs {
+    display: none;
 }
 
 
@@ -529,9 +539,12 @@ main .notflow p {
     width: 136px;
     margin: auto;
 }
-
-
-
+.history .imgBox1 {
+    margin-bottom: 8px;
+}
+.history .w3-half {
+    margin-bottom: 20px;
+}
 
 
 
@@ -554,6 +567,13 @@ main .notflow p {
         font-size: 14px;
         margin: 4px;
     }
+    footer .w3-quarter:not(:last-child) {
+    width: calc(33% - 93px);
+    }
+    footer .w3-quarter:last-child {
+        width: 279px;
+    }
+
     .history .leaders .w3-quarter {
         width: 24.99999%;
     }
@@ -599,17 +619,54 @@ main .notflow p {
         width: 49.99999%;
         margin: auto;
     }
+    footer .w3-quarter:nth-child(3){
+        display: none;
+    }
+    footer .w3-quarter:nth-child(1) .footer-projects,
+    footer .w3-quarter:nth-child(2) .footer-studs {
+        display: block;
+    }
+    footer .footer-projects,
+    footer .footer-studs {
+        display: block;
+    }
+    footer .w3-quarter:not(:nth-child(3)):not(:nth-child(4)) {
+        width: calc(50% - 150px);
+    }
+    footer .w3-quarter:last-child {
+        width: 300px;
+    }
 }
 @media screen and (max-width: 680px) {
     main .w3-quarter {
         width:99.99999%;
         margin-top: 20px;
     }
+    footer .w3-quarter:not(:last-child) {
+        width: 50%;
+    }
+
     footer .w3-row {
         max-width: 280px;
         display: block;
         margin-left: auto;
         margin-right: auto;
+    }
+    footer .w3-quarter:not(:nth-child(3)):not(:nth-child(4)) {
+        width: 100%;
+    }
+    footer .w3-quarter:nth-child(1) .footer-projects,
+    footer .w3-quarter:nth-child(2) .footer-studs {
+        display: none;
+    }
+    footer .w3-quarter:nth-child(3){
+        display: block;
+    }
+    footer .w3-quarter:not(:last-child) {
+        width:99.99999%;
+    }
+    footer .w3-quarter:last-child {
+        width:99.99999%;
     }
     footer .w3-quarter {
         width:99.99999%;
