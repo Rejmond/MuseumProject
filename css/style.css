@@ -1122,3 +1122,17 @@ main .quarter-to-2 {
 .post-tiny p {
     font-size: 16rem !important;
 }
+
+
+
+
+
+
+/* Злодейские стили */
+#markovarnikus {
+    width: 70px;
+    position: fixed;
+    bottom: -55px;
+    cursor: pointer;
+    margin-bottom: 0 !important;
+}

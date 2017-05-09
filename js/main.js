@@ -102,15 +102,28 @@ $(document).ready(function() {
     }).resize();
 
     var clicks = 0;
-    $("#hello").on("click", function(){
-        clicks++;
-        var o = $("#hello");
-        if(clicks == 4) {
-            o.attr("src", o.attr("src").replace("/siu.png", "/siu1.png"));
-            setTimeout(function() { o.attr("src", o.attr("src").replace("/siu1.png", "/siu2.png")); }, 1000);
-            setTimeout(function() { o.attr("src", o.attr("src").replace("/siu2.png", "/siu3.png")); }, 2000);
-            setTimeout(function() { o.attr("src", o.attr("src").replace("/siu3.png", "/siu4.png")); }, 3000);
-            setTimeout(function() { o.attr("src", o.attr("src").replace("/siu4.png", "/siu.png")); clicks = 0; }, 4000);
+    $('#hello').on("click", function(){
+        if(++clicks == 4) {
+            var click = false;
+            var mrak = $('#markovarnikus');
+            mrak.css({ 'left': Math.floor((Math.random() * 100))+'%' }).animate({ bottom: 0 }, 500, 'easeOutCubic');
+            mrak.one('click', function(){
+                click = true;
+                mrak.animate({ bottom: '-55px' }, 500, 'easeInSine');
+                var authors = ['Markovarnikus', 'asylum29', 'TRIKE', 'Rejmond'];
+                $('.siu').text('© ' + authors[Math.floor((Math.random() * 4))]);
+                setTimeout(function() {
+                    $('.siu').text('СибГИУ');
+                    clicks = 0;
+                }, 5000);
+            });
+            setTimeout(function() {
+                if (!click) {
+                    mrak.off('click');
+                    mrak.animate({ bottom: '-55px' }, 500, 'easeInSine');
+                    clicks = 0;
+                }
+            }, 2000);
         }
     });
 
