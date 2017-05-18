@@ -31,6 +31,8 @@
         <div class="more"><a href="{{ wwwroot }}/entity.php?id={{ entity.id }}&returnurl={{ returnurl|url_encode }}">Подробнее</a></div>
     </div>
     {% endfor %}
+    
+    {% include 'pagination.html' %}
 
     <div class="to-begin"><a href="{{ wwwroot }}/museum.php#calendar-anchor">В начало</a></div>
 </div>
