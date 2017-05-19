@@ -17,7 +17,7 @@ $model['books'] = get_entities('books', 30);
 $model['paper1'] = get_entities('paper1', 30)[0];
 $model['paper2'] = get_entities('paper2', 30)[0];
 $model['leaders'] = get_entities('leaders', null, 4, array('param' => 'order', 'order' => 'ASC', 'cast' => 'INT'));
-$model['memories'] = get_entities('memories', 30);
+$model['memories'] = get_entities('memories', 30, 4, array('param' => 'name', 'order' => 'ASC'));
 $model['history_of_institute'] = get_entities('history-of-institute', null, null, array('param' => 'content', 'order' => 'ASC'));
 $model['history_of_success'] = get_entities('history-of-success', 50, 4, array('param' => 'year', 'order' => 'DESC', 'cast' => 'INT'));
 $model['history_of_success_years'] = $DB->get_records_sql($sql, $params);
