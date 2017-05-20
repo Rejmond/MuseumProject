@@ -13,9 +13,11 @@
 
     {% for entity in entities %}
     <div class="w3-row ">
-        <a href="{{ entity.params.link }}" target="_blank"><p class="bold w3-large w3-margin-0">
-            {{ entity.content|raw }}
-        </p></a>
+        <a href="{{ entity.params.link }}" target="_blank">
+            <span class="bold w3-large w3-margin-0">
+                {{ entity.content|raw }}
+            </span>
+        </a>
         {% if admin %}
         <div class="p-to-form">
             <a href="{{ wwwroot }}/admin/edit.php?id={{ entity.id }}&returnurl={{ returnurl|url_encode }}"><img src="{{ wwwroot }}/images/edit.png" /></a>

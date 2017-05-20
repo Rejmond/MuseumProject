@@ -21,7 +21,7 @@
                     {% endif %}
                 </div>
                 <a href="{{ wwwroot }}/entity.php?id={{ new.id }}&returnurl={{ (returnurl ~ '#news-anchor')|url_encode }}">
-                    <p class="bold w3-large w3-margin-0">{{ new.params.name }}</p>
+                    <span class="bold w3-large w3-margin-0">{{ new.params.name }}</span>
                 </a>
                 <p class="lightGrey text2">{{ new.date|raw|date("d.m.Y H:i") }}</p>
                 <p>{{ new.content }}</p>
@@ -39,7 +39,7 @@
                     {% endif %}
                 </div>
                 <a href="{{ wwwroot }}/entity.php?id={{ new.id }}&returnurl={{ (returnurl ~ '#news-anchor')|url_encode }}">
-                    <p class="bold w3-large w3-margin-0">{{ new.params.name }}</p>
+                    <span class="bold w3-large w3-margin-0">{{ new.params.name }}</span>
                 </a>
                 <p class="lightGrey text2">{{ new.date|raw|date("d.m.Y H:i") }}</p>
                 <p>{{ new.content }}</p>
@@ -53,23 +53,31 @@
     <div class="w3-row">
         {% set separator = (expositions|length / 2)|round(0, 'ceil') %}
         <div class="w3-half histoInsts">
-            <a href="{{ wwwroot }}/entities.php?context=exposition-scientists">
-                <p class="bold w3-large">-&nbsp;Ученые, профессора, члены академий вуза</p>
-            </a>
+            <p>
+                <a href="{{ wwwroot }}/entities.php?context=exposition-scientists">
+                    <span class="bold w3-large">-&nbsp;Ученые, профессора, члены академий вуза</span>
+                </a>
+            </p>
             {% for exposition in expositions[:separator] %}
-            <a href="{{ wwwroot }}/entity.php?id={{ exposition.id }}&returnurl={{ (returnurl ~ '#expositions-anchor')|url_encode }}">
-                <p class="bold w3-large">-&nbsp;{{ exposition.params.name|raw }}</p>
-            </a>
+            <p>
+                <a href="{{ wwwroot }}/entity.php?id={{ exposition.id }}&returnurl={{ (returnurl ~ '#expositions-anchor')|url_encode }}">
+                    <span class="bold w3-large">-&nbsp;{{ exposition.params.name|raw }}</span>
+                </a>
+            </p>
             {% endfor %}
         </div>
         <div class="w3-half histoInsts w3-margin-bottom">
-            <a href="{{ wwwroot }}/entities.php?context=exposition-graduates">
-                <p class="bold w3-large">-&nbsp;Знаменитые выпускники вуза</p>
-            </a>
+            <p>
+                <a href="{{ wwwroot }}/entities.php?context=exposition-graduates">
+                    <span class="bold w3-large">-&nbsp;Знаменитые выпускники вуза</span>
+                </a>
+            </p>
             {% for exposition in expositions[separator:] %}
-            <a href="{{ wwwroot }}/entity.php?id={{ exposition.id }}&returnurl={{ (returnurl ~ '#expositions-anchor')|url_encode }}">
-                <p class="bold w3-large">-&nbsp;{{ exposition.params.name|raw }}</p>
-            </a>
+            <p>
+                <a href="{{ wwwroot }}/entity.php?id={{ exposition.id }}&returnurl={{ (returnurl ~ '#expositions-anchor')|url_encode }}">
+                    <span class="bold w3-large">-&nbsp;{{ exposition.params.name|raw }}</span>
+                </a>
+            </p>
             {% endfor %}
         </div>
     </div>
@@ -88,7 +96,7 @@
                     {% endif %}
                 </div>
                 <a href="{{ wwwroot }}/entity.php?id={{ exhibition.id }}&returnurl={{ returnurl ~ '#exhibitions-anchor'|url_encode }}">
-                    <p class="bold w3-large w3-margin-0">{{ exhibition.params.name }}</p>
+                    <span class="bold w3-large w3-margin-0">{{ exhibition.params.name }}</span>
                 </a>
                 <p class="lightGrey text2">{{ exhibition.params.interval }}</p>
                 <p>{{ exhibition.content }}</p>
@@ -106,7 +114,7 @@
                     {% endif %}
                 </div>
                 <a href="{{ wwwroot }}/entity.php?id={{ exhibition.id }}&returnurl={{ returnurl ~ '#exhibitions-anchor'|url_encode }}">
-                    <p class="bold w3-large w3-margin-0">{{ exhibition.params.name }}</p>
+                    <span class="bold w3-large w3-margin-0">{{ exhibition.params.name }}</span>
                 </a>
                 <p class="lightGrey text2">{{ exhibition.params.interval }}</p>
                 <p>{{ exhibition.content }}</p>
@@ -129,20 +137,20 @@
                         {% endfor %}
                     </ol>
                     <span class="filling-line" aria-hidden="true"></span>
-                </div> <!-- .events -->
-            </div> <!-- .events-wrapper -->
+                </div>
+            </div>
             <ul class="cd-timeline-navigation">
                 <li><a href="#0" class="prev inactive">Prev</a></li>
                 <li><a href="#0" class="next">Next</a></li>
-            </ul> <!-- .cd-timeline-navigation -->
-        </div> <!-- .timeline -->
+            </ul>
+        </div>
 
         <div class="events-content">
             <ol>
                 {% for date in calendar %}
                 <li data-date="{{ date.params.timestamp|date('d/m/Y') }}">
                     <a href="{{ wwwroot }}/entity.php?id={{ date.id }}&returnurl={{ returnurl ~ '#calendar-anchor'|url_encode }}">
-                        <p class="bold w3-large w3-margin-0">{{ date.params.name }}</p>
+                        <span class="bold w3-large w3-margin-0">{{ date.params.name }}</span>
                     </a>
                     <p> {{ date.content }}</p>
                 </li>
@@ -165,7 +173,7 @@
                     {% endif %}
                 </div>
                 <a href="{{ wwwroot }}/entity.php?id={{ present.id }}&returnurl={{ returnurl ~ '#presents-anchor'|url_encode }}">
-                    <p class="bold w3-large w3-margin-0">{{ present.params.name }}</p>
+                    <span class="bold w3-large w3-margin-0">{{ present.params.name }}</span>
                 </a>
                 <p class="lightGrey text2">Даритель: {{ present.params.presenter }}</p>
                 <p>{{ present.content }}</p>
@@ -183,7 +191,7 @@
                     {% endif %}
                 </div>
                 <a href="{{ wwwroot }}/entity.php?id={{ present.id }}&returnurl={{ returnurl ~ '#presents-anchor'|url_encode }}">
-                    <p class="bold w3-large w3-margin-0">{{ present.params.name }}</p>
+                    <span class="bold w3-large w3-margin-0">{{ present.params.name }}</span>
                 </a>
                 <p class="lightGrey text2">Даритель: {{ present.params.presenter }}</p>
                 <p>{{ present.content }}</p>

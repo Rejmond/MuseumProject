@@ -13,7 +13,9 @@
     <div class="w3-row">
         <div class="w3-col s3 w3-center history-chronics">
             <a href="{{ wwwroot }}/entity.php?id={{ period.id }}&returnurl={{ returnurl ~ '#periods-anchor'|url_encode }}">
-                <p class="bold w3-large w3-margin-0">{{ period.params.interval }}</p>
+                <span class="bold w3-large w3-margin-0">
+                    {{ period.params.interval }}
+                </span>
             </a>
         </div>
         <div class="w3-col s9 w3-justify text2"><p class="w3-margin-0">{{ period.content }}</p></div>
@@ -34,7 +36,9 @@
             </div>
             <div class="notflow">
                 <a href="{{ wwwroot }}/entity.php?id={{ book.id }}&returnurl={{ returnurl ~ '#books-anchor'|url_encode }}">
-                    <p class="bold w3-large">{{ book.params.name }}</p>
+                    <span class="bold w3-large">
+                        {{ book.params.name }}
+                    </span>
                 </a>
                 <p class="lightGrey text2"></p>
                 <p>{{ book.content }}</p>
@@ -54,7 +58,9 @@
             </div>
             <div class="notflow">
                 <a href="{{ wwwroot }}/entity.php?id={{ book.id }}&returnurl={{ returnurl ~ '#books-anchor'|url_encode }}">
-                    <p class="bold w3-large">{{ book.params.name }}</p>
+                    <span class="bold w3-large">
+                        {{ book.params.name }}
+                    </span>
                 </a>
                 <p class="lightGrey text2"></p>
                 <p>{{ book.content }}</p>
@@ -75,7 +81,11 @@
                 {% endif %}
             </div>
             <div class="notflow">
-                <a href="{{ wwwroot }}/papers.php?paper=paper1"><p class="bold w3-large">{{ paper1.params.name }}</p></a>
+                <a href="{{ wwwroot }}/papers.php?paper=paper1">
+                    <span class="bold w3-large">
+                        {{ paper1.params.name }}
+                    </span>
+                </a>
                 <p class="lightGrey text2"></p>
                 <p>{{ paper1.content }}</p>
             </div>
@@ -89,7 +99,11 @@
                 {% endif %}
             </div>
             <div class="notflow">
-                <a href="{{ wwwroot }}/papers.php?paper=paper2"><p class="bold w3-large">{{ paper2.params.name }}</p></a>
+                <a href="{{ wwwroot }}/papers.php?paper=paper2">
+                    <span class="bold w3-large">
+                        {{ paper2.params.name }}
+                    </span>
+                </a>
                 <p class="lightGrey text2"></p>
                 <p>{{ paper2.content }}</p>
             </div>
@@ -109,7 +123,9 @@
                     {% endif %}
                 </div>
                 <a  href="{{ wwwroot }}/entity.php?id={{ leader.id }}&returnurl={{ returnurl ~ '#leaders-anchor'|url_encode }}">
-                    <p class="bold w3-large">{{ leader.params.name }}</p>
+                    <span class="bold w3-large">
+                        {{ leader.params.name }}
+                    </span>
                 </a>
                 <p></p>
             </div>
@@ -131,7 +147,9 @@
             </div>
             <div class="notflow">
                 <a href="{{ wwwroot }}/entity.php?id={{ memory.id }}&returnurl={{ returnurl ~ '#memories-anchor'|url_encode }}">
-                    <p class="bold w3-large">{{ memory.params.name }}</p>
+                    <span class="bold w3-large">
+                        {{ memory.params.name }}
+                    </span>
                 </a>
                 <p class="lightGrey text2"></p>
                 <p>{{ memory.content }}</p>
@@ -151,7 +169,9 @@
             </div>
             <div class="notflow">
                 <a href="{{ wwwroot }}/entity.php?id={{ memory.id }}&returnurl={{ returnurl ~ '#memories-anchor'|url_encode }}">
-                    <p class="bold w3-large">{{ memory.params.name }}</p>
+                    <span class="bold w3-large">
+                        {{ memory.params.name }}
+                    </span>
                 </a>
                 <p class="lightGrey text2"></p>
                 <p>{{ memory.content }}</p>
@@ -166,16 +186,20 @@
         {% set separator = (history_of_institute|length / 2)|round(0, 'ceil') %}
         <div class="w3-half histoInsts ">
             {% for history in history_of_institute[:separator] %}
-            <a href="{{ history.params.link }}" target="_blank">
-                <p>-&nbsp;{{ history.content|raw }}</p>
-            </a>
+            <p>
+                <a href="{{ history.params.link }}" target="_blank">
+                    <span>-&nbsp;{{ history.content|raw }}</span>
+                </a>
+            </p>
             {% endfor %}
         </div>
         <div class="w3-half histoInsts">
             {% for history in history_of_institute[separator:] %}
-            <a href="{{ history.params.link }}" target="_blank">
-                <p>-&nbsp;{{ history.content|raw }}</p>
-            </a>
+            <p>
+                <a href="{{ history.params.link }}" target="_blank">
+                    <span>-&nbsp;{{ history.content|raw }}</span>
+                </a>
+            </p>
             {% endfor %}
         </div>
     </div>
@@ -204,7 +228,9 @@
         </div>
         <div class="notflow">
             <a href="{{ wwwroot }}/entity.php?id={{ history.id }}&returnurl={{ returnurl ~ '#history-of-success-anchor'|url_encode }}">
-                <p class="bold w3-large w3-padding-top">{{ history.params.name }}</p>
+                <span class="bold w3-large w3-padding-top">
+                    {{ history.params.name }}
+                </span>
             </a>
             <!--<p class="lightGrey w3-large">Профессор, доктор</p>-->
             <p class="lightGrey text2">Год выпуска: {{ history.params.year }}</p>
